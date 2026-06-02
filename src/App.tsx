@@ -47,16 +47,18 @@ function MainApp() {
   };
 
   return (
-    <div 
+    <div
       dir={dir}
-      className={`relative min-h-screen flex flex-col font-sans selection:bg-cyber-teal/30 selection:text-white transition-colors duration-300 bg-plus-grid ${
+      className={`relative min-h-screen flex flex-col overflow-x-hidden font-sans selection:bg-cyber-teal/30 selection:text-white transition-colors duration-300 bg-plus-grid ${
         theme === 'light' ? 'bg-slate-50 text-slate-800' : 'bg-dark-bg text-gray-100'
       }`} 
       id="mra-portfolio-app"
     >
       {/* Glazing Ambient Orbs in Background */}
-      <div className="pointer-events-none absolute top-[-10%] right-[5%] h-[600px] w-[600px] rounded-full bg-teal-900/10 opacity-60 filter blur-[120px] z-0" />
-      <div className="pointer-events-none absolute bottom-[-5%] left-[-5%] h-[600px] w-[600px] rounded-full bg-cyan-900/10 opacity-40 filter blur-[120px] z-0" />
+      <div className="pointer-events-none absolute inset-0 overflow-hidden z-0" aria-hidden="true">
+        <div className="absolute top-[-10%] right-[5%] h-[600px] w-[600px] rounded-full bg-teal-900/10 opacity-60 filter blur-[120px]" />
+        <div className="absolute bottom-[-5%] left-[-5%] h-[600px] w-[600px] rounded-full bg-cyan-900/10 opacity-40 filter blur-[120px]" />
+      </div>
       
       {/* Dynamic Navbar */}
       <Navbar currentPage={currentPage} />

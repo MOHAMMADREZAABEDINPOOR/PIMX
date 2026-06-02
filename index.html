@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fa">
+<html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -30,6 +30,22 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="پورتفولیو محمدرضا | Mohammadreza Abedinpoor Portfolio" />
     <meta name="twitter:description" content="پورتفولیو رسمی محمدرضا عابدین‌پور، برنامه‌نویس Python/Django و توسعه‌دهنده پروژه‌های AI و وب." />
+    <script>
+      (function() {
+        try {
+          var savedLang = localStorage.getItem('mra_portfolio_lang') || 'en';
+          var savedTheme = localStorage.getItem('mra_portfolio_theme') || 'dark';
+          var rtl = savedLang === 'fa' || savedLang === 'ar';
+          var root = document.documentElement;
+          root.lang = savedLang === 'zh' ? 'zh-CN' : savedLang;
+          root.dir = rtl ? 'rtl' : 'ltr';
+          root.classList.remove('light', 'dark');
+          root.classList.add(savedTheme === 'light' ? 'light' : 'dark');
+        } catch (e) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
 
     <script type="application/ld+json">
       {

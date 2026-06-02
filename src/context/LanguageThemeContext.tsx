@@ -41,6 +41,7 @@ interface LanguageThemeContextType {
 }
 
 const LanguageThemeContext = createContext<LanguageThemeContextType | undefined>(undefined);
+const isRtlLanguage = (language: LanguageType) => language === 'fa' || language === 'ar';
 
 export const LanguageThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [lang, setLangState] = useState<LanguageType>(() => {
@@ -76,7 +77,7 @@ export const LanguageThemeProvider: React.FC<{ children: React.ReactNode }> = ({
   useLayoutEffect(() => {
     const root = window.document.documentElement;
     root.lang = lang === 'fa' ? 'fa' : lang === 'ar' ? 'ar' : lang === 'zh' ? 'zh-CN' : lang;
-    root.dir = languagesInfo[lang].dir;
+    root.dir = isRtlLanguage(lang) ? 'rtl' : 'ltr';
     document.title = localizedSiteTitles[lang] || localizedSiteTitles.en;
 
     const description = document.querySelector('meta[name="description"]');
@@ -114,6 +115,7 @@ export const LanguageThemeProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   const currentInfo = languagesInfo[lang];
+  const currentDir: 'rtl' | 'ltr' = isRtlLanguage(lang) ? 'rtl' : 'ltr';
   const t = translations[lang];
 
   return (
@@ -121,7 +123,7 @@ export const LanguageThemeProvider: React.FC<{ children: React.ReactNode }> = ({
       value={{
         lang,
         theme,
-        dir: currentInfo.dir,
+        dir: currentDir,
         fontClass: currentInfo.fontClass,
         t,
         setLang,
@@ -132,9 +134,9 @@ export const LanguageThemeProvider: React.FC<{ children: React.ReactNode }> = ({
       }}
     >
       <div 
-        dir={currentInfo.dir} 
+        dir={currentDir}
         className={`${currentInfo.fontClass} ${theme === 'light' ? 'theme-light' : 'theme-dark'} transition-colors duration-300`}
-        style={{ direction: currentInfo.dir }}
+        style={{ direction: currentDir }}
       >
         {children}
       </div>
