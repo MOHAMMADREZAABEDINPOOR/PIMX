@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useLayoutEffect } from 'react';
 import { LanguageType, TranslationSet, translations, languagesInfo } from '../lib/translations';
 
 const localizedSiteTitles: Record<LanguageType, string> = {
@@ -61,8 +61,8 @@ export const LanguageThemeProvider: React.FC<{ children: React.ReactNode }> = ({
 
   // Load initial settings from localStorage to persist user selection
 
-  // Update HTML classes & values upon theme modifications
-  useEffect(() => {
+  // Update HTML classes & values upon theme modifications and language changes before paint
+  useLayoutEffect(() => {
     const root = window.document.documentElement;
     if (theme === 'light') {
       root.classList.add('light');
@@ -73,7 +73,7 @@ export const LanguageThemeProvider: React.FC<{ children: React.ReactNode }> = ({
     }
   }, [theme]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const root = window.document.documentElement;
     root.lang = lang === 'fa' ? 'fa' : lang === 'ar' ? 'ar' : lang === 'zh' ? 'zh-CN' : lang;
     root.dir = languagesInfo[lang].dir;
@@ -96,24 +96,13 @@ export const LanguageThemeProvider: React.FC<{ children: React.ReactNode }> = ({
   }, [lang]);
 
   const setLang = (newLang: LanguageType) => {
-    // Trigger awesome loader on language switch to recompile with high fidelity!
-    setIsLoading(true);
     localStorage.setItem('mra_portfolio_lang', newLang);
     setLangState(newLang);
-    
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 1800);
   };
 
   const setTheme = (newTheme: 'dark' | 'light') => {
-    setIsLoading(true);
     localStorage.setItem('mra_portfolio_theme', newTheme);
     setThemeState(newTheme);
-
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 1200);
   };
 
   const triggerAwesomeLoad = (durationMs = 1800, onComplete?: () => void) => {

@@ -395,7 +395,14 @@ html.dark .text-yellow-500\/20 {
 }
 
 /* Subtly handle bilingual font rendering */
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
 body {
+  margin: 0;
   background-color: #030712;
   color: #f3f4f6;
   font-family: var(--font-sans);
