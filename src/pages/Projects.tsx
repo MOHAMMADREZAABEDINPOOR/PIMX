@@ -289,19 +289,21 @@ export default function Projects() {
           theme === 'light' ? 'bg-white/80 border-slate-200 shadow-sm' : 'border-dark-border/60 bg-gradient-to-r from-teal-950/10 via-slate-950/60 to-cyan-950/10'
         }`}>
           <div className="absolute top-0 right-0 w-44 h-44 bg-cyber-teal/5 rounded-full filter blur-3xl pointer-events-none" />
-          <div className={`flex flex-col md:flex-row items-start md:items-center justify-between gap-5 ${
-            dir === 'rtl' ? 'text-right' : 'text-left'
-          }`}>
-            <div className="space-y-1.5 flex-1">
-              <h4 className={`text-sm font-bold font-sans flex items-center gap-2 justify-start ${
-                theme === 'light' ? 'text-slate-900' : 'text-gray-100'
-              } ${dir === 'rtl' ? 'flex-row-reverse' : 'flex-row'}`}>
-                <ShieldCheck className="h-4.5 w-4.5 text-cyber-teal" />
-                {t.projectsFooterHeading}
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
+            <div className={`space-y-1.5 flex-1 min-w-0 w-full ${dir === 'rtl' ? 'text-right' : 'text-left'}`}>
+              <h4
+                className={`text-sm font-bold font-sans flex items-center gap-2 w-full ${
+                  theme === 'light' ? 'text-slate-900' : 'text-gray-100'
+                } flex-row justify-start`}
+              >
+                <ShieldCheck className="h-4.5 w-4.5 shrink-0 text-cyber-teal" />
+                <span>{t.projectsFooterHeading}</span>
               </h4>
-              <p className={`text-xs font-sans leading-relaxed max-w-3xl ${
-                theme === 'light' ? 'text-slate-600' : 'text-gray-400'
-              }`}>
+              <p
+                className={`text-xs font-sans leading-relaxed max-w-3xl me-auto ${
+                  theme === 'light' ? 'text-slate-600' : 'text-gray-400'
+                }`}
+              >
                 {t.projectsFooterBody}
               </p>
             </div>
@@ -311,7 +313,9 @@ export default function Projects() {
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
               onMouseEnter={playHoverSound}
-              className="px-5 py-3 rounded-xl bg-gradient-to-r from-teal-500 to-cyan-500 font-bold text-slate-950 text-xs flex items-center gap-2 shadow-[0_4px_15px_rgba(20,184,166,0.15)] shrink-0"
+              className={`px-5 py-3 rounded-xl bg-gradient-to-r from-teal-500 to-cyan-500 font-bold text-slate-950 text-xs flex items-center gap-2 shadow-[0_4px_15px_rgba(20,184,166,0.15)] shrink-0 ${
+                dir === 'rtl' ? 'flex-row-reverse' : ''
+              }`}
             >
               {t.projectsFooterAction}
               <Mail className="h-4 w-4" />
