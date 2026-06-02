@@ -12,12 +12,11 @@ export default function Footer({ onNavigate }: FooterProps) {
   const { theme, dir, t } = useLanguageTheme();
 
   const handleLink = (page: PageType) => {
-    const target = page === 'home' ? '/' : `/${page === 'projects' ? 'project' : page}`;
-    window.location.pathname = target;
+    onNavigate(page);
   };
 
   return (
-    <footer className={`mt-auto border-t transition-colors duration-300 py-10 ${
+    <footer className={`mt-auto border-t transition-colors duration-300 py-6 ${
       theme === 'light' ? 'border-slate-200 bg-white/95' : 'border-dark-border/40 bg-[#030712] border-t-dark-border/40'
     }`} id="global-footer" dir={dir}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

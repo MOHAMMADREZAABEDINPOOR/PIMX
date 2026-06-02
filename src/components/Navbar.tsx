@@ -23,9 +23,9 @@ export default function Navbar({ currentPage }: NavbarProps) {
   ] as const;
 
   const navigateTo = (pageId: PageType) => {
-    // Navigate via pathname so URL becomes /playground, /project, /resume, etc.
     const target = pageId === 'home' ? '/' : `/${pageId === 'projects' ? 'project' : pageId}`;
-    window.location.pathname = target;
+    window.history.pushState({}, '', target);
+    window.dispatchEvent(new PopStateEvent('popstate'));
   };
 
   return (

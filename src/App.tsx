@@ -21,24 +21,29 @@ function MainApp() {
     // Track page visit on mount
     trackActivity('visit');
 
-    // Parse pathname on load (use /playground, /projects, /resume etc.)
-    const rawPath = window.location.pathname.replace(/^\/+/, '');
-    const firstSeg = rawPath.split('/')[0] || '';
-    // Accept both /project and /projects as the projects page, normalize to 'projects'
-    const normalized = firstSeg === 'project' ? 'projects' : firstSeg;
     const validPages: PageType[] = ['home', 'about', 'projects', 'playground', 'contact', 'resume'];
-    if (normalized && validPages.includes(normalized as PageType)) {
-      setCurrentPage(normalized as PageType);
-    } else {
-      setCurrentPage('home');
-    }
+    const resolvePath = (path: string) => {
+      const rawPath = path.replace(/^\/+/, '');
+      const firstSeg = rawPath.split('/')[0] || '';
+      const normalized = firstSeg === 'project' ? 'projects' : firstSeg;
+      return validPages.includes(normalized as PageType) ? (normalized as PageType) : 'home';
+    };
+
+    setCurrentPage(resolvePath(window.location.pathname));
+
+    const handlePopState = () => {
+      setCurrentPage(resolvePath(window.location.pathname));
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
   const handleNavigate = (page: PageType) => {
-    // Navigate by pathname so URL is clean (e.g. /playground)
-    const target = page === 'home' ? '/' : `/${page}`;
-    // use assignment so server-side routing will still work and produce a full reload
-    window.location.pathname = target;
+    const target = page === 'home' ? '/' : `/${page === 'projects' ? 'project' : page}`;
+    window.history.pushState({}, '', target);
+    setCurrentPage(page);
+    trackActivity('navigate');
   };
 
   return (

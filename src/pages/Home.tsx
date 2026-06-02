@@ -82,7 +82,8 @@ rtt min/avg/max/mdev = 11.2/12.3/14.1/1.24 ms`
 
   const navigateTo = (pageId: PageType) => {
     const target = pageId === 'home' ? '/' : `/${pageId === 'projects' ? 'project' : pageId}`;
-    window.location.pathname = target;
+    window.history.pushState({}, '', target);
+    window.dispatchEvent(new PopStateEvent('popstate'));
   };
 
   const triggerDiagnostics = () => {

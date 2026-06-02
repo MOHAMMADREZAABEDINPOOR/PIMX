@@ -57,17 +57,9 @@ export const LanguageThemeProvider: React.FC<{ children: React.ReactNode }> = ({
     }
     return 'dark';
   });
-  const [isLoading, setIsLoading] = useState<boolean>(true); // Start with loading on initial entry!
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   // Load initial settings from localStorage to persist user selection
-  useEffect(() => {
-    // Stop initial loading screen after a stunning premium animation
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2400);
-
-    return () => clearTimeout(timer);
-  }, []);
 
   // Update HTML classes & values upon theme modifications
   useEffect(() => {
