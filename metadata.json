@@ -1,0 +1,6 @@
+{
+  "name": "Mohammadreza Abedinpoor Portfolio",
+  "description": "Interactive Multi-page Portfolio and Live Prompt Engineering Playground for Mohammadreza Abedinpoor, AI Specialist & Python Developer.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
