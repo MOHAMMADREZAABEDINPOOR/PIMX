@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://pimx.pages.dev/</loc>
+    <lastmod>2026-06-02</lastmod>
+    <priority>1.00</priority>
+  </url>
+  <url>
+    <loc>https://pimx.pages.dev/projects</loc>
+    <lastmod>2026-06-02</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://pimx.pages.dev/about</loc>
+    <lastmod>2026-06-02</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://pimx.pages.dev/contact</loc>
+    <lastmod>2026-06-02</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://pimx.pages.dev/resume</loc>
+    <lastmod>2026-06-02</lastmod>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://pimx.pages.dev/playground</loc>
+    <lastmod>2026-06-02</lastmod>
+    <priority>0.60</priority>
+  </url>
+</urlset>
