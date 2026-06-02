@@ -39,6 +39,7 @@ const playRadarLockSound = () => {
 export default function Projects() {
   const { theme, dir, t, lang } = useLanguageTheme();
   const projects = getTranslatedProjects(lang);
+  const nodesActiveText = t.projectsActiveLabel.replace('{count}', `${projects.length}`);
 
   // Dynamic Accents styling dictionary conforming to high-fidelity design specifications and theme modes
   const accentStyles = {
@@ -133,7 +134,7 @@ export default function Projects() {
               <span className={`text-[10px] font-mono font-extrabold uppercase tracking-widest border px-2.5 py-0.5 rounded-md ${
                 theme === 'light' ? 'bg-teal-50 border-cyber-teal/20 text-cyber-teal' : 'bg-teal-950/40 border-cyber-teal/20 text-cyan-400'
               }`}>
-                PROJECT PORTFOLIO STATION
+                {t.projectsBadge}
               </span>
             </div>
             <h1 className={`text-3xl md:text-4xl font-extrabold tracking-tight font-sans ${theme === 'light' ? 'text-slate-900' : 'text-gray-100'}`}>
@@ -149,8 +150,8 @@ export default function Projects() {
             theme === 'light' ? 'bg-slate-50 border-slate-200 text-slate-600' : 'bg-slate-900/60 border-dark-border/40 text-gray-400'
           }`}>
             <Radio className="h-3.5 w-3.5 text-cyber-teal animate-pulse" />
-            <span className="uppercase text-[9px] font-extrabold">NODES_STREAM:</span>
-            <span className="text-cyber-teal font-extrabold">{projects.length}_ACTIVE</span>
+            <span className="uppercase text-[9px] font-extrabold">{t.projectsNodes}:</span>
+            <span className="text-cyber-teal font-extrabold">{nodesActiveText}</span>
           </div>
         </div>
 
@@ -191,7 +192,7 @@ export default function Projects() {
                   <div className="space-y-4">
                     {/* Header: Title badges */}
                     <div className="flex items-center justify-between">
-                      <span className={`text-[9px] font-mono border px-2.5 py-0.5 rounded-md font-extrabold uppercase ${style.badge} ${
+                      <span className={`text-[10px] font-mono border px-2.5 py-0.5 rounded-md font-extrabold uppercase ${style.badge} ${
                         theme === 'light' ? 'border-slate-100' : 'border-dark-border/20'
                       }`}>
                         {p.badge}
@@ -257,7 +258,7 @@ export default function Projects() {
                           {t.projectsVisit}
                         </span>
                         <div className="flex items-center gap-1 text-cyber-teal font-extrabold text-[10px]">
-                          LAUNCH
+                          {t.projectsLaunchLabel}
                           <ArrowUpLeft className="h-3.5 w-3.5 transition-transform duration-300 group-hover/btn:-translate-x-0.5 group-hover/btn:-translate-y-0.5" />
                         </div>
                       </motion.a>
@@ -296,17 +297,12 @@ export default function Projects() {
                 theme === 'light' ? 'text-slate-900' : 'text-gray-100'
               } ${dir === 'rtl' ? 'flex-row' : 'flex-row-reverse'}`}>
                 <ShieldCheck className="h-4.5 w-4.5 text-cyber-teal" />
-                توسعه پایدار و همسویی تکنولوژی
+                {t.projectsFooterHeading}
               </h4>
               <p className={`text-xs font-sans leading-relaxed max-w-3xl ${
                 theme === 'light' ? 'text-slate-600' : 'text-gray-400'
               }`}>
-                {lang === 'fa' 
-                  ? "تمامی پروژه‌ها و عوامل خودران به صورت تک‌به‌تک توسط محمدرضا عابدین‌پور تست، امنیت‌سنجی و دیپلوی شده‌اند. جهت برقراری ارتباط، هماهنگی جلسات کاری یا سفارش پروژه‌های تخصصی هوش مصنوعی و بهینه‌سازی وب با پایتون و جنگو، به بخش تماس با من مراجعه بفرمایید."
-                  : lang === 'ar'
-                  ? "تم اختبار جميع المشاريع والوكلاء المستقلين وتأمينهم ونشرهم بشكل منفرد بواسطة محمد رضا عابدين بور. يرجى مراجعة قسم الاتصال للحصول على تفاصيل التعاون والترتيبات."
-                  : "All projects and autonomous agents have been individually tested, security-audited, and deployed by Mohammadreza Abedinpoor. For collaboration, professional meetings, or customized AI and web optimization systems, please consult the Contact station."
-                }
+                {t.projectsFooterBody}
               </p>
             </div>
             
@@ -317,12 +313,7 @@ export default function Projects() {
               onMouseEnter={playHoverSound}
               className="px-5 py-3 rounded-xl bg-gradient-to-r from-teal-500 to-cyan-500 font-bold text-slate-950 text-xs flex items-center gap-2 shadow-[0_4px_15px_rgba(20,184,166,0.15)] shrink-0"
             >
-              {lang === 'fa' 
-                ? "مکاتبه مستقیم از درگاه امن پست الکترونیکی" 
-                : lang === 'ar'
-                ? "اتصل بنا مباشرة عبر البريد الإلكتروني"
-                : "Secure Mail Server Dispatch Gateway"
-              }
+              {t.projectsFooterAction}
               <Mail className="h-4 w-4" />
             </motion.a>
           </div>

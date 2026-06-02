@@ -44,7 +44,7 @@ function MainApp() {
   return (
     <div 
       dir={dir}
-      className={`min-h-screen flex flex-col font-sans selection:bg-cyber-teal/30 selection:text-white transition-colors duration-300 bg-plus-grid ${
+      className={`relative min-h-screen flex flex-col font-sans selection:bg-cyber-teal/30 selection:text-white transition-colors duration-300 bg-plus-grid ${
         theme === 'light' ? 'bg-slate-50 text-slate-800' : 'bg-dark-bg text-gray-100'
       }`} 
       id="mra-portfolio-app"
@@ -57,13 +57,20 @@ function MainApp() {
       <Navbar currentPage={currentPage} />
 
       {/* Primary Page Canvas */}
-      <main className="flex-grow z-10">
-        {currentPage === 'home' && <Home />}
-        {currentPage === 'about' && <About />}
-        {currentPage === 'projects' && <Projects />}
-        {currentPage === 'playground' && <Playground />}
-        {currentPage === 'resume' && <Resume />}
-        {currentPage === 'contact' && <Contact />}
+      <main className="flex-grow z-10 relative">
+        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+          <div className="absolute top-10 right-[-8rem] h-72 w-72 rounded-full bg-teal-500/10 blur-3xl" />
+          <div className="absolute bottom-[-5rem] left-[-6rem] h-72 w-72 rounded-full bg-cyan-500/10 blur-3xl" />
+          <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/5 to-transparent opacity-20 dark:opacity-60" />
+        </div>
+        <div className="relative z-10">
+          {currentPage === 'home' && <Home />}
+          {currentPage === 'about' && <About />}
+          {currentPage === 'projects' && <Projects />}
+          {currentPage === 'playground' && <Playground />}
+          {currentPage === 'resume' && <Resume />}
+          {currentPage === 'contact' && <Contact />}
+        </div>
       </main>
 
       {/* Global Footer */}

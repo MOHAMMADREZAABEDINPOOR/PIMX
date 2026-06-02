@@ -56,8 +56,8 @@ export default function Loader() {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className={`fixed inset-0 z-[10000] flex flex-col items-center justify-center overflow-hidden transition-colors duration-500 ${
             theme === 'light'
-              ? 'bg-slate-50/95 backdrop-blur-md text-slate-900'
-              : 'bg-[#030712] text-gray-100'
+              ? 'loader-bg-light text-slate-900'
+              : 'loader-bg-dark text-gray-100'
           }`}
           id="premium-loader-viewport"
         >
