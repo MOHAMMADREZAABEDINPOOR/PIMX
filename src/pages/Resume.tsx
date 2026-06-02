@@ -195,11 +195,11 @@ export default function Resume() {
         </p>
 
         {/* Dynamic Controls Bar */}
-        <div className={`mt-8 flex flex-wrap gap-4 items-center justify-between p-4 rounded-xl border border-dashed transition-all ${
+        <div className={`mt-8 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between p-4 rounded-xl border border-dashed transition-all ${
           theme === 'light' ? 'bg-white border-slate-200 shadow-sm' : 'bg-dark-card/60 border-dark-border'
         }`}>
           {/* Resume Language Switcher */}
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3 w-full lg:w-auto">
             <span className="text-[11px] font-mono text-gray-500 uppercase flex items-center gap-1.5 whitespace-nowrap">
               <Globe2 className="h-3.5 w-3.5 text-cyber-teal" /> {cvLang === 'fa' ? 'زبان رزومه:' : cvLang === 'ar' ? 'لغة السيرة الذاتية:' : 'CV Language:'}
             </span>
@@ -233,12 +233,12 @@ export default function Resume() {
           </div>
 
           {/* Action Links */}
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2 w-full lg:w-auto">
             {/* View Original raw file upload fallback if they want to view the literal screenshot */}
             <button
               onClick={handlePrint}
               onMouseEnter={playHoverSound}
-              className="flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold font-sans bg-cyber-teal hover:bg-teals-400 text-slate-950 border border-cyber-cyan/20 transition-all hover:scale-[1.03] cursor-pointer shadow-md shadow-cyber-teal/10"
+              className="flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-xs font-bold font-sans bg-cyber-teal hover:bg-teals-400 text-slate-950 border border-cyber-cyan/20 transition-all hover:scale-[1.03] cursor-pointer shadow-md shadow-cyber-teal/10 w-full sm:w-auto"
             >
               <Printer className="h-4 w-4" />
               <span>{activeTrans.downloadPdf}</span>
@@ -249,7 +249,7 @@ export default function Resume() {
               rel="noopener noreferrer"
               download
               onClick={() => playClickSound()}
-              className="flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-bold font-sans bg-slate-900 hover:bg-slate-800 text-cyber-cyan border border-cyber-cyan/20 transition-all hover:scale-[1.03] cursor-pointer shadow-md shadow-cyber-teal/10"
+              className="flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-xs font-bold font-sans bg-slate-900 hover:bg-slate-800 text-cyber-cyan border border-cyber-cyan/20 transition-all hover:scale-[1.03] cursor-pointer shadow-md shadow-cyber-teal/10 w-full sm:w-auto"
             >
               <Download className="h-4 w-4" />
               <span>{cvFileLabels[cvLang] || cvFileLabels.en}</span>

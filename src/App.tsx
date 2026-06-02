@@ -64,7 +64,7 @@ function MainApp() {
       <Navbar currentPage={currentPage} />
 
       {/* Primary Page Canvas */}
-      <main className="flex-grow z-10 relative">
+      <main className="flex-grow z-10 relative pt-16">
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
           <div className="absolute top-10 right-[-8rem] h-72 w-72 rounded-full bg-teal-500/10 blur-3xl" />
           <div className="absolute bottom-[-5rem] left-[-6rem] h-72 w-72 rounded-full bg-cyan-500/10 blur-3xl" />

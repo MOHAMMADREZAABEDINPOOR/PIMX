@@ -20,7 +20,7 @@ export default function Footer({ onNavigate }: FooterProps) {
       theme === 'light' ? 'border-slate-200 bg-white/95' : 'border-dark-border/40 bg-[#030712] border-t-dark-border/40'
     }`} id="global-footer" dir={dir}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center">
           
           {/* Logo & Copyright (5 columns) */}
           <div className={`md:col-span-5 space-y-2 ${dir === 'rtl' ? 'text-center md:text-right' : 'text-center md:text-left'}`}>
@@ -36,20 +36,20 @@ export default function Footer({ onNavigate }: FooterProps) {
           </div>
 
           {/* Quick Nav Links (4 columns) */}
-          <div className="md:col-span-4 flex flex-wrap justify-center gap-x-4 gap-y-2.5 text-xs font-semibold text-gray-400">
+          <div className="md:col-span-4 flex flex-wrap justify-center gap-x-2 sm:gap-x-4 gap-y-2.5 text-xs font-semibold text-gray-400">
             <button onClick={() => handleLink('home')} className="hover:text-cyber-teal transition-colors cursor-pointer select-none">{t.navHome}</button>
-            <span className="text-gray-800 select-none">•</span>
+            <span className="hidden sm:inline text-gray-800 select-none">•</span>
             <button onClick={() => handleLink('playground')} className="hover:text-cyber-teal transition-colors cursor-pointer select-none">{t.navPlayground}</button>
-            <span className="text-gray-800 select-none">•</span>
+            <span className="hidden sm:inline text-gray-800 select-none">•</span>
             <button onClick={() => handleLink('projects')} className="hover:text-cyber-teal transition-colors cursor-pointer select-none">{t.navProjects}</button>
-            <span className="text-gray-800 select-none">•</span>
+            <span className="hidden sm:inline text-gray-800 select-none">•</span>
             <button onClick={() => handleLink('about')} className="hover:text-cyber-teal transition-colors cursor-pointer select-none">{t.navAbout}</button>
-            <span className="text-gray-800 select-none">•</span>
+            <span className="hidden sm:inline text-gray-800 select-none">•</span>
             <button onClick={() => handleLink('contact')} className="hover:text-cyber-teal transition-colors cursor-pointer select-none">{t.navContact}</button>
           </div>
 
           {/* Contacts & Social Links (3 columns) */}
-          <div className={`md:col-span-3 flex justify-center gap-3.5 ${dir === 'rtl' ? 'md:justify-end' : 'md:justify-start'}`}>
+          <div className={`md:col-span-3 flex justify-center gap-2.5 sm:gap-3.5 ${dir === 'rtl' ? 'md:justify-end' : 'md:justify-start'}`}>
             <a 
               href="https://github.com/MOHAMMADREZAABEDINPOOR" 
               target="_blank" 

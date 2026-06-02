@@ -289,13 +289,13 @@ export default function Projects() {
           theme === 'light' ? 'bg-white/80 border-slate-200 shadow-sm' : 'border-dark-border/60 bg-gradient-to-r from-teal-950/10 via-slate-950/60 to-cyan-950/10'
         }`}>
           <div className="absolute top-0 right-0 w-44 h-44 bg-cyber-teal/5 rounded-full filter blur-3xl pointer-events-none" />
-          <div className={`flex flex-col md:flex-row items-center justify-between gap-5 ${
+          <div className={`flex flex-col md:flex-row items-start md:items-center justify-between gap-5 ${
             dir === 'rtl' ? 'text-right' : 'text-left'
           }`}>
             <div className="space-y-1.5 flex-1">
-              <h4 className={`text-sm font-bold font-sans flex items-center gap-2 ${
+              <h4 className={`text-sm font-bold font-sans flex items-center gap-2 justify-start ${
                 theme === 'light' ? 'text-slate-900' : 'text-gray-100'
-              } ${dir === 'rtl' ? 'flex-row' : 'flex-row-reverse'}`}>
+              } ${dir === 'rtl' ? 'flex-row-reverse' : 'flex-row'}`}>
                 <ShieldCheck className="h-4.5 w-4.5 text-cyber-teal" />
                 {t.projectsFooterHeading}
               </h4>

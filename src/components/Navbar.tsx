@@ -29,7 +29,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
   };
 
   return (
-    <header className={`sticky top-0 z-50 w-full border-b backdrop-blur-md transition-colors duration-300 ${
+    <header className={`fixed top-0 left-0 right-0 z-50 w-full border-b backdrop-blur-md transition-colors duration-300 ${
       theme === 'light' ? 'border-slate-200 bg-white/85' : 'border-dark-border/80 bg-dark-bg/85'
     }`}>
       <div 
@@ -60,8 +60,8 @@ export default function Navbar({ currentPage }: NavbarProps) {
         </div>
 
         {/* Desktop Navigation & Actions */}
-        <div className="hidden md:flex items-center gap-4">
-          <nav className="flex items-center gap-1">
+        <div className="hidden lg:flex items-center gap-4">
+          <nav className="flex items-center gap-0.5 xl:gap-1">
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = currentPage === item.id;
@@ -70,7 +70,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
                   key={item.id}
                   id={`nav-${item.id}`}
                   onClick={() => navigateTo(item.id)}
-                  className={`group relative flex items-center gap-2 rounded-lg px-3 py-1.5 text-sm font-medium transition-all duration-200 cursor-pointer ${
+                  className={`group relative flex items-center gap-1.5 rounded-lg px-2.5 xl:px-3 py-1.5 text-[13px] font-medium transition-all duration-200 cursor-pointer ${
                     isActive
                       ? 'text-cyber-teal bg-teal-500/10 border border-cyber-teal/30 shadow-[0_0_15px_rgba(20,184,166,0.1)] font-bold'
                       : theme === 'light'
@@ -157,7 +157,7 @@ export default function Navbar({ currentPage }: NavbarProps) {
         </div>
 
         {/* Mobile Control Buttons + Menu toggler */}
-        <div className="md:hidden flex items-center gap-2">
+        <div className="lg:hidden flex items-center gap-2">
           {/* Theme Switcher for mobile */}
           <button
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
@@ -221,8 +221,8 @@ export default function Navbar({ currentPage }: NavbarProps) {
 
       {/* Mobile Menu Panel */}
       {mobileOpen && (
-        <div 
-          className={`md:hidden border-b py-2 px-4 shadow-lg animate-fadeIn transition-colors ${
+        <div
+          className={`lg:hidden border-b py-2 px-4 shadow-lg animate-fadeIn transition-colors ${
             theme === 'light' ? 'bg-white border-slate-200' : 'bg-dark-card border-dark-border'
           }`} 
           dir={dir}
