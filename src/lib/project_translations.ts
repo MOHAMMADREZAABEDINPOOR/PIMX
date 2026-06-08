@@ -14,8 +14,8 @@ export interface TranslatedProjectItem {
 const faProjects: TranslatedProjectItem[] = [
   {
     id: "pimx-veil",
-    title: "سامانه پنهان‌نگاری و امنیت اطلاعات PIMXVEIL",
-    titleEn: "PIMXVEIL STEGANOGRAPHY & DATA SECURITY SUITE",
+    title: "سامانه پنهان‌نگاری و امنیت اطلاعات PIMX_VEIL",
+    titleEn: "PIMX_VEIL STEGANOGRAPHY & DATA SECURITY SUITE",
     category: "featured",
     description: "یک سوئیت امنیتی نظامی مدرن و ۱۰۰٪ محلی (Client-Side) که به کاربران اجازه می‌دهد فایل‌های حساس خود را با الگوریتم‌های فوق‌پیشرفته رمزنگاری کرده و به صورت کاملاً پنهان و غیرقابل‌شناسایی درون بدنه فایل‌های بی‌رویا (سند PDF، موزیک MP3 یا تصویر JPEG) تزریق (Steganography) کنند، بدون اینکه قالب یا کارکرد فایل میزبان تغییر کند. این پروژه با رویکرد Zero-Knowledge طراحی شده و مجهز به متدهای رمزنگاری AES-GCM 256-Bit و فناوری تفکیک PBKDF2 با بیش از ۶۰۰,۰۰۰ مرتبه تکرار هضم کلید جهت مقاومت در برابر حملات بروت‌فورس است.",
     link: "https://pimxveil.pages.dev",
@@ -29,8 +29,8 @@ const faProjects: TranslatedProjectItem[] = [
   },
   {
     id: "pimx-moji",
-    title: "پلتفرم خلاقانه ساخت هنرهای اسکی PIMX Moji",
-    titleEn: "PIMX MOJI ASCII ART GENERATOR",
+    title: "پلتفرم خلاقانه ساخت هنرهای اسکی PIMX_MOJI",
+    titleEn: "PIMX_MOJI ASCII ART GENERATOR",
     category: "featured",
     description: "ابزاری فوق‌العاده کاربردی و تفریحی جهت ساخت و تبدیل تصاویر یا کاراکترها به هنرهای متنی اسکی (ASCII Art) با استفاده از شکلک‌ها، ترکیب ایموجی‌ها و المان‌های گرافیکی متنی. مجهز به انواع تم‌های بصری جذاب و متنوع (مانند ماتریکس، کلاسیک، سایبرپانک و مونوکروم) جهت خلق جلوه‌های زیبا در شبکه‌های اجتماعی و نرم‌افزارهای چت.",
     link: "https://pimxmoji.pages.dev",
@@ -44,8 +44,8 @@ const faProjects: TranslatedProjectItem[] = [
   },
   {
     id: "pimx-pass",
-    title: "وب‌سایت تست پینگ و انتخاب دی‌ان‌اس PIMX Pass DNS",
-    titleEn: "PIMX PASS DNS TESTER & CONTROLLER",
+    title: "وب‌سایت تست پینگ و انتخاب دی‌ان‌اس PIMX_PASS DNS",
+    titleEn: "PIMX_PASS DNS TESTER & CONTROLLER",
     category: "featured",
     description: "پلتفرم فوق‌العاده کاربردی جهت تست، تحلیل کارایی و انتخاب هوشمند بهینه‌ترین سرورهای دی‌ان‌اس (DNS) دقیقاً متناسب با شبکه‌ اینترنت فعلی و فعال شما (همراه اول، ایرانسل، مخابرات، شاتل و غیره). این ابزار با ارسال درخواست‌های لحظه‌ای به شما کمک می‌کند پینگ پایدارتری در بازی‌های آنلاین کسب کرده و سرعت دسترسی اینترنتی خود را ارتقا دهید.",
     link: "https://pimxpassdns.pages.dev/",
@@ -73,22 +73,38 @@ const faProjects: TranslatedProjectItem[] = [
   },
   {
     id: "pimx-wide",
-    title: "نرم‌افزار فوق‌امنیتی رمزنگاری اطلاعات PIMX WIDE",
-    titleEn: "PIMX WIDE SECURE CRYPTO ENGINE",
+    title: "سامانه پیشرفته و فوق‌امن رمزنگاری بدون سرور PIMX_WIDE",
+    titleEn: "PIMX_WIDE ADVANCED SECURE CRYPTO STATION",
     category: "featured",
-    description: "یک نرم‌افزار تحت وب پیشرفته و فوق‌العاده امن برای رمزنگاری و رمزگشایی اطلاعات به صورت کاملاً محلی (سمت کاربر یا Client-Side) بر پایه معماری «عدم آگاهی» (Zero-Knowledge). فرآیند رمزنگاری بر پایه استاندارد هاردنینگ نظامی AES-GCM 256-Bit با ویژگی احراز هویت یکپارچگی داده‌ها صورت گرفته و الگوریتم سخت‌سازی گذرواژه PBKDF2 با حداقل ۱۰۰,۰۰۰ مرتبه تکرار کلیدزنی به همراه نمک (Salt) تصادفی به کار گرفته می‌شود. تمام عملیات به صورت آفلاین بدون نیاز به دیتابیس پردازش شده و به محض خروج یا کلیک بر روی دکمه خروج اضطراری (Panic Button)، حافظه مرورگر کاملاً فرمت می‌گردد.",
+    description: "پلتفرم PIMX_WIDE یک ابزار وب پیشرفته، فوق‌العاده امن، و کاملاً بدون نیاز به سرور (Serverless) است که برای رمزنگاری و رمزگشایی داده‌های حساس با امنیت استانداردهای نظامی طراحی شده است. تمام فرآیندهای محاسباتی، رمزنگاری و رمزگشایی مستقیماً روی پردازنده و رم دستگاه شما (به صورت کاملاً محلی و درون مرورگر) انجام می‌شود و هیچ داده‌ای تحت هیچ شرایطی به هیچ سروری ارسال یا در آن ذخیره نمی‌گردد. این پلتفرم مجهز به کنسول رمزنگاری مستقل (AES-GCM 256-Bit) با خروجی کانتینر فشرده Base64 و فایل فیزیکی .json، پرتال رمزگشایی آفلاین با تخلیه امنیتی رم، و پنل مدیریت مانيتورينگ پیشرفته به همراه ۳۴ فیلتر هوشمند زمانی و طراحی تیره غنی فضایی با راکتورهای چرخان سه بعدی است.",
+    link: "https://pimxwide.pages.dev",
     accent: "gold",
-    badge: "ZERO KNOWLEDGE CRYPTO",
+    badge: "MILITARY CRYPTO",
     features: [
-      "رمزنگاری آفلاین با استاندارد AES-GCM 256-Bit بدون ارسال اطلاعات به سرور",
-      "سخت‌سازی امنیتی رمز عبور به کمک PBKDF2 با بیش از ۱۰۰,۰۰۰ مرتبه تکرار هضم",
-      "مجهز به دکمه خروج اضطراری (Panic Exit) جهت پاکسازی فوری حافظه مرورگر و ارجاع سریع به Google"
+      "کنسول رمزنگاری مستقل با استاندارد نظامی AES-GCM با قابلیت خروجی .json و Base64",
+      "پنل مدیریت پیشرفته و مانیتورینگ واقعی به همراه ۳۴ فیلتر هوشمند زمانی و نمودارهای متحرک خطی (نام کاربری: pimxwide و گذرواژه: 123456789PIMX_WIDe@#$%^&)",
+      "حاکمیت ۱۰۰٪ محلی و آفلاین مجهز به مکانیزم تخلیه رم و تم خلاقانه راکتورهای فضایی سه بعدی"
+    ]
+  },
+  {
+    id: "pimx-node",
+    title: "پلتفرم انتقال فایل همتابه‌همتا و شبیه‌ساز شبکه PIMX_NODE",
+    titleEn: "PIMX_NODE P2P FILE METEOR & FIREWALL TRANSLATOR",
+    category: "featured",
+    description: "پلتفرم PIMX_NODE (یا به اختصار PIMX) یک پرتال پیشرفته، فوق‌العاده سریع و کاملاً بدون سرور (Serverless) برای انتقال فایل همتابه‌همتا (P2P) مبتنی بر پروتکل WebRTC و بدون واسطه‌گری فضای ابری است. همچنین این ابزار مجهز به شبیه‌ساز تعاملی فایروال (NAT Traversal) در قالب ۴ سناریو (اتصال محلی LAN Bridge، فایروال‌های معمولی STUN، اینترنت همراه CGNAT و انسدادهای Symmetric NAT اداری)، پنل مدیریت لحظه‌ای حاوی آمار واقعی کاربران آنلاین، حجم جابجایی دقیق دیتا و نمودار داینامیک SVG زمانبندی و سئوی قدرتمند و بهینه‌سازی شده در خروجی گوگل است.",
+    link: "https://pimxnode.pages.dev",
+    accent: "indigo",
+    badge: "SERVERLESS P2P",
+    features: [
+      "انتقال مستقیم همتابه‌همتا (P2P) با پروتکل انقلابی WebRTC بدون واسطه‌گری سرورها",
+      "شبیه‌ساز تعاملی و ریسپانسیو ۴ سناریوی فایروال و عبور از NAT (ترافیک افقی روی دسکتاپ و عمودی روی موبایل)",
+      "داشبورد مدیریت زنده و واقعی با نمودارهای متحرک SVG، حجم لود Payload و تفکیک دستگاه‌ها"
     ]
   },
   {
     id: "pimx-pass-bot",
-    title: "ربات تلگرام جامع PIMX PASS BOT",
-    titleEn: "PIMX PASS CONNECTIVITY HUB",
+    title: "ربات تلگرام جامع PIMX_PASS_BOT",
+    titleEn: "PIMX_PASS_BOT CONNECTIVITY HUB",
     category: "featured",
     description: "هاب همه‌کاره و فوق‌سریع اتصال اینترنتی. دسترسی آسان و خودکار به سرورها و تونل‌های پرسرعت V2Ray، OpenVPN، HA Tunnel Plus، NPV Tunnel، HTTP Custom و HTTP Injector به صورت لایو و آپدیت لحظه‌ای.",
     accent: "indigo",
@@ -97,8 +113,8 @@ const faProjects: TranslatedProjectItem[] = [
   },
   {
     id: "pimx-play-bot",
-    title: "ربات تلگرام اندروید آپ هانتر PIMX PLAY",
-    titleEn: "ANDROID APP HUNTER (PIMX PLAY)",
+    title: "ربات تلگرام اندروید آپ هانتر PIMX_PLAY_BOT",
+    titleEn: "ANDROID APP HUNTER (PIMX_PLAY_BOT)",
     category: "featured",
     description: "دانلود مستقیم برنامه‌های اندروید بدون تاخیر از داخل تلگرام. دور زدن استورهای کند خارجی و لینک‌های تبلیغاتی؛ جستجوی فوری اپ‌ها و دریافت مستقیم فایل‌های APK تاییدشده و امن با ارسال مستقیم آدرس گوگل‌پلی.",
     accent: "emerald",
@@ -107,8 +123,8 @@ const faProjects: TranslatedProjectItem[] = [
   },
   {
     id: "pimx-sonic-bot",
-    title: "ربات موزیک پلیر آفلاین PIMX SONIC",
-    titleEn: "OFFLINE MUSIC PLAYER (PIMX SONIC)",
+    title: "ربات موزیک پلیر آفلاین PIMX_SONIC_BOT",
+    titleEn: "OFFLINE MUSIC PLAYER (PIMX_SONIC_BOT)",
     category: "featured",
     description: "دستیار موسیقی فوق‌العاده برای شبکه‌های با پهنای باند محدود. استریم و دانلود مستقیم تمامی موزیک‌های موردعلاقه به همراه یکپارچه‌سازی کامل در بستر تلگرام بدون نیاز به خروج از پلتفرم و اتلاف ترافیک.",
     link: "https://t.me/PIMX_SONIC_BOT",
@@ -229,8 +245,8 @@ const faProjects: TranslatedProjectItem[] = [
 const enProjects: TranslatedProjectItem[] = [
   {
     id: "pimx-veil",
-    title: "PIMXVEIL — Advanced Local Steganography Suite",
-    titleEn: "PIMXVEIL HYBRID STEGANOGRAPHY & DATA ISOLATION WORKSPACE",
+    title: "PIMX_VEIL — Advanced Local Steganography Suite",
+    titleEn: "PIMX_VEIL HYBRID STEGANOGRAPHY & DATA ISOLATION WORKSPACE",
     category: "featured",
     description: "A highly advanced, 100% client-side military steganography and encryption suite that empowers users to encrypt highly sensitive files and inject them invisibly into harmless carrier files (PDF, MP3, or JPEG) using advanced end-of-file buffer offset algorithms. Operating fully under a zero-knowledge architecture within the browser's RAM, it secures keys via a robust PBKDF2 HMAC-SHA256 derivation function performing over 600,000 stretching cycles, and locks components using authenticated AES-GCM (256-bit) encryption.",
     link: "https://pimxveil.pages.dev",
@@ -244,8 +260,8 @@ const enProjects: TranslatedProjectItem[] = [
   },
   {
     id: "pimx-moji",
-    title: "PIMX Moji ASCII Art Canvas",
-    titleEn: "PIMX MOJI ASCII ART GENERATOR",
+    title: "PIMX_MOJI ASCII Art Canvas",
+    titleEn: "PIMX_MOJI ASCII ART GENERATOR",
     category: "featured",
     description: "A creative online canvas tool to convert images or text characters into beautiful ASCII art and emoji mosaic tables, styled with an immersive Matrix-like hacker theme for quick copy-paste.",
     link: "https://pimxmoji.pages.dev",
@@ -259,8 +275,8 @@ const enProjects: TranslatedProjectItem[] = [
   },
   {
     id: "pimx-pass",
-    title: "PIMX Pass DNS Benchmark & Diagnostic",
-    titleEn: "PIMX PASS DNS TESTER & CONTROLLER",
+    title: "PIMX_PASS DNS Benchmark & Diagnostic",
+    titleEn: "PIMX_PASS DNS TESTER & CONTROLLER",
     category: "featured",
     description: "A highly practical network benchmarking utility to test latency and discover the optimal safe DNS server matching your specific active ISP provider, improving online gaming ping.",
     link: "https://pimxpassdns.pages.dev/",
@@ -288,22 +304,38 @@ const enProjects: TranslatedProjectItem[] = [
   },
   {
     id: "pimx-wide",
-    title: "PIMX WIDE Zero-Knowledge Crypto Suite",
-    titleEn: "PIMX WIDE SECURE CRYPTO ENGINE",
+    title: "PIMX_WIDE Advanced Serverless Cryptographic Platform",
+    titleEn: "PIMX_WIDE SECURE CRYPTO ENGINE",
     category: "featured",
-    description: "An advanced, fully isolated zero-knowledge client-side encryption workspace implementing industry-standard AES-GCM 256-bit with intensive PBKDF2 iterations for passwords, complete with a Panic Button for immediate storage wipe.",
+    description: "PIMX_WIDE is an advanced, ultra-secure, and completely serverless (Serverless) web tool designed for military-grade encryption and decryption of sensitive data. All computational, encryption, and decryption steps happen purely locally in your browser's RAM, ensuring no data is ever stored on any server. It features an independent encryption console (AES-GCM 256-bit) with secure Base64 and `.json` outputs, a offline decryption portal that purges RAM, and an advanced living admin dashboard with 34 temporal dropdown filters alongside eye-catching 3D rotating reactors.",
+    link: "https://pimxwide.pages.dev",
     accent: "gold",
-    badge: "ZERO KNOWLEDGE CRYPTO",
+    badge: "MILITARY CRYPTO",
     features: [
-      "Client-side database-free AES-GCM 256-bit data isolation",
-      "PBKDF2-hardened key derivation with unique random salts",
-      "Panic Button to immediately clear session keys and exit safely"
+      "Independent military-grade AES-GCM cryptography generating robust secure .json & Base64 files",
+      "Advanced live admin dashboard (/pimxwideadmin) with 34 temporal dropdown filters & charts (Usr: pimxwide, Pwd: 123456789PIMX_WIDe@#$%^&)",
+      "100% serverless zero-knowledge offline environment with instant RAM purging & 3D rotating reactors"
+    ]
+  },
+  {
+    id: "pimx-node",
+    title: "PIMX_NODE P2P Direct File Transfer & NAT Traversal Simulator",
+    titleEn: "PIMX_NODE P2P FILE METEOR & FIREWALL TRANSLATOR",
+    category: "featured",
+    description: "PIMX_NODE (or PIMX in short) is an advanced, ultra-fast, and completely serverless peer-to-peer (P2P) file transfer portal powered by WebRTC protocol, combined with an interactive simulator of network behavior and firewall traversal. It models 4 distinct network environments (LAN Bridge, STUN, CGNAT, Symmetric NAT) dynamically adjusting flows for desktop and mobile layouts. Additionally, it offers a real-time monitor dashboard tracking active room peers, payload volumes, and animated custom SVG sparklines.",
+    link: "https://pimxnode.pages.dev",
+    accent: "indigo",
+    badge: "SERVERLESS P2P",
+    features: [
+      "Direct Peer-to-Peer transfer using WebRTC protocol, bypassing intermediate clouds and servers",
+      "Interactive NAT traversal simulator modeling 4 scenarios (horizontal layout on desktop, vertical on mobile)",
+      "Real-time technical monitoring dashboard with animated custom SVG sparklines & device analytics"
     ]
   },
   {
     id: "pimx-pass-bot",
-    title: "PIMX PASS VPN Autonomic Tunnel Bot",
-    titleEn: "PIMX PASS CONNECTIVITY HUB",
+    title: "PIMX_PASS_BOT VPN Autonomic Tunnel Bot",
+    titleEn: "PIMX_PASS_BOT CONNECTIVITY HUB",
     category: "featured",
     description: "A robust online tunnel provisioning engine dispatching trusted config benchmarks (V2Ray, OpenVPN) to registered clients on the fly with minimal latency.",
     accent: "indigo",
@@ -316,8 +348,8 @@ const enProjects: TranslatedProjectItem[] = [
   },
   {
     id: "pimx-play-bot",
-    title: "PIMX PLAY Google Play APK Downloader Bot",
-    titleEn: "ANDROID APP HUNTER (PIMX PLAY)",
+    title: "PIMX_PLAY_BOT Google Play APK Downloader Bot",
+    titleEn: "ANDROID APP HUNTER (PIMX_PLAY_BOT)",
     category: "featured",
     description: "Automated Telegram download daemon parsing external Android app nodes on demand to stream purified secure APK files straight to user chats without redundant ads.",
     accent: "emerald",
@@ -330,8 +362,8 @@ const enProjects: TranslatedProjectItem[] = [
   },
   {
     id: "pimx-sonic-bot",
-    title: "PIMX SONIC Offline Music Streamer",
-    titleEn: "OFFLINE MUSIC PLAYER (PIMX SONIC)",
+    title: "PIMX_SONIC_BOT Offline Music Streamer",
+    titleEn: "OFFLINE MUSIC PLAYER (PIMX_SONIC_BOT)",
     category: "featured",
     description: "High-fidelity terminal client to search, play, and cache audio parameters off-grid. Optimizes mobile traffic by indexing, caching, and streaming songs directly inside user chats.",
     link: "https://t.me/PIMX_SONIC_BOT",
@@ -456,7 +488,7 @@ const enProjects: TranslatedProjectItem[] = [
 // Translation dictionaries for remaining languages (ar, de, fr, it, zh, ru, el, la)
 const arProjectTranslations: Record<string, { title: string; description: string; badge?: string; features?: string[] }> = {
   "pimx-veil": {
-    title: "PIMXVEIL — نظام أمن المعلومات وإخفاء البيانات الهجين",
+    title: "PIMX_VEIL — نظام أمن المعلومات وإخفاء البيانات الهجين",
     description: "مجموعة أمان عسكرية حديثة ومحلية بالكامل (من جانب العميل) تتيح للمستخدمين تشفير ملفاتهم الحساسة للغاية وحقنها بشكل غير مرئي وغير قابل للكشف داخل ملفات حاملة غير ضارة (مستند PDF أو موسيقى MP3 أو صور JPEG) دون تغيير شكلها أو وظيفتها الأصلية. تم تصميمه بهيكل المعرفة الصفرية (Zero-Knowledge) في ذاكرة RAM للمتصفح، باستخدام خوارزميات AES-GCM 256-bit و PBKDF2 مع أكثر من 600,000 تكرار.",
     badge: "خزنة سيبرانية",
     features: [
@@ -466,13 +498,13 @@ const arProjectTranslations: Record<string, { title: string; description: string
     ]
   },
   "pimx-moji": {
-    title: "بكسل آرت منشئ أسكي PIMX Moji",
+    title: "بكسل آرت منشئ أسكي PIMX_MOJI",
     description: "أداة إبداعية على الويب لتحويل الصور والنصوص إلى لوحات فنية مذهلة قائمة على رموز أسكي وإيموجي مع تسهيلات نسخ وحظر ماتریکس.",
     badge: "تطبيق ويب نشط",
     features: ["تخطيط وتحويل فوري للصور والنصوص", "نسخ سريع وبسيط بنقرة واحدة وتعديل الحجم", "طابع ماتركس ريترو بلون أحادي"]
   },
   "pimx-pass": {
-    title: "محلل تشغيل دي ان اس PIMX Pass",
+    title: "محلل تشغيل دي ان اس PIMX_PASS",
     description: "أداة عملية لقياس دقة وسرعة خوادم DNS المتوافقة مع مزود الخدمة الخاص بك، لضمان استقرار الألعاب وسرعة التصفح.",
     badge: "بوابة آمنة",
     features: ["اختبارlatency دقيق لشبكة الويب الخاصة بك", "تخفيض ارتداد البنج وضياع الحزم الفنية", "دليل إعداد مصور خطوة بخطوة للراوتر"]
@@ -484,25 +516,39 @@ const arProjectTranslations: Record<string, { title: string; description: string
     features: ["استبيان تجميع الوثائق الرسمية والبطاقات بروتوكول آمن", "لوحة تحكم إدارية للموافقة أو الرفض الأنيق", "سيرفر خلفي فائق التجاوب للطلبات العالية"]
   },
   "pimx-wide": {
-    title: "تشفير الويب العسكري المحلي PIMX WIDE",
-    description: "تطبيق ويب متطور لتشفير وفك تشفير البيانات محلياً بسمت العميل (Zero-Knowledge) عالي الحماية العسكرية مع زر الهرب الفوري (Panic Button) لتدمير البيانات المخزنة مؤقتاً.",
-    badge: "تشفير تام",
-    features: ["عزل تشفير AES-GCM 256-bit بالكامل بدون خوادم", "اشتقاق مفاتيح PBKDF2 المكررة بملح عشوائي فريد", "زر طوارئ لحذف الجلسة وإعادة التوجيه الآمن لجوجل"]
+    title: "منصة تشفير برمجية عسكرية محلية PIMX_WIDE",
+    description: "تطبيق ويب متطور وفائق الأمان خالٍ من الخوادم (Serverless) لتشفير وفك تشفير البيانات الحساسة بمعايير عسكرية خاضعة للمعرفة الصفرية (Zero-Knowledge) داخل ذاكرة RAM للجهاز. يتميز بوجود وحدة تشفير مستقلة AES-GCM 256-bit، وبوابة فك التشفير غير المتصلة بالإنترنت، ولوحة تحكم مانيتورينغ مخصصة للإدارة بـ 34 فلتر زمني متطور ورسوم بيانية خطية ناصعة مع مفاعلات مغناطيسية ثلاثية الأبعاد.",
+    badge: "تشفير عسكري",
+    features: [
+      "وحدة تشفير مستقلة بمعايير AES-GCM وتصدير ملفات .json وقوالب Base64 محميّة",
+      "لوحة تحكم إدارية مانيتورينغ تفاعلية بـ 34 فلتر زمني دقيق (مستخدم: pimxwide، رمز: 123456789PIMX_WIDe@#$%^&)",
+      "بيئة معرفة صفرية محلية بالكامل مجهزة بتطهير فوري للذاكرة ومفاعلات فضائية دوّارة ثلاثية الأبعاد"
+    ]
+  },
+  "pimx-node": {
+    title: "PIMX_NODE بيئة نقل ملفات P2P زيرو-سيرفر ومحاكاة عبور جدران الـ NAT",
+    description: "منصة ويب متطورة وسريعة للغاية وبدون خوادم (Serverless) لنقل الملفات همتاً لهمت (P2P) المباشرة بالاعتماد على بروتوكول WebRTC المبتكر دون الحاجة للوسائط السحابية. تتضمن محاكي شبكات تعاملي لـ 4 سيناريوهات مختلفة من جدران الحماية واجتياز الـ NAT (جسر LAN، خادم STUN، إنترنت CGNAT، جدار Symmetric NAT العصيب)، ولوحة تحكم مانيتورينغ حَيّة ترصد غرف النشاط بدقة ومخططات SVG زمانية متفوقة.",
+    badge: "انتقال P2P مباشر",
+    features: [
+      "نقل ملفات مباشر وبدون قيود حجم بين الأجهزة P2P باستخدام بروتوكول WebRTC المتين",
+      "محاكاة تفاعلية وتناسبية لـ 4 سيناريوهات جدران نارية (تخطيط أفقي على الحواسب ورأسي على الهواتف)",
+      "داشبورد تقني ومراقبة لحظية مدعومة بمخططات تخطيط بصرية SVG وإحصائيات متغيرة"
+    ]
   },
   "pimx-pass-bot": {
-    title: "بوت الاتصال التونلات وتوفير السيرفرات PIMX PASS",
+    title: "بوت الاتصال التونلات وتوفير السيرفرات PIMX_PASS_BOT",
     description: "بوت سريع لنشر وتكوين نصوص تونلات V2Ray و OpenVPN لضمان الاتصال المتجاوب وحرية التصفح لجميع المستخدمين.",
     badge: "سيرفرات آمنة",
     features: ["مشاركة آلية لتونلات الشبكة وحصص التمرير", "تخفيض البنج وضمان سيرفرات سريعة في آسيا وأوروبا", "توافق كامل مع تطبيقات تلغرام للموبايل والديسكتاب"]
   },
   "pimx-play-bot": {
-    title: "بوت تنزيل تطبيقات أندرويد حرة PIMX PLAY",
+    title: "بوت تنزيل تطبيقات أندرويد حرة PIMX_PLAY_BOT",
     description: "تنزيل حزم APK مباشرة من جوجل بلاي دون إعلانات مزعجة مع فحص فوري لحماية التطبيقات من الفيروسات.",
     badge: "تنزيل الآندرويد",
     features: ["تنزيل مجاني ومباشر لحزم APK الأصلية الموثقة", "تحليل روابط متجر Google Play الفورية بسلاسة", "فحص مدمج ضد الفيروسات البسيطة والملفات الخبيثة"]
   },
   "pimx-sonic-bot": {
-    title: "مشغل الميديا والموسيقى أوفلاين PIMX SONIC",
+    title: "مشغل الميديا والموسيقى أوفلاين PIMX_SONIC_BOT",
     description: "مساعد الترفيه والبث المباشر للأصوات والملفات الصوتية ضمن هاب تلغرام آمن تماماً موفر لحساب الباقة والسرعة.",
     badge: "مشغل الميوزك",
     features: ["تنزيل وتخزين محلي مرن للملفات الصوتية", "مستوى تردد مشغل فائق النقاء والجودة", "تكامل تام ومشاركة القوائم دون حدود مشغلي الإنترنت"]
@@ -571,7 +617,7 @@ const arProjectTranslations: Record<string, { title: string; description: string
 
 const zhProjectTranslations: Record<string, { title: string; description: string; badge?: string; features?: string[] }> = {
   "pimx-veil": {
-    title: "PIMXVEIL — 浏览器端超高防护信息安全与混合隐写术系统",
+    title: "PIMX_VEIL — 浏览器端超高防护信息安全与混合隐写术系统",
     description: "一款现代且 100% 运行于本地浏览器端（Client-Side）的安全黑客套件，允许用户使用顶尖的高级军工加密算法，将极为敏感的秘密数据无痕且不可检测地隐写（Steganography）并注入到普通的 PDF 文档、MP3 音频或 JPEG 图像等载体文件中，而绝不改变或损坏载体原本的内容、格式或正常运行。项目在极其纯洁的零知识（Zero-Knowledge）RAM 环境中运行，通过 Web Crypto API 实现 256 位 AES-GCM 隔离加密，并通过拉伸 600,000+ 次的 PBKDF2 强化密匙衍生，完全隔离并根除数据泄露。",
     badge: "密码金库",
     features: [
@@ -581,13 +627,13 @@ const zhProjectTranslations: Record<string, { title: string; description: string
     ]
   },
   "pimx-moji": {
-    title: "PIMX Moji 艺术像素 ASCII 画布生成器",
+    title: "PIMX_MOJI 艺术像素 ASCII 画布生成器",
     description: "一款富有创意的在线画布工具，可将图片与字符矩阵一键转换为精美的 ASCII 文字艺术与 Emoji 混合表格拼贴画。配有黑客级高科技主题，适合开发者与社交分享。",
     badge: "已上线运行",
     features: ["图像或文本字符实时映射转化", "一键高速剪贴板复制及布局优化", "默认搭载矩阵经典极简黑客色彩"]
   },
   "pimx-pass": {
-    title: "PIMX Pass 极速 DNS 基准测试与性能诊断平台",
+    title: "PIMX_PASS 极速 DNS 基准测试与性能诊断平台",
     description: "高端动态网络测速诊断平台，实时请求、度量并给全球主流高安全级 DNS 服务测算延迟，消除游戏卡顿与网络抖动，为网络配置变革提供图文指引。",
     badge: "安全网关",
     features: ["适配不同网络提供商的实时基准测速算法", "有效改善连接丢包以及抖动延迟", "预载路由器与移动端的一键式配置指南"]
@@ -599,25 +645,39 @@ const zhProjectTranslations: Record<string, { title: string; description: string
     features: ["结构化的多重凭据验证传送体系", "支持管理员一键审批和拒绝订单交互", "基于安全 Python 轮询与 Webhook 框架的高并发后台"]
   },
   "pimx-wide": {
-    title: "PIMX WIDE 军工级零知识完全本地加密软件",
-    description: "全面隔离外部存储 of 零知识非对称本地单机加密软件，选用 AES-GCM 256 位军事最高级密匙配搭 PBKDF2 100,000次实感循环，并有一键瞬间格式化毁灭恐慌功能（Panic Button）。",
-    badge: "零知识保护",
-    features: ["完全本地离线端到端 AES-GCM 高阻抗防护", "PBKDF2 加固哈希防碰撞与随机盐运算", "恐慌毁灭按键可瞬间清除浏览器敏感参数并闪退"]
+    title: "PIMX_WIDE 超高级零知识无服务器密码安全终端",
+    description: "PIMX_WIDE 是一款专门针对高度敏感信息进行军工级加密与解密而设计的尖端、无服务器（Serverless）、极高防护的 Web 安全系统。所有计算、编译和加解密过程全部在本地浏览器 RAM 内存中完成，数据绝不上传至任何服务器，达成物理级完美零知识安全。系统配备基于 AES-GCM 256 位独立加密控制台、离线内存即时擦除解密门户、具有 34 种时维度筛选过滤的深度动态监控看板，以及酷炫的 3D 三维旋转空天反应堆结构设计。",
+    badge: "军工级非对称解密",
+    features: [
+      "军事级 AES-GCM 256 位高强度独立加解密技术，生成密态 Base64 气泡文及 .json 加密实体",
+      "搭载基于 34 种时间段精准筛选的监控大屏，图形化深度解析各项运营动作 (用户名: pimxwide，密码: 123456789PIMX_WIDe@#$%^&)",
+      "100% 运行于单机离线环境，完备的物理级内存擦除保障及 3D 立体悬浮粒子反应核心结构"
+    ]
+  },
+  "pimx-node": {
+    title: "PIMX_NODE 无服务器 peer-to-peer 极速文件分发及网络行为仿真系统",
+    description: "PIMX_NODE (简称 PIMX) 是一款基于先进 WebRTC 架构的无服务器端对端（P2P）超高速文件直传网站，摆脱了云端中转服务器和存储容量束缚。同时该平台内置创新的 NAT 网闸防火墙穿越仿真器，支持本地 LAN Bridge、传统 STUN、移动 CGNAT 以及对称 Symmetric NAT 办公限速 4 种典型网络拓扑的可视化交互模拟，配备高敏活跃节点、吞吐总流量监视器及 SVG 原生动画仪表盘，自适应适配电脑端的水平传输和手机端的垂直版面设计。",
+    badge: "P2P 无极直传",
+    features: [
+      "基于 WebRTC 原创技术的多线程分布式端对端流直飞直传，不占用中转云端与硬件运存",
+      "高度互动的 NAT 网关穿透行为仿真箱，完美适应办公端水平布局与移动垂直自适应格式",
+      "全动态自研 SVG 科技仪表谱线、大通量字节审计、多点存活在线节点跟踪"
+    ]
   },
   "pimx-pass-bot": {
-    title: "PIMX PASS 多合一自动隧道连接 Telegram 机器人",
+    title: "PIMX_PASS_BOT 多合一自动隧道连接 Telegram 机器人",
     description: "直连后台高速 V2Ray、OpenVPN 隧道配置并向大群进行每日的线路质量节点存活诊断与自动分发推送。",
     badge: "加密隧道",
     features: ["每日自动下发可信 VPN 配置文件", "全球多点低延穿透节点保障", "多主流平台及客户端快速兼容支持"]
   },
   "pimx-play-bot": {
-    title: "PIMX PLAY 纯净 APK 软件获取 Telegram 机器人",
+    title: "PIMX_PLAY_BOT 纯净 APK 软件获取 Telegram 机器人",
     description: "免除臃肿广告，自动将 Google Play 商店原始链接解析并极速直达到群，带病毒查杀等安全服务。",
     badge: "应用速递",
     features: ["完全无外部拦截广告 of APK 原创下载安装包", "Google Play 链接极速拦截和多点并行下载", "自动启动轻量病毒及危险参数过滤"]
   },
   "pimx-sonic-bot": {
-    title: "PIMX SONIC 离线随身音乐盒 Telegram 机器人",
+    title: "PIMX_SONIC_BOT 离线随身音乐盒 Telegram 机器人",
     description: "在 Telegram 内部极速搜索、缓存并无损下载全世界所有音乐。特别针对特定网络环境流量消耗与缓冲做极致优化。",
     badge: "音乐极享",
     features: ["本地大文件异步快速缓存技术", "高保真低损无削减音质解码", "支持直接添加到您的单人/群组自建播放列表"]
@@ -687,7 +747,7 @@ const zhProjectTranslations: Record<string, { title: string; description: string
 
 const deProjectTranslations: Record<string, { title: string; description: string; badge?: string; features?: string[] }> = {
   "pimx-veil": {
-    title: "PIMXVEIL — Browserbasiertes hybrides Steganographie- & Sicherheits-Kit",
+    title: "PIMX_VEIL — Browserbasiertes hybrides Steganographie- & Sicherheits-Kit",
     description: "Eine fortschrittliche, zu 100 % clientseitige Kryptographie- und Steganographie-Suite für Browser, mit der sensible Daten unsichtbar in harmlose Trägerdateien (PDF, MP3, JPEG) injiziert werden, ohne deren Aussehen oder Funktion zu beeinträchtigen. Funktioniert vollständig unter einer Zero-Knowledge-Architektur im RAM unter Verwendung der Web Crypto API mit AES-GCM (256-Bit) Verschlüsselung und PBKDF2-Schlüsseldehnung mit über 600.000 Wiederholungen.",
     badge: "CYBER VAULT",
     features: [
@@ -697,13 +757,13 @@ const deProjectTranslations: Record<string, { title: string; description: string
     ]
   },
   "pimx-moji": {
-    title: "PIMX Moji ASCII-Kunst Leinwand",
+    title: "PIMX_MOJI ASCII-Kunst Leinwand",
     description: "Ein Online-Canvas-Tool, mit dem Sie Bilder in anpassbare ASCII-Kunst und Emoji-Mosaike umwandeln können.",
     badge: "LIVE APP",
     features: ["Echtzeit-Mapping-Algorithmus von Pixeln in ASCII-Kunst", "Schnelle Zwischenablage-Kopiervorlagen für Entwickler", "Werbefreie Steuerung mit Matrix-Themen"]
   },
   "pimx-pass": {
-    title: "PIMX Pass DNS-Geschwindigkeits-Benchmarking",
+    title: "PIMX_PASS DNS-Geschwindigkeits-Benchmarking",
     description: "Dynamische Benchmarking-Plattform zur Messung und Bewertung der global sicheren DNS-Latenzen relativ zu Ihrem Internet-Spiele-Setup.",
     badge: "SICHERES PORTAL",
     features: ["Präzise Latenztests for alle Internetprovider", "Optimiert Verbindungsstabilität und Game-Ping", "Illustrationen für manuelle FritzBox- und Router-Konfiguration"]
@@ -714,22 +774,37 @@ const deProjectTranslations: Record<string, { title: string; description: string
     badge: "KUNDEN-BOT"
   },
   "pimx-wide": {
-    title: "PIMX WIDE Zero-Knowledge Kryptographie-Modul",
-    description: "Erweiterte Client-seitige Verschlüsselungsumgebung mit robuster AES-GCM 256-Bit-Verschlüsselung und Panic Button zur sofortigen Datenlöschung.",
-    badge: "DATENSCHUTZ"
+    title: "Erweiterte serverlose Zero-Knowledge-Kryptographieplattform PIMX_WIDE",
+    description: "PIMX_WIDE ist eine fortschrittliche, ultrasichere und völlig serverlose (Serverless) Webanwendung für die militärische Ver- und Entschlüsselung sensibler Daten auf Basis von Zero-Knowledge-Sicherheitsstandards. Alle Berechnungen und Kryptoprozesse finden direkt im RAM Ihres Browsers statt, wodurch Datenlecks physisch ausgeschlossen sind. Das System verfügt über ein eigenständiges AES-GCM-256-Bit-Kryptomodul mit Base64- und .json-Exporten, ein Offline-Entschlüsselungsportal mit sofortiger RAM-Bereinigung und ein hochentwickeltes Admin-Dashboard mit 34 Zeitfiltern sowie rotierenden 3D-Reaktoreffekten.",
+    badge: "Militär-Krypto",
+    features: [
+      "Eigenständige militärische AES-GCM-Verschlüsselung mit verschlüsselten .json-Dateien und Base64-Umschlägen",
+      "Erweitertes Live-Admin-Dashboard mit 34 dynamischen Zeitfiltern & Charts (Benutzer: pimxwide, Passwort: 123456789PIMX_WIDe@#$%^&)",
+      "100 % serverlose Offline-Umgebung mit sofortiger RAM-Leerung und animierten rotierenden 3D-Weltraumreaktoren"
+    ]
+  },
+  "pimx-node": {
+    title: "PIMX_NODE Serverlose P2P-Dateiübertragung & Firewall-Simulator",
+    description: "Die PIMX_NODE-Plattform (oder kurz PIMX) ist ein revolutionäres, ultraschnelles und vollständig serverloses Direct-P2P-Dateiübertragungsportal auf WebRTC-Basis, das ohne Cloud-Vermittlung oder Volumengrenzen arbeitet. Integriert ist ein hochentwickelter interaktiver NAT-Traversal-Simulator, der 4 Firewall-Szenarien (LAN Bridge, STUN, CGNAT und restriktive Symmetric NAT-Sperren) simuliert, ein Echtzeit-Admin-Dashboard für aktive Peers, Datenvolumen und dynamische SVG-Sparklines enthält.",
+    badge: "Serverlose P2P",
+    features: [
+      "Direkte Peer-to-Peer-Übertragung mit WebRTC-Protokoll, die Cloud-Server komplett umgeht",
+      "Interaktiver und adaptiver NAT-Traversal-Simulator für 4 Szenarien (horizontales Layout auf dem Desktop, vertikal auf dem Handy)",
+      "Echtzeit-Diagnoseportal mit animierten SVG-Kurvendiagrammen und detaillierten Gerätestatistiken"
+    ]
   },
   "pimx-pass-bot": {
-    title: "PIMX PASS VPN Autonomer Tunnel-Bot",
+    title: "PIMX_PASS_BOT VPN Autonomer Tunnel-Bot",
     description: "Ein robuster Telegram-Verbindungs-Bot zur schnellen automatischen Zuweisung und Verteilung stabiler V2Ray- und OpenVPN-Konfigurationen.",
     badge: "SICHERER TUNNEL"
   },
   "pimx-play-bot": {
-    title: "PIMX PLAY Google Play APK Downloader Bot",
+    title: "PIMX_PLAY_BOT Google Play APK Downloader Bot",
     description: "Automatisierter Telegram-Daemon zum Durchsuchen und direkten Herunterladen virengeprüfter APK-Dateien aus dem Google Play Store ohne lästige Werbung.",
     badge: "APPLICATION HUNTER"
   },
   "pimx-sonic-bot": {
-    title: "PIMX SONIC Offline-Musik-Streamer",
+    title: "PIMX_SONIC_BOT Offline-Musik-Streamer",
     description: "Medien-Suche und Downloader-Assistent innerhalb von Telegram zur Minimierung des Datenverbrauchs im Mobilfunknetz.",
     badge: "MUSIC STREAMER"
   },
@@ -797,7 +872,7 @@ const deProjectTranslations: Record<string, { title: string; description: string
 
 const frProjectTranslations: Record<string, { title: string; description: string; badge?: string; features?: string[] }> = {
   "pimx-veil": {
-    title: "PIMXVEIL — Suite Hybride de Stéganographie & de Sécurité dans le Navigateur",
+    title: "PIMX_VEIL — Suite Hybride de Stéganographie & de Sécurité dans le Navigateur",
     description: "Une suite de sécurité de niveau militaire, 100 % côté client, permettant aux utilisateurs de chiffrer des fichiers hautement sensibles et de les injecter de manière invisible dans des fichiers porteurs inoffensifs (PDF, MP3, JPEG). Fonctionne entièrement sous une architecture Zero-Knowledge dans la RAM du navigateur en utilisant l'API Web Crypto avec AES-GCM (256 bits) et d'une dérivation de clés PBKDF2 avec plus de 600 000 étirements.",
     badge: "CYBER VAULT",
     features: [
@@ -807,13 +882,13 @@ const frProjectTranslations: Record<string, { title: string; description: string
     ]
   },
   "pimx-moji": {
-    title: "PIMX Moji Canevas Artistique ASCII",
+    title: "PIMX_MOJI Canevas Artistique ASCII",
     description: "Un utilitaire de canevas créatif pour convertir des images ou des paramètres en œuvres d'art texte ASCII sytlisées.",
     badge: "APP EN DIRECT",
     features: ["Traitement interactif des données d'image en art texte", "Sauvegarde rapide dans le presse-papiers sous format adaptatif", "Thèmes rétro Matrix préchargés"]
   },
   "pimx-pass": {
-    title: "Diagnostic de performance DNS PIMX Pass",
+    title: "Diagnostic de performance DNS PIMX_PASS",
     description: "Évaluez et scorez les latences des DNS mondiaux sécurisés en temps réel par rapport à votre connexion.",
     badge: "PASSERELLE SÉCURISÉE",
     features: ["Algorithmes d'évaluation en temps réel pour tous FAI", "Réduction des pertes de paquets et du jitter de connexion", "Guides visuels pas-à-pas pour les routeurs et smartphones"]
@@ -824,22 +899,37 @@ const frProjectTranslations: Record<string, { title: string; description: string
     badge: "BOT CLIENT"
   },
   "pimx-wide": {
-    title: "PIMX WIDE Espace de Chiffrement Local Sécurisé",
-    description: "Espace d'isolation cryptographique sans base de données, implémentant des algorithmes AES-GCM 256 bits et intégrant un Panic Button afin d'éliminer immédiatement la session.",
-    badge: "SÉCURITÉ MAX"
+    title: "Console de cryptographie avancée sans serveur PIMX_WIDE",
+    description: "PIMX_WIDE est une plateforme web avancée, ultra-sécurisée et entièrement sans serveur (Serverless) conçue pour le chiffrement et le déchiffrement de qualité militaire des données hautement sensibles, sous une architecture stricte de type Zero-Knowledge dans la RAM locale. Tous les processus informatiques s'exécutent localement dans votre navigateur ; aucune donnée n'est envoyée ou stockée sur un quelconque serveur. Elle dispose d'une console de chiffrement indépendante (AES-GCM 256 bits) avec sorties Base64 et .json, d'un portail de déchiffrement hors ligne qui vide la mémoire RAM, et d'un tableau de bord de supervision avec 34 filtres temporels et des réacteurs 3D tournants.",
+    badge: "Chiffrement Militaire",
+    features: [
+      "Console de cryptage autonome conforme à la norme militaire AES-GCM avec exportation .json et enveloppes Base64 sécurisées",
+      "Tableau de bord administrateur en direct avec 34 filtres de plage temporelle et graphiques vectoriels (ID : pimxwide, MDP : 123456789PIMX_WIDe@#$%^&)",
+      "Environnement 100% sans serveur ni stockage, équipé d'un nettoyage de la RAM et de réacteurs animés 3D en lévitation"
+    ]
+  },
+  "pimx-node": {
+    title: "PIMX_NODE Transfert de fichiers P2P sans serveur & Simulateur réseau",
+    description: "La plateforme PIMX_NODE (ou PIMX) est un portail de transfert de fichiers peer-to-peer (P2P) direct, révolutionnaire, extrêmement rapide et entièrement sans serveur (Serverless) basé sur le protocole WebRTC. Sans intermédiaire cloud ou limite de taille, il intègre également un simulateur interactif de traversée NAT et pare-feu modélisant 4 scénarios (LAN Bridge, STUN, CGNAT et blocages restrictifs Symmetric NAT), avec un panneau de contrôle temps réel affichant les pairs en ligne et des graphiques SVG dynamiques.",
+    badge: "P2P Sans Serveur",
+    features: [
+      "Transfert de fichiers direct de pair à pair (P2P) à l'aide de WebRTC, éliminant tout intermédiaire cloud",
+      "Simulateur de traversée NAT interactif modélisant 4 types de pare-feu (mise en page horizontale sur PC et verticale sur mobile)",
+      "Portail d'analyse technique en direct avec sparklines vectorielles animées SVG et détails du trafic"
+    ]
   },
   "pimx-pass-bot": {
-    title: "PIMX PASS Bot Tunnel Réseau Intelligent",
+    title: "PIMX_PASS_BOT Bot Tunnel Réseau Intelligent",
     description: "Un assistant de connectivité performant offrant un accès en temps réel aux tunnels et profils V2Ray et OpenVPN.",
     badge: "CONNEXIONS SÉCURISÉES"
   },
   "pimx-play-bot": {
-    title: "PIMX PLAY Téléchargeur APK Libres Google Play",
+    title: "PIMX_PLAY_BOT Téléchargeur APK Libres Google Play",
     description: "Un daemon automatisé inspectant et téléchargeant les paquets APK directement depuis Google Play sans publicités intrusives.",
     badge: "LOGICIELS FIABLES"
   },
   "pimx-sonic-bot": {
-    title: "Lecteur Audio & Téléchargeur PIMX SONIC",
+    title: "Lecteur Audio & Téléchargeur PIMX_SONIC_BOT",
     description: "Un outil optimisé pour économiser la bande passante mobile en téléchargeant et indexant directement les médias dans l'environnement Telegram.",
     badge: "STREAMING FLUIDE"
   },
@@ -907,7 +997,7 @@ const frProjectTranslations: Record<string, { title: string; description: string
 
 const itProjectTranslations: Record<string, { title: string; description: string; badge?: string; features?: string[] }> = {
   "pimx-veil": {
-    title: "PIMXVEIL — Suite Ibrida di Steganografia e Sicurezza delle Informazioni nel Browser",
+    title: "PIMX_VEIL — Suite Ibrida di Steganografia e Sicurezza delle Informazioni nel Browser",
     description: "Una suite di livello militaire, 100% lato client, che permette di cifrare file altamente riservati e iniettarli invisibilmente in file portanti innocui (PDF, MP3 o JPEG). Funzionando interamente con un approccio Zero-Knowledge nella RAM del browser tramite Web Crypto API con cifratura AES-GCM (256-bit) e derivazione chiavi PBKDF2 con oltre 600.000 iterazioni.",
     badge: "CYBER VAULT",
     features: [
@@ -917,13 +1007,13 @@ const itProjectTranslations: Record<string, { title: string; description: string
     ]
   },
   "pimx-moji": {
-    title: "PIMX Moji ASCII Arts Tela Creativa",
+    title: "PIMX_MOJI ASCII Arts Tela Creativa",
     description: "Piattaforma creativa proiettata a trasformare immagini e testi in splendidi mosaici ASCII ed emoji.",
     badge: "APP ONLINE",
     features: ["Conversione interattiva di pixel in caratteri di testo", "Copia rapida negli appunti per layout integrati", "Temi retrò in stile hacker Matrix"]
   },
   "pimx-pass": {
-    title: "PIMX Pass DNS Performance Diagnostics",
+    title: "PIMX_PASS DNS Performance Diagnostics",
     description: "Piattaforma avanzata per misurare la latenza dei DNS globali, migliorando l'esperienza di navigazione e gioco online.",
     badge: "GATEWAY PROTETTO",
     features: ["Test di latenza personalizzati sulla tua linea internet", "Eliminazione del ping jitter e lag nei caricamenti", "Manuale illustrato di configurazione pro router e desktop"]
@@ -934,22 +1024,37 @@ const itProjectTranslations: Record<string, { title: string; description: string
     badge: "BOT CLIENTE"
   },
   "pimx-wide": {
-    title: "Suite Crittografia Locale Sicura PIMX WIDE",
-    description: "Software a conoscenza zero per rendere completamente private le informazioni localmente con AES-GCM 256-bit e un Panic Button.",
-    badge: "Z-K CRYPTO"
+    title: "Console crittografica avanzata e serverless PIMX_WIDE",
+    description: "PIMX_WIDE è uno strumento web avanzato, estremamente sicuro e completamente serverless progettato per la crittografia e decrittografia di livello militare di dati sensibili sotto un'architettura rigorosamente zero-knowledge nella RAM locale. Tutti i processi di elaborazione avvengono localmente all'interno del browser; nessun dato viene trasmesso o registrato su un server esterno. È dotato di una console di crittografia indipendente (AES-GCM 256-bit) with uscite Base64 e .json, di un portale di decrittografia offline che svuota la memoria di sistema e di una dashboard di amministrazione dal vivo con 34 filtri temporali, valorizzata da effetti di reattori 3D rotanti.",
+    badge: "Crittografia Militare",
+    features: [
+      "Console di crittografia autonoma conforme agli standard militari AES-GCM con esportazione .json ed buste Base64 protette",
+      "Pannello amministratore in tempo reale con 34 filtri di intervallo temporale e grafici vettoriali (ID: pimxwide, PASS: 123456789PIMX_WIDe@#$%^&)",
+      "Ambiente 100% serverless senza database, dotato di cancellazione della memoria RAM e reattori spaziali rotanti 3D"
+    ]
+  },
+  "pimx-node": {
+    title: "PIMX_NODE P2P File Transfer e Simulatore di Rete Senza Server",
+    description: "La piattaforma PIMX_NODE (o brevemente PIMX) è un portail di trasferimento diretto di file peer-to-peer (P2P) basato sul protocollo WebRTC, senza server o limiti di dimensioni. Include un simulatore interattivo di attraversamento NAT e firewall con 4 scenari (LAN Bridge, STUN, CGNAT e blocchi restrittivi Symmetric NAT), completato da una dashboard di monitoraggio in tempo reale contenente peer attivi, volumi di traffico e grafici SVG dinamici.",
+    badge: "P2P Serverless",
+    features: [
+      "Trasferimento diretto di file peer-to-peer (P2P) tramite WebRTC, aggirando completamente i server cloud",
+      "Simulatore di attraversamento NAT interattivo e responsivo (layout orizzontale su desktop, verticale su dispositivi mobili)",
+      "Portale di monitoraggio tecnico in tempo reale con sparkline vettoriali SVG animate e statistiche dettagliate sui dispositivi"
+    ]
   },
   "pimx-pass-bot": {
-    title: "PIMX PASS Bot per Tunnel VPN Automatici",
+    title: "PIMX_PASS_BOT Bot per Tunnel VPN Automatici",
     description: "Boot Telegram ad alte performance per agevolare e distribuire file di configurazione V2Ray e OpenVPN in tempo reale.",
     badge: "TUNNEL PROTETTI"
   },
   "pimx-play-bot": {
-    title: "Download Sicuro Applicazioni PIMX PLAY",
+    title: "Download Sicuro Applicazioni PIMX_PLAY_BOT",
     description: "Ricerca e scarica direttamente su chat Telegram i file di installazione APK puliti del Google Play Store senza annunci dannosi.",
     badge: "APP STORE HUB"
   },
   "pimx-sonic-bot": {
-    title: "PIMX SONIC Streamer in Streaming Offline",
+    title: "PIMX_SONIC_BOT Streamer in Streaming Offline",
     description: "Progetto concepito per indicizzare, ascoltare e salvare file audio in locale riducendo il consumo di traffico internet.",
     badge: "AUDIO STREAM"
   },
@@ -1017,8 +1122,8 @@ const itProjectTranslations: Record<string, { title: string; description: string
 
 const ruProjectTranslations: Record<string, { title: string; description: string; badge?: string; features?: string[] }> = {
   "pimx-veil": {
-    title: "PIMXVEIL — Браузерная гибридная система информационной безопасности и стеганографии",
-    description: "Прогрессивный и полностью локальный (Client-Side) защитный комплекс военного уровня, позволяющий шифровать чувствительные файлы и невидимо внедрять их в безобидные файлы-носители (PDF-документы, MP3-треки или JPEG-изображения) без изменения их структуры или работоспособности. Работает по принципу Zero-Knowledge непосредственно в оперативной памяти браузера через Web Crypto API на базе 256-битного алгоритма AES-GCM и PBKDF2 со значением растягивания ключа более 600,000 раз.",
+    title: "PIMX_VEIL — Браузерная гибридная система информационной безопасности и стеганографии",
+    description: "Прогрессивный и полностью локальный (Client-Side) защитный комплекс military уровня, позволяющий шифровать чувствительные файлы и невидимо внедрять их в безобидные файлы-носители (PDF-документы, MP3-треки или JPEG-изображения) без изменения их структуры или работоспособности. Работает по принципу Zero-Knowledge непосредственно в оперативной памяти браузера через Web Crypto API на базе 256-битного алгоритма AES-GCM и PBKDF2 со значением растягивания ключа более 600,000 раз.",
     badge: "КИБЕР-СЕЙФ",
     features: [
       "Невидимое внедрение полезной нагрузки в PDF, MP3 и JPEG без повреждения исходных носителей",
@@ -1027,13 +1132,13 @@ const ruProjectTranslations: Record<string, { title: string; description: string
     ]
   },
   "pimx-moji": {
-    title: "PIMX Moji Генератор ASCII-графики",
+    title: "PIMX_MOJI Генератор ASCII-графики",
     description: "Онлайн-холст для转换图像并快速生成文本艺术字、Emoji拼贴等的创意外用工具，内载黑客主题样式的Matrix经典配置。",
     badge: "ОНЛАЙН-ПРИЛОЖЕНИЕ",
     features: ["Интерактивное преобразование пикселей в символы", "Быстрое копирование готовых шаблонов в буфер обмена", "Ретро-темы оформления в стиле матрицы"]
   },
   "pimx-pass": {
-    title: "Тестирование DNS PIMX Pass Diagnostics",
+    title: "Тестирование DNS PIMX_PASS Diagnostics",
     description: "Высокоточная диагностическая платформа для измерения пинга безопасных мировых серверов DNS под вашего провайдера.",
     badge: "БЕЗОПАСНЫЙ ШЛЮЗ",
     features: ["Алгоритмы тестирования пинга под каждого провайдера", "Снижение задержек и стабилизация игрового процесса", "Инструкции по настройке подключения на роутерах и ПК"]
@@ -1044,22 +1149,37 @@ const ruProjectTranslations: Record<string, { title: string; description: string
     badge: "БОТ КЛИЕНТА"
   },
   "pimx-wide": {
-    title: "PIMX WIDE Локальная криптография (Zero-Knowledge)",
-    description: "Инновационное веб-приложение для изолированного шифрования данных на стороне клиента с использованием алгоритма AES-GCM 256-бит и кнопкой Panic Button.",
-    badge: "ПОЛНАЯ ЗАЩИТА"
+    title: "Бессерверная платформа сверхсекретного шифрования PIMX_WIDE",
+    description: "PIMX_WIDE — это передовое, ультразащищенное веб-приложение, работающее полностью на стороне клиента без серверов (Serverless) и предназначенное для шифрования и дешифрования конфиденциальных данных военного уровня под архитектурой Zero-Knowledge в локальной оперативной памяти. Все вычислительные процессы происходят непосредственно на вашем устройстве; данные никогда не передаются и не хранятся на внешних серверах. Система оснащена независимой консолью шифрования AES-GCM 256-бит, офлайн-порталом удаления ключей из RAM, продвинутой админ-панелью мониторинга с 34 временными фильтрами и анимированным 3D космическим реактором.",
+    badge: "Военное шифрование",
+    features: [
+      "Автономная военная криптография AES-GCM с экспортом зашифрованных .json файлов и контейнеров Base64",
+      "Продвинутая панель мониторинга с 34 шкалами временной фильтрации и линейными графиками (логин: pimxwide, пароль: 123456789PIMX_WIDe@#$%^&)",
+      "100% бессерверная офлайн-среда с быстрой очисткой оперативной памяти и интерактивным зацикленным 3D-реактором"
+    ]
+  },
+  "pimx-node": {
+    title: "Бессерверный портал обмена файлами P2P и симулятор сетей PIMX_NODE",
+    description: "Платформа PIMX_NODE (или коротко PIMX) — это революционный, сверхбыстрый и полностью бессерверный (Serverless) веб-портал прямого обмена файлами peer-to-peer (P2P), работающий на базе протокола WebRTC без использования облачных хранилищ и ограничений на размер файлов. Также в систему встроен интерактивный симулятор прохождения NAT и брандмауэров, моделирующий 4 сценария (LAN Bridge, STUN, CGNAT и Symmetric NAT), дополненный панелью мониторинга активных участников и SVG-графиками.",
+    badge: "P2P без серверов",
+    features: [
+      "Прямая передача файлов от пользователя к пользователю (P2P) через WebRTC в обход промежуточных облак",
+      "Интерактивный симулятор прохождения NAT для 4 сценариев (горизонтальный вид на ПК, вертикальный — на смартфонах)",
+      "Техническая панель мониторинга в реальном времени с анимированными SVG-графиками и деталями трафика"
+    ]
   },
   "pimx-pass-bot": {
-    title: "PIMX PASS VPN Бот автоматического туннелирования",
+    title: "PIMX_PASS_BOT VPN Бот автоматического туннелирования",
     description: "Надежный служебный бот в Telegram для мгновенного получения и распространения стабильных профилей V2Ray и OpenVPN.",
     badge: "ЗАЩИЩЕННЫЙ ТРАНЗИТ"
   },
   "pimx-play-bot": {
-    title: "Удобный загрузчик APK-файлов PIMX PLAY",
+    title: "Удобный загрузчик APK-файлов PIMX_PLAY_BOT",
     description: "Умный бот для обхода медленных рекламных ссылок и быстрого скачивания APK прямо из Google Play с антивирусным сканированием.",
     badge: "ЗАГРУЗЧИК APK"
   },
   "pimx-sonic-bot": {
-    title: "Аудио-плеер и кэшер медиа PIMX SONIC",
+    title: "Аудио-плеер и кэшер медиа PIMX_SONIC_BOT",
     description: "Инструмент для поиска и локального кэширования музыки внутри Telegram, оптимизирующий потребление мобильного интернета.",
     badge: "МЕДИА-ПЛЕЕР"
   },
@@ -1127,7 +1247,7 @@ const ruProjectTranslations: Record<string, { title: string; description: string
 
 const elProjectTranslations: Record<string, { title: string; description: string; badge?: string; features?: string[] }> = {
   "pimx-veil": {
-    title: "PIMXVEIL — Υπερσύγχρονο Σύστημα Ασφαλείας Πληροφοριών & Υβριδικής Στεγανογραφίας στο Πρόγραμμα Περιήγησης",
+    title: "PIMX_VEIL — Υπερσύγχρονο Σύστημα Ασφαλείας Πληροφοριών & Υβριδικής Στεγανογραφίας στο Πρόγραμμα Περιήγησης",
     description: "Μια στρατιωτικού επιπέδου, 100% τοπική (Client-Side) σουίτα ασφαλείας που επιτρέπει στους χρήστες να κρυπτογραφούν εξαιρετικά ευαίσθητα αρχεία και να τα εγχέουν αόρατα μέσα σε ακίνδυνα αρχεία-φορείς (έγγραφα PDF, μουσική MP3 ή εικόνες JPEG) χωρίς καμία αλλαγή στη μορφή ή τη λειτουργικότητά τους. Σχεδιασμένο με την αρχιτεκτονική Zero-Knowledge στη μνήμη RAM του browser, χρησιμοποιώντας τους αλγόριθμους AES-GCM 256-bit και PBKDF2 με περισσότερες από 600.000 επαναλήψεις.",
     badge: "CYBER VAULT",
     features: [
@@ -1137,13 +1257,13 @@ const elProjectTranslations: Record<string, { title: string; description: string
     ]
   },
   "pimx-moji": {
-    title: "PIMX Moji Καμβάς Τέχνης ASCII",
+    title: "PIMX_MOJI Καμβάς Τέχνης ASCII",
     description: "Δημιουργικό εργαλείο μετατροπής εικόνων και κειμένων σε εντυπωσιακά ASCII ψηφιδωτά και emoji.",
     badge: "LIVE WEB APP",
     features: ["Μετατροπή pixel εικόνας σε χαρακτήρες κειμένου", "Γρήγορη αντιγραφή στο πρόχειρο για κοινή χρήση", "Προεγκατεστημένα ρετρό θέματα Matrix"]
   },
   "pimx-pass": {
-    title: "PIMX Pass DNS Έλεγχος & Διάγνωση",
+    title: "PIMX_PASS DNS Έλεγχος & Διάγνωση",
     description: "Benchmark πλατφόρμα ελέγχου και μέτρησης καθυστέρησης των παγκόσμιων ασφαλών DNS διακομιστών.",
     badge: "ΑΣΦΑΛΗΣ ΠΥΛΗ",
     features: ["Δοκιμές απόκρισης σύμφωνα με τον πάροχο διαδικτύου σας", "Μείωση των διακυμάνσεων ping και βελτίωση σταθερότητας", "Οδηγίες εγκατάστασης σε routers και συσκευές"]
@@ -1154,22 +1274,37 @@ const elProjectTranslations: Record<string, { title: string; description: string
     badge: "CLIENT BOT"
   },
   "pimx-wide": {
-    title: "Κρυπτογράφηση Local Zero-Knowledge PIMX WIDE",
-    description: "Εφαρμογή ισχυρής κρυπτογράφησης AES-GCM 256-bit στην πλευρά του χρήστη χωρίς βάσεις δεδομένων, με κουμπί πανικού (Panic Button) για άμεση διαγραφή.",
-    badge: "ULTRA CRYPTO"
+    title: "Προηγμένη Serverless Πλατφόρμα Κρυπτογράφησης PIMX_WIDE",
+    description: "Το PIMX_WIDE είναι ένα προηγμένο, εξαιρετικά ασφαλές και πλήρως serverless διαδικτυακό εργαλείο σχεδιασμένο για στρατιωτικού επιπέδου κρυπτογράφηση και αποκρυπτογράφηση ευαίσθητων δεδομένων, υπό αρχιτεκτονική zero-knowledge στην τοπική μνήμη RAM. Όλη η επεξεργασία γίνεται στη συσκευή σας. Διαθέτει ανεξάρτητη κονσόλα κρυπτογράφησης AES-GCM 256-bit με εξαγωγή Base64 και .json, πύλη αποκρυπτογράφησης με άμεσο καθαρισμό της RAM, και έναν πίνακα ελέγχου διαχειριστή με 34 χρονικά φίλτρα, πλαισιωμένο από τρισδιάστατους (3D) περιστρεφόμενους πυρηνικούς αντιδραστήρες.",
+    badge: "Στρατιωτικό AI/Crypto",
+    features: [
+      "Αυτόνομη στρατιωτική κρυπτογράφηση AES-GCM με εξαγωγή προστατευμένων .json αρχείων & Base64 φακέλων",
+      "Προηγμένος πίνακας ελέγχου με 34 χρονικά φίλτρα & διαγράμματα (ID: pimxwide, PASS: 123456789PIMX_WIDe@#$%^&)",
+      "100% serverless offline περιβάλλον με άμεσο καθαρισμό της μνήμης RAM και τρισδιάστατους περιστρεφόμενους αντιδραστήρες"
+    ]
+  },
+  "pimx-node": {
+    title: "PIMX_NODE Serverless P2P Μεταφορά Αρχείων & Προσομοιωτής Firewall",
+    description: "Η πλατφόρμα PIMX_NODE (ή PIMX) είναι μια επαναστατική, εξαιρετικά γρήγορη και πλήρως serverless πύλη άμεσης peer-to-peer (P2P) μεταφοράς αρχείων μέσω του πρωτοκόλλου WebRTC, χωρίς ενδιάμεσα clouds ή όρια μεγέθους. Περιλαμβάνει έναν διαδραστικό προσομοιωτή NAT Traversal και firewall 4 σεναρίων (LAN Bridge, STUN, CGNAT, και Symmetric NAT), συμπληρωμένο από έναν πίνακα ελέγχου σε πραγματικό χρόνο για ενεργούς χρήστες, όγκο δεδομένων και δυναμικά SVG γραφήματα.",
+    badge: "Serverless P2P",
+    features: [
+      "Άμεση peer-to-peer μεταφορά αρχείων με WebRTC, παρακάμπτοντας πλήρως τους διακομιστές cloud",
+      "Διαδραστικός και responsive προσομοιωτής NAT traversal 4 σεναρίων (οριζόντια σχεδίαση σε PC, κάθετη σε κινητά)",
+      "Τεχνικός πίνακας ελέγχου πραγματικού χρόνου με κινούμενα SVG sparklines και λεπτομερή στατιστικά συσκευών"
+    ]
   },
   "pimx-pass-bot": {
-    title: "PIMX PASS VPN Bot Αυτόματης Δρομολόγησης",
+    title: "PIMX_PASS_BOT VPN Bot Αυτόματης Δρομολόγησης",
     description: "Γρήγορο bot στο Telegram για την αυτόματη διανομή σταθερών αρχείων ρυθμίσεων δικτύου V2Ray και OpenVPN.",
     badge: "ΑΣΦΑΛΗ TUNNELS"
   },
   "pimx-play-bot": {
-    title: "PIMX PLAY Λήψη Ασφαλών APK Google Play",
+    title: "PIMX_PLAY_BOT Λήψη Ασφαλών APK Google Play",
     description: "Αυτόματος daemon στο Telegram που αναλύει links του Google Play και σας στέλνει απευθείας καθαρά APK αρχεία χωρίς διαφημίσεις.",
     badge: "APK HUNTER"
   },
   "pimx-sonic-bot": {
-    title: "Offline Music Player PIMX SONIC",
+    title: "Offline Music Player PIMX_SONIC_BOT",
     description: "Ενσωματωμένη πλατφόρμα στο Telegram για αναζήτηση, λήψη και caching μουσικής με ελάχιστη κατανάλωση bandwidth.",
     badge: "MUSIC STREAMER"
   },
@@ -1237,7 +1372,7 @@ const elProjectTranslations: Record<string, { title: string; description: string
 
 const laProjectTranslations: Record<string, { title: string; description: string; badge?: string; features?: string[] }> = {
   "pimx-veil": {
-    title: "PIMXVEIL — Systema Securitatis Informationis et Steganographiae Amborum in Navigatro",
+    title: "PIMX_VEIL — Systema Securitatis Informationis et Steganographiae Amborum in Navigatro",
     description: "Systema securitatis militaris 100% in machina clientis constructum ad imagines PDF, MP3 vel JPEG cum cryptographia AES-GCM (256-bit) et derivatione clavis per PBKDF2 (600,000 repetitis) sine ulla mutatione formae originis occultandum.",
     badge: "CYBER VAULT",
     features: [
@@ -1247,13 +1382,13 @@ const laProjectTranslations: Record<string, { title: string; description: string
     ]
   },
   "pimx-moji": {
-    title: "PIMX Moji Tabula Artis ASCII",
+    title: "PIMX_MOJI Tabula Artis ASCII",
     description: "Instrumentum ad imagines vertendum in formas litterarum ASCII et expressiones vultuum.",
     badge: "OPERE ACTIVE",
     features: ["Conversio pixelorum in litteras computatrales", "Copiatio celeris in clipboard pro usu facili", "Themata retro Matrix instructa"]
   },
   "pimx-pass": {
-    title: "PIMX Pass DNS Performance Diagnostics",
+    title: "PIMX_PASS DNS Performance Diagnostics",
     description: "Rationes computandi et metiendi latencias DNS globalium ad nexum meliorem faciendam.",
     badge: "ADITUS PROTECTUS",
     features: ["Mensure latenciarum pro connectione tua propria", "Remotio tarditatis et stabilitas pro ludis retialibus", "Mandata illustrata ad mutandum DNS in machinis"]
@@ -1264,22 +1399,37 @@ const laProjectTranslations: Record<string, { title: string; description: string
     badge: "BOT CLIENTIS"
   },
   "pimx-wide": {
-    title: "Kryptographia Localis Secura PIMX WIDE",
-    description: "Espace isolationis cryptographicae sine server, adhibens AES-GCM 256-bit et Panic Button ad memoriam statim aboliendam.",
-    badge: "SECURED CRYPTO"
+    title: "Consola Cryptographica Sine Server Provecta PIMX_WIDE",
+    description: "PIMX_WIDE est instrumentum interretiale provectum, maxime securum et omnino sine server scriptum, ad res cryptographicas militaris ordinis faciendus sub structura scientiae nullius (Zero-Knowledge) in memoria RAM. Omnes computaciones intra navigatrum tuum aguntur; nulla hypothesis ad server externum mittitur. Habet consolam cryptae distinctam (AES-GCM 256-bit) cum output Base64 et .json, portale ad res offline legendendas quod memoriam purgat, et tabulam administratoris dynamicam cum 34 temporis filtris atque reactoribus magneticis 3D.",
+    badge: "Cryptographia Militaris",
+    features: [
+      "Consola cryptae autonoma ex ordine AES-GCM 256-bit ad creandum tabulas secras .json et Base64",
+      "Tabula monitoris cum 34 filtris temporis et graphis linearibus (ID: pimxwide, PASS: 123456789PIMX_WIDe@#$%^&)",
+      "100% sine server in machina offline cum abolitione memoriae RAM et reactoribus spatialibus 3D"
+    ]
+  },
+  "pimx-node": {
+    title: "PIMX_NODE Transitus Documentorum P2P et Simulator NAT Retis",
+    description: "PIMX_NODE (vel breviter PIMX) est portale novum, celerrimum et prorsus sine server (Serverless) ad documenta transferenda recta peer-to-peer (P2P) ex charta WebRTC, sine nubibus mediis. Habet simulatorem interactivae transitionis NAT et firewall cum 4 formis nexuum (LAN Bridge, STUN, CGNAT, et Symmetric NAT), una cum tabula monitoris real-time pro personis active et graphis SVG dynamicis.",
+    badge: "P2P Sine Server",
+    features: [
+      "Translatio directa peer-to-peer (P2P) adhibita charta WebRTC sine nubibus vel tabulis mediis",
+      "Simulator dynamicus nexuum NAT cum 4 formis (dispositio horizontalis in computatris, verticalis in cellu-phoniis)",
+      "Tabula technica real-time cum lineis SVG motis et statisticis documentorum instrumenti"
+    ]
   },
   "pimx-pass-bot": {
-    title: "PIMX PASS VPN Automatus Tunnel Assistens",
+    title: "PIMX_PASS_BOT VPN Automatus Tunnel Assistens",
     description: "Auxilium celeris ad dividendum configutos nexuum retis (V2Ray, OpenVPN) pro clientibus omnibus active.",
     badge: "SECURE TUNNELS"
   },
   "pimx-play-bot": {
-    title: "PIMX PLAY Google Play APK Downloader Bot",
+    title: "PIMX_PLAY_BOT Google Play APK Downloader Bot",
     description: "Boti in Telegram ad quaerendum et mittendum pura APK documenta ex Google Play sine molestis praeconiis.",
     badge: "APK DISTRIBUTOR"
   },
   "pimx-sonic-bot": {
-    title: "PIMX SONIC Musicae Instrumentum Solum",
+    title: "PIMX_SONIC_BOT Musicae Instrumentum Solum",
     description: "Assistentia musica in Telegram ad media exquirendum, colendum ac tuto localiter salvandum sine consumptione nimia mobilis.",
     badge: "MUSIC STREAMER"
   },
@@ -1382,7 +1532,7 @@ export function getTranslatedProjects(lang: string): TranslatedProjectItem[] {
 /*
   },
   "pimx-sonic-bot": {
-    title: "PIMX SONIC 离线随身音乐盒 Telegram 机器人",
+    title: "PIMX_SONIC_BOT 离线随身音乐盒 Telegram 机器人",
     description: "在 Telegram 内部极速搜索、缓存并无损下载全世界所有音乐。特别针对特定网络环境流量消耗与缓冲做极致优化。",
     badge: "音乐极享",
     features: ["本地大文件异步快速缓存技术", "高保真低损无削减音质解码", "支持直接添加到您的单人/群组自建播放列表"]
@@ -1397,13 +1547,13 @@ export function getTranslatedProjects(lang: string): TranslatedProjectItem[] {
 
 const deProjectTranslations: Record<string, { title: string; description: string; badge?: string; features?: string[] }> = {
   "pimx-moji": {
-    title: "PIMX Moji ASCII-Kunst Leinwand",
+    title: "PIMX_MOJI ASCII-Kunst Leinwand",
     description: "Ein Online-Canvas-Tool, mit dem Sie Bilder in anpassbare ASCII-Kunst und Emoji-Mosaike umwandeln können.",
     badge: "LIVE APP",
     features: ["Echtzeit-Mapping-Algorithmus von Pixeln in ASCII-Kunst", "Schnelle Zwischenablage-Kopiervorlagen für Entwickler", "Werbefreie Steuerung mit Matrix-Themen"]
   },
   "pimx-pass": {
-    title: "PIMX Pass DNS-Geschwindigkeits-Benchmarking",
+    title: "PIMX_PASS DNS-Geschwindigkeits-Benchmarking",
     description: "Dynamische Benchmarking-Plattform zur Messung und Bewertung der global sicheren DNS-Latenzen relativ zu Ihrem Internet-Spiele-Setup.",
     badge: "SICHERES PORTAL",
     features: ["Präzise Latenztests for alle Internetprovider", "Optimiert Verbindungsstabilität und Game-Ping", "Illustrationen für manuelle FritzBox- und Router-Konfiguration"]
@@ -1412,13 +1562,13 @@ const deProjectTranslations: Record<string, { title: string; description: string
 
 const frProjectTranslations: Record<string, { title: string; description: string; badge?: string; features?: string[] }> = {
   "pimx-moji": {
-    title: "PIMX Moji Canevas Artistique ASCII",
+    title: "PIMX_MOJI Canevas Artistique ASCII",
     description: "Un utilitaire de canevas créatif pour convertir des images ou des paramètres en œuvres d'art texte ASCII sytlisées.",
     badge: "APP EN DIRECT",
     features: ["Traitement interactif des données d'image en art texte", "Sauvegarde rapide dans le presse-papiers sous format adaptatif", "Thèmes rétro Matrix préchargés"]
   },
   "pimx-pass": {
-    title: "Diagnostic de performance DNS PIMX Pass",
+    title: "Diagnostic de performance DNS PIMX_PASS",
     description: "Évaluez et scorez les latences des DNS mondiaux sécurisés en temps réel par rapport à votre connexion.",
     badge: "PASSERELLE SÉCURISÉE",
     features: ["Algorithmes d'évaluation en temps réel pour tous FAI", "Réduction des pertes de paquets et du jitter de connexion", "Guides visuels pas-à-pas pour les routeurs et smartphones"]
@@ -1427,13 +1577,13 @@ const frProjectTranslations: Record<string, { title: string; description: string
 
 const itProjectTranslations: Record<string, { title: string; description: string; badge?: string; features?: string[] }> = {
   "pimx-moji": {
-    title: "PIMX Moji ASCII Arts Tela Creativa",
+    title: "PIMX_MOJI ASCII Arts Tela Creativa",
     description: "Piattaforma creativa proiettata a trasformare immagini e testi in splendidi mosaici ASCII ed emoji.",
     badge: "APP ONLINE",
     features: ["Conversione interattiva di pixel in caratteri di testo", "Copia rapida negli appunti per layout integrati", "Temi retrò in stile hacker Matrix"]
   },
   "pimx-pass": {
-    title: "PIMX Pass DNS Performance Diagnostics",
+    title: "PIMX_PASS DNS Performance Diagnostics",
     description: "Piattaforma avanzata per misurare la latenza dei DNS globali, migliorando l'esperienza di navigazione e gioco online.",
     badge: "GATEWAY PROTETTO",
     features: ["Test di latenza personalizzati sulla tua linea internet", "Eliminazione del ping jitter e lag nei caricamenti", "Manuale illustrato di configurazione pro router e desktop"]
@@ -1442,13 +1592,13 @@ const itProjectTranslations: Record<string, { title: string; description: string
 
 const ruProjectTranslations: Record<string, { title: string; description: string; badge?: string; features?: string[] }> = {
   "pimx-moji": {
-    title: "PIMX Moji Генератор ASCII-графики",
+    title: "PIMX_MOJI Генератор ASCII-графики",
     description: "Онлайн-холст для преобразования изображений в стильный текстовый ASCII-арт и мозаику из эмодзи.",
     badge: "ОНЛАЙН-ПРИЛОЖЕНИЕ",
     features: ["Интерактивное преобразование пикселей в символы", "Быстрое копирование готовых шаблонов в буфер обмена", "Ретро-темы оформления в стиле матрицы"]
   },
   "pimx-pass": {
-    title: "Тестирование DNS PIMX Pass Diagnostics",
+    title: "Тестирование DNS PIMX_PASS Diagnostics",
     description: "Высокоточная диагностическая платформа для измерения пинга безопасных мировых серверов DNS под вашего провайдера.",
     badge: "БЕЗОПАСНЫЙ ШЛЮЗ",
     features: ["Алгоритмы тестирования пинга под каждого провайдера", "Снижение задержек и стабилизация игрового процесса", "Инструкции по настройке подключения на роутерах и ПК"]
@@ -1457,13 +1607,13 @@ const ruProjectTranslations: Record<string, { title: string; description: string
 
 const elProjectTranslations: Record<string, { title: string; description: string; badge?: string; features?: string[] }> = {
   "pimx-moji": {
-    title: "PIMX Moji Καμβάς Τέχνης ASCII",
+    title: "PIMX_MOJI Καμβάς Τέχνης ASCII",
     description: "Δημιουργικό εργαλείο μετατροπής εικόνων και κειμένων σε εντυπωσιακά ASCII ψηφιδωτά και emoji.",
     badge: "LIVE WEB APP",
     features: ["Μετατροπή pixel εικόνας σε χαρακτήρες κειμένου", "Γρήγορη αντιγραφή στο πρόχειρο για κοινή χρήση", "Προεγκατεστημένα ρετρό θέματα Matrix"]
   },
   "pimx-pass": {
-    title: "PIMX Pass DNS Έλεγχος & Διάγνωση",
+    title: "PIMX_PASS DNS Έλεγχος & Διάγνωση",
     description: "Benchmark πλατφόρμα ελέγχου και μέτρησης καθυστέρησης των παγκόσμιων ασφαλών DNS διακομιστών.",
     badge: "ΑΣΦΑΛΗΣ ΠΥΛΗ",
     features: ["Δοκιμές απόκρισης σύμφωνα με τον πάροχο διαδικτύου σας", "Μείωση των διακυμάνσεων ping και βελτίωση σταθερότητας", "Οδηγίες εγκατάστασης σε routers και συσκευές"]
@@ -1472,13 +1622,13 @@ const elProjectTranslations: Record<string, { title: string; description: string
 
 const laProjectTranslations: Record<string, { title: string; description: string; badge?: string; features?: string[] }> = {
   "pimx-moji": {
-    title: "PIMX Moji Tabula Artis ASCII",
+    title: "PIMX_MOJI Tabula Artis ASCII",
     description: "Instrumentum ad imagines vertendum in formas litterarum ASCII et expressiones vultuum.",
     badge: "OPERE ACTIVE",
     features: ["Conversio pixelorum in litteras computatrales", "Copiatio celeris in clipboard pro usu facili", "Themata retro Matrix instructa"]
   },
   "pimx-pass": {
-    title: "PIMX Pass DNS Performance Diagnostics",
+    title: "PIMX_PASS DNS Performance Diagnostics",
     description: "Rationes computandi et metiendi latencias DNS globalium ad nexum meliorem faciendam.",
     badge: "ADITUS PROTECTUS",
     features: ["Mensure latenciarum pro connectione tua propria", "Remotio tarditatis et stabilitas pro ludis retialibus", "Mandata illustrata ad mutandum DNS in machinis"]
