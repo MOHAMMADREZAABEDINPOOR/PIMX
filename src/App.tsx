@@ -15,11 +15,16 @@ import Admin from './pages/Admin';
 
 function MainApp() {
   const [currentPage, setCurrentPage] = React.useState<PageType>('home');
-  const { theme, dir } = useLanguageTheme();
+  const { theme, dir, triggerAwesomeLoad, setIsLoading } = useLanguageTheme();
 
   React.useEffect(() => {
     // Track page visit on mount (fire-and-forget)
     trackActivity();
+
+    // Hide initial loader after 2.5 seconds
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2500);
 
     const validPages: PageType[] = ['home', 'about', 'projects', 'playground', 'contact', 'resume'];
     const resolvePath = (path: string) => {
@@ -37,12 +42,16 @@ function MainApp() {
 
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
-  }, []);
+  }, [setIsLoading]);
 
   const handleNavigate = (page: PageType) => {
     const target = page === 'home' ? '/' : `/${page === 'projects' ? 'project' : page}`;
-    window.history.pushState({}, '', target);
-    setCurrentPage(page);
+    if (page !== currentPage) {
+      triggerAwesomeLoad(1200, () => {
+        window.history.pushState({}, '', target);
+        setCurrentPage(page);
+      });
+    }
   };
 
   return (

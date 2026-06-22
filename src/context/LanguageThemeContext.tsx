@@ -58,7 +58,7 @@ export const LanguageThemeProvider: React.FC<{ children: React.ReactNode }> = ({
     }
     return 'dark';
   });
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   // Load initial settings from localStorage to persist user selection
 
