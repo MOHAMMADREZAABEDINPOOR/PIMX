@@ -1,4 +1,4 @@
-export type PageType = 'home' | 'about' | 'projects' | 'playground' | 'contact' | 'resume' | 'visits';
+export type PageType = 'home' | 'about' | 'projects' | 'playground' | 'contact' | 'resume';
 
 export interface Project {
   id: string;

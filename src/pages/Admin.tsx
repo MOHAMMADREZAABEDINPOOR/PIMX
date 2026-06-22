@@ -3,6 +3,7 @@ import { fetchAnalyticsStats, AnalyticsStats } from '../lib/analytics';
 import {
   Lock,
   User,
+  TrendingUp,
   Monitor,
   Smartphone,
   Tablet,
@@ -11,6 +12,8 @@ import {
   RefreshCw,
   ShieldAlert,
   MapPin,
+  Eye,
+  CalendarDays,
   Loader2,
 } from 'lucide-react';
 import { useLanguageTheme } from '../context/LanguageThemeContext';
@@ -84,6 +87,10 @@ export default function Admin() {
         className="min-h-screen w-full flex items-center justify-center bg-slate-950 font-sans p-4 relative overflow-hidden"
         dir="rtl"
       >
+        {/* Abstract futuristic meshes */}
+        <div className="absolute top-1/4 left-1/4 h-96 w-96 rounded-full bg-cyan-500/10 filter blur-[80px]" />
+        <div className="absolute bottom-1/4 right-1/4 h-96 w-96 rounded-full bg-rose-500/10 filter blur-[80px]" />
+
         <div className="w-full max-w-md bg-slate-900/80 backdrop-blur-md border border-slate-800 p-8 rounded-2xl shadow-2xl relative z-10 transition-all duration-300">
           <div className="flex flex-col items-center mb-8">
             <div className="h-14 w-14 bg-gradient-to-tr from-cyan-500 to-teal-500 rounded-2xl flex items-center justify-center shadow-lg shadow-cyan-500/20 mb-4 text-slate-950">
@@ -106,7 +113,7 @@ export default function Admin() {
             <div className="space-y-1.5">
               <label className="text-xs font-semibold text-slate-300 block">نام کاربری</label>
               <div className="relative">
-                <span className="absolute left-4 top-2.5 -translate-y-1/2 text-slate-500">
+                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500">
                   <User className="h-4 w-4" />
                 </span>
                 <input
@@ -123,7 +130,7 @@ export default function Admin() {
             <div className="space-y-1.5">
               <label className="text-xs font-semibold text-slate-300 block">رمز عبور</label>
               <div className="relative">
-                <span className="absolute left-4 top-2.5 -translate-y-1/2 text-slate-500">
+                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500">
                   <Lock className="h-4 w-4" />
                 </span>
                 <input
@@ -158,10 +165,16 @@ export default function Admin() {
     );
   }
 
+  // ---------- Dashboard ----------
+
   const cardBase =
     theme === 'light'
       ? 'bg-[#E5E9EE] border-slate-300 shadow-sm'
       : 'bg-[#98A2B3]/25 border-slate-700/55';
+  const chartCardBase =
+    theme === 'light'
+      ? 'bg-[#E5E9EE] border-slate-300'
+      : 'bg-[#9d9d9d2a] border-slate-700/40';
 
   return (
     <div
@@ -184,9 +197,9 @@ export default function Admin() {
               P
             </div>
             <div>
-              <h1 className="text-xl font-black">پنل کنترل ادمین</h1>
+              <h1 className="text-xl font-black">پنل کنترل ادمین (Admin Panel)</h1>
               <p className="text-[10px] text-slate-400 font-mono -mt-1">
-                آمار بازدید دستگاه و موقعیت کاربران
+                PIMX Real Visitor Analytics
               </p>
             </div>
           </div>
@@ -217,7 +230,7 @@ export default function Admin() {
         {loading && (
           <div className="flex flex-col items-center justify-center py-20 gap-3">
             <Loader2 className="h-8 w-8 text-cyan-400 animate-spin" />
-            <p className="text-sm text-slate-400">در حال بارگذاری آمار...</p>
+            <p className="text-sm text-slate-400">در حال بارگذاری آمار واقعی...</p>
           </div>
         )}
 
@@ -232,11 +245,46 @@ export default function Admin() {
         {/* Data loaded */}
         {stats && !loading && (
           <>
-            {/* Device Share */}
-            <div className={`p-6 rounded-2xl border transition-all ${cardBase}`}>
+            {/* Row 1: Summary Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Total Visits */}
+              <div className={`p-6 rounded-2xl border transition-all ${cardBase}`}>
+                <div className="flex justify-between items-start">
+                  <p className="text-[11px] font-mono font-bold tracking-wider text-slate-400 uppercase">
+                    Total Visits
+                  </p>
+                  <div className="h-6 w-6 rounded bg-indigo-500/10 flex items-center justify-center text-indigo-400">
+                    <Eye className="h-4.5 w-4.5" />
+                  </div>
+                </div>
+                <h3 className="text-4xl font-black mt-2 font-mono tracking-tight text-white">
+                  {stats.totalVisits.toLocaleString()}
+                </h3>
+                <p className="text-[10px] text-slate-400 mt-1">تعداد کل بازدیدهای واقعی (۹۰ روز اخیر)</p>
+              </div>
+
+              {/* Today Visits */}
+              <div className={`p-6 rounded-2xl border transition-all ${cardBase}`}>
+                <div className="flex justify-between items-start">
+                  <p className="text-[11px] font-mono font-bold tracking-wider text-slate-400 uppercase">
+                    Today Visits
+                  </p>
+                  <div className="h-6 w-6 rounded bg-teal-500/10 flex items-center justify-center text-teal-400">
+                    <CalendarDays className="h-4.5 w-4.5" />
+                  </div>
+                </div>
+                <h3 className="text-4xl font-black mt-2 font-mono tracking-tight text-white">
+                  {stats.todayVisits.toLocaleString()}
+                </h3>
+                <p className="text-[10px] text-slate-400 mt-1">بازدیدهای امروز</p>
+              </div>
+            </div>
+
+            {/* Row 2: DEVICE SHARE */}
+            <div className={`p-6 rounded-2xl border transition-all ${chartCardBase}`}>
               <div className="flex justify-between items-center mb-6">
                 <h4 className="text-sm font-bold text-slate-300 uppercase font-mono tracking-wider">
-                  آمار دستگاه‌های ورودی
+                  DEVICE SHARE (دستگاه‌های ورودی)
                 </h4>
                 <Monitor className="h-4 w-4 text-indigo-400" />
               </div>
@@ -271,8 +319,8 @@ export default function Admin() {
                               isMobile
                                 ? 'from-cyan-500 to-teal-400'
                                 : isTablet
-                                ? 'from-purple-500 to-indigo-500'
-                                : 'from-blue-600 to-indigo-500'
+                                  ? 'from-purple-500 to-indigo-500'
+                                  : 'from-blue-600 to-indigo-500'
                             }`}
                             style={{ width: `${dev.percentage}%` }}
                           />
@@ -284,11 +332,11 @@ export default function Admin() {
               )}
             </div>
 
-            {/* User Locations */}
-            <div className={`p-6 rounded-2xl border transition-all ${cardBase}`}>
+            {/* Row 3: USER LOCATIONS */}
+            <div className={`p-6 rounded-2xl border transition-all ${chartCardBase}`}>
               <div className="flex justify-between items-center mb-6">
                 <h4 className="text-sm font-bold text-slate-300 uppercase font-mono tracking-wider">
-                  آمار موقعیت‌های جغرافیایی کاربران
+                  USER LOCATIONS (جغرافیا و سورس بازدید)
                 </h4>
                 <Globe className="h-4 w-4 text-teal-400" />
               </div>
@@ -325,10 +373,18 @@ export default function Admin() {
         {/* Empty state — no stats loaded and not loading */}
         {!stats && !loading && !error && (
           <div className="flex flex-col items-center justify-center py-20 gap-3">
+            <TrendingUp className="h-10 w-10 text-slate-600" />
             <p className="text-sm text-slate-400">برای مشاهده آمار، روی دکمه بروزرسانی کلیک کنید.</p>
           </div>
         )}
       </main>
+
+      <footer className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 mt-12 border-t border-slate-900 text-center select-none text-xs text-slate-500">
+        <p>PIMX Premium Portal Core Console System &copy; {new Date().getFullYear()}</p>
+        <p className="mt-1 font-mono uppercase text-[9px] tracking-widest text-[#94A3B8]/20">
+          Real Visitor Analytics — Cloudflare D1
+        </p>
+      </footer>
     </div>
   );
 }

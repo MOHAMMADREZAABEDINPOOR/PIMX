@@ -10,7 +10,6 @@ export interface TranslationSet {
   navAbout: string;
   navContact: string;
   navResume: string;
-  navVisits: string;
 
   // Footer
   footerRole: string;
@@ -116,7 +115,6 @@ export const translations: Record<LanguageType, TranslationSet> = {
     navAbout: "About Me",
     navContact: "Contact",
     navResume: "CV / Resume",
-    navVisits: "Visits",
     footerRole: "PROMPT WRITER & FULL-STACK CREATIVE",
     footerCopyright: "All rights reserved. Independently designed and developed by M.R.A.",
     footerQuickNav: "Quick Navigation",
@@ -195,7 +193,6 @@ export const translations: Record<LanguageType, TranslationSet> = {
     navAbout: "درباره من",
     navContact: "تماس",
     navResume: "رزومه / CV",
-    navVisits: "آمار بازدید",
     footerRole: "پرامپت‌نویس و خلاق تمام‌استک",
     footerCopyright: "© تمامی حقوق محفوظ است. طراحی و توسعه مستقل توسط M.R.A",
     footerQuickNav: "دسترسی سریع",
