@@ -18,8 +18,8 @@ function MainApp() {
   const { theme, dir } = useLanguageTheme();
 
   React.useEffect(() => {
-    // Track page visit on mount
-    trackActivity('visit');
+    // Track page visit on mount (fire-and-forget)
+    trackActivity();
 
     const validPages: PageType[] = ['home', 'about', 'projects', 'playground', 'contact', 'resume'];
     const resolvePath = (path: string) => {
@@ -43,7 +43,6 @@ function MainApp() {
     const target = page === 'home' ? '/' : `/${page === 'projects' ? 'project' : page}`;
     window.history.pushState({}, '', target);
     setCurrentPage(page);
-    trackActivity('navigate');
   };
 
   return (

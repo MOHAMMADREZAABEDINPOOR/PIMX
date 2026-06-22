@@ -1,0 +1,14 @@
+name = "pimx"
+compatibility_date = "2025-01-01"
+pages_build_output_dir = "dist"
+
+# KV Namespace binding for real visitor analytics
+# Steps to set up:
+# 1. Cloudflare Dashboard → Workers & Pages → KV → Create namespace
+#    Name it: pimx-visits
+# 2. Pages → Your project → Settings → Functions → KV namespace bindings
+#    Variable name: PIMX_VISITS  →  Namespace: pimx-visits
+# 3. Redeploy — visits will be stored automatically from the first real visit.
+[[kv_namespaces]]
+binding = "PIMX_VISITS"
+id = "9e6bfcf091f14203851dd91fdce872a2"
