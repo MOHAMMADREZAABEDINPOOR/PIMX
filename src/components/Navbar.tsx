@@ -19,7 +19,8 @@ export default function Navbar({ currentPage }: NavbarProps) {
     { id: 'projects', label: t.navProjects, icon: AppWindow },
     { id: 'about', label: t.navAbout, icon: User },
     { id: 'resume', label: t.navResume, icon: FileText },
-    { id: 'contact', label: t.navContact, icon: Mail }
+    { id: 'contact', label: t.navContact, icon: Mail },
+    { id: 'visits', label: t.navVisits, icon: Globe }
   ] as const;
 
   const navigateTo = (pageId: PageType) => {

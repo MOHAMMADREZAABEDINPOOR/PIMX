@@ -8,10 +8,10 @@ import Projects from './pages/Projects';
 import Playground from './pages/Playground';
 import Contact from './pages/Contact';
 import Resume from './pages/Resume';
+import Visits from './pages/Visits';
 import Loader from './components/Loader';
 import { LanguageThemeProvider, useLanguageTheme } from './context/LanguageThemeContext';
 import { trackActivity } from './lib/analytics';
-import Admin from './pages/Admin';
 
 function MainApp() {
   const [currentPage, setCurrentPage] = React.useState<PageType>('home');
@@ -21,7 +21,7 @@ function MainApp() {
     // Track page visit on mount (fire-and-forget)
     trackActivity();
 
-    const validPages: PageType[] = ['home', 'about', 'projects', 'playground', 'contact', 'resume'];
+    const validPages: PageType[] = ['home', 'about', 'projects', 'playground', 'contact', 'resume', 'visits'];
     const resolvePath = (path: string) => {
       const rawPath = path.replace(/^\/+/, '');
       const firstSeg = rawPath.split('/')[0] || '';
@@ -76,6 +76,7 @@ function MainApp() {
           {currentPage === 'playground' && <Playground />}
           {currentPage === 'resume' && <Resume />}
           {currentPage === 'contact' && <Contact />}
+          {currentPage === 'visits' && <Visits />}
         </div>
       </main>
 
@@ -89,20 +90,6 @@ function MainApp() {
 }
 
 export default function App() {
-  const isPimxAdmin = typeof window !== 'undefined' && (
-    window.location.pathname === '/pimxadmin' || 
-    window.location.pathname.startsWith('/pimxadmin/') ||
-    false
-  );
-
-  if (isPimxAdmin) {
-    return (
-      <LanguageThemeProvider>
-        <Admin />
-      </LanguageThemeProvider>
-    );
-  }
-
   return (
     <LanguageThemeProvider>
       <MainApp />
