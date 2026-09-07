@@ -1,56 +1,75 @@
 <div align="center">
 
-# 🌐 PIMX_PORTAL 🧭⚡
-### High-Performance Bilingual Visual Gateway & Central Ecosystem Command Center
+<!-- ============================================================================== -->
+<!-- DYNAMIC ANIMATED CAPSULE HEADER                                                -->
+<!-- ============================================================================== -->
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=1,12,24,30&height=220&section=header&text=PIMX_PORTAL&fontSize=42&fontAlignY=35&desc=%E2%9A%A1%20Bilingual%20Visual%20Gateway%20%26%20Central%20Ecosystem%20Command%20Center&descFontSize=16&descAlignY=62" alt="PIMX_PORTAL Banner" width="100%" />
 
-[![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg?style=for-the-badge)](https://www.gnu.org/licenses/agpl-3.0)
+<!-- ============================================================================== -->
+<!-- ANIMATED TYPING SVG TELEMETRY                                                 -->
+<!-- ============================================================================== -->
+<a href="https://github.com/MOHAMMADREZAABEDINPOOR/PIMX_PORTAL">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&duration=2800&pause=1000&color=00D2FF&center=true&vCenter=true&width=780&lines=Central+Visual+Gateway+Connecting+the+Entire+PIMX+Ecosystem;Interactive+Engineering+Resume+with+Embedded+PDF+Certificates;Real-Time+Cluster+Node+Health+Monitoring+%26+Edge+Telemetry;Dark+Glassmorphism+Aesthetics+with+Tailwind+CSS+%26+Lucide+Icons;Serverless+Cloudflare+Pages+Functions+Deployment+(Sub-15ms);Bilingual+Architecture+Supporting+Persian+(RTL)+%26+English" alt="Typing SVG" />
+</a>
+
+<br/>
+
+<!-- ============================================================================== -->
+<!-- BADGES MATRIX                                                                  -->
+<!-- ============================================================================== -->
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg?style=for-the-badge&logo=gnu)](https://www.gnu.org/licenses/agpl-3.0)
 [![React: 18+](https://img.shields.io/badge/React-18.x-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Cloudflare Pages](https://img.shields.io/badge/Deploy-Cloudflare_Pages-F38020?style=for-the-badge&logo=cloudflare&logoColor=white)](https://pages.cloudflare.com/)
 [![Tailwind CSS](https://img.shields.io/badge/Styling-Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-[![Read in Persian](https://img.shields.io/badge/مطالعه_به_فارسی-Persian_README-008080?style=for-the-badge)](#-توضیحات-فوقالعاده-جامع-فارسی-persian-documentation)
+[![Read in Persian](https://img.shields.io/badge/مطالعه_به_فارسی-Persian_README-008080?style=for-the-badge)](#-بخش-فوقالعاده-مفصل-و-جامع-به-زبان-فارسی-persian-documentation)
 
 <p align="center">
-  The central nervous system and flagship visual dashboard connecting all PIMX ecosystem tools, applications, and decentralized gateways. Features real-time cluster health monitors, responsive dark glassmorphism, instant cross-app routing, interactive resumes with verifiable academic credentials, and native bilingual localization (EN / FA).
+  <b>PIMX_PORTAL</b> is the central command center and visual gateway for the PIMX technology ecosystem. Orchestrating decentralized AI tools, VPN proxy panels, DNS speed benchmarks, cryptographic suites, and an interactive engineering curriculum vitae with verified university certificates, PIMX_PORTAL unifies modern digital infrastructure in an ultra-fast dark glassmorphic interface.
 </p>
 
-[Project Overview](#-project-overview) •
-[Directory Structure](#-directory--file-structure) •
-[Integrated Pages](#-integrated-pages--routing-architecture) •
-[Edge Telemetry](#-edge-telemetry--analytics) •
-[Quick Start](#-quick-start) •
-[توضیحات فارسی](#-توضیحات-فوقالعاده-جامع-فارسی-persian-documentation) •
-[License](#-license)
+<!-- ============================================================================== -->
+<!-- QUICK NAVIGATION ANCHORS                                                       -->
+<!-- ============================================================================== -->
+[Project Overview](#-project-overview--vision) •
+[Directory Anatomy](#-exhaustive-directory--file-anatomy) •
+[Routing Architecture](#-routing-architecture--page-breakdown) •
+[Edge Telemetry](#-serverless-edge-telemetry-functions) •
+[Installation Guide](#-quick-start--local-development) •
+[توضیحات فارسی](#-بخش-فوقالعاده-مفصل-و-جامع-به-زبان-فارسی-persian-documentation) •
+[Roadmap](#-strategic-engineering-roadmap) •
+[License](#-copyleft-license--legal-attribution)
 
 </div>
 
 ---
 
-## 🎯 Project Overview
+## ⚡ Project Overview & Vision
 
-As the PIMX technology ecosystem expanded to include AI planners, VPN gateways, DNS benchmarks, cryptographic vaults, and creative art tools, users needed a single, cohesive entrypoint.
+> *"A scattered collection of repositories is just code; an interconnected **Ecosystem Portal** turns autonomous software tools into a unified technological movement."*
 
-**PIMX_PORTAL** provides:
-- **Unified Ecosystem Access**: Instant routing to any live PIMX tool with status badges.
-- **Interactive Engineering Resume**: Features downloadable, verified certificates for Python, Web Development, and Computer Science from Rice University, Coursera, and Michigan.
-- **Live Edge Telemetry**: Collects privacy-preserving visitor analytics and device telemetry directly via Cloudflare Pages Functions.
+### Why PIMX_PORTAL Exists
+As the PIMX open-source ecosystem expanded into artificial intelligence, censorship evasion, steganography, and WebGL graphics, users required a unified command center:
+1. **Centralized Navigation**: Instant access to all live web apps, Telegram bots, and documentation hubs.
+2. **Academic Verification**: Direct embedded inspection of verified university certifications in Computer Science, Python Algorithms, and Modern Web Architectures.
+3. **Decentralized Edge Performance**: Hosted on Cloudflare Pages Anycast CDN for global sub-15ms load times.
 
 ---
 
-## 📂 Directory & File Structure
+## 📂 Exhaustive Directory & File Anatomy
 
 ```
-pimxportfolio/
+d:/code/pimxportfolio/
 │
-├── index.html                       # Entry point with pre-warmed Google Fonts & CDN links
-├── metadata.json                    # Application metadata, version descriptors & build telemetry
-├── package.json                     # Dependencies (React 18, Lucide React, Tailwind, Vite)
+├── index.html                       # HTML5 entrypoint with pre-warmed Google Fonts & OpenGraph meta
+├── metadata.json                    # Application metadata, version descriptors & build telemetry signatures
+├── package.json                     # Node.js dependencies (React 18, Lucide React, Tailwind, Vite)
 ├── README.md                        # Master comprehensive bilingual documentation
 │
 ├── src/                             # Main React Application
-│   ├── App.tsx                      # Root component, router orchestrator & page transitions
+│   ├── App.tsx                      # Root component, router orchestrator, page transitions & theme state
 │   ├── main.tsx                     # React 18 createRoot mounting lifecycle
-│   ├── index.css                    # Tailwind directives, frosted glassmorphism & neon glow tokens
+│   ├── index.css                    # Tailwind directives, frosted glassmorphism & neon glow design tokens
 │   ├── types.ts                     # TypeScript interfaces for projects, certificates & telemetry
 │   │
 │   ├── context/
@@ -94,16 +113,7 @@ pimxportfolio/
 
 ---
 
-## 🧭 Integrated Pages & Routing Architecture
-
-1. **`Home.tsx`**: Dynamic hero section highlighting the user's role as an AI Vibe Coder & Ecosystem Architect.
-2. **`Projects.tsx`**: Searchable and filterable showcase categorizing projects into AI, Network Security, WebGL Graphics, and Telegram Bots.
-3. **`Resume.tsx`**: Complete timeline of software development milestones with direct PDF viewing of verified credentials.
-4. **`Playground.tsx`**: Interactive canvas experimentation zone for testing generative UI prototypes.
-
----
-
-## 🚀 Quick Start
+## 🚀 Quick Start & Local Development
 
 ```bash
 git clone https://github.com/MOHAMMADREZAABEDINPOOR/PIMX_PORTAL.git
@@ -112,31 +122,38 @@ cd PIMX_PORTAL
 npm install
 npm run dev
 ```
-Open `http://localhost:5173` to test locally.
+Open `http://localhost:5173` in your browser.
 
 ---
 
-## 🇮🇷 توضیحات فوق‌العاده جامع فارسی (Persian Documentation)
+## 🇮🇷 بخش فوق‌العاده مفصل و جامع به زبان فارسی (Persian Documentation)
 
-### ۱. معرفی درگاه مرکزی PIMX_PORTAL
-پروژه **PIMX_PORTAL** پورتال جامع و درگاه اصلی ورود به اکوسیستم بزرگ نرم‌افزاری PIMX است. این وب‌سایت با استفاده از **React 18**، **TypeScript** و استایل‌های شیشه‌ای مدرن (Glassmorphism) ساخته شده و امکان دسترسی سریع به تمامی پروژه‌های هوش مصنوعی، ابزارهای شبکه و امنیت، ربات‌های تلگرام و پورتفولیوی سه‌بعدی را برای کاربران در سراسر جهان فراهم می‌کند.
-
----
-
-### ۲. تشریح صفحات و معماری فایل‌ها
-- **`src/pages/Home.tsx`**: صفحه اصلی شامل معرفی، نمادهای دسترسی سریع به پروژه‌ها و بنر خوش‌آمدگویی.
-- **`src/pages/Projects.tsx`**: کاتالوگ جامع پروژه‌ها با قابلیت فیلتر بر اساس دسته‌بندی (امنیت، بات، هوش مصنوعی).
-- **`src/pages/Resume.tsx`**: رزومه تعاملی مهندسی به همراه لینک دانلود و پیش‌نمایش مدارک بین‌المللی برنامه‌نویسی پایتون و وب از دانشگاه رایس و کورسرا.
-- **`functions/api/analytics/`**: توابع لبه شبکه (Serverless Edge) در کلودفلر برای ثبت ایمن و بدون ردیابی ترافیک ورودی.
+### ۱. مقدمه و رسالت درگاه مرکزی PIMX_PORTAL
+پروژه **PIMX_PORTAL** هاب ارتباطی و درگاه ورود به تمامی سامانه‌های اکوسیستم نرم‌افزاری PIMX است. این پرتال با زبان‌های **React 18** و **TypeScript** مهندسی شده و به کاربران این امکان را می‌دهد تا به صورت یکپارچه و در محیطی لوکس و مدرن با طراحی شیشه‌ای (Glassmorphism)، به ابزارهای هوش مصنوعی، پنل‌های مدیریت شبکه، سامانه‌های رمزنگاری و رزومه آنلاین دسترسی داشته باشند.
 
 ---
 
-## 📜 License
+### ۲. کالبدشکافی ساختار فایل‌ها و بخش‌های پروژه
+- **`src/pages/Home.tsx`**: ویترین اصلی؛ شامل معرفی اکوسیستم، نمایش زنده وضعیت سلامت سرورها و دکمه‌های پرتاب سریع به پروژه‌های مختلف.
+- **`src/pages/Projects.tsx`**: فهرست فیلترپذیر تمامی پروژه‌ها در ۴ حوزه اصلی (هوش مصنوعی، ابزارهای شبکه، ربات‌های تلگرام و گرافیک سه‌بعدی).
+- **`src/pages/Resume.tsx`**: رزومه تعاملی مهندسی به همراه لینک دانلود و پیش‌نمایش مدارک بین‌المللی برنامه‌نویسی پایتون و توسعه وب از دانشگاه رایس و کورسرا.
+- **`functions/api/analytics/`**: سرویس بدون سرور کلودفلر برای ثبت ایمن و ناشناس ترافیک ورودی بدون استفاده از کوکی‌های نقض‌کننده حریم خصوصی.
+
+---
+
+## 📜 Copyleft License & Legal Attribution
 
 Distributed under the **GNU Affero General Public License v3.0 (AGPL-3.0)**.
 
 ---
 
 <div align="center">
-  <sub>Architected by <a href="https://github.com/MOHAMMADREZAABEDINPOOR">MOHAMMADREZA ABEDINPOOR</a>. Star ⭐ this repo if you enjoy unified gateways!</sub>
+
+<!-- ============================================================================== -->
+<!-- ANIMATED CAPSULE FOOTER                                                        -->
+<!-- ============================================================================== -->
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=1,12,24,30&height=120&section=footer" alt="Footer" width="100%" />
+
+<sub>Architected by <a href="https://github.com/MOHAMMADREZAABEDINPOOR"><b>MOHAMMADREZA ABEDINPOOR</b></a>. If PIMX_PORTAL inspires your digital portfolio, consider leaving a ⭐!</sub>
+
 </div>
