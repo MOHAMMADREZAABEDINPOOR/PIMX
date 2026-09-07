@@ -1,127 +1,109 @@
 <div align="center">
 
-# PIMX Portfolio 🚀✨
+# 🌐 PIMX_PORTAL 🧭⚡
+### Unified Visual Gateway & Central Ecosystem Command Center for PIMX Platforms
 
-**[English](#english-description) | [Persian](#persian-description)**
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg?style=for-the-badge)](https://www.gnu.org/licenses/agpl-3.0)
+[![React: 18+](https://img.shields.io/badge/React-18.x-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Cloudflare Pages](https://img.shields.io/badge/Deploy-Cloudflare_Pages-F38020?style=for-the-badge&logo=cloudflare&logoColor=white)](https://pages.cloudflare.com/)
+[![Tailwind CSS](https://img.shields.io/badge/Styling-Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Read in Persian](https://img.shields.io/badge/مطالعه_به_فارسی-Persian_README-008080?style=for-the-badge)](#-توضیحات-کامل-فارسی-persian-documentation)
 
-[![Persian Description](https://img.shields.io/badge/Read-Persian%20Description-0A66C2?style=for-the-badge)](#persian-description)
-[![Website](https://img.shields.io/badge/Live-pimx.pages.dev-0ea5e9?style=for-the-badge)](https://pimx.pages.dev/)
+<p align="center">
+  The central nervous system and flagship visual dashboard connecting all PIMX ecosystem tools, utilities, and decentralized gateways. Features real-time cluster health monitors, responsive dark glassmorphism, instant cross-app routing, and native bilingual localization (EN / FA).
+</p>
+
+[Key Portals](#-integrated-ecosystem-nodes) •
+[Architecture](#-architecture) •
+[Quick Start](#-quick-start) •
+[توضیحات فارسی](#-توضیحات-کامل-فارسی-persian-documentation) •
+[License](#-license)
 
 </div>
 
 ---
 
-## <a id="english-description">English Description</a>
+## 🧭 Integrated Ecosystem Nodes
 
-# PIMX Portfolio 🌐💼
-
-PIMX Portfolio is a modern bilingual (EN/FA) personal portfolio website showcasing professional work, projects, skills, and resume with dark/light theme support and an interactive diagnostics/terminal UI.
-It is built with React 19, Vite 6, Tailwind CSS 4, and Motion. 🚀
-
-🌐 **Live Website:** [https://pimx.pages.dev/](https://pimx.pages.dev/)
-
-### 🧩 What This Project Does
-- Showcases professional skills, background, work experience, and educational credentials.
-- Features a project portfolio highlighting completed web apps with descriptions and live links.
-- Provides a terminal simulator widget and interactive diagnostic tool on the homepage.
-- Includes an interactive Playground section for tools and coding experiments.
-- Supports full Persian/English language switching (LTR/RTL layout switching).
-- Supports Dark/Light theme switching with user preferences saved in local storage.
-- Features a downloadable resume/CV flow.
-
-### ✨ Core Features
-- 🎨 Modern and premium dark/light UI
-- 📱 Fully responsive layout optimized for all device types
-- ⚙️ Interactive Terminal Widget & Diagnostics on the Home page
-- 🌍 Bilingual UI (FA/EN) with automatic RTL/LTR detection
-- 🌗 Dynamic dark/light theme switcher with local storage persistence
-- 📂 Interactive Projects listing with categories and detail views
-- 📄 Dedicated Resume & CV section with PDF downloads
-- 🎮 Playground page containing interactive tools and experiments
-- 🧠 Motion-powered premium transitions and hover effects
-
-### 🔐 Data & Privacy Model
-This project is built with privacy in mind:
-- No tracking cookies or external analytical trackers.
-- User choices (theme preference, language setting) are stored locally in the browser's `localStorage`.
-- High performance and privacy-first UX.
-
-### 🛠️ Tech Stack
-- **React 19**
-- **TypeScript**
-- **Vite 6**
-- **Tailwind CSS 4**
-- **Motion** (Animations)
-- **Lucide React** (Icons)
-- **Express / Node.js** (Server helper)
-
-### 🚀 Local Development
-Install dependencies:
-```bash
-npm install
-```
-
-Run dev server:
-```bash
-npm run dev
-```
-Open: [http://localhost:3000](http://localhost:3000)
-
-### ☁️ Cloudflare Pages Deployment (Important)
-To avoid raw-source/MIME deployment errors, use these exact settings in Pages:
-- **Framework preset:** `Vite`
-- **Build command:** `npm run build`
-- **Build output directory:** `dist`
-- **Node.js:** `20` recommended
-
-### 📁 Key Project Paths
-- `src/App.tsx` main app flow
-- `src/pages/Home.tsx` homepage with terminal and diagnostics
-- `src/pages/About.tsx` professional background and skills
-- `src/pages/Projects.tsx` portfolio of completed work
-- `src/pages/Resume.tsx` resume details and downloads
-- `src/pages/Playground.tsx` interactive playground experiments
-- `src/context/LanguageThemeContext.tsx` language and theme context
-- `src/lib/translations.ts` language translations config
-- `src/lib/cv_data.ts` resume CV data source
+- 📚 **PIMX Planner**: Direct deep-link integration into personal productivity and study workflows.
+- 🛡️ **PIMX Pass Infrastructure**: Real-time status indicators for proxy nodes, DNS benchmark services, and Telegram gateways.
+- 🔐 **PIMX Cryptographic Suite**: Quick launchers for PIMX_WIDE (AES-256 encryption) and PIMX_VEIL (Steganography).
+- 🎨 **Creative Media Hub**: Seamless transition into PIMX_MOJI and 3D Interactive Portfolio experiences.
+- 🌐 **Full Bilingual RTL Experience**: One-click language switching between Persian and English with responsive layout adjustments.
 
 ---
 
-## <a id="persian-description">توضیحات فارسی</a>
+## 🏗️ Architecture
 
-# پورتفولیو PIMX 🌐💼
+```
+[ Visitor / Client ] 
+         │ (Cloudflare Anycast CDN)
+         ▼
+┌──────────────────────────────────────────────┐
+│        Cloudflare Pages Edge Static Asset    │
+│  - React 18 SPA + Vite Production Bundle     │
+│  - Embedded Ecosystem Directory Registry     │
+└──────────────────────┬───────────────────────┘
+                       │
+         ┌─────────────┴─────────────┐
+         ▼                           ▼
+┌──────────────────┐       ┌──────────────────┐
+│  Live Health API │       │ Service Worker   │
+│  - Endpoint Ping │       │ - Offline Cache  │
+│  - Node Status   │       │ - Instant Nav    │
+└──────────────────┘       └──────────────────┘
+```
 
-پورتفولیو PIMX یک وبسایت پورتفولیو حرفه‌ای مدرن و دو‌زبانه (فارسی/انگلیسی) برای نمایش پروژه‌ها، سوابق کاری، مهارت‌ها و رزومه شخصی است.
-این پروژه با زیبایی بصری فوق‌العاده، انیمیشن‌های تعاملی و سرعت بالا با استفاده از React 19 و Tailwind CSS 4 طراحی شده است. 🚀
+---
 
-🌐 **لینک سایت:** [https://pimx.pages.dev/](https://pimx.pages.dev/)
+## 🚀 Quick Start
 
-### ✨ قابلیتهای اصلی
-- 🎨 طراحی مدرن، پریمیوم و مینیمال با تم روشن و تاریک
-- 🌍 پشتیبانی کامل دو‌زبانه (انگلیسی/فارسی) با چیدمان راست‌چین و چپ‌چین خودکار
-- ⚙️ ترمینال شبیه‌ساز تعاملی و ابزار عیب‌یابی در صفحه اصلی
-- 🌗 سوییچ داینامیک تم با ذخیره‌سازی محلی ترجیحات کاربر
-- 📂 گالری پروژه‌ها با فیلتر دسته‌بندی و اطلاعات دقیق
-- 📄 بخش رزومه حرفه‌ای همراه با قابلیت دانلود مستقیم نسخه PDF
-- 🎮 صفحه زمین‌بازی (Playground) برای اجرای ابزارها و تست‌های تعاملی
-- 🎭 انیمیشن‌ها و ترنزیشن‌های نرم با قدرت Framer Motion
+### 1. Installation
+```bash
+git clone https://github.com/MOHAMMADREZAABEDINPOOR/PIMX_PORTAL.git
+cd PIMX_PORTAL
 
-### 🔐 مدل حریم‌خصوصی
-این پروژه با اولویت حفظ حریم‌خصوصی توسعه یافته است:
-- فاقد هرگونه کوکی یا ترکرهای تحلیلی شخص ثالث.
-- ذخیره تنظیمات زبان و تم کاربر کاملاً به صورت محلی در مرورگر (`localStorage`).
+npm install
+```
 
-### ☁️ دیپلوی صحیح روی Cloudflare Pages
-تنظیمات پیشنهادی برای استقرار بدون نقص روی Cloudflare Pages:
-- **Framework preset:** `Vite`
-- **Build command:** `npm run build`
-- **Build output directory:** `dist`
-- **نسخه نود جی‌اس:** `20` یا بالاتر
+### 2. Development
+```bash
+npm run dev
+```
+
+### 3. Production Deployment
+```bash
+npm run build
+# Deploy to Cloudflare Pages:
+npx wrangler pages deploy dist
+```
+
+---
+
+## 🇮🇷 توضیحات کامل فارسی (Persian Documentation)
+
+### معرفی پروژه درگاه مرکزی PIMX_PORTAL
+پروژه **PIMX_PORTAL** هاب و درگاه اصلی ورود به کل پلتفرم‌های اکوسیستم PIMX است. این پرتال به کاربران امکان می‌دهد تا در یک محیط فوق‌العاده شیک، با طراحی شیشه‌ای مدرن (Glassmorphism) و به صورت کاملاً دو زبانه (فارسی و انگلیسی)، به تمامی ابزارهای برنامه‌ریزی، امنیتی، ربات‌های تلگرام و ابزارهای رمزنگاری دسترسی داشته باشند.
+
+### امکانات شاخص:
+1. **داشبورد یکپارچه اکوسیستم:**
+   * پیوند مستقیم و هدایت سریع به تمام پروژه‌های PIMX اعم از ربات‌ها، پنل‌ها و ابزارهای وب.
+2. **پایش زنده وضعیت سرورها:**
+   * نمایش وضعیت آنلاین/آفلاین بودن سرویس‌ها و درگاه‌های مختلف به صورت زنده.
+3. **طراحی لوکس نئونی و واکنش‌گرا:**
+   * سازگاری کامل با تمامی ابعاد نمایشگرها (موبایل، تبلت، مانیتورهای عریض) و پشتیبانی از تم تاریک اختصاصی.
+4. **سرعت بالا با Cloudflare Pages:**
+   * بارگذاری کمتر از یک ثانیه در سراسر جهان به کمک شبکه تحویل محتوای کلودفلر.
+
+---
+
+## 📜 License
+
+Licensed under the **GNU Affero General Public License v3.0 (AGPL-3.0)**.
 
 ---
 
 <div align="center">
-
-**Made with ❤️ by Mohammadreza Abedinpoor**
-
+  <sub>Architected by <a href="https://github.com/MOHAMMADREZAABEDINPOOR">MOHAMMADREZA ABEDINPOOR</a>. Star ⭐ this repository if you enjoy unified dashboards!</sub>
 </div>
