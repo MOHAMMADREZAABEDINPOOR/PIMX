@@ -22,7 +22,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Cloudflare Pages](https://img.shields.io/badge/Deploy-Cloudflare_Pages-F38020?style=for-the-badge&logo=cloudflare&logoColor=white)](https://pages.cloudflare.com/)
 [![Tailwind CSS](https://img.shields.io/badge/Styling-Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-[![Read in Persian](https://img.shields.io/badge/مطالعه_به_فارسی-Persian_README-008080?style=for-the-badge)](#-بخش-فوقالعاده-مفصل-و-جامع-به-زبان-فارسی-persian-documentation)
+[![Read in Persian](https://img.shields.io/badge/مطالعه_به_فارسی-Persian_README-008080?style=for-the-badge)](#persian-documentation)
 
 <p align="center">
   <b>PIMX_PORTAL</b> is the central command center and visual gateway for the PIMX technology ecosystem. Orchestrating decentralized AI tools, VPN proxy panels, DNS speed benchmarks, cryptographic suites, and an interactive engineering curriculum vitae with verified university certificates, PIMX_PORTAL unifies modern digital infrastructure in an ultra-fast dark glassmorphic interface.
@@ -36,7 +36,7 @@
 [Routing Architecture](#-routing-architecture--page-breakdown) •
 [Edge Telemetry](#-serverless-edge-telemetry-functions) •
 [Installation Guide](#-quick-start--local-development) •
-[توضیحات فارسی](#-بخش-فوقالعاده-مفصل-و-جامع-به-زبان-فارسی-persian-documentation) •
+[توضیحات فارسی](#persian-documentation) •
 [Roadmap](#-strategic-engineering-roadmap) •
 [License](#-copyleft-license--legal-attribution)
 
@@ -126,7 +126,8 @@ Open `http://localhost:5173` in your browser.
 
 ---
 
-## 🇮🇷 بخش فوق‌العاده مفصل و جامع به زبان فارسی (Persian Documentation)
+## Persian Documentation
+### 🇮🇷 مستندات فوق‌العاده مفصل، جامع و فنی به زبان فارسی
 
 ### ۱. مقدمه و رسالت درگاه مرکزی PIMX_PORTAL
 پروژه **PIMX_PORTAL** هاب ارتباطی و درگاه ورود به تمامی سامانه‌های اکوسیستم نرم‌افزاری PIMX است. این پرتال با زبان‌های **React 18** و **TypeScript** مهندسی شده و به کاربران این امکان را می‌دهد تا به صورت یکپارچه و در محیطی لوکس و مدرن با طراحی شیشه‌ای (Glassmorphism)، به ابزارهای هوش مصنوعی، پنل‌های مدیریت شبکه، سامانه‌های رمزنگاری و رزومه آنلاین دسترسی داشته باشند.
@@ -152,7 +153,7 @@ Distributed under the **GNU Affero General Public License v3.0 (AGPL-3.0)**.
 <!-- ============================================================================== -->
 <!-- ANIMATED CAPSULE FOOTER                                                        -->
 <!-- ============================================================================== -->
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=1,12,24,30&height=120&section=footer" alt="Footer" width="100%" />
+<img src="./assets/footer.svg" alt="PIMX_PORTAL 3D Footer" width="100%" />
 
 <sub>Architected by <a href="https://github.com/MOHAMMADREZAABEDINPOOR"><b>MOHAMMADREZA ABEDINPOOR</b></a>. If PIMX_PORTAL inspires your digital portfolio, consider leaving a ⭐!</sub>
 

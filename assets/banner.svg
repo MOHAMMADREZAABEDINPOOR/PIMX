@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" width="100%" height="100%">
+  <defs>
+    <linearGradient id="ptBg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#04091a" /><stop offset="50%" stop-color="#0a1838" /><stop offset="100%" stop-color="#030612" /></linearGradient>
+    <linearGradient id="ptNeon" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8"><animate attributeName="stop-color" values="#38bdf8;#6366f1;#10b981;#38bdf8" dur="7s" repeatCount="indefinite" /></stop>
+      <stop offset="50%" stop-color="#6366f1"><animate attributeName="stop-color" values="#6366f1;#ec4899;#38bdf8;#6366f1" dur="7s" repeatCount="indefinite" /></stop>
+      <stop offset="100%" stop-color="#10b981"><animate attributeName="stop-color" values="#10b981;#38bdf8;#6366f1;#10b981" dur="7s" repeatCount="indefinite" /></stop>
+    </linearGradient>
+    <linearGradient id="ptGrid" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#38bdf8" stop-opacity="0" /><stop offset="100%" stop-color="#6366f1" stop-opacity="0.35" /></linearGradient>
+    <filter id="ptGlow"><feGaussianBlur stdDeviation="5" result="b" /><feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
+  </defs>
+
+  <style>
+    @keyframes ptFloat { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
+    .floating-portal { animation: ptFloat 6s ease-in-out infinite; }
+  </style>
+
+  <rect width="1200" height="360" fill="url(#ptBg)" />
+
+  <g opacity="0.65">
+    <line x1="0" y1="260" x2="1200" y2="260" stroke="#38bdf8" stroke-opacity="0.25" stroke-width="1" />
+    <line x1="600" y1="260" x2="0" y2="360" stroke="url(#ptGrid)" stroke-width="1.5" />
+    <line x1="600" y1="260" x2="200" y2="360" stroke="url(#ptGrid)" stroke-width="1.5" />
+    <line x1="600" y1="260" x2="400" y2="360" stroke="url(#ptGrid)" stroke-width="1.5" />
+    <line x1="600" y1="260" x2="600" y2="360" stroke="url(#ptGrid)" stroke-width="1.5" />
+    <line x1="600" y1="260" x2="800" y2="360" stroke="url(#ptGrid)" stroke-width="1.5" />
+    <line x1="600" y1="260" x2="1000" y2="360" stroke="url(#ptGrid)" stroke-width="1.5" />
+    <line x1="600" y1="260" x2="1200" y2="360" stroke="url(#ptGrid)" stroke-width="1.5" />
+    <line x1="0" y1="290" x2="1200" y2="290" stroke="#38bdf8" stroke-opacity="0.2" stroke-width="1" />
+    <line x1="0" y1="330" x2="1200" y2="330" stroke="#6366f1" stroke-opacity="0.3" stroke-width="1.5" />
+  </g>
+
+  <circle cx="200" cy="110" r="140" fill="#38bdf8" opacity="0.08" filter="url(#ptGlow)" />
+  <circle cx="960" cy="170" r="160" fill="#6366f1" opacity="0.12" filter="url(#ptGlow)" />
+
+  <!-- 3D Holographic Gateway Portal Ring -->
+  <g transform="translate(940, 180)" class="floating-portal">
+    <circle cx="0" cy="0" r="105" fill="none" stroke="url(#ptNeon)" stroke-width="2.5" stroke-dasharray="8 6" opacity="0.75">
+      <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="24s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="0" cy="0" r="75" fill="none" stroke="#10b981" stroke-width="1.5" stroke-dasharray="4 8" opacity="0.5">
+      <animateTransform attributeName="transform" type="rotate" from="360" to="0" dur="18s" repeatCount="indefinite" />
+    </circle>
+    <!-- Center Gateway Light Core -->
+    <circle cx="0" cy="0" r="16" fill="#38bdf8" filter="url(#ptGlow)">
+      <animate attributeName="r" values="14;20;14" dur="3s" repeatCount="indefinite" />
+      <animate attributeName="fill" values="#38bdf8;#6366f1;#10b981;#38bdf8" dur="7s" repeatCount="indefinite" />
+    </circle>
+
+    <!-- Floating Badges -->
+    <g transform="translate(-120, -50)">
+      <rect x="0" y="0" width="85" height="22" rx="6" fill="#08142c" stroke="#38bdf8" stroke-width="1" />
+      <text x="42" y="15" font-family="'Fira Code', monospace" font-size="10" font-weight="bold" fill="#38bdf8" text-anchor="middle">GATEWAY HUB</text>
+    </g>
+    <g transform="translate(65, 30)">
+      <rect x="0" y="0" width="85" height="22" rx="6" fill="#08142c" stroke="#10b981" stroke-width="1" />
+      <text x="42" y="15" font-family="'Fira Code', monospace" font-size="10" font-weight="bold" fill="#34d399" text-anchor="middle">RICE UNIV PDF</text>
+    </g>
+    <g transform="translate(-40, 70)">
+      <rect x="0" y="0" width="85" height="22" rx="6" fill="#08142c" stroke="#6366f1" stroke-width="1" />
+      <text x="42" y="15" font-family="'Fira Code', monospace" font-size="10" font-weight="bold" fill="#a5b4fc" text-anchor="middle">PIMX ECOSYSTEM</text>
+    </g>
+  </g>
+
+  <!-- Left Typography -->
+  <g transform="translate(80, 140)">
+    <g transform="translate(0, -35)">
+      <rect x="0" y="-14" width="280" height="24" rx="12" fill="#38bdf8" fill-opacity="0.12" stroke="#38bdf8" stroke-width="1" />
+      <circle cx="12" cy="-2" r="4" fill="#38bdf8" />
+      <text x="26" y="2" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="800" fill="#38bdf8" letter-spacing="2">ECOSYSTEM GATEWAY // CREDENTIALS</text>
+    </g>
+
+    <text x="0" y="32" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, 'Montserrat', sans-serif" font-size="52" font-weight="900" fill="url(#ptNeon)" filter="url(#ptGlow)" letter-spacing="3">
+      PIMX_PORTAL
+    </text>
+
+    <text x="0" y="68" font-family="'Fira Code', monospace" font-size="16" font-weight="600" fill="#e2e8f0" letter-spacing="1">
+      ⚡ Central Ecosystem Gateway, Decentralized Tools &amp; Rice Univ Credentials
+    </text>
+
+    <g transform="translate(0, 92)">
+      <rect x="0" y="0" width="165" height="26" rx="6" fill="#08142c" stroke="#38bdf8" stroke-width="1" />
+      <text x="82" y="17" font-family="'Fira Code', monospace" font-size="11" font-weight="bold" fill="#38bdf8" text-anchor="middle">🧭 Central Gateway</text>
+
+      <rect x="175" y="0" width="160" height="26" rx="6" fill="#08142c" stroke="#6366f1" stroke-width="1" />
+      <text x="255" y="17" font-family="'Fira Code', monospace" font-size="11" font-weight="bold" fill="#a5b4fc" text-anchor="middle">🎓 Rice Univ Verified</text>
+
+      <rect x="345" y="0" width="150" height="26" rx="6" fill="#08142c" stroke="#10b981" stroke-width="1" />
+      <text x="420" y="17" font-family="'Fira Code', monospace" font-size="11" font-weight="bold" fill="#34d399" text-anchor="middle">⚡ React 18 + Vite</text>
+
+      <rect x="505" y="0" width="150" height="26" rx="6" fill="#08142c" stroke="#ec4899" stroke-width="1" />
+      <text x="580" y="17" font-family="'Fira Code', monospace" font-size="11" font-weight="bold" fill="#f472b6" text-anchor="middle">🌐 Cloudflare Pages</text>
+    </g>
+  </g>
+
+  <line x1="0" y1="358" x2="1200" y2="358" stroke="url(#ptNeon)" stroke-width="3" filter="url(#ptGlow)" />
+</svg>
