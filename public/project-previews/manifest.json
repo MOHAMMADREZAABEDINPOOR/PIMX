@@ -1,0 +1,143 @@
+{
+  "capturedAt": "2026-10-08T13:08:53.087Z",
+  "projects": [
+    {
+      "id": "github-pimx-agent",
+      "url": "https://pimxagent.pages.dev",
+      "status": 200,
+      "title": "PIMX Agent — from a question to something real",
+      "captured": true
+    },
+    {
+      "id": "github-pimx-morph",
+      "url": "https://pimxmorph.pages.dev",
+      "status": 200,
+      "title": "Smart Single-Action File-Type Classifier & Converter Client Suite | PIMXMORPH",
+      "captured": true
+    },
+    {
+      "id": "pimx-veil",
+      "url": "https://pimxveil.pages.dev",
+      "status": 200,
+      "title": "PIMXVEIL - Hybrid Steganography & Binary Encryption Suite",
+      "captured": true
+    },
+    {
+      "id": "pimx-node",
+      "url": "https://pimxnode.pages.dev",
+      "status": 200,
+      "title": "PIMXNODE | Fast, Secure & Direct P2P File Transfer (PIMX)",
+      "captured": true
+    },
+    {
+      "id": "pimx-moji",
+      "url": "https://pimxmoji.pages.dev",
+      "status": 200,
+      "title": "PIMXMOJI | AI Text Art Generator (Mosaic, ASCII, Emoji)",
+      "captured": true
+    },
+    {
+      "id": "github-pimxsats",
+      "url": "https://pimxsats.pages.dev",
+      "status": 200,
+      "title": "PIMXSATS — Satellite & Solar System Tracker",
+      "captured": true
+    },
+    {
+      "id": "pimx-wide",
+      "url": "https://pimxwide.pages.dev",
+      "status": 200,
+      "title": "PIMX_WIDE | امنیت بدون مرز - پلتفرم رمزنگاری داده‌ها",
+      "captured": true
+    },
+    {
+      "id": "github-pimx-eltex",
+      "url": "https://pimxeltex.pages.dev",
+      "status": 200,
+      "title": "AI Videos, Prompts & Website Projects",
+      "captured": true
+    },
+    {
+      "id": "github-pimx-weather",
+      "url": "https://pimx-weather.pages.dev",
+      "status": 200,
+      "title": "PIMX_WEATHER",
+      "captured": true
+    },
+    {
+      "id": "pimx-pass",
+      "url": "https://pimxpassdns.pages.dev",
+      "status": 200,
+      "title": "PIMXPASS | Anti-Block DNS Scanner",
+      "captured": true
+    },
+    {
+      "id": "github-pimx-portal",
+      "url": "https://pimxportal.pages.dev",
+      "status": 200,
+      "title": "PIMXPORTAL — PIMX Ecosystem Navigator",
+      "captured": true
+    },
+    {
+      "id": "github-pimx-fail",
+      "url": "https://pimxfail.pages.dev",
+      "status": 200,
+      "title": "PIMXFAIL - Startup Failure Database",
+      "captured": true
+    },
+    {
+      "id": "github-pimx",
+      "url": "https://pimx.pages.dev",
+      "status": 200,
+      "title": "Mohammadreza Portfolio",
+      "captured": true
+    },
+    {
+      "id": "github-import-export-company",
+      "url": "https://amirhosseini.pages.dev",
+      "status": 200,
+      "title": "شرکت صادرات پیشرو - خدمات صادرات و واردات بین‌المللی",
+      "captured": true
+    },
+    {
+      "id": "soheil-portal",
+      "url": "https://soheileghtesadiportal.pages.dev/",
+      "status": 200,
+      "title": "Soheil Eghtesadi — Links",
+      "captured": true
+    }
+  ],
+  "vectorStudyInsteadOfCapture": [],
+  "ownerSuppliedScreenshots": [
+    "github-pimx-fail",
+    "github-pimxsats",
+    "pimx-wide",
+    "github-pimx-weather",
+    "github-pimx-swap",
+    "github-shop",
+    "github-shop2",
+    "github-shop3"
+  ],
+  "locallyCapturedScreenshots": [
+    {
+      "id": "github-pimx-agent-bot",
+      "source": "Updated local PIMX_AGENT_BOT Mini App, English UI, in-memory preview fixtures",
+      "viewport": { "width": 1919, "height": 943 },
+      "themes": {
+        "dark": "/project-previews/github-pimx-agent-bot.png",
+        "light": "/project-previews/github-pimx-agent-bot-light.png"
+      },
+      "capturedAt": "2026-10-09"
+    },
+    {
+      "id": "github-shop3",
+      "source": "Local shop3 PHP storefront, English homepage",
+      "viewport": {
+        "width": 1919,
+        "height": 947
+      },
+      "path": "/project-previews/github-shop3.jpg",
+      "capturedAt": "2026-10-08"
+    }
+  ]
+}

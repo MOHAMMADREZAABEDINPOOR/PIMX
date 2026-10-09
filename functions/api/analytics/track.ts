@@ -1,3 +1,6 @@
+import type { KVNamespace, PagesFunction } from '@cloudflare/workers-types';
+declare const Response: typeof import('@cloudflare/workers-types').Response;
+
 // Cloudflare Pages Function: POST /api/analytics/track
 // Records a real visit event into KV for persistent analytics.
 

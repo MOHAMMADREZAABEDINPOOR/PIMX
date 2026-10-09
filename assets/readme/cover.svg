@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="420" viewBox="0 0 1440 420" role="img" aria-labelledby="title desc">
+  <title id="title">PIMX — Mohammadreza Abedinpoor</title>
+  <desc id="desc">A personal portfolio for Python, web development and AI projects, based in Rasht, Iran.</desc>
+  <rect width="1440" height="420" rx="12" fill="#111110"/>
+  <path d="M64 71H1376M64 349H1376" stroke="#34352e"/>
+  <circle cx="72" cy="40" r="4" fill="#c5d29a"/>
+  <g fill="#a4a69b" font-family="monospace" font-size="12" letter-spacing="2">
+    <text x="90" y="44">MOHAMMADREZA ABEDINPOOR</text>
+    <text x="1376" y="44" text-anchor="end">RASHT, IRAN / SINCE 2021</text>
+    <text x="64" y="387">PERSONAL PORTFOLIO</text>
+    <text x="1376" y="387" text-anchor="end">PYTHON / DJANGO / REACT / TYPESCRIPT</text>
+  </g>
+  <text x="57" y="264" fill="#efeee7" font-family="Arial,sans-serif" font-size="180" font-style="italic" font-weight="900" letter-spacing="-13">PIMX<tspan fill="#c5d29a">.</tspan></text>
+  <g fill="#efeee7">
+    <text x="865" y="179" font-family="Arial,sans-serif" font-size="42" letter-spacing="-1">Python. Web.</text>
+    <text x="865" y="240" font-family="Georgia,serif" font-style="italic" font-size="57">And AI.</text>
+  </g>
+  <path d="M1274 139h55v55m0-55-76 76" fill="none" stroke="#c5d29a" stroke-width="2"/>
+</svg>

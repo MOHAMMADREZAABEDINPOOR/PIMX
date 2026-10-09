@@ -1,0 +1,60 @@
+{
+  "checks": [
+    {
+      "check": "English initial load excludes all nine translation bundles",
+      "passed": true
+    },
+    {
+      "check": "CV and site languages load independently; keyboard navigation preserves scroll",
+      "passed": true
+    },
+    {
+      "check": "RTL and CJK language switches retain selected CV; no online translation requests",
+      "passed": true
+    },
+    {
+      "check": "Mobile project exhibition interpolates height and ends at actual content height",
+      "passed": true,
+      "transitions": [
+        {
+          "before": 1072.859375,
+          "after": 1033.859375,
+          "content": 1033.859375,
+          "range": 39,
+          "largestStep": 7.75
+        },
+        {
+          "before": 1033.859375,
+          "after": 1072.859375,
+          "content": 1072.859375,
+          "range": 39,
+          "largestStep": 6.875
+        },
+        {
+          "before": 1072.859375,
+          "after": 1094.453125,
+          "content": 1094.453125,
+          "range": 21.59375,
+          "largestStep": 3.53125
+        }
+      ]
+    },
+    {
+      "check": "About headline uses its discovery text effect",
+      "passed": true
+    },
+    {
+      "check": "Home cards move with scrolling; offscreen project animations pause",
+      "passed": true
+    },
+    {
+      "check": "Home expertise diagram responds to selection and pauses offscreen",
+      "passed": true
+    },
+    {
+      "check": "Reduced motion keeps text and content visible without decorative animations",
+      "passed": true
+    }
+  ],
+  "errors": []
+}

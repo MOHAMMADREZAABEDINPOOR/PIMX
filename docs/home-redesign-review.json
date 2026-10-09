@@ -1,0 +1,42 @@
+{
+  "checks": [
+    {
+      "check": "Same portal artwork is visible before the application JavaScript arrives",
+      "passed": true
+    },
+    {
+      "check": "Startup portal hands off to React without duplicate overlays and exits",
+      "passed": true
+    },
+    {
+      "check": "Refresh replays the entry portal",
+      "passed": true
+    },
+    {
+      "check": "Direct entry to a cold route retains its portal until the route is ready",
+      "passed": true
+    },
+    {
+      "check": "Existing navigation portal still plays with the matching page identity",
+      "passed": true
+    },
+    {
+      "check": "All three hero exhibits switch artwork, links and selection state",
+      "passed": true
+    },
+    {
+      "check": "Hover opens layered depth and ticket; pointer exit resets; keyboard focus reveals the action",
+      "passed": true,
+      "active": "true",
+      "tilt": "matrix3d(0.99863, 0.00194427, -0.0522998, 0, 0, 0.99931, 0.0371498, 0, 0.052336, -0.0370989, 0.99794, 0, 0, 0, 0, 1)",
+      "scale": "1.075",
+      "ticket": "1",
+      "depth": "-7.2px -19.2097px"
+    },
+    {
+      "check": "300px layout and reduced motion retain readable content and static surfaces",
+      "passed": true
+    }
+  ],
+  "errors": []
+}

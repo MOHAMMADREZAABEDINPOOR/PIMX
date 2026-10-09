@@ -1,0 +1,26 @@
+[
+  {
+    "frames": 82,
+    "p95": 66.7,
+    "slowFrames": 65,
+    "longTasks": 5,
+    "longTaskMilliseconds": 259,
+    "cards": 15
+  },
+  {
+    "frames": 83,
+    "p95": 66.7,
+    "slowFrames": 57,
+    "longTasks": 2,
+    "longTaskMilliseconds": 103,
+    "cards": 15
+  },
+  {
+    "frames": 84,
+    "p95": 66.7,
+    "slowFrames": 52,
+    "longTasks": 3,
+    "longTaskMilliseconds": 165,
+    "cards": 15
+  }
+]

@@ -1,160 +1,196 @@
 <div align="center">
 
-<!-- ============================================================================== -->
-<!-- DYNAMIC ANIMATED CAPSULE HEADER                                                -->
-<!-- ============================================================================== -->
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=1,12,24,30&height=220&section=header&text=PIMX_PORTAL&fontSize=42&fontAlignY=35&desc=%E2%9A%A1%20Bilingual%20Visual%20Gateway%20%26%20Central%20Ecosystem%20Command%20Center&descFontSize=16&descAlignY=62" alt="PIMX_PORTAL Banner" width="100%" />
+<img src="assets/readme/hero.gif" width="1200" height="540" alt="PIMX Portfolio: an original animated 3D project exhibition, browser, globe and CV" />
 
-<!-- ============================================================================== -->
-<!-- ANIMATED TYPING SVG TELEMETRY                                                 -->
-<!-- ============================================================================== -->
-<a href="https://github.com/MOHAMMADREZAABEDINPOOR/PIMX_PORTAL">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&duration=2800&pause=1000&color=00D2FF&center=true&vCenter=true&width=780&lines=Central+Visual+Gateway+Connecting+the+Entire+PIMX+Ecosystem;Interactive+Engineering+Resume+with+Embedded+PDF+Certificates;Real-Time+Cluster+Node+Health+Monitoring+%26+Edge+Telemetry;Dark+Glassmorphism+Aesthetics+with+Tailwind+CSS+%26+Lucide+Icons;Serverless+Cloudflare+Pages+Functions+Deployment+(Sub-15ms);Bilingual+Architecture+Supporting+Persian+(RTL)+%26+English" alt="Typing SVG" />
-</a>
+**[🌐 English](README.md) · [🇮🇷 فارسی](README.fa.md)**
 
-<br/>
+**[Open the portfolio ↗](https://pimx.pages.dev/) · [فارسی](README.fa.md) · [GitHub profile](https://github.com/MOHAMMADREZAABEDINPOOR)**
 
-<!-- ============================================================================== -->
-<!-- BADGES MATRIX                                                                  -->
-<!-- ============================================================================== -->
-[![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg?style=for-the-badge&logo=gnu)](https://www.gnu.org/licenses/agpl-3.0)
-[![React: 18+](https://img.shields.io/badge/React-18.x-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Cloudflare Pages](https://img.shields.io/badge/Deploy-Cloudflare_Pages-F38020?style=for-the-badge&logo=cloudflare&logoColor=white)](https://pages.cloudflare.com/)
-[![Tailwind CSS](https://img.shields.io/badge/Styling-Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-[![Read in Persian](https://img.shields.io/badge/مطالعه_به_فارسی-Persian_README-008080?style=for-the-badge)](#persian-documentation)
-
-<p align="center">
-  <b>PIMX_PORTAL</b> is the central command center and visual gateway for the PIMX technology ecosystem. Orchestrating decentralized AI tools, VPN proxy panels, DNS speed benchmarks, cryptographic suites, and an interactive engineering curriculum vitae with verified university certificates, PIMX_PORTAL unifies modern digital infrastructure in an ultra-fast dark glassmorphic interface.
-</p>
-
-<!-- ============================================================================== -->
-<!-- QUICK NAVIGATION ANCHORS                                                       -->
-<!-- ============================================================================== -->
-[Project Overview](#-project-overview--vision) •
-[Directory Anatomy](#-exhaustive-directory--file-anatomy) •
-[Routing Architecture](#-routing-architecture--page-breakdown) •
-[Edge Telemetry](#-serverless-edge-telemetry-functions) •
-[Installation Guide](#-quick-start--local-development) •
-[توضیحات فارسی](#persian-documentation) •
-[Roadmap](#-strategic-engineering-roadmap) •
-[License](#-copyleft-license--legal-attribution)
+![React 19](https://img.shields.io/badge/React-19-ADC4D0?style=flat-square&labelColor=111110)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.8-ADC4D0?style=flat-square&labelColor=111110)
+![Languages](https://img.shields.io/badge/Languages-10-C5D29A?style=flat-square&labelColor=111110)
+![Responsive](https://img.shields.io/badge/Responsive-from%20300px-C5D29A?style=flat-square&labelColor=111110)
 
 </div>
 
----
+# 🌌 PIMX PORTFOLIO · Personal project exhibition
 
-## ⚡ Project Overview & Vision
+I’m Mohammadreza Abedinpoor, a developer based in Rasht, Iran. I’ve been programming since 2021, working with Python, Django, web interfaces, Telegram bots and AI tools. This repository is the portfolio that brings those projects, source links, certificates and my CV together.
 
-> *"A scattered collection of repositories is just code; an interconnected **Ecosystem Portal** turns autonomous software tools into a unified technological movement."*
+The homepage shows six selected projects. The project directory contains the wider catalogue, with live destinations, technical details and source attribution. Product previews show the actual interfaces, while the site’s copy describes what you can do with each tool.
 
-### Why PIMX_PORTAL Exists
-As the PIMX open-source ecosystem expanded into artificial intelligence, censorship evasion, steganography, and WebGL graphics, users required a unified command center:
-1. **Centralized Navigation**: Instant access to all live web apps, Telegram bots, and documentation hubs.
-2. **Academic Verification**: Direct embedded inspection of verified university certifications in Computer Science, Python Algorithms, and Modern Web Architectures.
-3. **Decentralized Edge Performance**: Hosted on Cloudflare Pages Anycast CDN for global sub-15ms load times.
+<!-- pimx-live-site:start -->
+**Live website: [pimx.pages.dev](https://pimx.pages.dev/)**
+<!-- pimx-live-site:end -->
 
----
+[Preview](#preview) · [Features](#features) · [Run locally](#run-locally) · [Deploy](#deploy) · [Customize](#customize) · [Checks](#checks)
 
-## 📂 Exhaustive Directory & File Anatomy
+## 🎨 A project exhibition with its own identity
 
-```
-d:/code/pimxportfolio/
-│
-├── index.html                       # HTML5 entrypoint with pre-warmed Google Fonts & OpenGraph meta
-├── metadata.json                    # Application metadata, version descriptors & build telemetry signatures
-├── package.json                     # Node.js dependencies (React 18, Lucide React, Tailwind, Vite)
-├── README.md                        # Master comprehensive bilingual documentation
-│
-├── src/                             # Main React Application
-│   ├── App.tsx                      # Root component, router orchestrator, page transitions & theme state
-│   ├── main.tsx                     # React 18 createRoot mounting lifecycle
-│   ├── index.css                    # Tailwind directives, frosted glassmorphism & neon glow design tokens
-│   ├── types.ts                     # TypeScript interfaces for projects, certificates & telemetry
-│   │
-│   ├── context/
-│   │   └── LanguageThemeContext.tsx # Dual state manager for EN/FA locale and Dark/Light theme
-│   │
-│   ├── components/
-│   │   ├── Navbar.tsx               # Sticky glassmorphic navbar with animated mobile drawer
-│   │   ├── Footer.tsx               # Ecosystem links, copyright & social matrix
-│   │   └── Loader.tsx               # High-contrast pre-loader animation
-│   │
-│   ├── pages/
-│   │   ├── Home.tsx                 # Hero section, flagship highlights & quick launcher cards
-│   │   ├── About.tsx                # Engineering philosophy, bio & architectural methodology
-│   │   ├── Projects.tsx             # Interactive filterable grid of all PIMX repositories
-│   │   ├── Resume.tsx               # Interactive CV with embedded PDF certificates viewer
-│   │   ├── Playground.tsx           # Interactive WebGL & micro-tool test sandbox
-│   │   ├── Admin.tsx                # Token-secured dashboard viewing Cloudflare visitor stats
-│   │   └── Contact.tsx              # Encrypted contact form & PGP key fingerprint
-│   │
-│   └── lib/
-│       ├── translations.ts          # Core dictionary for global navigation strings
-│       ├── home_translations.ts     # Specialized hero and feature copy (EN / FA)
-│       ├── about_translations.ts    # Extended biographical and mission statement strings
-│       ├── project_translations.ts  # Granular project descriptions and tags
-│       ├── cv_data.ts               # Structured academic and professional experience data
-│       └── analytics.ts             # Client-side beacon dispatcher logging to edge functions
-│
-├── functions/                       # Cloudflare Pages Serverless Edge Functions
-│   └── api/
-│       └── analytics/
-│           ├── track.ts             # Edge worker logging visitor IP country & device type
-│           └── stats.ts             # Admin endpoint aggregating hourly and daily traffic
-│
-└── public/                          # Static assets & academic certificates
-    ├── cv.pdf                       # Official engineering resume
-    ├── HTML,CSS,andJavascriptforWebDevelopers.pdf
-    ├── IntroductiontoPythonProgramming.pdf
-    ├── AnIntroductiontoInteractiveProgramminginPythonPart1.pdf
-    └── og-image.svg                 # OpenGraph social share card
-```
+The portfolio brings real product captures, dedicated Three.js sculptures, source attribution and a multilingual personal story into one place. The original README animation is rendered from a browser, floating project cards, a globe and a CV; its static alternative is available [here](assets/readme/hero.png).
 
----
+| Journey | Experience |
+|:---|:---|
+| 🪐 Explore | Select a featured project and inspect its actual product preview |
+| 🔎 Discover | Search and filter the larger catalogue before opening a project detail |
+| 🌐 Read | Switch among ten interface languages with RTL support |
+| 📄 Learn more | Browse the CV, original credentials and personal background |
+| 🛠️ Build your own | Edit the local catalogue, translations, visual profiles and page copy |
 
-## 🚀 Quick Start & Local Development
+## Preview
+
+<img src="assets/readme/portfolio-home.png" width="1200" alt="The redesigned PIMX homepage: personal introduction and selectable project preview" />
+
+<details>
+<summary><strong>Project cards and Persian mobile layout</strong></summary>
+
+<br />
+<img src="assets/readme/portfolio-projects.png" width="1200" alt="Selected PIMX Agent and PIMX Morph projects, with descriptions and real product previews" />
+
+<br />
+<img src="assets/readme/portfolio-mobile-fa.png" width="340" alt="Persian homepage on a 390-pixel phone viewport" />
+
+</details>
+
+## Features
+
+| Area | What’s included |
+| --- | --- |
+| Personal homepage | Six selected projects, a three-project hero selector, skills and a short introduction |
+| Project directory | Search, language/category filters, live previews and detailed project dialogs |
+| Motion | Pointer-driven card depth, hover actions, About text effects and measured project-height transitions |
+| Page entry | The same visual portal on first entry, refresh and navigation; a cold route stays covered until ready |
+| Languages | English, Persian, Arabic, German, French, Italian, Chinese, Russian, Greek and Latin |
+| Reading & navigation | RTL layouts, keyboard-operated language menus, dark/light themes and reduced-motion support |
+| CV & learning | Independent CV language selection, online/downloadable CV and available original certificate PDFs |
+| Performance | Lazy route/locale bundles, one scroll scheduler, and offscreen animation pausing |
+
+### The catalogue
+
+The checked-in snapshot contains **69 project records**, including **58 GitHub repositories**, **15 live website destinations**, and **one active Telegram bot destination**. These are catalogue records, not applications embedded in this repository. Forks, legacy portfolio records and standalone source repositories keep their own attribution and labels.
+
+Examples include [PIMX Agent](https://pimxagent.pages.dev/), [PIMX Morph](https://pimxmorph.pages.dev/), satellite exploration, character art and peer-to-peer file transfer. The directory contains the rest. See the [inventory notes](docs/GITHUB_PROJECTS.md).
+
+### Pages
+
+| Route | Content |
+| --- | --- |
+| `/` | Introduction and selected work |
+| `/project` | Project exhibition and searchable catalogue |
+| `/about` | Background, skills and education |
+| `/playground` | Certificates and learning records |
+| `/resume` | CV, language selection and PDF |
+| `/contact` | Contact details and email composition |
+
+## Run locally
+
+Use **Node.js 22.12 or newer** and npm. The lockfile is committed.
 
 ```bash
-git clone https://github.com/MOHAMMADREZAABEDINPOOR/PIMX_PORTAL.git
-cd PIMX_PORTAL
-
-npm install
+git clone https://github.com/MOHAMMADREZAABEDINPOOR/pimxportfolio.git
+cd pimxportfolio
+npm ci
 npm run dev
 ```
-Open `http://localhost:5173` in your browser.
 
----
+Open **http://localhost:3000**. A different port can be set with `PORT`.
 
-## Persian Documentation
-### 🇮🇷 مستندات فوق‌العاده مفصل، جامع و فنی به زبان فارسی
+### Commands
 
-### ۱. مقدمه و رسالت درگاه مرکزی PIMX_PORTAL
-پروژه **PIMX_PORTAL** هاب ارتباطی و درگاه ورود به تمامی سامانه‌های اکوسیستم نرم‌افزاری PIMX است. این پرتال با زبان‌های **React 18** و **TypeScript** مهندسی شده و به کاربران این امکان را می‌دهد تا به صورت یکپارچه و در محیطی لوکس و مدرن با طراحی شیشه‌ای (Glassmorphism)، به ابزارهای هوش مصنوعی، پنل‌های مدیریت شبکه، سامانه‌های رمزنگاری و رزومه آنلاین دسترسی داشته باشند.
+| Command | Purpose |
+| --- | --- |
+| `npm run dev` | Express server with Vite middleware and development updates |
+| `npm run lint` | TypeScript checks (`tsc --noEmit`) |
+| `npm run build` | Vite frontend and bundled Node server in `dist/` |
+| `npm start` | Run the built server; set `NODE_ENV=production` for production mode |
 
----
+### Configuration
 
-### ۲. کالبدشکافی ساختار فایل‌ها و بخش‌های پروژه
-- **`src/pages/Home.tsx`**: ویترین اصلی؛ شامل معرفی اکوسیستم، نمایش زنده وضعیت سلامت سرورها و دکمه‌های پرتاب سریع به پروژه‌های مختلف.
-- **`src/pages/Projects.tsx`**: فهرست فیلترپذیر تمامی پروژه‌ها در ۴ حوزه اصلی (هوش مصنوعی، ابزارهای شبکه، ربات‌های تلگرام و گرافیک سه‌بعدی).
-- **`src/pages/Resume.tsx`**: رزومه تعاملی مهندسی به همراه لینک دانلود و پیش‌نمایش مدارک بین‌المللی برنامه‌نویسی پایتون و توسعه وب از دانشگاه رایس و کورسرا.
-- **`functions/api/analytics/`**: سرویس بدون سرور کلودفلر برای ثبت ایمن و ناشناس ترافیک ورودی بدون استفاده از کوکی‌های نقض‌کننده حریم خصوصی.
+Copy `.env.example` to `.env` if you need local overrides.
 
----
+| Setting | Purpose |
+| --- | --- |
+| `PORT` | Local/Node server port; defaults to `3000` |
+| `APP_URL` | Public URL documented in the environment example |
+| `PIMX_VISITS` | Optional Cloudflare KV binding for Pages analytics functions |
 
-## 📜 Copyleft License & Legal Attribution
+The portfolio does not require an external AI API key. The Node prompt endpoint uses a local structured template. Contact composition opens the visitor’s email client through `mailto:`; it does not send email from the server.
 
-Distributed under the **GNU Affero General Public License v3.0 (AGPL-3.0)**.
+## Deploy
 
----
+### Cloudflare Pages
 
-<div align="center">
+This project includes a [Pages configuration](wrangler.toml) and [Pages Functions](functions/).
 
-<!-- ============================================================================== -->
-<!-- ANIMATED CAPSULE FOOTER                                                        -->
-<!-- ============================================================================== -->
-<img src="./assets/footer.svg" alt="PIMX_PORTAL 3D Footer" width="100%" />
+1. Connect this repository to a Pages project.
+2. Set the build command to `npm run build` and the output directory to `dist`.
+3. Use a supported Node version for the build.
+4. To use server-stored analytics, attach a KV namespace under the binding name `PIMX_VISITS`. The namespace ID in `wrangler.toml` belongs to this deployment; change it for a different account.
 
-<sub>Architected by <a href="https://github.com/MOHAMMADREZAABEDINPOOR"><b>MOHAMMADREZA ABEDINPOOR</b></a>. If PIMX_PORTAL inspires your digital portfolio, consider leaving a ⭐!</sub>
+A repository-connected Pages project can deploy new commits automatically when that integration is enabled.
 
-</div>
+### Node hosting
+
+```bash
+npm ci
+npm run build
+NODE_ENV=production npm start
+```
+
+PowerShell:
+
+```powershell
+npm ci
+npm run build
+$env:NODE_ENV = 'production'
+npm start
+```
+
+The local Express server does not emulate Cloudflare Pages Functions. The local analytics helper includes estimated/demo data; use the configured Pages/KV functions for server-stored visitor records.
+
+## Customize
+
+| Path | What to edit |
+| --- | --- |
+| [`src/lib/human_copy.ts`](src/lib/human_copy.ts) | Personal introduction and footer copy in ten languages |
+| [`src/lib/portfolio_home_copy.ts`](src/lib/portfolio_home_copy.ts) | Remaining homepage labels and service copy |
+| [`src/lib/project_notes.ts`](src/lib/project_notes.ts) | Plain-language descriptions of selected tools |
+| [`src/lib/project_translations.ts`](src/lib/project_translations.ts) | Combined project catalogue and translated records |
+| [`src/lib/site_locales/`](src/lib/site_locales/) | Locally bundled interface translations |
+| [`src/lib/site_text_review.ts`](src/lib/site_text_review.ts) | Reviewed wording and product-name overrides |
+| [`src/lib/cv_data.ts`](src/lib/cv_data.ts) | CV, contact details and credential data |
+| [`src/components/`](src/components/) | Shared interface, previews and motion components |
+| [`src/styles/human.css`](src/styles/human.css) | Quieter palette, typography and page framing |
+| [`public/`](public/) | Project captures, fonts, PDFs, favicon and search metadata |
+| [`functions/api/analytics/`](functions/api/analytics/) | Cloudflare tracking and statistics endpoints |
+
+Keep product names and source attribution intact when editing the catalogue. Linked projects are separate applications with their own deployments.
+
+## Checks
+
+The current redesign was reviewed in Chromium. Saved reports cover:
+
+- **60 page/language combinations at 300px**, without horizontal overflow or runtime errors.
+- **40 homepage layouts at 390, 768, 1440 and 2560px**, across all ten languages.
+- **54 localized pages**, with no untranslated expected interface phrases.
+- Initial loading before JavaScript arrives, refresh, slow route loading, navigation, hero selection, pointer exit, keyboard focus and reduced motion.
+
+These are recorded browser checks, rather than a guarantee for every device. See [validation notes](docs/VALIDATION.md).
+
+To rerun the browser checks, install Python and Playwright, start a production preview, and point the scripts at it:
+
+```bash
+python -m pip install playwright
+python -m playwright install chromium
+PORTFOLIO_TEST_URL=http://localhost:3000 python docs/verify-home-redesign.py
+PORTFOLIO_TEST_URL=http://localhost:3000 python docs/check-localization.py
+PORTFOLIO_TEST_URL=http://localhost:3000 TEST_LANGUAGES=en,fa,ar,de,fr,it,zh,ru,el,la TEST_WIDTHS=300 python docs/check-responsive.py
+```
+
+In PowerShell, set the corresponding environment variables using `$env:NAME = 'value'` before running the script. Browser review output is generated locally and is excluded from Git.
+
+## About the repository
+
+Built with **React 19**, **TypeScript**, **Vite**, **Motion**, **Three.js**, **Tailwind CSS**, **Lucide** and **Express**. The repository currently has no declared license file.
+
+**[Mohammadreza Abedinpoor](https://github.com/MOHAMMADREZAABEDINPOOR) · [Portfolio](https://pimx.pages.dev/) · [فارسی](README.fa.md)**

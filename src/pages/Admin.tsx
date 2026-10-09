@@ -1,17 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { trackActivity, getAnalytics, TIME_RANGE_OPTS, MetricDataPoint } from '../lib/analytics';
-import { 
-  Lock, 
-  User, 
-  TrendingUp, 
-  Monitor, 
-  Smartphone, 
-  Tablet, 
-  Globe, 
-  Clock, 
-  LogOut, 
-  RefreshCw, 
-  ChevronDown, 
+import {
+  Lock,
+  User,
+  TrendingUp,
+  Monitor,
+  Smartphone,
+  Tablet,
+  Globe,
+  Clock,
+  LogOut,
+  RefreshCw,
+  ChevronDown,
   ShieldAlert,
   ArrowUpRight,
   MapPin
@@ -20,13 +20,13 @@ import { useLanguageTheme } from '../context/LanguageThemeContext';
 
 export default function Admin() {
   const { theme } = useLanguageTheme();
-  
+
   // Authentication states
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loginError, setLoginError] = useState('');
-  
+
   // Dashboard states
   const [timeRange, setTimeRange] = useState('1hour');
   const [analyticsData, setAnalyticsData] = useState(() => getAnalytics('1hour'));
@@ -35,7 +35,7 @@ export default function Admin() {
     tests: null,
     dns: null
   });
-  
+
   // Check if already authenticated on mount
   useEffect(() => {
     const isAuth = sessionStorage.getItem('pimx_admin_authenticated') === 'true';
@@ -82,7 +82,7 @@ export default function Admin() {
         {/* Abstract futuristic meshes */}
         <div className="absolute top-1/4 left-1/4 h-96 w-96 rounded-full bg-cyan-500/10 filter blur-[80px]" />
         <div className="absolute bottom-1/4 right-1/4 h-96 w-96 rounded-full bg-rose-500/10 filter blur-[80px]" />
-        
+
         <div className="w-full max-w-md bg-slate-900/80 backdrop-blur-md border border-slate-800 p-8 rounded-2xl shadow-2xl relative z-10 transition-all duration-300">
           <div className="flex flex-col items-center mb-8">
             <div className="h-14 w-14 bg-gradient-to-tr from-cyan-500 to-teal-500 rounded-2xl flex items-center justify-center shadow-lg shadow-cyan-500/20 mb-4 text-slate-950">
@@ -154,8 +154,8 @@ export default function Admin() {
 
   // --- RENDERING OF COMPREHENSIVELY CUSTOM GRAPH CHART COMPONENT ---
   const renderSVGChart = (
-    key: 'visits' | 'tests' | 'dns', 
-    points: MetricDataPoint[], 
+    key: 'visits' | 'tests' | 'dns',
+    points: MetricDataPoint[],
     stats: { total: number; avg: number; max: number; min: number },
     colorHex = '#4F46E5', // default beautiful deep blue
     fillGradient = 'url(#blueGrad)'
@@ -164,7 +164,7 @@ export default function Admin() {
     const height = 180;
     const paddingX = 30;
     const paddingY = 25;
-    
+
     // Extract numerical array based on the key
     const values = points.map(p => {
       if (key === 'visits') return p.visits;
@@ -188,7 +188,7 @@ export default function Admin() {
     // Build SVG Path
     let linePath = '';
     let areaPath = '';
-    
+
     if (coords.length > 0) {
       // 1. Line Path
       linePath = `M ${coords[0].x} ${coords[0].y}`;
@@ -202,7 +202,7 @@ export default function Admin() {
         const cpY2 = curr.y;
         linePath += ` C ${cpX1} ${cpY1}, ${cpX2} ${cpY2}, ${curr.x} ${curr.y}`;
       }
-      
+
       // 2. Closed Area Path
       areaPath = `${linePath} L ${coords[coords.length - 1].x} ${height - paddingY} L ${coords[0].x} ${height - paddingY} Z`;
     }
@@ -231,15 +231,15 @@ export default function Admin() {
           {[0, 0.25, 0.5, 0.75, 1].map((r, idx) => {
             const hY = paddingY + r * (height - 2 * paddingY);
             return (
-              <line 
-                key={idx} 
-                x1={paddingX} 
-                y1={hY} 
-                x2={width - paddingX} 
-                y2={hY} 
-                stroke={theme === 'light' ? '#E2E8F0' : '#1E293B'} 
-                strokeWidth="1" 
-                strokeDasharray="4 4" 
+              <line
+                key={idx}
+                x1={paddingX}
+                y1={hY}
+                x2={width - paddingX}
+                y2={hY}
+                stroke={theme === 'light' ? '#E2E8F0' : '#1E293B'}
+                strokeWidth="1"
+                strokeDasharray="4 4"
               />
             );
           })}
@@ -257,22 +257,22 @@ export default function Admin() {
           {/* Interactive Guideline and hover elements */}
           {hoveredIndex !== null && coords[hoveredIndex] && (
             <>
-              <line 
-                x1={coords[hoveredIndex].x} 
-                y1={paddingY} 
-                x2={coords[hoveredIndex].x} 
-                y2={height - paddingY} 
-                stroke={colorHex} 
-                strokeWidth="1.5" 
-                strokeDasharray="3 3" 
+              <line
+                x1={coords[hoveredIndex].x}
+                y1={paddingY}
+                x2={coords[hoveredIndex].x}
+                y2={height - paddingY}
+                stroke={colorHex}
+                strokeWidth="1.5"
+                strokeDasharray="3 3"
               />
-              <circle 
-                cx={coords[hoveredIndex].x} 
-                cy={coords[hoveredIndex].y} 
-                r="6" 
-                fill={colorHex} 
-                stroke={theme === 'light' ? '#FFF' : '#0F172A'} 
-                strokeWidth="2" 
+              <circle
+                cx={coords[hoveredIndex].x}
+                cy={coords[hoveredIndex].y}
+                r="6"
+                fill={colorHex}
+                stroke={theme === 'light' ? '#FFF' : '#0F172A'}
+                strokeWidth="2"
               />
             </>
           )}
@@ -299,20 +299,20 @@ export default function Admin() {
           {/* Label Display ticks at both extremes */}
           {coords.length > 1 && (
             <>
-              <text 
-                x={coords[0].x} 
-                y={height - 8} 
-                textAnchor="start" 
-                fill="#94A3B8" 
+              <text
+                x={coords[0].x}
+                y={height - 8}
+                textAnchor="start"
+                fill="#94A3B8"
                 className="text-[9px] font-mono leading-none"
               >
                 {coords[0].label}
               </text>
-              <text 
-                x={coords[coords.length - 1].x} 
-                y={height - 8} 
-                textAnchor="end" 
-                fill="#94A3B8" 
+              <text
+                x={coords[coords.length - 1].x}
+                y={height - 8}
+                textAnchor="end"
+                fill="#94A3B8"
                 className="text-[9px] font-mono leading-none"
               >
                 {coords[coords.length - 1].label}
@@ -323,7 +323,7 @@ export default function Admin() {
 
         {/* Floating Custom Tooltip overlay */}
         {hoveredIndex !== null && coords[hoveredIndex] && (
-          <div 
+          <div
             className="absolute rounded bg-slate-900 border border-slate-700/80 p-2 shadow-xl shrink-0 pointer-events-none text-right z-30"
             style={{
               left: `${(coords[hoveredIndex].x / width) * 100}%`,
@@ -343,7 +343,7 @@ export default function Admin() {
 
   return (
     <div className={`min-h-screen font-sans ${theme === 'light' ? 'bg-[#F1F3F5] text-slate-900' : 'bg-[#0B0F19] text-gray-100'} transition-colors duration-300`} dir="rtl">
-      
+
       {/* Upper Navigation and Branding Bar */}
       <header className={`border-b ${theme === 'light' ? 'bg-white border-slate-200' : 'bg-slate-900/40 border-slate-800/80 backdrop-blur-md'} sticky top-0 z-40 transition-colors duration-300`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
@@ -356,9 +356,9 @@ export default function Admin() {
               <p className="text-[10px] text-slate-400 font-mono -mt-1">PIMX Premium Traffic, Diagnostics and Latency Log</p>
             </div>
           </div>
-          
+
           <div className="flex items-center gap-4">
-            <button 
+            <button
               onClick={refreshAnalytics}
               className="p-2 border border-slate-800 rounded-xl hover:bg-slate-800 transition-colors"
               title="بروزرسانی آمار"
@@ -378,14 +378,14 @@ export default function Admin() {
 
       {/* Main Stats Panel Content container */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-        
+
         {/* Row zero: Selector filter */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-slate-900/20 px-6 py-4 rounded-2xl border border-slate-800/40">
           <div>
             <h2 className="text-base font-bold text-cyan-400">فیلتر بازه زمانی (Time Range)</h2>
             <p className="text-xs text-slate-400 mt-0.5">انتخاب رزولوشن دوره‌ای جهت ترسیم لاگ‌ها و نمودارها</p>
           </div>
-          
+
           <div className="flex items-center gap-3 w-full sm:w-auto">
             <span className="text-xs font-semibold text-slate-400 whitespace-nowrap">Time Range:</span>
             <div className="relative w-full sm:w-56">
@@ -409,8 +409,8 @@ export default function Admin() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Card 1: VISITS */}
           <div className={`p-6 rounded-2xl border transition-all ${
-            theme === 'light' 
-              ? 'bg-[#E5E9EE] border-slate-300 shadow-sm' 
+            theme === 'light'
+              ? 'bg-[#E5E9EE] border-slate-300 shadow-sm'
               : 'bg-[#98A2B3]/25 border-slate-700/55'
           }`}>
             <div className="flex justify-between items-start">
@@ -427,8 +427,8 @@ export default function Admin() {
 
           {/* Card 2: TESTS */}
           <div className={`p-6 rounded-2xl border transition-all ${
-            theme === 'light' 
-              ? 'bg-[#E5E9EE] border-slate-300 shadow-sm' 
+            theme === 'light'
+              ? 'bg-[#E5E9EE] border-slate-300 shadow-sm'
               : 'bg-[#98A2B3]/25 border-slate-700/55'
           }`}>
             <div className="flex justify-between items-start">
@@ -445,8 +445,8 @@ export default function Admin() {
 
           {/* Card 3: DNS TESTED */}
           <div className={`p-6 rounded-2xl border transition-all ${
-            theme === 'light' 
-              ? 'bg-[#E5E9EE] border-slate-300 shadow-sm' 
+            theme === 'light'
+              ? 'bg-[#E5E9EE] border-slate-300 shadow-sm'
               : 'bg-[#98A2B3]/25 border-slate-700/55'
           }`}>
             <div className="flex justify-between items-start">
@@ -466,8 +466,8 @@ export default function Admin() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Card: VISITS Trend Chart */}
           <div className={`p-6 rounded-2xl border transition-all ${
-            theme === 'light' 
-              ? 'bg-[#E5E9EE] border-slate-300' 
+            theme === 'light'
+              ? 'bg-[#E5E9EE] border-slate-300'
               : 'bg-[#9d9d9d2a] border-slate-700/40'
           }`}>
             <div className="flex justify-between items-center mb-6">
@@ -500,8 +500,8 @@ export default function Admin() {
 
           {/* Card: TESTS Trend Chart */}
           <div className={`p-6 rounded-2xl border transition-all ${
-            theme === 'light' 
-              ? 'bg-[#E5E9EE] border-slate-300' 
+            theme === 'light'
+              ? 'bg-[#E5E9EE] border-slate-300'
               : 'bg-[#9d9d9d2a] border-slate-700/40'
           }`}>
             <div className="flex justify-between items-center mb-6">
@@ -537,8 +537,8 @@ export default function Admin() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Card: DNS TESTED TREND */}
           <div className={`p-6 rounded-2xl border transition-all ${
-            theme === 'light' 
-              ? 'bg-[#E5E9EE] border-slate-300' 
+            theme === 'light'
+              ? 'bg-[#E5E9EE] border-slate-300'
               : 'bg-[#9d9d9d2a] border-slate-700/40'
           }`}>
             <div className="flex justify-between items-center mb-6">
@@ -571,8 +571,8 @@ export default function Admin() {
 
           {/* Card: DEVICE SHARE */}
           <div className={`p-6 rounded-2xl border transition-all ${
-            theme === 'light' 
-              ? 'bg-[#E5E9EE] border-slate-300' 
+            theme === 'light'
+              ? 'bg-[#E5E9EE] border-slate-300'
               : 'bg-[#9d9d9d2a] border-slate-700/40'
           }`}>
             <div className="flex justify-between items-center mb-6">
@@ -599,12 +599,12 @@ export default function Admin() {
                       <span className="font-mono text-slate-300">{dev.percentage}% ({dev.count})</span>
                     </div>
                     <div className="w-full h-3 bg-slate-950 rounded-full overflow-hidden border border-slate-800/80">
-                      <div 
+                      <div
                         className={`h-full rounded-full transition-all duration-1000 bg-gradient-to-r ${
-                          isMobile 
-                            ? 'from-cyan-500 to-teal-400' 
-                            : isTablet 
-                              ? 'from-purple-500 to-indigo-500' 
+                          isMobile
+                            ? 'from-cyan-500 to-teal-400'
+                            : isTablet
+                              ? 'from-purple-500 to-indigo-500'
                               : 'from-blue-600 to-indigo-500'
                         }`}
                         style={{ width: `${dev.percentage}%` }}
@@ -619,8 +619,8 @@ export default function Admin() {
 
         {/* Row 4: USER LOCATIONS */}
         <div className={`p-6 rounded-2xl border transition-all ${
-          theme === 'light' 
-            ? 'bg-[#E5E9EE] border-slate-300' 
+          theme === 'light'
+            ? 'bg-[#E5E9EE] border-slate-300'
             : 'bg-[#9d9d9d2a] border-slate-700/40'
         }`}>
           <div className="flex justify-between items-center mb-6">
@@ -639,7 +639,7 @@ export default function Admin() {
                   <span className="font-mono font-bold text-slate-400">{lic.percentage}% ({lic.count})</span>
                 </div>
                 <div className="w-full h-2.5 bg-slate-950 rounded-full overflow-hidden border border-slate-800/80">
-                  <div 
+                  <div
                     className="h-full rounded-full bg-gradient-to-r from-teal-500 to-emerald-400 transition-all duration-1000"
                     style={{ width: `${lic.percentage}%` }}
                   />

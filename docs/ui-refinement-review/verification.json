@@ -1,0 +1,69 @@
+{
+  "checks": [
+    {
+      "check": "Project heading orbit on hover",
+      "passed": true
+    },
+    {
+      "check": "All 68 project previews: 19 real captures first, 49 dedicated drawings",
+      "passed": true
+    },
+    {
+      "check": "Footer fragments on mouse hover and keyboard focus; restores on leave",
+      "passed": true
+    },
+    {
+      "check": "Five story chapters animate actual height without collapsing",
+      "passed": true,
+      "heights": [
+        [
+          544.625,
+          544.625,
+          544.625
+        ],
+        [
+          544.625,
+          584.953125,
+          597.8125
+        ],
+        [
+          597.8125,
+          597.8125,
+          597.8125
+        ],
+        [
+          597.8125,
+          577.046875,
+          571.21875
+        ],
+        [
+          571.21875,
+          590.828125,
+          597.8125
+        ]
+      ]
+    },
+    {
+      "check": "All 16 skills, 4 filters, honest levels, four new approach illustrations",
+      "passed": true
+    },
+    {
+      "check": "About spacing: profile to story below 220px",
+      "passed": true,
+      "gap": 178.625
+    },
+    {
+      "check": "Mobile en/dark/no-preference: About, skills, story, projects, footer",
+      "passed": true
+    },
+    {
+      "check": "Mobile fa/dark/no-preference: About, skills, story, projects, footer",
+      "passed": true
+    },
+    {
+      "check": "Mobile fa/light/reduce: About, skills, story, projects, footer",
+      "passed": true
+    }
+  ],
+  "runtimeErrors": []
+}

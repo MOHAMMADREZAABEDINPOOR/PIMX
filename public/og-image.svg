@@ -1,14 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <defs>
-    <linearGradient id="g" x1="0" x2="1">
-      <stop offset="0%" stop-color="#0ea5a4"/>
-      <stop offset="100%" stop-color="#6366f1"/>
-    </linearGradient>
+    <linearGradient id="chrome" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f7f4ff"/><stop offset=".2" stop-color="#827d92"/><stop offset=".36" stop-color="#f8f5ff"/><stop offset=".57" stop-color="#35313e"/><stop offset=".73" stop-color="#d3c9e7"/><stop offset=".89" stop-color="#fbfafc"/><stop offset="1" stop-color="#85828a"/></linearGradient>
+    <radialGradient id="glow"><stop stop-color="#9380be" stop-opacity=".16"/><stop offset="1" stop-color="#111110" stop-opacity="0"/></radialGradient>
   </defs>
-  <rect width="1200" height="630" fill="url(#g)" />
-  <g fill="#fff" font-family="Inter, Arial, sans-serif">
-    <text x="60" y="220" font-size="48" font-weight="800">Mohammadreza Abedinpoor</text>
-    <text x="60" y="280" font-size="28">Prompt Engineer • Full‑Stack Developer • PIMX</text>
-    <text x="60" y="420" font-size="20" opacity="0.9">pimx.pages.dev</text>
-  </g>
+  <rect width="1200" height="630" fill="#111110"/>
+  <circle cx="880" cy="325" r="280" fill="url(#glow)"/>
+  <g font-family="Arial, sans-serif" fill="#f0efe9"><text x="64" y="79" font-size="41" font-style="italic" font-weight="900" letter-spacing="-3">PIMX<tspan fill="#e8fa72">.</tspan></text><text x="68" y="174" fill="#92948a" font-family="monospace" font-size="11" letter-spacing="2">DEVELOPER. MAKER. CURIOUS MIND.</text><text x="62" y="297" font-size="96" letter-spacing="-7">Code with</text><text x="60" y="403" font-family="Georgia,serif" font-size="112" font-style="italic" letter-spacing="-6" fill="#e8fa72">character.</text><text x="67" y="535" font-size="21">Mohammadreza Abedinpoor</text><text x="67" y="566" fill="#92948a" font-family="monospace" font-size="11" letter-spacing="1">PYTHON / DJANGO / AI / CREATIVE DEVELOPMENT</text></g>
+  <g fill="none" stroke="url(#chrome)" stroke-width="45"><ellipse cx="883" cy="315" rx="106" ry="169" transform="rotate(-23 883 315)"/><ellipse cx="883" cy="315" rx="106" ry="169" transform="rotate(97 883 315)"/><ellipse cx="883" cy="315" rx="106" ry="169" transform="rotate(217 883 315)"/></g>
+  <ellipse cx="880" cy="325" rx="235" ry="92" transform="rotate(25 880 325)" fill="none" stroke="#e8fa72" stroke-width="1.5"/>
+  <circle cx="1073" cy="432" r="4" fill="#e8fa72"/>
+  <path d="M67 596h1066" stroke="#ffffff25"/><text x="1070" y="566" fill="#92948a" font-size="10" font-family="monospace" text-anchor="end">PIMX / V.02</text>
 </svg>

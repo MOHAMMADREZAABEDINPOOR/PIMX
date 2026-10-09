@@ -1,0 +1,283 @@
+{
+  "projects": 68,
+  "photos": 19,
+  "drawings": 49,
+  "missing": [],
+  "duplicateGeometry": [],
+  "duplicatePhotos": [],
+  "correctlyOrdered": true,
+  "order": [
+    {
+      "id": "github-pimx-agent",
+      "screenshot": true
+    },
+    {
+      "id": "github-pimx-morph",
+      "screenshot": true
+    },
+    {
+      "id": "pimx-veil",
+      "screenshot": true
+    },
+    {
+      "id": "pimx-node",
+      "screenshot": true
+    },
+    {
+      "id": "pimx-moji",
+      "screenshot": true
+    },
+    {
+      "id": "github-pimxsats",
+      "screenshot": true
+    },
+    {
+      "id": "github-pimx-swap",
+      "screenshot": true
+    },
+    {
+      "id": "pimx-wide",
+      "screenshot": true
+    },
+    {
+      "id": "github-pimx-eltex",
+      "screenshot": true
+    },
+    {
+      "id": "github-pimx-weather",
+      "screenshot": true
+    },
+    {
+      "id": "pimx-pass",
+      "screenshot": true
+    },
+    {
+      "id": "github-pimx-portal",
+      "screenshot": true
+    },
+    {
+      "id": "github-pimx-fail",
+      "screenshot": true
+    },
+    {
+      "id": "github-pimx",
+      "screenshot": true
+    },
+    {
+      "id": "github-import-export-company",
+      "screenshot": true
+    },
+    {
+      "id": "github-shop",
+      "screenshot": true
+    },
+    {
+      "id": "github-shop2",
+      "screenshot": true
+    },
+    {
+      "id": "github-shop3",
+      "screenshot": true
+    },
+    {
+      "id": "soheil-portal",
+      "screenshot": true
+    },
+    {
+      "id": "github-pimxdash",
+      "screenshot": false
+    },
+    {
+      "id": "github-3d-animated-interactive-portfolio",
+      "screenshot": false
+    },
+    {
+      "id": "github-bot",
+      "screenshot": false
+    },
+    {
+      "id": "github-c-mn",
+      "screenshot": false
+    },
+    {
+      "id": "github-chat",
+      "screenshot": false
+    },
+    {
+      "id": "github-chess-timer-with-python",
+      "screenshot": false
+    },
+    {
+      "id": "github-clock",
+      "screenshot": false
+    },
+    {
+      "id": "github-coursera",
+      "screenshot": false
+    },
+    {
+      "id": "github-cpp",
+      "screenshot": false
+    },
+    {
+      "id": "github-email-generator",
+      "screenshot": false
+    },
+    {
+      "id": "github-exam",
+      "screenshot": false
+    },
+    {
+      "id": "github-gussing-number",
+      "screenshot": false
+    },
+    {
+      "id": "github-gussing-number-with-js",
+      "screenshot": false
+    },
+    {
+      "id": "github-mcino-introduction-to-git-and-github",
+      "screenshot": false
+    },
+    {
+      "id": "mml-wallet-bot",
+      "screenshot": false
+    },
+    {
+      "id": "github-mohammadrezaabedinpoor",
+      "screenshot": false
+    },
+    {
+      "id": "github-my-project",
+      "screenshot": false
+    },
+    {
+      "id": "github-open-random-window",
+      "screenshot": false
+    },
+    {
+      "id": "personal-resume-gate",
+      "screenshot": false
+    },
+    {
+      "id": "pimx-pass-bot",
+      "screenshot": false
+    },
+    {
+      "id": "github-pimx-pass-panel",
+      "screenshot": false
+    },
+    {
+      "id": "github-pimx-personal",
+      "screenshot": false
+    },
+    {
+      "id": "github-pimx-planner",
+      "screenshot": false
+    },
+    {
+      "id": "pimx-play-bot",
+      "screenshot": false
+    },
+    {
+      "id": "pimx-sonic-bot",
+      "screenshot": false
+    },
+    {
+      "id": "github-pimx-save-bot",
+      "screenshot": false
+    },
+    {
+      "id": "github-pimx-support",
+      "screenshot": false
+    },
+    {
+      "id": "github-pwa-chatbot",
+      "screenshot": false
+    },
+    {
+      "id": "github-spam-with-pyautogui",
+      "screenshot": false
+    },
+    {
+      "id": "github-sqlalchemy",
+      "screenshot": false
+    },
+    {
+      "id": "github-telegram-bot",
+      "screenshot": false
+    },
+    {
+      "id": "housing-ads-scrapper-bot",
+      "screenshot": false
+    },
+    {
+      "id": "github-temperuture",
+      "screenshot": false
+    },
+    {
+      "id": "github-test",
+      "screenshot": false
+    },
+    {
+      "id": "github-thermometer",
+      "screenshot": false
+    },
+    {
+      "id": "github-time-with-tkinter-library",
+      "screenshot": false
+    },
+    {
+      "id": "github-timer-with-threading-library",
+      "screenshot": false
+    },
+    {
+      "id": "github-turtle-library",
+      "screenshot": false
+    },
+    {
+      "id": "github-web-application-technologies-and-django-coursera",
+      "screenshot": false
+    },
+    {
+      "id": "school-blog-cms",
+      "screenshot": false
+    },
+    {
+      "id": "advanced-monitoring-chatbot",
+      "screenshot": false
+    },
+    {
+      "id": "multilingual-frontend-bot",
+      "screenshot": false
+    },
+    {
+      "id": "telegram-agent-admin-panel",
+      "screenshot": false
+    },
+    {
+      "id": "gemini-webhook-mailer",
+      "screenshot": false
+    },
+    {
+      "id": "flutter-chatbot-arcade",
+      "screenshot": false
+    },
+    {
+      "id": "telegram-content-maker-make",
+      "screenshot": false
+    },
+    {
+      "id": "persian-chatbot-dashboard",
+      "screenshot": false
+    },
+    {
+      "id": "school-grading-platform",
+      "screenshot": false
+    },
+    {
+      "id": "anonymous-teacher-peer-review",
+      "screenshot": false
+    }
+  ]
+}

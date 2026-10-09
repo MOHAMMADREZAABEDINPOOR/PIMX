@@ -1,693 +1,297 @@
-import React from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { 
-  Award, 
-  Trophy, 
-  Search, 
-  GraduationCap, 
-  CheckCircle2, 
-  Clock, 
-  TrendingUp, 
-  Building, 
-  ArrowUpRight, 
-  ShieldCheck, 
-  Bookmark, 
-  Sparkles,
-  ChevronLeft,
-  ChevronRight,
-  Filter,
-  ExternalLink,
-  Download
-} from 'lucide-react';
+import { useSiteText } from '../lib/useSiteText';
+import PageHeadline from '../components/PageHeadline';
+import React, { useEffect, useRef, useState } from 'react';
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
+import { ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight, BookOpen, Download, ExternalLink, Layers3, Rotate3D, Search, X } from 'lucide-react';
 import { useLanguageTheme } from '../context/LanguageThemeContext';
+import CredentialScene from '../components/CredentialScene';
+import SectionMotion from '../components/SectionMotion';
+import { certificates, type Certificate } from '../lib/certificates_data';
+import type { LanguageType } from '../lib/translations';
+import '../styles/certificates.css';
 
-interface Certificate {
-  id: string;
-  titleEn: string;
-  titleFa: string;
-  titleAr: string;
-  descEn: string;
-  descFa: string;
-  descAr: string;
-  institutionEn: string;
-  institutionFa: string;
-  institutionAr: string;
-  grade: string;
-  percentage: number; // For visualization progress bars
-  issuer: 'michigan' | 'sharif' | 'london' | 'toronto' | 'upenn' | 'meta' | 'jhu' | 'rice' | 'kados';
-  badgeTypeEn: 'Capstone' | 'Specialization' | 'Foundation' | 'Professional Certificate' | 'Honorary Roll' | 'Top Student';
-  badgeTypeFa: 'پروژه نهایی' | 'دوره تخصصی' | 'پایه‌گذاری' | 'مدرک حرفه‌ای' | 'رتبه افتخاری' | 'رتبه ممتاز';
-  badgeTypeAr: 'مشروع التخرج' | 'دورة تخصصية' | 'أساسيات' | 'شهادة احترافية' | 'لوحة الشرف' | 'طالب متميز';
-  isTrophy?: boolean;
-  pdfFile?: string;
-  pdfFiles?: { title: Record<'en' | 'fa' | 'ar', string>; url: string }[];
+const marks: Record<Certificate['issuer'], string> = { michigan: 'M', sharif: 'S', london: 'L', toronto: 'T', upenn: 'P', meta: 'Me', jhu: 'JH', rice: 'R', kados: 'K' };
+const issuerNames: Record<Certificate['issuer'], string> = { michigan: 'Michigan', sharif: 'Sharif', london: 'London', toronto: 'Toronto', upenn: 'Pennsylvania', meta: 'Meta', jhu: 'Johns Hopkins', rice: 'Rice', kados: 'Kados' };
+const issuers = [...new Set(certificates.map(certificate => certificate.issuer))];
+const courseLabels: Record<LanguageType, string> = { en: 'Course record', fa: 'گواهیِ دوره', ar: 'شهادة دورة', de: 'Kursnachweis', fr: 'Certificat de cours', it: 'Certificato del corso', zh: '课程记录', ru: 'Сертификат курса', el: 'Πιστοποιητικό μαθήματος', la: 'Testimonium studii' };
+const baseCopy = {
+  kicker: 'THE KNOWLEDGE VAULT', title: 'Knowledge', titleAccent: 'in motion.',
+  intro: 'Curiosity becomes knowledge. Knowledge becomes something you can build. Explore the courses, ideas, and original documents behind my work.',
+  credentials: 'credentials', institutions: 'institutions', perfect: 'perfect grades', explore: 'Enter the archive',
+  featured: 'A closer look', selected: 'Selected learning record', grade: 'Final grade',
+  front: 'The credential', back: 'The ideas behind it', flip: 'Flip the record',
+  learning: 'From study to practice', topics: 'Areas of learning', context: 'The foundation',
+  previous: 'Previous credential', next: 'Next credential', view: 'View original PDF', download: 'Download original PDF',
+  unavailable: 'Original file not yet available in this archive.', archive: 'Every chapter counts.', archiveIntro: 'Different institutions. One continuous pursuit of better software.',
+  search: 'Search courses, institutions, or skills…', all: 'All institutions', filter: 'Filter by institution', results: 'records',
+  noResults: 'No matching credentials.', reset: 'Clear filters', clear: 'Clear search', open: 'Explore this record',
+  close: 'Close document', newTab: 'Open PDF in a new tab', pdfHint: 'The original document is embedded below. If your browser does not display PDFs, open it in a new tab or download it.',
+  scene: 'Interactive 3D learning archive. Drag or use the arrow keys to rotate; Home resets the view.',
+  drag: 'DRAG TO ROTATE', pause: 'Pause animation', play: 'Resume animation', resetScene: 'Reset sculpture rotation',
+  footnote: 'Original course titles, recorded grades, and available documents. Always learning, always building.',
+};
+type Copy = typeof baseCopy;
+const copyByLanguage: Record<LanguageType, Copy> = {
+  en: baseCopy,
+  fa: { ...baseCopy,
+    kicker: 'گنجینهٔ دانش', title: 'یادگیری،', titleAccent: 'در حرکت.',
+    intro: 'کنجکاوی به دانش تبدیل می‌شود و دانش به چیزی که می‌توان ساخت. اینجا مسیر یادگیری من، ایده‌های پشت پروژه‌ها و فایل اصلی گواهی‌نامه‌ها را ببین.',
+    credentials: 'گواهی‌نامه', institutions: 'مؤسسهٔ آموزشی', perfect: 'نمرهٔ کامل', explore: 'ورود به آرشیو',
+    featured: 'از نزدیک ببین', selected: 'گواهی‌نامهٔ انتخاب‌شده', grade: 'نمرهٔ نهایی', front: 'روی گواهی‌نامه', back: 'ایده‌های پشت آن', flip: 'برگرداندن کارت',
+    learning: 'از یادگیری تا ساختن', topics: 'موضوعات یادگیری', context: 'پایهٔ این مسیر', previous: 'گواهی‌نامهٔ قبلی', next: 'گواهی‌نامهٔ بعدی',
+    view: 'مشاهدهٔ PDF اصلی', download: 'دانلود PDF اصلی', unavailable: 'فایل اصلی این گواهی‌نامه هنوز در آرشیو موجود نیست.',
+    archive: 'هر فصل، یک قدم جلوتر.', archiveIntro: 'مؤسسه‌های متفاوت؛ یک مسیر پیوسته برای ساختن نرم‌افزار بهتر.',
+    search: 'جستجوی دوره، دانشگاه یا مهارت…', all: 'همهٔ مؤسسه‌ها', filter: 'فیلتر مؤسسهٔ آموزشی', results: 'گواهی‌نامه',
+    noResults: 'گواهی‌نامه‌ای با این مشخصات پیدا نشد.', reset: 'پاک کردن فیلترها', clear: 'پاک کردن جستجو', open: 'بررسی این گواهی‌نامه',
+    close: 'بستن سند', newTab: 'باز کردن PDF در تب جدید', pdfHint: 'فایل اصلی در پایین نمایش داده می‌شود. اگر مرورگرت PDF را نشان نمی‌دهد، آن را در تب جدید باز کن یا دانلود کن.',
+    scene: 'گنجینهٔ سه‌بعدی یادگیری. با کشیدن یا کلیدهای جهت بچرخان؛ کلید Home نما را بازنشانی می‌کند.',
+    drag: 'بکش و بچرخان', pause: 'توقف انیمیشن', play: 'ادامهٔ انیمیشن', resetScene: 'بازنشانی چرخش مدل',
+    footnote: 'عنوان دوره‌ها، نمره‌های ثبت‌شده و اسناد موجود؛ یادگیری ادامه دارد و ساختن هم.',
+  },
+  ar: { ...baseCopy,
+    kicker: 'خزينة المعرفة', title: 'المعرفة', titleAccent: 'في حركة.', intro: 'يتحول الفضول إلى معرفة، والمعرفة إلى أشياء يمكن بناؤها. اكتشف الدورات والأفكار والوثائق الأصلية وراء عملي.',
+    credentials: 'شهادات', institutions: 'مؤسسات تعليمية', perfect: 'درجات كاملة', explore: 'استكشف الأرشيف', featured: 'نظرة أقرب', selected: 'سجل التعلم المحدد', grade: 'الدرجة النهائية',
+    front: 'الشهادة', back: 'الأفكار وراءها', flip: 'اقلب البطاقة', learning: 'من التعلم إلى التطبيق', topics: 'مجالات التعلم', context: 'الأساس', previous: 'الشهادة السابقة', next: 'الشهادة التالية',
+    view: 'عرض ملف PDF الأصلي', download: 'تنزيل ملف PDF الأصلي', unavailable: 'الملف الأصلي غير متاح بعد في الأرشيف.', archive: 'كل فصل يصنع فرقًا.', archiveIntro: 'مؤسسات مختلفة. رحلة مستمرة لبناء برمجيات أفضل.',
+    search: 'ابحث عن دورة أو مؤسسة أو مهارة…', all: 'جميع المؤسسات', filter: 'تصفية المؤسسة', results: 'سجلات', noResults: 'لا توجد شهادات مطابقة.', reset: 'إزالة عوامل التصفية', clear: 'مسح البحث', open: 'استكشف هذا السجل',
+    close: 'إغلاق الوثيقة', newTab: 'فتح PDF في علامة تبويب جديدة', pdfHint: 'تظهر الوثيقة الأصلية أدناه. إذا لم يعرض متصفحك ملفات PDF، افتحها في علامة تبويب جديدة أو قم بتنزيلها.',
+    scene: 'أرشيف تعلم ثلاثي الأبعاد. اسحب أو استخدم مفاتيح الأسهم للتدوير؛ Home يعيد ضبط العرض.', drag: 'اسحب للتدوير', pause: 'إيقاف الحركة', play: 'استئناف الحركة', resetScene: 'إعادة ضبط الدوران', footnote: 'عناوين الدورات والدرجات المسجلة والوثائق المتاحة. التعلم والبناء مستمران.',
+  },
+  de: { ...baseCopy, kicker: 'DAS WISSENSARCHIV', title: 'Wissen', titleAccent: 'in Bewegung.', intro: 'Neugier wird Wissen. Wissen wird etwas, das man bauen kann. Entdecke die Kurse, Ideen und Originaldokumente hinter meiner Arbeit.', credentials: 'Zertifikate', institutions: 'Institutionen', perfect: 'Bestnoten', explore: 'Archiv entdecken', featured: 'Genauer betrachtet', selected: 'Ausgewähltes Zertifikat', grade: 'Abschlussnote', front: 'Das Zertifikat', back: 'Die Ideen dahinter', flip: 'Karte umdrehen', learning: 'Vom Lernen zur Praxis', topics: 'Lernbereiche', context: 'Die Grundlage', previous: 'Vorheriges Zertifikat', next: 'Nächstes Zertifikat', view: 'Original-PDF ansehen', download: 'Original-PDF herunterladen', unavailable: 'Die Originaldatei ist im Archiv noch nicht verfügbar.', archive: 'Jedes Kapitel zählt.', archiveIntro: 'Verschiedene Institutionen. Eine kontinuierliche Suche nach besserer Software.', search: 'Kurse, Institutionen oder Fähigkeiten suchen…', all: 'Alle Institutionen', filter: 'Nach Institution filtern', results: 'Einträge', noResults: 'Keine passenden Zertifikate.', reset: 'Filter zurücksetzen', clear: 'Suche löschen', open: 'Eintrag entdecken', close: 'Dokument schließen', newTab: 'PDF in neuem Tab öffnen', drag: 'ZUM DREHEN ZIEHEN', pause: 'Animation pausieren', play: 'Animation fortsetzen', resetScene: 'Drehung zurücksetzen' },
+  fr: { ...baseCopy, kicker: 'LES ARCHIVES DU SAVOIR', title: 'Le savoir', titleAccent: 'en mouvement.', intro: 'La curiosité devient savoir. Le savoir devient quelque chose à construire. Découvrez les cours, les idées et les documents originaux derrière mon travail.', credentials: 'certificats', institutions: 'institutions', perfect: 'notes parfaites', explore: 'Explorer les archives', featured: 'De plus près', selected: 'Certificat sélectionné', grade: 'Note finale', front: 'Le certificat', back: 'Les idées derrière', flip: 'Retourner la carte', learning: 'De la théorie à la pratique', topics: 'Domaines étudiés', context: 'Les fondations', previous: 'Certificat précédent', next: 'Certificat suivant', view: 'Voir le PDF original', download: 'Télécharger le PDF original', unavailable: 'Le fichier original est encore indisponible dans les archives.', archive: 'Chaque chapitre compte.', archiveIntro: 'Des institutions différentes. Une même recherche de meilleurs logiciels.', search: 'Rechercher un cours, une institution ou une compétence…', all: 'Toutes les institutions', filter: 'Filtrer par institution', results: 'documents', noResults: 'Aucun certificat correspondant.', reset: 'Réinitialiser les filtres', clear: 'Effacer la recherche', open: 'Explorer ce document', close: 'Fermer le document', newTab: 'Ouvrir le PDF dans un nouvel onglet', drag: 'GLISSER POUR TOURNER', pause: 'Mettre en pause', play: 'Reprendre l’animation', resetScene: 'Réinitialiser la rotation' },
+  it: { ...baseCopy, kicker: 'L’ARCHIVIO DEL SAPERE', title: 'Conoscenza', titleAccent: 'in movimento.', intro: 'La curiosità diventa conoscenza. La conoscenza diventa qualcosa da costruire. Esplora i corsi, le idee e i documenti originali dietro al mio lavoro.', credentials: 'certificati', institutions: 'istituzioni', perfect: 'voti perfetti', explore: 'Esplora l’archivio', featured: 'Da vicino', selected: 'Certificato selezionato', grade: 'Voto finale', front: 'Il certificato', back: 'Le idee alla base', flip: 'Gira la scheda', learning: 'Dallo studio alla pratica', topics: 'Aree di studio', context: 'Le basi', previous: 'Certificato precedente', next: 'Certificato successivo', view: 'Visualizza PDF originale', download: 'Scarica PDF originale', unavailable: 'Il file originale non è ancora disponibile nell’archivio.', archive: 'Ogni capitolo conta.', archiveIntro: 'Istituzioni diverse. Una ricerca continua di software migliore.', search: 'Cerca corsi, istituzioni o competenze…', all: 'Tutte le istituzioni', filter: 'Filtra per istituzione', results: 'documenti', noResults: 'Nessun certificato corrispondente.', reset: 'Azzera i filtri', clear: 'Cancella ricerca', open: 'Esplora il documento', close: 'Chiudi documento', newTab: 'Apri PDF in una nuova scheda', drag: 'TRASCINA PER RUOTARE', pause: 'Pausa animazione', play: 'Riprendi animazione', resetScene: 'Reimposta rotazione' },
+  zh: { ...baseCopy, kicker: '知识档案', title: '知识，', titleAccent: '不断前行。', intro: '好奇心化为知识，知识化为作品。探索我所学习的课程、项目背后的理念，以及原始证书文件。', credentials: '份证书', institutions: '所机构', perfect: '次满分', explore: '探索档案', featured: '近距离了解', selected: '已选学习记录', grade: '最终成绩', front: '证书', back: '背后的理念', flip: '翻转卡片', learning: '从学习到实践', topics: '学习领域', context: '基础', previous: '上一份证书', next: '下一份证书', view: '查看原始 PDF', download: '下载原始 PDF', unavailable: '档案中尚未提供原始文件。', archive: '每一章都有意义。', archiveIntro: '不同的机构，同一个目标：不断打造更好的软件。', search: '搜索课程、机构或技能…', all: '所有机构', filter: '按机构筛选', results: '条记录', noResults: '没有匹配的证书。', reset: '清除筛选', clear: '清除搜索', open: '探索这条记录', close: '关闭文档', newTab: '在新标签页中打开 PDF', drag: '拖动以旋转', pause: '暂停动画', play: '继续动画', resetScene: '重置旋转' },
+  ru: { ...baseCopy, kicker: 'АРХИВ ЗНАНИЙ', title: 'Знания', titleAccent: 'в движении.', intro: 'Любопытство становится знанием, а знание — основой для новых проектов. Изучите курсы, идеи и оригинальные документы, стоящие за моей работой.', credentials: 'сертификатов', institutions: 'учреждений', perfect: 'максимальные оценки', explore: 'Открыть архив', featured: 'Ближе к деталям', selected: 'Выбранный сертификат', grade: 'Итоговая оценка', front: 'Сертификат', back: 'Идеи за ним', flip: 'Перевернуть карточку', learning: 'От учёбы к практике', topics: 'Области обучения', context: 'Основа', previous: 'Предыдущий сертификат', next: 'Следующий сертификат', view: 'Просмотреть исходный PDF', download: 'Скачать исходный PDF', unavailable: 'Исходный файл пока недоступен в архиве.', archive: 'Каждая глава важна.', archiveIntro: 'Разные учреждения. Постоянное стремление создавать лучшие программы.', search: 'Поиск курсов, учреждений или навыков…', all: 'Все учреждения', filter: 'Фильтр по учреждению', results: 'записей', noResults: 'Подходящих сертификатов нет.', reset: 'Сбросить фильтры', clear: 'Очистить поиск', open: 'Изучить запись', close: 'Закрыть документ', newTab: 'Открыть PDF в новой вкладке', drag: 'ПОТЯНИТЕ ДЛЯ ВРАЩЕНИЯ', pause: 'Приостановить анимацию', play: 'Продолжить анимацию', resetScene: 'Сбросить вращение' },
+  el: { ...baseCopy, kicker: 'ΤΟ ΑΡΧΕΙΟ ΓΝΩΣΗΣ', title: 'Γνώση', titleAccent: 'σε κίνηση.', intro: 'Η περιέργεια γίνεται γνώση. Η γνώση γίνεται κάτι που μπορείς να δημιουργήσεις. Εξερευνήστε τα μαθήματα, τις ιδέες και τα πρωτότυπα έγγραφα πίσω από τη δουλειά μου.', credentials: 'πιστοποιητικά', institutions: 'ιδρύματα', perfect: 'άριστοι βαθμοί', explore: 'Εξερεύνηση αρχείου', featured: 'Μια πιο κοντινή ματιά', selected: 'Επιλεγμένο πιστοποιητικό', grade: 'Τελικός βαθμός', front: 'Το πιστοποιητικό', back: 'Οι ιδέες πίσω του', flip: 'Αναστροφή κάρτας', learning: 'Από τη μελέτη στην πράξη', topics: 'Τομείς μάθησης', context: 'Η βάση', previous: 'Προηγούμενο πιστοποιητικό', next: 'Επόμενο πιστοποιητικό', view: 'Προβολή πρωτότυπου PDF', download: 'Λήψη πρωτότυπου PDF', unavailable: 'Το πρωτότυπο αρχείο δεν είναι ακόμη διαθέσιμο.', archive: 'Κάθε κεφάλαιο μετράει.', archiveIntro: 'Διαφορετικά ιδρύματα. Μια συνεχής αναζήτηση για καλύτερο λογισμικό.', search: 'Αναζήτηση μαθημάτων, ιδρυμάτων ή δεξιοτήτων…', all: 'Όλα τα ιδρύματα', filter: 'Φίλτρο ιδρύματος', results: 'εγγραφές', noResults: 'Δεν βρέθηκαν πιστοποιητικά.', reset: 'Επαναφορά φίλτρων', clear: 'Εκκαθάριση αναζήτησης', open: 'Εξερεύνηση εγγραφής', close: 'Κλείσιμο εγγράφου', newTab: 'Άνοιγμα PDF σε νέα καρτέλα', drag: 'ΣΥΡΕΤΕ ΓΙΑ ΠΕΡΙΣΤΡΟΦΗ', pause: 'Παύση κίνησης', play: 'Συνέχιση κίνησης', resetScene: 'Επαναφορά περιστροφής' },
+  la: { ...baseCopy, kicker: 'ARCHIVUM SCIENTIAE', title: 'Scientia', titleAccent: 'in motu.', intro: 'Curiositas fit scientia. Scientia fit opus. Explora studia, notiones et documenta originalia quae operibus meis fundamenta dant.', credentials: 'testimonia', institutions: 'instituta', perfect: 'notae perfectae', explore: 'Explora archivum', featured: 'Propius inspice', selected: 'Testimonium selectum', grade: 'Nota finalis', front: 'Testimonium', back: 'Notiones', flip: 'Verte chartam', learning: 'A studio ad opus', topics: 'Argumenta studiorum', context: 'Fundamentum', previous: 'Testimonium prius', next: 'Testimonium proximum', view: 'Vide PDF originale', download: 'Depone PDF originale', unavailable: 'Documentum originale nondum in archivo praesto est.', archive: 'Omne capitulum valet.', archiveIntro: 'Instituta varia. Studium continuum meliorum operum.', search: 'Quaere studia, instituta vel artes…', all: 'Omnia instituta', filter: 'Elige institutum', results: 'documenta', noResults: 'Nulla testimonia inventa.', reset: 'Restitue indicem', clear: 'Dele quaestionem', open: 'Explora documentum', close: 'Claude documentum', newTab: 'Aperi PDF in nova tabula', drag: 'TRAHE AD ROTANDUM', pause: 'Siste motum', play: 'Repete motum', resetScene: 'Restitue rotationem' },
+};
+
+type LearningRecord = { topics: string[]; en: string; fa: string; ar: string };
+const learningById: Record<string, LearningRecord> = {
+  'cert-1': { topics: ['Accessibility', 'Responsive design', 'Capstone'], en: 'Bringing a website together means thinking about structure, responsive behavior, testing, and accessibility as one connected system. This is the foundation for making interfaces work for more people.', fa: 'ساختن یک وب‌سایت کامل یعنی دیدن ساختار، واکنش‌گرایی، تست و دسترس‌پذیری به‌عنوان یک سیستم پیوسته. این نگاه، پایهٔ رابط‌هایی است که برای آدم‌های بیشتری قابل استفاده‌اند.', ar: 'جمع هيكل الموقع واستجابته واختباره وإتاحته في نظام واحد هو أساس بناء واجهات يمكن لعدد أكبر من الناس استخدامها.' },
+  'cert-2': { topics: ['Django', 'HTTP', 'Data modeling'], en: 'Understanding how requests, routes, Python, and database models connect is the starting point for dependable web applications. These ideas underpin the backend side of a full-stack project.', fa: 'درک ارتباط درخواست‌ها، مسیرها، پایتون و مدل‌های پایگاه داده، نقطهٔ شروع ساختن وب‌اپلیکیشن قابل‌اتکاست. این مفاهیم زیربنای بخش بک‌اند پروژه‌های فول‌استک هستند.', ar: 'فهم الصلة بين الطلبات والمسارات وبايثون ونماذج البيانات هو أساس تطبيقات الويب الموثوقة والجزء الخلفي من المشاريع المتكاملة.' },
+  'cert-3': { topics: ['Python', 'Control flow', 'Functions'], en: 'Variables, conditions, loops, and functions turn an idea into a program you can reason about. A practical foundation for Python scripts, automation, and the first steps toward larger systems.', fa: 'متغیرها، شرط‌ها، حلقه‌ها و تابع‌ها، ایده را به برنامه‌ای تبدیل می‌کنند که می‌توان منطقش را فهمید. پایه‌ای کاربردی برای اسکریپت‌های پایتون، اتوماسیون و قدم‌های اول در سیستم‌های بزرگ‌تر.', ar: 'المتغيرات والشروط والحلقات والدوال تحول الفكرة إلى برنامج مفهوم؛ أساس عملي لبرامج بايثون والأتمتة والأنظمة الأكبر.' },
+  'cert-4': { topics: ['HTML', 'CSS', 'Responsive layouts'], en: 'A layout should adapt to the screen instead of asking the screen to adapt to it. HTML structure, CSS, and media queries provide the tools for interfaces that travel comfortably between devices.', fa: 'چیدمان باید با صفحهٔ نمایش سازگار شود. ساختار HTML، استایل CSS و مدیاکوئری‌ها ابزار ساختن رابطی هستند که در موبایل، تبلت و دسکتاپ درست کار کند.', ar: 'ينبغي أن يتكيف التخطيط مع الشاشة. توفر بنية HTML وCSS والاستعلامات الإعلامية أدوات واجهات مناسبة لمختلف الأجهزة.' },
+  'cert-5': { topics: ['Problem solving', 'Debugging', 'Functions'], en: 'Breaking a problem into smaller functions and checking each assumption makes code easier to improve. The fundamentals of programming are also the fundamentals of careful debugging.', fa: 'تقسیم مسئله به تابع‌های کوچک‌تر و بررسی هر فرض، بهتر کردن کد را ساده می‌کند. مبانی برنامه‌نویسی همان ابزارهای اولیه برای دیباگ کردن دقیق هستند.', ar: 'تقسيم المشكلة إلى دوال صغيرة وفحص الافتراضات يجعل تحسين الكود أسهل. أساسيات البرمجة هي أيضًا أساس تصحيح الأخطاء بعناية.' },
+  'cert-6': { topics: ['Python', 'File handling', 'Data structures'], en: 'Working with files, collections, methods, and Python syntax gives small programs room to grow. These are useful building blocks for data processing and everyday automation.', fa: 'کار با فایل‌ها، مجموعه‌داده‌ها، متدها و قواعد پایتون به برنامه‌های کوچک امکان رشد می‌دهد. این‌ها بلوک‌های پایه برای پردازش داده و اتوماسیون کارهای روزمره‌اند.', ar: 'الملفات والمجموعات والدوال وصياغة بايثون تمنح البرامج الصغيرة مجالًا للنمو، وتوفر أساسًا لمعالجة البيانات والأتمتة اليومية.' },
+  'cert-7': { topics: ['Front-end', 'Semantic HTML', 'UI structure'], en: 'The browser is where structure, styling, and interaction meet. Front-end foundations help connect the technical parts of an interface to the experience of the person using it.', fa: 'مرورگر جایی است که ساختار، استایل و تعامل به هم می‌رسند. مبانی فرانت‌اند کمک می‌کنند بخش‌های فنی رابط را به تجربهٔ آدمی که از آن استفاده می‌کند وصل کنیم.', ar: 'المتصفح هو مكان التقاء البنية والتنسيق والتفاعل. تربط أساسيات تطوير الواجهات التفاصيل التقنية بتجربة المستخدم.' },
+  'cert-8': { topics: ['JavaScript', 'DOM', 'HTML / CSS'], en: 'HTML gives content a structure, CSS gives it a visual language, and JavaScript gives it behavior. Understanding their relationship supports interactive sites that stay coherent as they become more complex.', fa: 'HTML به محتوا ساختار می‌دهد، CSS زبان بصری می‌سازد و جاوااسکریپت رفتار اضافه می‌کند. فهم ارتباط این سه، پایهٔ سایت‌های تعاملی است که با پیچیده‌تر شدن همچنان منسجم می‌مانند.', ar: 'يمنح HTML المحتوى بنية، وCSS لغة بصرية، وجافا سكريبت سلوكًا. فهم العلاقة بينها يدعم مواقع تفاعلية متماسكة.' },
+  'cert-9': { topics: ['Python', 'Event-driven code', 'Interactive graphics'], en: 'Event-driven programs respond to the user rather than following only a straight line. Connecting logic, graphics, and interaction is a useful bridge between programming fundamentals and playful digital experiences.', fa: 'برنامهٔ رویدادمحور به کاربر پاسخ می‌دهد و فقط یک مسیر خطی را دنبال نمی‌کند. اتصال منطق، گرافیک و تعامل، پلی کاربردی میان مبانی برنامه‌نویسی و تجربه‌های دیجیتال خلاقانه است.', ar: 'تستجيب البرامج القائمة على الأحداث للمستخدم. الربط بين المنطق والرسوم والتفاعل جسر بين أساسيات البرمجة والتجارب الرقمية الإبداعية.' },
+  'cert-10': { topics: ['Emerging technology', 'Cloud', 'Future of work'], en: 'Looking beyond a single programming language helps put software in a wider context. Emerging technologies and changing career paths encourage a habit of exploring what comes next.', fa: 'نگاه کردن فراتر از یک زبان برنامه‌نویسی، جایگاه نرم‌افزار را در دنیای بزرگ‌تر روشن می‌کند. فناوری‌های نوظهور و مسیرهای شغلی در حال تغییر، انگیزه‌ای برای دنبال کردن آینده‌اند.', ar: 'النظر إلى ما وراء لغة برمجة واحدة يضع البرمجيات في سياق أوسع. تدفع التقنيات الناشئة والمسارات المهنية المتغيرة إلى استكشاف المستقبل.' },
+  'cert-11': { topics: ['C++', 'Memory', 'Object-oriented code'], en: 'Thinking about memory, pointers, classes, and compilation reveals what higher-level tools often hide. C++ adds a systems perspective to the way a programmer reasons about performance and structure.', fa: 'فکر کردن به حافظه، اشاره‌گرها، کلاس‌ها و کامپایل، چیزهایی را روشن می‌کند که ابزارهای سطح بالاتر پنهان می‌کنند. ++C نگاه سیستمی را به درک عملکرد و ساختار برنامه اضافه می‌کند.', ar: 'التفكير في الذاكرة والمؤشرات والفئات والترجمة يكشف ما تخفيه الأدوات الأعلى مستوى. تضيف C++ منظور الأنظمة إلى فهم أداء البرامج وبنيتها.' },
+};
+
+const localize = (certificate: Certificate, lang: LanguageType) => ({
+  title: lang === 'fa' ? certificate.titleFa : lang === 'ar' ? certificate.titleAr : certificate.titleEn,
+  description: lang === 'fa' ? certificate.descFa : lang === 'ar' ? certificate.descAr : certificate.descEn,
+  institution: lang === 'fa' ? certificate.institutionFa : lang === 'ar' ? certificate.institutionAr : certificate.institutionEn,
+  badge: lang === 'fa' ? certificate.badgeTypeFa : lang === 'ar' ? certificate.badgeTypeAr : certificate.badgeTypeEn,
+});
+const getFiles = (certificate: Certificate, lang: LanguageType) => certificate.pdfFile
+  ? [{ name: localize(certificate, lang).title, url: '/' + encodeURIComponent(certificate.pdfFile) }]
+  : certificate.pdfFiles?.map(file => ({ name: file.title[lang === 'fa' ? 'fa' : lang === 'ar' ? 'ar' : 'en'], url: '/' + encodeURIComponent(file.url) })) || [];
+
+function tilt(event: React.PointerEvent<HTMLElement>, enabled: boolean) {
+  if (!enabled || event.pointerType !== 'mouse') return;
+  const rect = event.currentTarget.getBoundingClientRect();
+  const x = (event.clientX - rect.left) / rect.width, y = (event.clientY - rect.top) / rect.height;
+  event.currentTarget.style.setProperty('--tilt-x', `${(0.5 - y) * 9}deg`);
+  event.currentTarget.style.setProperty('--tilt-y', `${(x - 0.5) * 12}deg`);
+  event.currentTarget.style.setProperty('--shine-x', `${x * 100}%`);
+  event.currentTarget.style.setProperty('--shine-y', `${y * 100}%`);
+}
+function resetTilt(event: React.PointerEvent<HTMLElement>) {
+  event.currentTarget.style.setProperty('--tilt-x', '0deg');
+  event.currentTarget.style.setProperty('--tilt-y', '0deg');
 }
 
-const playHoverSound = () => {
-  // Sshhh... silence
-};
+const courseIdentities = [
+  { name: 'THE INTERFACE', accent: '#d2e89b', ink: '#263526', background: '#202b20' },
+  { name: 'CONNECTED SYSTEMS', accent: '#9adfd2', ink: '#183d35', background: '#16302b' },
+  { name: 'A FIRST LANGUAGE', accent: '#adc9ff', ink: '#283550', background: '#232b3d' },
+  { name: 'EVERY SCREEN', accent: '#ebbb9e', ink: '#563b2f', background: '#3b2b24' },
+  { name: 'A LOGICAL PATH', accent: '#d4bce9', ink: '#463954', background: '#32293d' },
+  { name: 'THINK IN PYTHON', accent: '#e9d497', ink: '#514926', background: '#342f20' },
+  { name: 'THE FRONT LAYER', accent: '#edb9c6', ink: '#5b3744', background: '#382630' },
+  { name: 'THREE LANGUAGES', accent: '#dfdccd', ink: '#3d3b30', background: '#333228' },
+  { name: 'CODE AS A CANVAS', accent: '#abe1bc', ink: '#2b5137', background: '#1b3325' },
+  { name: 'WHAT COMES NEXT', accent: '#a2d9e9', ink: '#2e4957', background: '#20313b' },
+  { name: 'BELOW THE SURFACE', accent: '#c3c5d6', ink: '#373a4e', background: '#262833' },
+];
 
-const playRadarLockSound = () => {
-  // Sshhh... silence
-};
+/** Eleven course-specific, code-built objects. Each visual describes what the course explores. */
+function CourseSculpture({ index, miniature = false }: { index: number; miniature?: boolean }) {
+  const l = useSiteText();
+  const nodes = [{x: 140, y: 24}, {x: 65, y: 85}, {x: 215, y: 85}, {x: 25, y: 152}, {x: 105, y: 152}, {x: 180, y: 152}, {x: 255, y: 152}];
+  return <div className={`course-sculpture course-sculpture-${index} ${miniature ? 'is-miniature' : ''}`} aria-hidden="true" dir="ltr"><div className="course-object-ground" /><div className="course-object-stage">
+    {l(index === 0 && <div className="course-browser-build">{l([0, 1, 2].map(i => <div className={`course-browser-panel panel-${i}`} key={i}><div className="browser-dots"><i /><i /><i /></div>{l(i === 0 ? <><div className="browser-block-title" /><div className="browser-block-lines"><i /><i /></div><div className="browser-block-grid"><i /><i /><i /></div></> : i === 1 ? <svg viewBox="0 0 150 110"><path d="M5 12H145V100H5ZM20 29H130M20 50H60V85H20ZM73 50H130M73 65H130M73 80H109" /></svg> : <span>&lt;/&gt;</span>)}</div>))}</div>)}
+    {l(index === 1 && <div className="course-relational-world"><svg viewBox="0 0 300 190"><path className="course-flow-line" d="M45 135L145 80L245 135M45 65L145 120L245 65M145 25V168" /><circle cx="45" cy="65" r="5" /><circle cx="245" cy="65" r="5" /><circle cx="45" cy="135" r="5" /><circle cx="245" cy="135" r="5" /></svg><div className="course-database">{l([0, 1, 2].map(i => <i key={i} style={{ '--slice': i } as React.CSSProperties}><span>0{l(i+1)}</span></i>))}</div><span className="course-data-packet packet-a">{l("GET")}</span><span className="course-data-packet packet-b">{l("POST")}</span></div>)}
+    {l(index === 2 && <div className="course-python-ribbon"><svg viewBox="0 0 280 190"><path className="python-trail" d="M215 32H108C54 32 54 88 111 88H173C228 88 228 151 170 151H65" /><path d="M96 10V51M196 131V175" /><circle cx="95" cy="32" r="5" /><circle cx="193" cy="151" r="5" /><path className="course-flow-line" d="M25 62H253M25 121H253" /></svg><span className="python-ribbon-code">{l("for idea in curiosity:")}</span><span className="python-ribbon-output">build(idea)</span></div>)}
+    {l(index === 3 && <div className="course-responsive-devices"><div className="responsive-monitor"><div><i /><span>{l("WEB")}</span><b /><b /><b /></div><i /></div><div className="responsive-tablet"><i /><i /><i /></div><div className="responsive-phone"><i /><i /><i /></div><span className="responsive-width-line">320 ← → 1440</span></div>)}
+    {l(index === 4 && <div className="course-logic-tree"><svg viewBox="0 0 280 190"><path className="course-flow-line" d="M140 25V52H65V85M140 52H215V85M65 85V118H25V152M65 118H105V152M215 85V118H180V152M215 118H255V152" />{l(nodes.map(({x, y}, i) => <g className="logic-node" key={i} style={{ '--node': i } as React.CSSProperties}><rect x={x-18} y={y-14} width="36" height="28" rx={i === 0 ? 14 : 3} /><text x={x} y={y+3} textAnchor="middle">{l(['?', 'if', 'else', '01', '10', '11', '00'][i])}</text></g>))}</svg></div>)}
+    {l(index === 5 && <div className="course-python-steps">{l(['idea', '  if curious:', '    explore()', '    make()', '  repeat()'].map((line, i) => <div key={line} style={{ '--step': i } as React.CSSProperties}><span>0{l(i+1)}</span><code>{l(line)}</code></div>))}</div>)}
+    {l(index === 6 && <div className="course-front-architecture"><div className="front-portal"><span>&lt;</span><div className="front-layer layer-a"><i /><i /><i /></div><div className="front-layer layer-b"><b /><i /><i /></div><span>/&gt;</span></div><div className="front-architecture-line" /></div>)}
+    {l(index === 7 && <div className="course-web-cube"><div className="web-cube-face cube-front"><span>HTML</span><small>{l("STRUCTURE")}</small></div><div className="web-cube-face cube-right"><span>CSS</span><small>{l("EXPRESSION")}</small></div><div className="web-cube-face cube-top"><span>JS</span><small>{l("INTERACTION")}</small></div><div className="web-cube-face cube-bottom" /></div>)}
+    {l(index === 8 && <div className="course-turtle-drawing"><svg viewBox="0 0 280 190"><path className="turtle-line" d="M135 105H151V90H122V121H167V75H106V137H184V59H89V154H201V42H72V170H218V26H55" /><path d="M53 26L43 33L48 16Z" /><circle cx="135" cy="105" r="3" /></svg><span>{l("forward() / turn()")}</span></div>)}
+    {l(index === 9 && <div className="course-future-city"><div className="future-city-orbit" /><div className="future-city-orbit second" />{l([0, 1, 2, 3, 4].map(i => <div className="future-city-tower" key={i} style={{ '--tower': i } as React.CSSProperties}><i /><span /><span /><span /></div>))}<div className="future-city-foundation" /><span className="future-label">{l("NOW → NEXT")}</span></div>)}
+    {l(index === 10 && <div className="course-memory-array"><div className="memory-pointer">&amp;address<svg viewBox="0 0 100 50"><path d="M0 6H58V43H94M87 36L94 43L87 49" /></svg></div><div className="memory-voxels">{l(Array.from({length: 9}, (_, i) => <div key={i} style={{ '--voxel': i } as React.CSSProperties}><span>{l(['00','01','02','03','04','05','06','07','08'][i])}</span><i /><b /></div>))}</div><span className="memory-label">{l("C++ / MEMORY / STRUCTURE")}</span></div>)}
+  </div><span className="course-object-coordinate">{l("STUDY /")}{l(String(index+1).padStart(2,'0'))}</span></div>;
+}
+
+function randomCredentialIndex() {
+  if (certificates.length < 2) return 0;
+  let previous = -1;
+  try { const stored = sessionStorage.getItem('pimx-last-credential'); if (stored !== null) previous = Number(stored); } catch { /* Storage is optional. */ }
+  const hasPrevious = Number.isInteger(previous) && previous >= 0 && previous < certificates.length;
+  const choice = Math.floor(Math.random() * (certificates.length - (hasPrevious ? 1 : 0)));
+  return hasPrevious && choice >= previous ? choice + 1 : choice;
+}
 
 export default function Playground() {
-  const { theme, dir, lang } = useLanguageTheme();
-  const [searchTerm, setSearchTerm] = React.useState('');
-  const [activeFilter, setActiveFilter] = React.useState<'all' | 'michigan' | 'sharif' | 'coursera'>('all');
-
-  const certificates: Certificate[] = [
-    {
-      id: 'cert-1',
-      titleEn: 'Web Design for Everybody Capstone',
-      titleFa: 'پروژه نهایی و طراحی بهینه وب برای همه (Capstone)',
-      titleAr: 'مشروع التخرج في تصميم الويب للجميع (Capstone)',
-      descEn: 'Design for Everybody Capstone framework from the University of Michigan on Coursera.',
-      descFa: 'طراحی، تست، پیاده‌سازی و ارزیابی نهایی قالب‌های وب‌سایت با دسترسی‌پذیری بالا.',
-      descAr: 'تصميم واختبار ونشر قوالب مواقع الويب الكاملة ذات الإتاحة العالية وحلول الويب المتجاوبة.',
-      institutionEn: 'University of Michigan',
-      institutionFa: 'دانشگاه میشیگان | University of Michigan',
-      institutionAr: 'جامعة ميشيغان | University of Michigan',
-      grade: '100% / 100',
-      percentage: 100,
-      issuer: 'michigan',
-      badgeTypeEn: 'Capstone',
-      badgeTypeFa: 'پروژه نهایی',
-      badgeTypeAr: 'مشروع التخرج',
-      pdfFile: 'WebDesignforEverybodyCapstone.pdf'
-    },
-    {
-      id: 'cert-2',
-      titleEn: 'Web Application Technologies and Django',
-      titleFa: 'فناوری‌های توسعه وب‌اپلیکیشن با جنگو (\u062c\u0646\u06af\u0648)',
-      titleAr: 'تقنيات تطبيقات الويب وإطار عمل جانغو',
-      descEn: 'Structured back-end database architecture, RESTful routing parameters, and Python integrations with Django.',
-      descFa: 'معماری دیتابیس برای جنگو، مدل‌سازی اطلاعات، سیستم هدرگذاری امنیتی HTTP، و ارتباطات سرویس بک‌اند.',
-      descAr: 'بنية قواعد البيانات المنظمة لجانغو، ونمذجة هياكل الجداول، وتوجيه البيانات والروابط الأمنية.',
-      institutionEn: 'University of Michigan',
-      institutionFa: 'دانشگاه میشیگان | University of Michigan',
-      institutionAr: 'جامعة ميشيغان | University of Michigan',
-      grade: '100% / 100',
-      percentage: 100,
-      issuer: 'michigan',
-      badgeTypeEn: 'Specialization',
-      badgeTypeFa: 'دوره تخصصی',
-      badgeTypeAr: 'دورة تخصصية',
-      pdfFile: 'WebApplicationTechnologiesandDjango.pdf'
-    },
-    {
-      id: 'cert-3',
-      titleEn: 'Programming for Everybody (Getting Started with Python)',
-      titleFa: 'برنامه‌نویسی برای همه (شروع اصولی و عملی پایتون)',
-      titleAr: 'البرمجة للجميع (البداية مع لغة بايثون)',
-      descEn: 'Fundamental programming constructs, variables, complex loops, and modular data flow using Python core logic.',
-      descFa: 'مبانی پایه‌ای متغیرها، منطق شرطی، حلقه‌ها، متدها و مفاهیم شی‌گرایی مقدماتی با پایتون.',
-      descAr: 'المفاهيم الأساسية للمتغيرات، الحلقات التكرارية والشروط البرمجية، وهياكل البيانات بلغة بايثون.',
-      institutionEn: 'University of Michigan',
-      institutionFa: 'دانشگاه میشیگان | University of Michigan',
-      institutionAr: 'جامعة ميشيغان | University of Michigan',
-      grade: '93.21% / 100',
-      percentage: 93.21,
-      issuer: 'michigan',
-      badgeTypeEn: 'Foundation',
-      badgeTypeFa: 'پایه‌گذاری',
-      badgeTypeAr: 'أساسيات',
-      pdfFile: 'Programming for Everybody(GettingStartedwithPython).pdf'
-    },
-    {
-      id: 'cert-4',
-      titleEn: 'Responsive Website Basics',
-      titleFa: 'مبانی طراحی وب‌سایت‌های واکنش‌گرا و استاندارد',
-      titleAr: 'أساسيات تصمیم مواقع الويب المتجاوبة',
-      descEn: 'Multi-screen styling layouts, CSS media queries, structural HTML5 grid setups, and adaptive interfaces.',
-      descFa: 'طراحی واکنش‌گرا با گریدبندی CSS، کوئری‌های رسانه متناسب با موبایل و تبلت، و ارائه‌ اصول طراحی مدرن.',
-      descAr: 'تصميم الواجهات المتجاوبة مع كافة الشاشات، صياغة CSS المتقدم، وإدارة التنسيقات المتطورة.',
-      institutionEn: 'University of London',
-      institutionFa: 'دانشگاه لندن | University of London',
-      institutionAr: 'جامعة لندن | University of London',
-      grade: '90.40% / 100',
-      percentage: 90.40,
-      issuer: 'london',
-      badgeTypeEn: 'Foundation',
-      badgeTypeFa: 'پایه‌گذاری',
-      badgeTypeAr: 'أساسيات',
-      pdfFile: 'ResponsiveWebsiteBasicsCodewithHTML,CSS,andJavaScript.pdf'
-    },
-    {
-      id: 'cert-5',
-      titleEn: 'Learn to Program',
-      titleFa: 'یادگیری برنامه‌نویسی و حل مسئله فنی',
-      titleAr: 'تعلم البرمجة وحل المشكلات الهندسية',
-      descEn: 'Comprehensive scientific logic training, debugging methodologies, parameters testing, and modular functions.',
-      descFa: 'اصول تفکر الگوریتمی، روش‌های بهینه‌سازی رفع خطا (Debugging)، کار با آرایه داده‌ها، و الگوریتم‌های تکرار.',
-      descAr: 'المبادئ الأساسية للتفكير الخوارزمي، ومنهجيات تتبع الأخطاء واختبار الوظائف البرمجية بدقة.',
-      institutionEn: 'University of Toronto',
-      institutionFa: 'دانشگاه تورنتو | University of Toronto',
-      institutionAr: 'جامعة تورنتو | University of Toronto',
-      grade: '92.71% / 100',
-      percentage: 92.71,
-      issuer: 'toronto',
-      badgeTypeEn: 'Foundation',
-      badgeTypeFa: 'پایه‌گذاری',
-      badgeTypeAr: 'أساسيات',
-      pdfFile: 'LearntoProgramTheFundamentals.pdf'
-    },
-    {
-      id: 'cert-6',
-      titleEn: 'Introduction to Python',
-      titleFa: 'مقدمه‌ای بر توابع پیشرفته و ساختارهای پایتون',
-      titleAr: 'مقدمة في توابع وبياينات لغة بايثون',
-      descEn: 'Object methods, lists comprehension, file handling systems, and advanced syntax configurations.',
-      descFa: 'اصول عمیق‌تر متدهای سیستمی، کارکرد فایل‌ها، ساختارهای پویا و کتابخانه‌های درونی پایتون.',
-      descAr: 'أساليب الكائنات البرمجية، معالجة الملفات والتحكم بها، والمكتبات الداخلية في لغة بايثون.',
-      institutionEn: 'University of Pennsylvania',
-      institutionFa: 'دانشگاه پنسیلوانیا | University of Pennsylvania',
-      institutionAr: 'جامعة بنسلفانيا | University of Pennsylvania',
-      grade: '90.07% / 100',
-      percentage: 90.07,
-      issuer: 'upenn',
-      badgeTypeEn: 'Foundation',
-      badgeTypeFa: 'پایه‌گذاری',
-      badgeTypeAr: 'أساسيات',
-      pdfFile: 'IntroductiontoPythonProgramming.pdf'
-    },
-    {
-      id: 'cert-7',
-      titleEn: 'Introduction to Front-End Development',
-      titleFa: 'مقدمه‌ای بر برنامه‌نویسی و توسعه فرانت‌اند',
-      titleAr: 'مقدمة احترافية في تطوير الواجهات الأمامية',
-      descEn: 'Modern layout rules, DOM operations structure, component architectures, and responsive framework paradigms.',
-      descFa: 'شناخت معماری پیج‌ها، اصول تگ‌های معنایی وب، بهینه‌سازی المان‌ها، و چرخه رندرینگ کلاینت.',
-      descAr: 'قواعد تصميم الواجهات الحديثة، ومصفوفة الـ DOM التفاعلية، وتنظيم الهياكل والعناصر التفاعلية.',
-      institutionEn: 'Meta (Company)',
-      institutionFa: 'شرکت بین‌المللی متا (مؤسس اینستاگرام و فیسبوک)',
-      institutionAr: 'شركة ميتا العالمية (Meta)',
-      grade: '92.00% / 100',
-      percentage: 92,
-      issuer: 'meta',
-      badgeTypeEn: 'Professional Certificate',
-      badgeTypeFa: 'مدرک حرفه‌ای',
-      badgeTypeAr: 'شهادة احترافية',
-      pdfFile: 'IntroductiontoFrontEndDevelopment.pdf'
-    },
-    {
-      id: 'cert-8',
-      titleEn: 'HTML, CSS, and Javascript',
-      titleFa: 'آموزش جامع و بهینه وب‌دیزاین (HTML, CSS, JS)',
-      titleAr: 'الشهادة الشاملة لتطوير الويب التفاعلي',
-      descEn: 'Dynamic Client-Side coding script, functional DOM actions, arrays maps, styling animations.',
-      descFa: 'کدنویسی جاوااسکریپت، هندلینگ ایونت‌ها، تغییرات زنده استایل‌ها، و منطق فرانت‌اند سمت کاربر.',
-      descAr: 'صياغة نصوص جافا سكريبت التفاعلية، ومعالجة أحداث المتصفح، وتحريك العناصر البرمجية.',
-      institutionEn: 'Johns Hopkins University',
-      institutionFa: 'دانشگاه معتبر جانز هاپکینز | Johns Hopkins University',
-      institutionAr: 'جامعة جونز هوبكنز | Johns Hopkins University',
-      grade: '93.00% / 100',
-      percentage: 93,
-      issuer: 'jhu',
-      badgeTypeEn: 'Specialization',
-      badgeTypeFa: 'دوره تخصصی',
-      badgeTypeAr: 'دورة تخصصية',
-      pdfFile: 'HTML,CSS,andJavascriptforWebDevelopers.pdf'
-    },
-    {
-      id: 'cert-9',
-      titleEn: 'Programming With Python (Part 1)',
-      titleFa: 'کدنویسی تعاملی و الگوریتم‌های بازی در پایتون (بخش اول)',
-      titleAr: 'مقدمة في البرمجة التفاعلية في بايثون - الجزء الأول',
-      descEn: 'Building event-driven graphical models, math formulas transformation, vector arrays, and live canvas renderings.',
-      descFa: 'توسعه برنامه‌های مبتنی بر رویداد، فرمولاسیون فیزیک و هندسه به سورس‌کد، و رندرهای زنده شبیه‌سازی.',
-      descAr: 'بناء البرمجيات المعتمدة على الأحداث، وتصميم الرسوم المتجهية وتطبيقات الفضاء الثنائي.',
-      institutionEn: 'Rice University',
-      institutionFa: 'دانشگاه رایس آمریکا | Rice University',
-      institutionAr: 'جامعة رايس الأمريكية | Rice University',
-      grade: '87.84% / 100',
-      percentage: 87.84,
-      issuer: 'rice',
-      badgeTypeEn: 'Foundation',
-      badgeTypeFa: 'پایه‌گذاری',
-      badgeTypeAr: 'أساسيات',
-      pdfFile: 'AnIntroductiontoInteractiveProgramminginPythonPart1.pdf'
-    },
-    {
-      id: 'cert-10',
-      titleEn: 'Familiarity with Emerging Technologies and Future Jobs',
-      titleFa: 'آشنایی کاربردی با فناوری‌های نوظهور و بازارکار آینده وب و هوش نو',
-      titleAr: 'التعرف على التقنيات الناشئة المتقدمة ووظائف المستقبل وبنيتها',
-      descEn: 'Analysis of cloud server systems, modern automation mechanisms, Web3 distributed metrics, and next-gen AI roles.',
-      descFa: 'بررسی اکوسیستم محاسبات ابری، اینترنت چیزها، سیستم‌های خودگردان تلگرام و وب‌اپلیکیشن‌ها، و اشتغال هوشمند.',
-      descAr: 'دراسة أنظمة الحوسبة السحابية وأتمتة العمليات وبنية الويب الموزع ومختلف وكلاء الذكاء الاصطناعي.',
-      institutionEn: 'Sharif University of Technology',
-      institutionFa: 'دانشگاه صنعتی شریف (Sharif UT)',
-      institutionAr: 'جامعة شريف للتكنولوجيا (Sharif UT)',
-      grade: '90.00% / 100',
-      percentage: 90,
-      issuer: 'sharif',
-      badgeTypeEn: 'Honorary Roll',
-      badgeTypeFa: 'رتبه افتخاری',
-      badgeTypeAr: 'لوحة الشرف',
-      pdfFile: 'FamiliaritywithEmergingTechnologiesandFuture Jobs.pdf'
-    },
-    {
-      id: 'cert-11',
-      titleEn: 'Programming With C++',
-      titleFa: 'برنامه‌نویسی ساخت‌یافته شی‌ءگرا با زبان ++C',
-      titleAr: 'تطوير الخوارزميات وصياغة كتل البيانات بلغة ++C',
-      descEn: 'Memory management, pointers declarations, structures classes, compile optimization, and high-performance algorithms.',
-      descFa: 'مدیریت آدرس‌دهی حافظه و اشاره‌گرها، کلاس‌های انتزاعی شیءگری، تخصیص داینامیک حافظه، و کتابخانه الگوهای استاندارد.',
-      descAr: 'إدارة الذاكرة والمؤشرات البرمجية، وصياغة الكائنات الموروثة ومكتبات القوالب القياسية المتقدمة.',
-      institutionEn: 'Kados Institute',
-      institutionFa: 'انستیتو کادوس | Kados Institute',
-      institutionAr: 'معهد كادوس | Kados Institute',
-      grade: '16.00 / 20.00 (80%)',
-      percentage: 80,
-      issuer: 'kados',
-      badgeTypeEn: 'Specialization',
-      badgeTypeFa: 'دوره تخصصی',
-      badgeTypeAr: 'دورة تخصصية'
-    }
-  ];
-
-  // Filtering Logic
-  const filteredCerts = certificates.filter(cert => {
-    // Drop filters depending on navigation
-    let passCategory = true;
-    if (activeFilter === 'michigan') passCategory = cert.issuer === 'michigan';
-    else if (activeFilter === 'sharif') passCategory = cert.issuer === 'sharif';
-    else if (activeFilter === 'coursera') {
-      passCategory = ['london', 'toronto', 'upenn', 'meta', 'jhu', 'rice'].includes(cert.issuer);
-    }
-
-    const titleStr = `${cert.titleEn} ${cert.titleFa} ${cert.titleAr} ${cert.institutionEn} ${cert.institutionFa} ${cert.institutionAr}`.toLowerCase();
-    const passSearch = titleStr.includes(searchTerm.toLowerCase());
-
-    return passCategory && passSearch;
+  const l = useSiteText();
+  const { dir, lang } = useLanguageTheme();
+  const copy = copyByLanguage[lang];
+  const reduced = useReducedMotion();
+  const [selectedIndex, setSelectedIndex] = useState(randomCredentialIndex);
+  const [flipped, setFlipped] = useState(false);
+  const [search, setSearch] = useState('');
+  const [issuer, setIssuer] = useState<Certificate['issuer'] | 'all'>('all');
+  const [document, setDocument] = useState<{ name: string; url: string } | null>(null);
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const featureRef = useRef<HTMLElement>(null);
+  const railRef = useRef<HTMLDivElement>(null);
+  const selected = certificates[selectedIndex];
+  const localized = localize(selected, lang);
+  const learning = learningById[selected.id];
+  const learningText = lang === 'fa' ? learning.fa : lang === 'ar' ? learning.ar : learning.en;
+  const files = getFiles(selected, lang);
+  const filtered = certificates.filter(certificate => {
+    const terms = [certificate.titleEn, certificate.titleFa, certificate.titleAr, certificate.institutionEn, certificate.institutionFa, certificate.institutionAr, certificate.descEn, certificate.descFa, ...learningById[certificate.id].topics].join(' ').toLocaleLowerCase();
+    return (issuer === 'all' || issuer === certificate.issuer) && terms.includes(search.trim().toLocaleLowerCase());
   });
+  const perfect = certificates.filter(certificate => certificate.percentage === 100).length;
 
-  // Calculate static metrics for UI highlight box
-  const totalCerts = certificates.length;
-  const michiganCerts = certificates.filter(c => c.issuer === 'michigan').length;
-  const sharifHonor = "3 Courses";
-  const averageAccuracy = "92.8%";
+  useEffect(() => { try { sessionStorage.setItem('pimx-last-credential', String(selectedIndex)); } catch { /* Storage is optional. */ } }, [selectedIndex]);
 
-  // Translated Page Labels
-  const pageT = {
-    all: lang === 'fa' ? 'همه مدارج' : lang === 'ar' ? 'جميع الشهادات' : 'All Credentials',
-    michigan: lang === 'fa' ? 'دانشگاه میشیگان' : lang === 'ar' ? 'جامعة ميشيغان' : 'U. of Michigan',
-    sharif: lang === 'fa' ? 'دانشگاه شریف' : lang === 'ar' ? 'جامعة شريف' : 'Sharif Univ.',
-    partners: lang === 'fa' ? 'شرکای کورسرا و دیگران' : lang === 'ar' ? 'شركاء كورسيرا وآخرون' : 'Global Partners',
-    searchPlaceholder: lang === 'fa' ? 'جستجو در عناوین، دانشگاه‌ها، دوره‌ها...' : lang === 'ar' ? 'ابحث عن الشهادات والجامعات والدورات...' : 'Search credentials, institutions, skills...',
-    metricTotal: lang === 'fa' ? 'تعداد کل مدارک' : lang === 'ar' ? 'إجمالي الشهادات' : 'Total Credentials',
-    metricScore: lang === 'fa' ? 'میانگین علمی نمرات' : lang === 'ar' ? 'الترتيب العام المتميز' : 'Average Academic Score',
-    metricPerfect: lang === 'fa' ? 'دوره‌های نمره ۱۰۰' : lang === 'ar' ? 'دورات بنسبة 100%' : 'Perfect 100% Hits',
-    metricRank: lang === 'fa' ? 'برترین دوره‌ها در شریف' : lang === 'ar' ? 'تفوق علمي بجامعة شريف' : 'Top Sharif Courses',
-    gradeLabel: lang === 'fa' ? 'معدل نهایی پذیرش:' : lang === 'ar' ? 'الدرجة والتقييم النهائي:' : 'Verified Grade Score:',
-    badgeVerif: lang === 'fa' ? 'تاییدیه سیگنال امن' : lang === 'ar' ? 'معتمد ومؤمن بالكامل' : 'SECURE VERIFIED',
-    noResults: lang === 'fa' ? 'نتیجه‌ای برای جستجوی شما یافت نشد.' : lang === 'ar' ? 'لم يتم العثور على أي نتائج.' : 'No credentials match your exact search criteria.',
-    subTitle: lang === 'fa' ? 'اسناد، مدارج و پایان‌دوره‌های رسمی برنامه‌نویسی، طراحی وب، جنگو و خوارزمولوژی' : lang === 'ar' ? 'الوثائق والاعتمادات الرسمية لمسارات تطوير الويب وقواعد البيانات بلغة بايثون' : 'Official transcripts, academic honors, and specialization credentials verified by top international universities.',
-    pageHeading: lang === 'fa' ? 'گواهی‌نامه‌ها و مدارج افتخار' : lang === 'ar' ? 'الشهادات والمؤهلات المهنية' : 'Certificates & Credentials'
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    if (!dialog) return;
+    if (document && !dialog.open) dialog.showModal();
+    if (!document && dialog.open) dialog.close();
+  }, [document]);
+  useEffect(() => {
+    const active = railRef.current?.querySelector<HTMLButtonElement>('[aria-pressed="true"]');
+    const rail = railRef.current;
+    if (!active || !rail) return;
+    const activeBounds = active.getBoundingClientRect(), railBounds = rail.getBoundingClientRect();
+    if (activeBounds.left < railBounds.left) rail.scrollBy({ left: activeBounds.left - railBounds.left - 12, behavior: reduced ? 'instant' : 'smooth' });
+    else if (activeBounds.right > railBounds.right) rail.scrollBy({ left: activeBounds.right - railBounds.right + 12, behavior: reduced ? 'instant' : 'smooth' });
+  }, [selectedIndex, reduced]);
+  const select = (index: number, scroll = false) => {
+    setSelectedIndex((index + certificates.length) % certificates.length); setFlipped(false);
+    if (scroll) featureRef.current?.scrollIntoView({ behavior: reduced ? 'instant' : 'smooth', block: 'start' });
   };
+  const reveal = reduced ? {} : { opacity: 0, y: 30 };
 
   return (
-    <div 
-      className={`py-12 md:py-16 min-h-[90vh] transition-colors duration-300 ${
-        theme === 'light' ? 'text-slate-800' : 'text-gray-100'
-      }`} 
-      dir={dir}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Dynamic Header Section */}
-        <div className={`border-b pb-6 mb-10 text-start ${
-          theme === 'light' ? 'border-slate-200' : 'border-dark-border/40'
-        }`}>
-          <div className="flex items-center gap-2.5 mb-2.5">
-            <span className="h-2.5 w-2.5 rounded-full bg-cyber-teal animate-ping" />
-            <span className={`text-[10px] font-mono font-extrabold uppercase tracking-widest border px-2.5 py-0.5 rounded-md ${
-              theme === 'light' ? 'bg-teal-50 border-cyber-teal/20 text-cyber-teal' : 'bg-teal-950/40 border-cyber-teal/20 text-cyan-400'
-            }`}>
-              {lang === 'fa' ? 'مدارج تصدیق شده' : lang === 'ar' ? 'الاعتمادات الموثقة' : 'ACADEMIC RECOGNITION'}
-            </span>
-          </div>
-          <h1 className={`text-3xl md:text-4xl font-black tracking-tight font-sans flex items-center gap-2.5 ${
-            theme === 'light' ? 'text-slate-900' : 'text-white'
-          }`}>
-            <Award className="h-8 w-8 text-cyber-teal" />
-            <span>{pageT.pageHeading}</span>
-          </h1>
-          <p className={`mt-2 font-sans text-sm max-w-3xl leading-relaxed ${
-            theme === 'light' ? 'text-slate-600' : 'text-gray-400'
-          }`}>
-            {pageT.subTitle}
-          </p>
-        </div>
-
-        {/* High-Fidelity Professional KPI Metrics Bar */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
-          <motion.div 
-            whileHover={{ y: -3 }}
-            onMouseEnter={playHoverSound}
-            className={`p-4 rounded-2xl border flex flex-col justify-between text-start ${
-              theme === 'light' ? 'bg-white border-slate-200' : 'bg-slate-900 border-dark-border/40'
-            }`}
-          >
-            <span className="text-xs font-mono text-gray-400 uppercase tracking-wider">{pageT.metricTotal}</span>
-            <div className="flex items-baseline gap-1 mt-2">
-              <span className="text-2xl md:text-3xl font-black font-sans text-cyber-teal">{totalCerts}</span>
-              <span className="text-[10px] font-mono text-gray-500">NODES</span>
+    <div className="cert-page" dir={dir} style={{ '--course-accent': courseIdentities[selectedIndex].accent, '--course-ink': courseIdentities[selectedIndex].ink, '--course-background': courseIdentities[selectedIndex].background } as React.CSSProperties}>
+      <div className="cert-container">
+        <header className="cert-hero">
+          <motion.div className="cert-hero-copy" initial={reveal} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}>
+            <p className="cert-kicker"><span aria-hidden="true" />{l(copy.kicker)}<span className="cert-kicker-line" aria-hidden="true" /></p>
+            <h1><PageHeadline text={l(copy.title)} effect="inscription" rtl={dir === 'rtl'}/><br /><em><PageHeadline text={l(copy.titleAccent)} effect="inscription" rtl={dir === 'rtl'}/></em></h1>
+            <p className="cert-hero-description">{l(copy.intro)}</p>
+            <div className="cert-hero-summary">
+              {l([[certificates.length, copy.credentials], [issuers.length, copy.institutions], [perfect, copy.perfect]].map(([number, label]) => <div key={label}><strong>{l(String(number).padStart(2, '0'))}</strong><span>{l(label)}</span></div>))}
             </div>
+            <a className="cert-enter" href="#credential-archive">{l(copy.explore)}<ArrowDown size={17} aria-hidden="true" /></a>
           </motion.div>
-
-          <motion.div 
-            whileHover={{ y: -3 }}
-            onMouseEnter={playHoverSound}
-            className={`p-4 rounded-2xl border flex flex-col justify-between text-start ${
-              theme === 'light' ? 'bg-white border-slate-200' : 'bg-slate-900 border-dark-border/40'
-            }`}
-          >
-            <span className="text-xs font-mono text-gray-400 uppercase tracking-wider">{pageT.metricScore}</span>
-            <div className="flex items-baseline gap-1 mt-2">
-              <span className="text-2xl md:text-3xl font-black font-sans text-yellow-500">{averageAccuracy}</span>
-              <span className="text-[10px] font-mono text-gray-500">AVG</span>
-            </div>
+          <motion.div className="cert-hero-object" initial={reduced ? false : { opacity: 0, scale: 0.92 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1.1 }}>
+            <CredentialScene index={selectedIndex} title={l(selected.titleEn)} issuer={selected.institutionEn} grade={selected.grade} labels={{ scene: copy.scene, drag: copy.drag, pause: copy.pause, play: copy.play, reset: copy.resetScene }} />
           </motion.div>
+        </header>
 
-          <motion.div 
-            whileHover={{ y: -3 }}
-            onMouseEnter={playHoverSound}
-            className={`p-4 rounded-2xl border flex flex-col justify-between text-start ${
-              theme === 'light' ? 'bg-white border-slate-200' : 'bg-slate-900 border-dark-border/40'
-            }`}
-          >
-            <span className="text-xs font-mono text-gray-400 uppercase tracking-wider">{pageT.metricPerfect}</span>
-            <div className="flex items-baseline gap-1 mt-2">
-              <span className="text-2xl md:text-3xl font-black font-sans text-cyan-400">2</span>
-              <span className="text-[10px] font-mono text-gray-500">COURSERS</span>
-            </div>
-          </motion.div>
-
-          <motion.div 
-            whileHover={{ y: -3 }}
-            onMouseEnter={playHoverSound}
-            className={`p-4 rounded-2xl border flex flex-col justify-between text-start ${
-              theme === 'light' ? 'bg-white border-slate-200' : 'bg-slate-900 border-dark-border/40'
-            }`}
-          >
-            <span className="text-xs font-mono text-gray-400 uppercase tracking-wider">{pageT.metricRank}</span>
-            <div className="flex items-baseline gap-1 mt-2">
-              <span className="text-2xl md:text-3xl font-black font-sans text-rose-500">{sharifHonor}</span>
-              <span className="text-[10px] font-mono text-gray-500">RANKED</span>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Filters and Live Search Actions */}
-        <div className={`p-4 rounded-2xl border mb-8 flex flex-col md:flex-row gap-4 justify-between items-center ${
-          theme === 'light' ? 'bg-slate-50 border-slate-200' : 'bg-slate-950/40 border-dark-border/20'
-        }`}>
-          {/* Quick horizontal buttons */}
-          <div className="flex flex-wrap gap-2 w-full md:w-auto">
-            {[
-              { key: 'all', label: pageT.all },
-              { key: 'michigan', label: pageT.michigan },
-              { key: 'sharif', label: pageT.sharif },
-              { key: 'coursera', label: pageT.partners }
-            ].map(btn => (
-              <button
-                key={btn.key}
-                onClick={() => {
-                  playRadarLockSound();
-                  setActiveFilter(btn.key as any);
-                }}
-                className={`px-3 py-1.5 rounded-xl text-xs font-sans font-bold transition-all duration-300 pointer-events-auto select-none cursor-pointer ${
-                  activeFilter === btn.key 
-                    ? 'bg-gradient-to-r from-teal-500 to-cyan-500 text-slate-950 shadow-[0_4px_12px_rgba(20,184,166,0.15)]'
-                    : theme === 'light'
-                      ? 'bg-white border border-slate-200 text-slate-600 hover:text-slate-900 shadow-sm'
-                      : 'bg-slate-900/60 border border-dark-border/30 text-gray-300 hover:text-white'
-                }`}
-              >
-                {btn.label}
-              </button>
-            ))}
-          </div>
-
-          {/* Search bar inputs */}
-          <div className="relative w-full md:w-72">
-            <Search className="absolute top-2.5 right-3 h-4 w-4 text-gray-500" />
-            <input
-              type="text"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              placeholder={pageT.searchPlaceholder}
-              className={`w-full py-2 pl-4 pr-10 text-xs rounded-xl border font-sans pointer-events-auto outline-none focus:ring-1 focus:ring-cyber-teal transition-all ${
-                theme === 'light' 
-                  ? 'bg-white border-slate-200 text-slate-700' 
-                  : 'bg-slate-900 border-dark-border/40 text-gray-100 focus:border-cyber-teal/60'
-              }`}
-            />
-          </div>
-        </div>
-
-        {/* Dynamic Cards Grid */}
-        <AnimatePresence mode="popLayout">
-          {filteredCerts.length > 0 ? (
-            <motion.div 
-              layout
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-            >
-              {filteredCerts.map((cert) => {
-                const isMichigan = cert.issuer === 'michigan';
-                const isSharif = cert.issuer === 'sharif';
-                const hasPerfectGrade = cert.percentage === 100;
-
-                // Accent classes
-                let cardAccentBorder = theme === 'light' ? 'border-slate-200' : 'border-dark-border/40';
-                let iconColor = 'text-cyber-teal';
-                let cardGlow = '';
-
-                if (hasPerfectGrade) {
-                  cardAccentBorder = theme === 'light' ? 'border-amber-400 shadow-amber-500/10' : 'border-amber-500/40 shadow-amber-500/5';
-                  iconColor = 'text-amber-500';
-                  cardGlow = 'rgba(245,158,11,0.03)';
-                } else if (isSharif) {
-                  cardAccentBorder = theme === 'light' ? 'border-rose-300 shadow-rose-500/10' : 'border-rose-500/40 shadow-rose-500/5';
-                  iconColor = 'text-rose-500';
-                  cardGlow = 'rgba(244,63,94,0.03)';
-                }
-
-                // Render localized texts
-                const localizedTitle = lang === 'fa' ? cert.titleFa : lang === 'ar' ? cert.titleAr : cert.titleEn;
-                const localizedDesc = lang === 'fa' ? cert.descFa : lang === 'ar' ? cert.descAr : cert.descEn;
-                const localizedInst = lang === 'fa' ? cert.institutionFa : lang === 'ar' ? cert.institutionAr : cert.institutionEn;
-                const localizedBadge = lang === 'fa' ? cert.badgeTypeFa : lang === 'ar' ? cert.badgeTypeAr : cert.badgeTypeEn;
-
-                return (
-                  <motion.div
-                    key={cert.id}
-                    layoutId={cert.id}
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
-                    transition={{ duration: 0.3 }}
-                    whileHover={{ y: -4, shadow: '0 20px 25px -5px rgba(0,0,0,0.1)' }}
-                    onMouseEnter={playHoverSound}
-                    style={{ backgroundColor: theme === 'light' ? '#ffffff' : '#0d1117', backgroundImage: cardGlow ? `radial-gradient(circle at 50% 120%, ${cardGlow}, transparent)` : undefined }}
-                    className={`relative p-6 rounded-2xl border text-start flex flex-col justify-between overflow-hidden group shadow-sm ${cardAccentBorder}`}
-                  >
-                    <div>
-                      {/* Top Badges */}
-                      <div className="flex justify-between items-start mb-4">
-                        <span className={`text-[9px] font-mono uppercase tracking-widest font-extrabold border px-2 py-0.5 rounded-md ${
-                          hasPerfectGrade 
-                            ? 'bg-amber-500/10 border-amber-500/20 text-amber-500'
-                            : isSharif
-                              ? 'bg-rose-500/10 border-rose-500/20 text-rose-500'
-                              : theme === 'light' 
-                                ? 'bg-slate-100 border-slate-200 text-slate-500' 
-                                : 'bg-slate-900/60 border-dark-border/40 text-gray-400'
-                        }`}>
-                          {localizedBadge}
-                        </span>
-
-                        <div className="flex gap-1">
-                          {cert.isTrophy ? (
-                            <Trophy className="h-4 w-4 text-rose-500 animate-bounce" />
-                          ) : hasPerfectGrade ? (
-                            <Trophy className="h-4 w-4 text-amber-500" />
-                          ) : (
-                            <Award className={`h-4 w-4 ${iconColor}`} />
-                          )}
-                        </div>
+        <motion.section className="cert-exhibition" ref={featureRef} initial={reveal} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.1 }} transition={{ duration: 0.7 }} aria-label={l(copy.selected)}>
+          <div className="cert-exhibition-heading"><p><Layers3 size={16} aria-hidden="true" />{l(copy.featured)}</p><span dir="ltr">{l(String(selectedIndex + 1).padStart(2, '0'))} <i>/</i> {l(String(certificates.length).padStart(2, '0'))}</span></div>
+          <div className="cert-stage">
+            <div className="cert-dossier-area">
+              <div className="cert-dossier-shadow" aria-hidden="true" />
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.div className="cert-dossier-perspective" key={selected.id} initial={reduced ? false : { opacity: 0, rotateY: -25, y: 24, scale: 0.96 }} animate={{ opacity: 1, rotateY: 0, y: 0, scale: 1 }} exit={reduced ? { opacity: 0 } : { opacity: 0, rotateY: 20, y: -18, scale: 0.98 }} transition={{ duration: reduced ? 0 : 0.36, ease: [0.22, 1, 0.36, 1] }}>
+                  <div className="cert-dossier-tilt" onPointerMove={event => tilt(event, !reduced)} onPointerLeave={resetTilt}>
+                    <div className={`cert-dossier ${flipped ? 'is-flipped' : ''}`}>
+                      <div className="cert-dossier-face cert-dossier-front" aria-hidden={flipped}>
+                        <div className="cert-dossier-top"><span className="cert-institution-mark" dir="ltr" aria-hidden="true">{l(marks[selected.issuer])}</span><span>{l(selected.titleEn.includes('Capstone') ? localized.badge : courseLabels[lang])}</span></div>
+                        <span className="cert-dossier-watermark" dir="ltr" aria-hidden="true">{l(String(selectedIndex + 1).padStart(2, '0'))}</span>
+                        <CourseSculpture index={selectedIndex} miniature />
+                        <div className="cert-dossier-title"><p>{l(localized.institution)}</p><h2>{l(localized.title)}</h2></div>
+                        <div className="cert-dossier-grade"><span>{l(copy.grade)}</span><strong dir="ltr">{l(selected.grade)}</strong></div>
+                        <div className="cert-dossier-footer"><span dir="ltr">{l("PIMX / LEARNING ARCHIVE")}</span><BookOpen size={18} aria-hidden="true" /></div>
                       </div>
-
-                      {/* Header School title */}
-                      <p className={`text-[10px] font-mono flex items-center gap-1 mb-1.5 uppercase tracking-wide ${
-                        theme === 'light' ? 'text-slate-500' : 'text-gray-400'
-                      }`}>
-                        <Building className="h-3 w-3" />
-                        {localizedInst}
-                      </p>
-
-                      {/* Core certificate Title */}
-                      <h3 className={`text-base font-black font-sans leading-snug mb-2 group-hover:text-cyber-teal transition-colors duration-300 ${
-                        theme === 'light' ? 'text-slate-900' : 'text-white'
-                      }`}>
-                        {localizedTitle}
-                      </h3>
-
-                      {/* Micro description */}
-                      <p className={`text-xs leading-relaxed font-sans mb-5 line-clamp-3 text-justify ${
-                        theme === 'light' ? 'text-slate-600' : 'text-gray-400'
-                      }`}>
-                        {localizedDesc}
-                      </p>
-                    </div>
-
-                    {/* Bottom Status meters and ratings */}
-                    <div className="mt-auto space-y-4">
-                      {/* Interactive score progress meter (except for trophy honors which do not have a flat percentage grade) */}
-                      {cert.id !== 'cert-12' && (
-                        <div className="space-y-1.5">
-                          <div className="flex justify-between items-center text-[10px] font-mono">
-                            <span className={theme === 'light' ? 'text-slate-500' : 'text-gray-400'}>{pageT.gradeLabel}</span>
-                            <span className={`font-black ${hasPerfectGrade ? 'text-amber-500' : isSharif ? 'text-rose-500' : 'text-cyber-teal'}`}>
-                              {cert.grade}
-                            </span>
-                          </div>
-                          {(!cert.isTrophy) && (
-                            <div className={`w-full h-1.5 rounded-full overflow-hidden ${
-                              theme === 'light' ? 'bg-slate-100' : 'bg-slate-900/80 border border-dark-border/20'
-                            }`}>
-                              <motion.div 
-                                initial={{ width: 0 }}
-                                animate={{ width: `${cert.percentage}%` }}
-                                transition={{ duration: 1, ease: 'easeOut' }}
-                                className={`h-full rounded-full bg-gradient-to-r ${
-                                  hasPerfectGrade 
-                                    ? 'from-amber-500 to-amber-300' 
-                                    : isSharif 
-                                      ? 'from-rose-500 to-rose-400' 
-                                      : 'from-teal-500 to-cyan-500'
-                                }`} 
-                              />
-                            </div>
-                          )}
-                        </div>
-                      )}
-
-                      {/* Download & View Online Actions */}
-                      {(cert.pdfFile || cert.pdfFiles) && (
-                        <div className="flex flex-col gap-2 pt-1 no-print">
-                          {cert.pdfFile ? (
-                            <div className="flex items-center gap-2">
-                              <a
-                                href={`/${encodeURIComponent(cert.pdfFile)}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                onClick={() => playRadarLockSound()}
-                                className={`flex-1 flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-xl border transition-all cursor-pointer select-none ${
-                                  theme === 'light'
-                                    ? 'bg-white border-slate-300 text-slate-700 hover:bg-slate-50 hover:text-slate-900 shadow-sm'
-                                    : 'bg-slate-900 border-cyber-cyan/35 text-cyber-cyan hover:bg-cyber-cyan hover:text-slate-950 bg-slate-900/50'
-                                }`}
-                              >
-                                <ExternalLink className="h-3.5 w-3.5" />
-                                <span>{lang === 'fa' ? 'نمایش آنلاین' : lang === 'ar' ? 'عرض أونلاين' : 'View Online'}</span>
-                              </a>
-                              <a
-                                href={`/${encodeURIComponent(cert.pdfFile)}`}
-                                download
-                                onClick={() => playRadarLockSound()}
-                                className="flex-1 flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-xl border bg-cyber-teal border-cyber-teal text-slate-950 hover:bg-teal-400 transition-all cursor-pointer select-none shadow-sm"
-                              >
-                                <Download className="h-3.5 w-3.5" />
-                                <span>{lang === 'fa' ? 'دانلود فایل' : lang === 'ar' ? 'تحميل الملف' : 'Download File'}</span>
-                              </a>
-                            </div>
-                          ) : (
-                            // Multiple files list from pdfFiles
-                            <div className="space-y-3">
-                              {cert.pdfFiles?.map((file, idx) => (
-                                <div key={idx} className={`w-full flex flex-col gap-2.5 p-3.5 rounded-xl border ${
-                                  theme === 'light'
-                                    ? 'border-slate-200 bg-slate-50 shadow-sm'
-                                    : 'border-cyber-teal/20 bg-[#072421]/15'
-                                }`}>
-                                  <div className="flex items-center gap-2">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-cyber-teal" />
-                                    <span className={`text-[11px] font-sans font-bold leading-tight ${theme === 'light' ? 'text-slate-700' : 'text-gray-200'}`}>
-                                      {file.title[lang === 'fa' ? 'fa' : lang === 'ar' ? 'ar' : 'en']}
-                                    </span>
-                                  </div>
-                                  <div className="flex items-center gap-2">
-                                    <a
-                                      href={`/${encodeURIComponent(file.url)}`}
-                                      target="_blank"
-                                      rel="noopener noreferrer"
-                                      onClick={() => playRadarLockSound()}
-                                      className={`flex-1 flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-xl border transition-all cursor-pointer select-none ${
-                                        theme === 'light'
-                                          ? 'bg-white border-slate-300 text-slate-700 hover:bg-slate-50 hover:text-slate-900 shadow-sm'
-                                          : 'bg-slate-900 border-cyber-cyan/35 text-cyber-cyan hover:bg-cyber-cyan hover:text-slate-950 bg-slate-900/50'
-                                      }`}
-                                    >
-                                      <ExternalLink className="h-3.5 w-3.5" />
-                                      <span>{lang === 'fa' ? 'نمایش آنلاین' : lang === 'ar' ? 'عرض أونلاين' : 'View Online'}</span>
-                                    </a>
-                                    <a
-                                      href={`/${encodeURIComponent(file.url)}`}
-                                      download
-                                      onClick={() => playRadarLockSound()}
-                                      className="flex-1 flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-xl border bg-cyber-teal border-cyber-teal text-slate-950 hover:bg-teal-400 transition-all cursor-pointer select-none shadow-sm"
-                                    >
-                                      <Download className="h-3.5 w-3.5" />
-                                      <span>{lang === 'fa' ? 'دانلود فایل' : lang === 'ar' ? 'تحميل الملف' : 'Download File'}</span>
-                                    </a>
-                                  </div>
-                                </div>
-                              ))}
-                            </div>
-                          )}
-                        </div>
-                      )}
-
-                      {/* Verify link seal */}
-                      <div className={`border-t pt-2.5 flex items-center justify-between text-[10px] font-mono ${
-                        theme === 'light' ? 'border-slate-100' : 'border-dark-border/20'
-                      }`}>
-                        <div className="flex items-center gap-1 text-gray-500">
-                          <ShieldCheck className="h-3.5 w-3.5 text-cyber-teal" />
-                          <span>{pageT.badgeVerif}</span>
-                        </div>
-                        <span className="text-gray-400 lowercase group-hover:text-cyber-teal transition-colors flex items-center gap-0.5">
-                          verify_host
-                          <ArrowUpRight className="h-2.5 w-2.5" />
-                        </span>
+                      <div className="cert-dossier-face cert-dossier-back" aria-hidden={!flipped}>
+                        <span className="cert-dossier-back-icon" aria-hidden="true">✳</span><p className="cert-back-label">{l(copy.back)}</p>
+                        <h3>{l(copy.topics)}</h3><div className="cert-back-topics" dir="ltr">{l(learning.topics.map((topic, index) => <p key={topic}><span>{l(String(index + 1).padStart(2, '0'))}</span>{l(topic)}</p>))}</div>
+                        <p className="cert-back-context">{l(localized.description)}</p><div className="cert-dossier-footer"><span dir="ltr">{l(issuerNames[selected.issuer])} / {l(String(selectedIndex + 1).padStart(2, '0'))}</span><ArrowUpRight size={18} aria-hidden="true" /></div>
                       </div>
                     </div>
-                  </motion.div>
-                );
-              })}
-            </motion.div>
-          ) : (
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="text-center py-16"
-            >
-              <div className="max-w-md mx-auto">
-                <p className="text-sm text-gray-500 mb-2">{pageT.noResults}</p>
-                <button 
-                  onClick={() => setSearchTerm('')} 
-                  className="text-xs text-cyber-teal hover:underline cursor-pointer font-mono"
-                >
-                  reset_query_parameters
-                </button>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+              <button className="cert-flip" type="button" onClick={() => setFlipped(value => !value)} aria-pressed={flipped}><Rotate3D size={16} aria-hidden="true" />{l(copy.flip)}<span>{l(flipped ? copy.front : copy.back)}</span></button>
+            </div>
+            <div className="cert-learning-panel">
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.div key={selected.id} initial={reduced ? false : { opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: reduced ? 0 : 0.28 }}>
+                  <p className="cert-panel-kicker"><span aria-hidden="true" />{l(copy.context)}</p>
+                  <h3>{l(copy.learning)}</h3><p className="cert-learning-text">{l(learningText)}</p>
+                  <div className="cert-topic-chips" dir="ltr">{l(learning.topics.map(topic => <span key={topic}>{l(topic)}</span>))}</div>
+                  <div className="cert-grade-gauge"><span>{l(copy.grade)}</span><strong dir="ltr">{l(selected.grade)}</strong><div aria-hidden="true"><motion.i initial={reduced ? false : { width: 0 }} animate={{ width: `${selected.percentage}%` }} transition={{ duration: reduced ? 0 : 0.8, delay: 0.15 }} /></div></div>
+                  <div className="cert-document-actions">{l(files.length ? files.map(file => <div key={file.url}><button type="button" className="cert-view-document" onClick={() => setDocument(file)} aria-label={l(`${copy.view}: ${file.name}`)}>{l(copy.view)}<ArrowUpRight size={17} aria-hidden="true" /></button><a className="cert-download" href={file.url} download aria-label={l(`${copy.download}: ${file.name}`)} title={l(copy.download)}><Download size={17} aria-hidden="true" /></a></div>) : <p className="cert-unavailable">{l(copy.unavailable)}</p>)}</div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
+          <div className="cert-navigation">
+            <button className="cert-step" type="button" onClick={() => select(selectedIndex - 1)} aria-label={l(copy.previous)}><ArrowLeft size={18} aria-hidden="true" /></button>
+            <div className="cert-record-rail" ref={railRef} role="group" aria-label={l(copy.selected)}>
+              {l(certificates.map((certificate, index) => <button type="button" key={certificate.id} className="cert-rail-record" onClick={() => select(index)} aria-label={l(`${copy.open}: ${localize(certificate, lang).title}`)} aria-pressed={selectedIndex === index} style={{ '--record-color': courseIdentities[index].accent } as React.CSSProperties}><span dir="ltr">{l(String(index + 1).padStart(2, '0'))}</span><span>{l(learningById[certificate.id].topics[0])}</span><i aria-hidden="true" /></button>))}
+            </div>
+            <button className="cert-step" type="button" onClick={() => select(selectedIndex + 1)} aria-label={l(copy.next)}><ArrowRight size={18} aria-hidden="true" /></button>
+          </div>
+          <span className="cert-sr-only" role="status" aria-live="polite">{l(localized.title)}. {l(copy.grade)}: {l(selected.grade)}</span>
+        </motion.section>
+
+        <section className="cert-collection" id="credential-archive" aria-label={l(copy.kicker)}>
+          <motion.div className="cert-collection-heading" initial={reveal} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.65 }}><div><p className="cert-panel-kicker"><span aria-hidden="true" />{l(copy.kicker)}</p><h2>{l(copy.archive)}</h2><p>{l(copy.archiveIntro)}</p></div><span className="cert-collection-count" dir="ltr" aria-hidden="true">{l(String(certificates.length).padStart(2, '0'))}<i>↗</i></span></motion.div>
+          <div className="cert-controls">
+            <div className="cert-search"><Search size={18} aria-hidden="true" /><label className="cert-sr-only" htmlFor="cert-search-input">{l(copy.search)}</label><input id="cert-search-input" type="search" value={search} onChange={event => setSearch(event.target.value)} placeholder={l(copy.search)} />{l(search && <button type="button" onClick={() => setSearch('')} aria-label={l(copy.clear)}><X size={16} /></button>)}</div>
+            <div className="cert-issuer-select"><label className="cert-sr-only" htmlFor="cert-issuer-filter">{l(copy.filter)}</label><select id="cert-issuer-filter" value={issuer} onChange={event => setIssuer(event.target.value as typeof issuer)}><option value="all">{l(copy.all)}</option>{l(issuers.map(value => <option key={value} value={value}>{l(issuerNames[value])}</option>))}</select></div>
+            <span className="cert-result-count" role="status" aria-live="polite">{l(filtered.length)} / {l(certificates.length)} {l(copy.results)}</span>
+          </div>
+          <motion.div className={`cert-grid ${filtered.length < 4 ? 'has-few-records' : ''}`} layout={!reduced}>
+            <AnimatePresence mode="popLayout" initial={false}>
+              {l(filtered.map(certificate => {
+                const record = localize(certificate, lang), index = certificates.indexOf(certificate), topics = learningById[certificate.id].topics;
+                return <motion.article key={certificate.id} className={`cert-archive-card cert-course-${index} ${selectedIndex === index ? 'is-selected' : ''}`} style={{ '--course-accent': courseIdentities[index].accent, '--course-ink': courseIdentities[index].ink, '--course-background': courseIdentities[index].background } as React.CSSProperties} layout={!reduced} initial={reduced ? false : { opacity: 0, y: 30, rotateX: 12 }} animate={{ opacity: 1, y: 0, rotateX: 0 }} exit={{ opacity: 0, scale: 0.94 }} transition={{ duration: reduced ? 0 : 0.3 }}>
+                  <button className="cert-archive-button" type="button" onClick={() => select(index, true)} onPointerMove={event => tilt(event, !reduced)} onPointerLeave={resetTilt} aria-label={l(`${copy.open}: ${record.title}`)}>
+                    <div className="cert-jacket-top"><span className="cert-jacket-index" dir="ltr">{l(String(index + 1).padStart(2, '0'))}</span><span>{l(certificate.titleEn.includes('Capstone') ? record.badge : courseLabels[lang])}</span><ArrowUpRight size={18} aria-hidden="true" /></div>
+                    <SectionMotion className="course-art-reveal" kind={index % 3 === 0 ? 'iris' : index % 3 === 1 ? 'fold' : 'slide'}><CourseSculpture index={index} /></SectionMotion>
+                    <span className="cert-jacket-monogram" dir="ltr" aria-hidden="true">{l(courseIdentities[index].name)}</span>
+                    <div className="cert-jacket-copy"><p>{l(record.institution)}</p><h3>{l(record.title)}</h3></div>
+                    <div className="cert-jacket-topics" dir="ltr">{l(topics.slice(0, 2).map(topic => <span key={topic}>{l(topic)}</span>))}</div>
+                    <div className="cert-jacket-footer"><span>{l(copy.grade)}</span><strong dir="ltr">{l(certificate.grade)}</strong><span className="cert-jacket-plus" aria-hidden="true">+</span></div>
+                  </button>
+                </motion.article>;
+              }))}
+            </AnimatePresence>
+          </motion.div>
+          {l(filtered.length === 0 && <div className="cert-empty"><Search size={32} strokeWidth={1} aria-hidden="true" /><h3>{l(copy.noResults)}</h3><button type="button" onClick={() => { setSearch(''); setIssuer('all'); }}>{l(copy.reset)}<ArrowRight size={16} aria-hidden="true" /></button></div>)}
+          <p className="cert-footnote"><BookOpen size={15} aria-hidden="true" />{l(copy.footnote)}</p>
+        </section>
       </div>
+      <dialog className="cert-document-dialog" ref={dialogRef} aria-labelledby="cert-document-title" onCancel={() => setDocument(null)} onClose={() => setDocument(null)} onClick={event => { if (event.target === event.currentTarget) setDocument(null); }}>
+        {l(document && <div className="cert-document-shell"><div className="cert-document-toolbar"><h2 id="cert-document-title">{l(document.name)}</h2><a href={document.url} target="_blank" rel="noopener noreferrer" title={l(copy.newTab)} aria-label={l(copy.newTab)}><ExternalLink size={18} /></a><a href={document.url} download title={l(copy.download)} aria-label={l(copy.download)}><Download size={18} /></a><button type="button" autoFocus onClick={() => setDocument(null)} aria-label={l(copy.close)}><X size={22} /></button></div><p className="cert-pdf-hint">{l(copy.pdfHint)} <a href={document.url} target="_blank" rel="noopener noreferrer">{l(copy.newTab)}<ArrowUpRight size={13} aria-hidden="true" /></a></p><iframe src={`${document.url}#view=FitH`} title={l(document.name)} /></div>)}
+      </dialog>
     </div>
   );
 }

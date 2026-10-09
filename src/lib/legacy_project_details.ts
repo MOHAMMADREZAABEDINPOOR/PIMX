@@ -1,0 +1,33 @@
+import type { TranslatedProjectItem } from './project_translations';
+
+/** Original portfolio records are distinct from independently published application source. */
+const details: Record<string, { en: string; fa: string; technologies: string[] }> = {
+  'school-blog-cms': { en: 'A school blog project for publishing text, images and audio, with account flows and an administration interface. This work is documented in my earlier portfolio.', fa: 'پروژهٔ وبلاگ مدرسه برای انتشار متن، تصویر و صوت، همراه با حساب‌های کاربری و بخش مدیریت؛ این کار در پورتفولیوی قبلی من ثبت شده است.', technologies: ['Django','HTML','CSS','JavaScript'] },
+  'advanced-monitoring-chatbot': { en: 'A chatbot web project described in my original portfolio with Gemini responses, account flows, conversation logs and administration tools.', fa: 'پروژهٔ وب چت‌بات که در پورتفولیوی قبلی با پاسخ‌های Gemini، حساب کاربری، تاریخچهٔ گفتگو و ابزارهای مدیریت معرفی شده است.', technologies: ['Django','Gemini API','JavaScript'] },
+  'multilingual-frontend-bot': { en: 'A frontend chatbot interface exploring multilingual navigation, responsive layouts and interface animation. Recorded in my original portfolio.', fa: 'رابط فرانت‌اند چت‌بات با تمرکز بر زبان‌های مختلف، چیدمان واکنش‌گرا و انیمیشن رابط؛ ثبت‌شده در پورتفولیوی قبلی.', technologies: ['HTML','CSS','JavaScript'] },
+  'telegram-agent-admin-panel': { en: 'A Python Telegram agent with Telethon, Gemini integration and a Flask/SocketIO web panel. The local project includes conversation handling and a monitoring interface.', fa: 'ایجنت پایتون تلگرام با Telethon، اتصال Gemini و پنل وب Flask/SocketIO؛ کد محلی شامل پردازش گفتگو و رابط نظارت است.', technologies: ['Python','Telethon','Flask','SocketIO'] },
+  'gemini-webhook-mailer': { en: 'A Gemini chatbot and email automation workflow described in my earlier portfolio, connecting chat responses to an n8n delivery pipeline.', fa: 'چت‌بات Gemini و جریان خودکار ارسال ایمیل که در پورتفولیوی قبلی ثبت شده؛ اتصال پاسخ‌های گفتگو به مسیر ارسال با n8n.', technologies: ['Gemini API','n8n','Webhooks'] },
+  'flutter-chatbot-arcade': { en: 'A Flutter chatbot and arcade project recorded in my earlier portfolio. The listed experience combines a conversation interface with small games.', fa: 'پروژهٔ چت‌بات و بازی‌های کوچک Flutter، ثبت‌شده در پورتفولیوی قبلی؛ ترکیب رابط گفتگو با تجربهٔ بازی.', technologies: ['Flutter','Dart'] },
+  'telegram-content-maker-make': { en: 'A Make automation workflow recorded in my earlier portfolio for preparing content and publishing it to Telegram channels.', fa: 'جریان اتوماسیون Make برای آماده‌سازی محتوا و انتشار در کانال‌های تلگرام، ثبت‌شده در پورتفولیوی قبلی.', technologies: ['Make','Telegram','Automation'] },
+  'persian-chatbot-dashboard': { en: 'A Persian chatbot interface with conversation history and administration views, documented in my original portfolio.', fa: 'رابط چت‌بات فارسی با تاریخچهٔ گفتگو و بخش مدیریت، مستندشده در پورتفولیوی قبلی.', technologies: ['HTML','CSS','JavaScript'] },
+  'school-grading-platform': { en: 'A Django school grading prototype. The reviewed local code models student names and grades, lists records and provides create, update and delete views. The model declares a grade range of 1–20.', fa: 'نمونهٔ سامانهٔ نمرات مدرسه با Django؛ کد محلی بررسی‌شده شامل نام دانش‌آموز و نمره، فهرست رکوردها و صفحه‌های ایجاد، ویرایش و حذف است. در مدل، بازهٔ نمرهٔ ۱ تا ۲۰ تعریف شده است.', technologies: ['Python','Django','SQLite','HTML'] },
+  'anonymous-teacher-peer-review': { en: 'An educator feedback concept from my original portfolio. The reviewed local school survey prototype uses questions, choices and vote totals; encrypted anonymous tokens were not established by that code.', fa: 'ایدهٔ بازخورد به مدرس از پورتفولیوی قبلی؛ نمونهٔ نظرسنجی مدرسه در کد محلی از سؤال، گزینه و تعداد رأی استفاده می‌کند. توکن ناشناس رمزنگاری‌شده در کد بررسی‌شده تأیید نشده است.', technologies: ['Python','Django','SQLite','HTML'] },
+};
+
+const records: Record<string, string> = {
+  "school-blog-cms": "https://github.com/MOHAMMADREZAABEDINPOOR/PIMX/blob/80b80c06cfcd369d55aa7675fe33afaca80831e8/src/lib/project_translations.ts#L136",
+  "advanced-monitoring-chatbot": "https://github.com/MOHAMMADREZAABEDINPOOR/PIMX/blob/80b80c06cfcd369d55aa7675fe33afaca80831e8/src/lib/project_translations.ts#L145",
+  "multilingual-frontend-bot": "https://github.com/MOHAMMADREZAABEDINPOOR/PIMX/blob/80b80c06cfcd369d55aa7675fe33afaca80831e8/src/lib/project_translations.ts#L154",
+  "telegram-agent-admin-panel": "https://github.com/MOHAMMADREZAABEDINPOOR/PIMX/blob/80b80c06cfcd369d55aa7675fe33afaca80831e8/src/lib/project_translations.ts#L163",
+  "gemini-webhook-mailer": "https://github.com/MOHAMMADREZAABEDINPOOR/PIMX/blob/80b80c06cfcd369d55aa7675fe33afaca80831e8/src/lib/project_translations.ts#L172",
+  "flutter-chatbot-arcade": "https://github.com/MOHAMMADREZAABEDINPOOR/PIMX/blob/80b80c06cfcd369d55aa7675fe33afaca80831e8/src/lib/project_translations.ts#L199",
+  "telegram-content-maker-make": "https://github.com/MOHAMMADREZAABEDINPOOR/PIMX/blob/80b80c06cfcd369d55aa7675fe33afaca80831e8/src/lib/project_translations.ts#L208",
+  "persian-chatbot-dashboard": "https://github.com/MOHAMMADREZAABEDINPOOR/PIMX/blob/80b80c06cfcd369d55aa7675fe33afaca80831e8/src/lib/project_translations.ts#L217",
+  "school-grading-platform": "https://github.com/MOHAMMADREZAABEDINPOOR/PIMX/blob/80b80c06cfcd369d55aa7675fe33afaca80831e8/src/lib/project_translations.ts#L226",
+  "anonymous-teacher-peer-review": "https://github.com/MOHAMMADREZAABEDINPOOR/PIMX/blob/80b80c06cfcd369d55aa7675fe33afaca80831e8/src/lib/project_translations.ts#L235"
+};
+export function refineLegacyProject(project: TranslatedProjectItem, lang: string): TranslatedProjectItem {
+  const value = details[project.id]; if (!value) return project;
+  const schoolTitles = { 'school-grading-platform': ['Teacher Grading School Portal', 'نمونهٔ سامانهٔ نمرات مدرسه'], 'anonymous-teacher-peer-review': ['Educator Feedback & School Survey', 'بازخورد مدرس و نظرسنجی مدرسه'] }[project.id];
+  return { ...project, ...(schoolTitles ? { titleEn: schoolTitles[0], title: lang === 'fa' ? schoolTitles[1] : schoolTitles[0], badge: 'SCHOOL PROTOTYPE' } : {}), topics: [...(project.topics || []), project.titleEn], description: lang === 'fa' ? value.fa : value.en, technologies: value.technologies, githubUrl: records[project.id], githubLinkKind: 'record', sourceNote: lang === 'fa' ? 'این لینک، رکورد پروژه در گیت‌هاب است. مخزن مستقل کد این برنامه در حساب بررسی‌شده پیدا نشد.' : 'This GitHub link is the original portfolio record. A separate application source repository was not found in the reviewed account.' };
+}

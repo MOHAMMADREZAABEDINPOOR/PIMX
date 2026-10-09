@@ -6,3 +6,11 @@ coverage/
 *.log
 .env*
 !.env.example
+data/
+docs/responsive-review/
+docs/localization-source.json
+docs/rendered-text.json
+docs/README_UPDATES.md
+docs/**/*.png
+docs/**/*.jpg
+docs/**/*.webp

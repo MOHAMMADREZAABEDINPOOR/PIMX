@@ -1,0 +1,17 @@
+html[data-page]{--color-cyber-teal:var(--accent);--accent-ink:#111110;--page-glow:color-mix(in srgb,var(--accent) 18%,transparent)}
+html.light[data-page]{--accent-ink:#fff}
+html[data-page=home],html.light[data-page=home]{--accent:var(--identity-home)}
+html[data-page=projects],html.light[data-page=projects]{--accent:var(--identity-projects)}
+html[data-page=about],html.light[data-page=about]{--accent:var(--identity-about)}
+html[data-page=playground],html.light[data-page=playground]{--accent:var(--identity-playground)}
+html[data-page=resume],html.light[data-page=resume]{--accent:var(--identity-resume)}
+html[data-page=contact],html.light[data-page=contact]{--accent:var(--identity-contact)}
+.portfolio-app ::selection{background:var(--accent);color:var(--accent-ink)}
+html[data-page]::-webkit-scrollbar-thumb{background:color-mix(in srgb,var(--accent) 55%,var(--surface));border:3px solid var(--surface)}
+html[data-page]{scrollbar-color:color-mix(in srgb,var(--accent) 55%,var(--surface)) var(--surface)}
+.contact-page .page-heading-row h1 em{color:var(--accent)!important}
+.contact-page .contact-compose{border-top-color:var(--accent)}
+.contact-page .contact-field::after{background:var(--accent)}
+.contact-page .contact-field:focus-within label span{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 45%,transparent)}
+.contact-page .signal-core{color:var(--accent)}
+@media print{html[data-page],html.light[data-page]{--accent:#171717;--accent-ink:#fff}}

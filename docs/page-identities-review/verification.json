@@ -1,0 +1,61 @@
+{
+  "checks": [
+    {
+      "check": "SPA home: palette, live scroll, reverse scroll, visible section titles",
+      "passed": true
+    },
+    {
+      "check": "SPA about: palette, live scroll, reverse scroll, visible section titles",
+      "passed": true
+    },
+    {
+      "check": "SPA projects: palette, live scroll, reverse scroll, visible section titles",
+      "passed": true
+    },
+    {
+      "check": "SPA playground: palette, live scroll, reverse scroll, visible section titles",
+      "passed": true
+    },
+    {
+      "check": "SPA resume: palette, live scroll, reverse scroll, visible section titles",
+      "passed": true
+    },
+    {
+      "check": "SPA contact: palette, live scroll, reverse scroll, visible section titles",
+      "passed": true
+    },
+    {
+      "check": "Three distinct headline effects settle into fully readable text",
+      "passed": true
+    },
+    {
+      "check": "Contact title, form, note, manifesto, navbar and footer all use purple",
+      "passed": true
+    },
+    {
+      "check": "Language list: mouse selection, filtering, arrows, Home/End, typeahead, Escape, outside click",
+      "passed": true
+    },
+    {
+      "check": "Light theme uses a darker, readable version of the project accent",
+      "passed": true
+    },
+    {
+      "check": "All six page accents remain correct during SPA navigation in light theme",
+      "passed": true
+    },
+    {
+      "check": "Mobile en/dark: all three headlines, scrolling, language menu, reduced motion=False",
+      "passed": true
+    },
+    {
+      "check": "Mobile fa/dark: all three headlines, scrolling, language menu, reduced motion=False",
+      "passed": true
+    },
+    {
+      "check": "Mobile fa/light: all three headlines, scrolling, language menu, reduced motion=True",
+      "passed": true
+    }
+  ],
+  "runtimeErrors": []
+}

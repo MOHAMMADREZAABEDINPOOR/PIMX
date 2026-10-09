@@ -1,0 +1,116 @@
+{
+  "results": [
+    {
+      "check": "SPA navigation + reveal",
+      "page": "home",
+      "words": 5,
+      "passed": true
+    },
+    {
+      "check": "SPA navigation + reveal",
+      "page": "about",
+      "words": 8,
+      "passed": true
+    },
+    {
+      "check": "SPA navigation + reveal",
+      "page": "projects",
+      "words": 5,
+      "passed": true
+    },
+    {
+      "check": "SPA navigation + reveal",
+      "page": "playground",
+      "words": 4,
+      "passed": true
+    },
+    {
+      "check": "SPA navigation + reveal",
+      "page": "resume",
+      "words": 7,
+      "passed": true
+    },
+    {
+      "check": "SPA navigation + reveal",
+      "page": "contact",
+      "words": 6,
+      "passed": true
+    },
+    {
+      "check": "Browser back / forward",
+      "passed": true
+    },
+    {
+      "check": "Direct route load + reveal",
+      "page": "home",
+      "passed": true
+    },
+    {
+      "check": "Direct route load + reveal",
+      "page": "about",
+      "passed": true
+    },
+    {
+      "check": "Direct route load + reveal",
+      "page": "projects",
+      "passed": true
+    },
+    {
+      "check": "Direct route load + reveal",
+      "page": "playground",
+      "passed": true
+    },
+    {
+      "check": "Direct route load + reveal",
+      "page": "resume",
+      "passed": true
+    },
+    {
+      "check": "Direct route load + reveal",
+      "page": "contact",
+      "passed": true
+    },
+    {
+      "check": "All showcase tabs, all service panels, process text",
+      "passed": true
+    },
+    {
+      "check": "shop3 correct preview asset",
+      "passed": true
+    },
+    {
+      "check": "Mobile: all six routes",
+      "language": "en",
+      "theme": "dark",
+      "motion": "no-preference",
+      "passed": true
+    },
+    {
+      "check": "Mobile: all six routes",
+      "language": "fa",
+      "theme": "dark",
+      "motion": "no-preference",
+      "passed": true
+    },
+    {
+      "check": "Mobile: all six routes",
+      "language": "fa",
+      "theme": "light",
+      "motion": "reduce",
+      "passed": true
+    },
+    {
+      "check": "Readable with missed IntersectionObserver callbacks",
+      "passed": true
+    },
+    {
+      "check": "Final shortened Persian headline fits masks; accessible text; responsive process labels",
+      "passed": true
+    },
+    {
+      "check": "Final production build: all six SPA routes, accessible headings, mouse tilt, reduced-motion tilt disabled",
+      "passed": true
+    }
+  ],
+  "runtimeErrors": []
+}

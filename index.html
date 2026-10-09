@@ -9,7 +9,9 @@
     <meta name="author" content="Mohammadreza Abedinpoor" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="googlebot" content="index, follow" />
-    <meta name="theme-color" content="#030712" />
+    <meta name="theme-color" content="#111110" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preload" href="/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
     <meta name="application-name" content="پورتفولیو محمدرضا" />
     <meta name="apple-mobile-web-app-title" content="پورتفولیو محمدرضا" />
     <meta name="language" content="Persian, English" />
@@ -63,6 +65,34 @@
     </script>
   </head>
   <body>
+    <style>
+      #startup-portal{position:fixed;inset:0;z-index:300;overflow:hidden;pointer-events:none;color:#16191e;background:var(--portal-color,#e8fa72)}
+      #startup-portal .portal-panels{position:absolute;inset:0;display:flex}#startup-portal .portal-panel{flex:1;border-inline-end:1px solid #16191e12;background:var(--portal-color,#e8fa72)}#startup-portal .portal-horizontal{flex-direction:column}#startup-portal .portal-horizontal .portal-panel{border-inline-end:0;border-bottom:1px solid #16191e12}
+      #startup-portal .portal-message{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;overflow:hidden}
+      #startup-portal strong{font:500 clamp(26px,calc(86vw / var(--portal-letters,4) * 1.5),155px)/1 'Space Grotesk',sans-serif;letter-spacing:-.06em;position:relative;z-index:1;white-space:nowrap}#startup-portal.portal-home strong{font-weight:700;font-style:italic}#startup-portal.portal-about strong{font-style:italic}#startup-portal.portal-resume strong{font-family:Georgia,serif;font-style:italic;font-weight:400}
+      #startup-portal .portal-coordinate{position:absolute;top:35px;left:50px;font:10px monospace;letter-spacing:.12em}#startup-portal .portal-symbol{font-size:46px;margin-top:28px;position:relative;z-index:1}#startup-portal .portal-caption{font:9px monospace;letter-spacing:.18em;position:absolute;bottom:40px}
+      #startup-portal .portal-orbits{position:absolute;inset:0;display:grid;place-items:center;perspective:900px}#startup-portal .portal-orbits i{position:absolute;width:min(76vw,900px);height:min(76vw,900px);border:1px solid #16191e1c;border-radius:50%;transform:rotateX(63deg) rotateZ(-20deg)}#startup-portal .portal-orbits i:nth-child(2){transform:rotateY(63deg) rotateZ(25deg)}#startup-portal .portal-orbits i:nth-child(3){width:min(58vw,690px);height:min(58vw,690px);transform:rotateZ(-45deg)}
+      @media(max-width:600px){#startup-portal .portal-coordinate{top:27px;left:25px}#startup-portal .portal-symbol{font-size:33px}#startup-portal .portal-caption{bottom:30px;font-size:8px}}
+    </style>
+    <div id="startup-portal" class="transition-portal portal-home" aria-hidden="true" dir="ltr">
+      <div class="portal-panels"></div><div class="portal-message"><span class="portal-coordinate">PIMX / 00</span><div class="portal-orbits"><i></i><i></i><i></i></div><strong>PIMX</strong><span class="portal-symbol">&#10035;</span><span class="portal-caption">A DIFFERENT WORLD.</span></div>
+    </div>
+    <script>
+      (function(){
+        var portal=document.getElementById('startup-portal'),path=location.pathname;
+        if(path.indexOf('/pimxadmin')===0){portal.remove();return;}
+        var pages={'/project':['projects','#a1d8ff','WORLDS','01'],'/about':['about','#b8f394','HUMAN','02'],'/playground':['playground','#ffd49b','KNOWLEDGE','03'],'/resume':['resume','#ece9db','THE STORY','04'],'/contact':['contact','#b1a9ef','CONNECT','05']};
+        pages['/projects']=pages['/project'];
+        var art=pages['/'+path.replace(/^\/+/, '').split('/')[0]]||['home','#e8fa72','PIMX','00'];
+        var words={"fa":["\u062c\u0647\u0627\u0646 \u0647\u0627","\u0627\u0646\u0633\u0627\u0646","\u062f\u0627\u0646\u0634","\u062f\u0627\u0633\u062a\u0627\u0646","\u0627\u062a\u0635\u0627\u0644","\u062f\u0646\u06cc\u0627\u06cc\u06cc \u0645\u062a\u0641\u0627\u0648\u062a."],"ar":["\u0639\u0648\u0627\u0644\u0645","\u0625\u0646\u0633\u0627\u0646","\u0627\u0644\u0645\u0639\u0631\u0641\u0629","\u0627\u0644\u0642\u0635\u0629","\u0627\u062a\u0635\u0627\u0644","\u0639\u0627\u0644\u0645 \u0645\u062e\u062a\u0644\u0641."],"de":["WELTEN","MENSCH","WISSEN","DIE GESCHICHTE","VERBINDEN","EINE ANDERE WELT."],"fr":["MONDES","HUMAIN","CONNAISSANCE","L'HISTOIRE","CONNEXION","UN MONDE DIFF\u00c9RENT."],"it":["MONDI","UMANO","CONOSCENZA","LA STORIA","CONNETTI","UN MONDO DIVERSO."],"zh":["\u4e16\u754c","\u4eba\u7c7b","\u77e5\u8bc6","\u6545\u4e8b","\u8fde\u63a5","\u4e00\u4e2a\u4e0d\u540c\u7684\u4e16\u754c\u3002"],"ru":["\u041c\u0418\u0420\u042b","\u0427\u0415\u041b\u041e\u0412\u0415\u041a","\u0417\u041d\u0410\u041d\u0418\u042f","\u0418\u0421\u0422\u041e\u0420\u0418\u042f","\u041f\u041e\u0414\u041a\u041b\u042e\u0427\u0418\u0422\u042c","\u0414\u0420\u0423\u0413\u041e\u0419 \u041c\u0418\u0420."],"el":["\u039a\u039f\u03a3\u039c\u039f\u0399","\u0391\u039d\u0398\u03a1\u03a9\u03a0\u039f\u03a3","\u0393\u039d\u03a9\u03a3\u0397","\u0397 \u0399\u03a3\u03a4\u039f\u03a1\u0399\u0391","\u03a3\u03a5\u039d\u0394\u0395\u03a3\u0397","\u0395\u039d\u0391\u03a3 \u0394\u0399\u0391\u03a6\u039f\u03a1\u0395\u03a4\u0399\u039a\u039f\u03a3 \u039a\u039f\u03a3\u039c\u039f\u03a3."],"la":["MUNDI","HOMO","SCIENTIA","FABULA","CONIUNGE","ALTER MUNDUS."]};
+        var lang=document.documentElement.lang.replace('-CN',''),translations=words[lang],title=art[3]==='00'?art[2]:translations?translations[Number(art[3])-1]:art[2];
+        portal.querySelector('.portal-caption').textContent=translations?translations[5]:'A DIFFERENT WORLD.';portal.style.setProperty('--portal-letters',title.length*(lang==='zh'?2:1));
+        portal.className='transition-portal portal-'+art[0];portal.style.setProperty('--portal-color',art[1]);portal.querySelector('strong').textContent=title;portal.querySelector('.portal-coordinate').textContent='PIMX / '+art[3];
+        var horizontal=art[0]==='playground'||art[0]==='resume',panels=portal.querySelector('.portal-panels');
+        if(horizontal)panels.classList.add('portal-horizontal');
+        for(var i=0;i<(horizontal?7:10);i++){var panel=document.createElement('div');panel.className='portal-panel';panels.appendChild(panel);}
+      })();
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

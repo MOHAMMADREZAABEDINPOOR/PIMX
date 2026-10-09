@@ -1,5 +1,24 @@
-import React, { createContext, useContext, useState, useLayoutEffect } from 'react';
-import { LanguageType, TranslationSet, translations, languagesInfo } from '../lib/translations';
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useLayoutEffect,
+  useEffect,
+  useRef,
+} from 'react';
+import {
+  LanguageType,
+  TranslationSet,
+  translations,
+  languagesInfo,
+} from '../lib/translations';
+import { loadSiteText } from '../lib/site_text';
+
+const loadingLocaleLabels: Record<LanguageType, string> = {
+  en:'Loading…', fa:'در حال بارگذاری…', ar:'جارٍ التحميل…', de:'Wird geladen…',
+  fr:'Chargement…', it:'Caricamento…', zh:'正在加载…', ru:'Загрузка…',
+  el:'Φόρτωση…', la:'Oneratur…',
+};
 
 const localizedSiteTitles: Record<LanguageType, string> = {
   en: 'Mohammadreza Portfolio',
@@ -40,27 +59,60 @@ interface LanguageThemeContextType {
   triggerAwesomeLoad: (durationMs?: number, onComplete?: () => void) => void;
 }
 
-const LanguageThemeContext = createContext<LanguageThemeContextType | undefined>(undefined);
-const isRtlLanguage = (language: LanguageType) => language === 'fa' || language === 'ar';
+const LanguageThemeContext = createContext<
+  LanguageThemeContextType | undefined
+>(undefined);
+const isRtlLanguage = (language: LanguageType) =>
+  language === 'fa' || language === 'ar';
+const isLanguage = (value: unknown): value is LanguageType =>
+  typeof value === 'string' &&
+  Object.prototype.hasOwnProperty.call(languagesInfo, value);
+const readPreference = (key: string) => {
+  try {
+    return typeof window !== 'undefined'
+      ? window.localStorage.getItem(key)
+      : null;
+  } catch {
+    return null;
+  }
+};
+const savePreference = (key: string, value: string) => {
+  try {
+    window.localStorage.setItem(key, value);
+  } catch {
+    /* Preferences still work for this session when storage is unavailable. */
+  }
+};
 
-export const LanguageThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const LanguageThemeProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [lang, setLangState] = useState<LanguageType>(() => {
-    if (typeof window !== 'undefined') {
-      const savedLang = localStorage.getItem('mra_portfolio_lang') as LanguageType;
-      return savedLang || 'en';
-    }
-    return 'en';
+    const savedLang = readPreference('mra_portfolio_lang');
+    return isLanguage(savedLang) ? savedLang : 'en';
   });
   const [theme, setThemeState] = useState<'dark' | 'light'>(() => {
-    if (typeof window !== 'undefined') {
-      const savedTheme = localStorage.getItem('mra_portfolio_theme') as 'dark' | 'light';
-      return savedTheme || 'dark';
-    }
-    return 'dark';
+    const savedTheme = readPreference('mra_portfolio_theme');
+    return savedTheme === 'light' ? 'light' : 'dark';
   });
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [localeReady, setLocaleReady] = useState(lang === 'en');
+  const languageRequest = useRef(0);
+  const loadingTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Load initial settings from localStorage to persist user selection
+  useEffect(
+    () => () => {
+      if (loadingTimer.current !== null) clearTimeout(loadingTimer.current);
+    },
+    []
+  );
+  useEffect(() => {
+    let disposed=false;
+    loadSiteText(lang).then(()=>{if(!disposed)setLocaleReady(true);}).catch(()=>{
+      if(!disposed){setLangState('en');setLocaleReady(true);}
+    });
+    return()=>{disposed=true;};
+  },[lang]);
 
   // Update HTML classes & values upon theme modifications and language changes before paint
   useLayoutEffect(() => {
@@ -76,42 +128,73 @@ export const LanguageThemeProvider: React.FC<{ children: React.ReactNode }> = ({
 
   useLayoutEffect(() => {
     const root = window.document.documentElement;
-    root.lang = lang === 'fa' ? 'fa' : lang === 'ar' ? 'ar' : lang === 'zh' ? 'zh-CN' : lang;
+    root.lang =
+      lang === 'fa'
+        ? 'fa'
+        : lang === 'ar'
+          ? 'ar'
+          : lang === 'zh'
+            ? 'zh-CN'
+            : lang;
     root.dir = isRtlLanguage(lang) ? 'rtl' : 'ltr';
     document.title = localizedSiteTitles[lang] || localizedSiteTitles.en;
 
     const description = document.querySelector('meta[name="description"]');
     if (description) {
-      description.setAttribute('content', localizedSiteDescriptions[lang] || localizedSiteDescriptions.en);
+      description.setAttribute(
+        'content',
+        localizedSiteDescriptions[lang] || localizedSiteDescriptions.en
+      );
     }
 
     const ogTitle = document.querySelector('meta[property="og:title"]');
     if (ogTitle) {
-      ogTitle.setAttribute('content', localizedSiteTitles[lang] || localizedSiteTitles.en);
+      ogTitle.setAttribute(
+        'content',
+        localizedSiteTitles[lang] || localizedSiteTitles.en
+      );
     }
 
     const twitterTitle = document.querySelector('meta[name="twitter:title"]');
     if (twitterTitle) {
-      twitterTitle.setAttribute('content', localizedSiteTitles[lang] || localizedSiteTitles.en);
+      twitterTitle.setAttribute(
+        'content',
+        localizedSiteTitles[lang] || localizedSiteTitles.en
+      );
     }
   }, [lang]);
 
   const setLang = (newLang: LanguageType) => {
-    localStorage.setItem('mra_portfolio_lang', newLang);
-    setLangState(newLang);
+    if (!isLanguage(newLang)) return;
+    const request=++languageRequest.current;
+    void loadSiteText(newLang).then(()=>{
+      if(request!==languageRequest.current)return;
+      savePreference('mra_portfolio_lang', newLang);
+      setLangState(newLang);
+      setLocaleReady(true);
+    }).catch(()=>{/* Keep the current language if a bundled asset cannot be loaded. */});
   };
 
   const setTheme = (newTheme: 'dark' | 'light') => {
-    localStorage.setItem('mra_portfolio_theme', newTheme);
+    if (newTheme !== 'dark' && newTheme !== 'light') return;
+    savePreference('mra_portfolio_theme', newTheme);
     setThemeState(newTheme);
   };
 
-  const triggerAwesomeLoad = (durationMs = 1800, onComplete?: () => void) => {
+  const triggerAwesomeLoad = (durationMs = 320, onComplete?: () => void) => {
+    if (loadingTimer.current !== null) clearTimeout(loadingTimer.current);
+    const reducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches;
+    const delay = reducedMotion
+      ? 0
+      : Math.max(0, Number.isFinite(durationMs) ? durationMs : 320);
     setIsLoading(true);
-    setTimeout(() => {
+    loadingTimer.current = setTimeout(() => {
+      loadingTimer.current = null;
       setIsLoading(false);
-      if (onComplete) onComplete();
-    }, durationMs);
+      onComplete?.();
+    }, delay);
   };
 
   const currentInfo = languagesInfo[lang];
@@ -130,15 +213,15 @@ export const LanguageThemeProvider: React.FC<{ children: React.ReactNode }> = ({
         setTheme,
         isLoading,
         setIsLoading,
-        triggerAwesomeLoad
+        triggerAwesomeLoad,
       }}
     >
-      <div 
+      <div
         dir={currentDir}
         className={`${currentInfo.fontClass} ${theme === 'light' ? 'theme-light' : 'theme-dark'} transition-colors duration-300`}
         style={{ direction: currentDir }}
       >
-        {children}
+        {localeReady ? children : <div role="status" className="container-wide section-space">{loadingLocaleLabels[lang]}</div>}
       </div>
     </LanguageThemeContext.Provider>
   );
@@ -147,7 +230,9 @@ export const LanguageThemeProvider: React.FC<{ children: React.ReactNode }> = ({
 export const useLanguageTheme = () => {
   const context = useContext(LanguageThemeContext);
   if (!context) {
-    throw new Error('useLanguageTheme must be used within a LanguageThemeProvider');
+    throw new Error(
+      'useLanguageTheme must be used within a LanguageThemeProvider'
+    );
   }
   return context;
 };

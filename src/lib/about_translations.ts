@@ -343,7 +343,7 @@ export const skillsTranslations: Record<string, Record<string, SkillDetail>> = {
     fr: { name: "Prompt Engineering", levelText: "Intermédiaire", desc: "Conception de requêtes élaborées à plusieurs niveaux (CoT, ReAct, blocs XML), évitant les hallucinations." },
     it: { name: "Ingegneria dei Prompt", levelText: "Intermedio", desc: "Sviluppo di prompt strutturati e condizionali, contenimento delle allucinazioni e standardizzazione in JSON." },
     zh: { name: "高阶提示词工程", levelText: "中等", desc: "设计多步思考链路（Chain-of-Thought, XML 封装），严防模型胡言乱语（Hallucinations）并强迫其按指定 JSON 格式精准返回。" },
-    ru: { name: "Промпت-инжиниринг", levelText: "Средний", desc: "Создание структурированных цепочек рассуждений (CoT, ReAct), снижение галлюцинаций моделей и сбор JSON-данных." },
+    ru: { name: "Промпт-инжиниринг", levelText: "Средний", desc: "Создание структурированных цепочек рассуждений (CoT, ReAct), снижение галлюцинаций моделей и сбор JSON-данных." },
     el: { name: "Prompt Engineering", levelText: "Μέτριο", desc: "Σχεδίαση σύνθετων prompts, αποφυγή ψευδαισθήσεων του LLM και λήψη δομημένων JSON αποτελεσμάτων." },
     la: { name: "Ordinatio Mandatorum AI", levelText: "Media", desc: "Compositio imperiorum systematicorum ad mentes fictas et restrictio in JSON." }
   },

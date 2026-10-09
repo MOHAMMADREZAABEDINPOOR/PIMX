@@ -1,7 +1,7 @@
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
-import {defineConfig} from 'vite';
+import { defineConfig } from 'vite';
 
 export default defineConfig(() => {
   return {
@@ -10,13 +10,31 @@ export default defineConfig(() => {
       alias: {
         '@': path.resolve(__dirname, '.'),
       },
-    },    build: {
+    },
+    build: {
       // Copy public assets (PDFs, robots.txt, etc.) to dist folder
       copyPublicDir: true,
       outDir: 'dist',
       emptyOutDir: true,
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (!id.includes('node_modules')) return;
+            if (/node_modules[\\/]three[\\/]/.test(id)) return 'three-vendor';
+            if (
+              /node_modules[\\/](motion|motion-dom|motion-utils|framer-motion)[\\/]/.test(
+                id
+              )
+            )
+              return 'motion-vendor';
+            if (/node_modules[\\/](react|react-dom|scheduler)[\\/]/.test(id))
+              return 'react-vendor';
+          },
+        },
+      },
     },
-    publicDir: 'public',    server: {
+    publicDir: 'public',
+    server: {
       // HMR is disabled in AI Studio via DISABLE_HMR env var.
       // Do not modifyâfile watching is disabled to prevent flickering during agent edits.
       hmr: process.env.DISABLE_HMR !== 'true',

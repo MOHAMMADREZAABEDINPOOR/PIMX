@@ -1,0 +1,47 @@
+/* A quieter frame lets the person, screenshots and project details do the talking. */
+html.dark[data-page=home]{--accent:#c5d29a}
+html.dark[data-page=projects]{--accent:#adc4d0}
+html.dark[data-page=about]{--accent:#aec89e}
+html.dark[data-page=playground]{--accent:#d6bda1}
+html.dark[data-page=resume]{--accent:#dad4c8}
+html.dark[data-page=contact]{--accent:#bdb6ce}
+.portfolio-app .home-page .hero h1{font-size:clamp(54px,6vw,92px);font-weight:500;letter-spacing:-.055em}
+.portfolio-app .home-page .hero h1 .serif-word{color:var(--ink)}
+.portfolio-app .home-page .hero-copy{min-width:0;max-width:100%}
+.portfolio-app .home-page .hero h1 .hero-line{white-space:normal}
+.portfolio-app .hero-role{font-weight:400;font-size:17px;max-width:430px;line-height:1.65}
+.portfolio-app .hero-bio{max-width:420px;font-size:14px;line-height:1.9}
+.portfolio-app .home-page .hero-composition{min-height:690px;align-items:center}
+.portfolio-app .home-page .hero-visual{transform-origin:center}
+.portfolio-app .hero-bottomline>span:nth-child(2){display:none}
+.portfolio-app .showcase-topline>span:first-child{color:var(--muted)}
+.portfolio-app .showcase-topline i{box-shadow:none;background:var(--ink)}
+.portfolio-app .showcase-observatory{height:auto;aspect-ratio:1.35;margin-top:24px}
+.portfolio-app .showcase-aperture{left:2%;top:6%;width:96%}
+.portfolio-app .showcase-image-shell{clip-path:polygon(0 0,calc(100% - 24px) 0,100% 24px,100% 100%,24px 100%,0 calc(100% - 24px))}
+.portfolio-app .showcase-image-shell::after{border-color:var(--line)}
+.portfolio-app .showcase-description{font-size:12px;max-width:460px;line-height:1.8}
+.portfolio-app .showcase-details h2{font-size:clamp(27px,2.8vw,40px);font-weight:400}
+.portfolio-app .showcase-details .micro-label{color:var(--muted)}
+.portfolio-app .showcase-domain{font-size:8px;text-transform:none;letter-spacing:.02em}
+.portfolio-app .selected-project-description{font-size:13px;line-height:1.85;max-width:540px;margin-top:15px}
+.portfolio-app .selected-project h3{font-size:25px;font-weight:450;letter-spacing:-.035em}
+.portfolio-app .selected-work .section-heading h2{font-weight:450;font-size:clamp(34px,4.2vw,61px);line-height:1.2}
+.portfolio-app .home-page .section-kicker{letter-spacing:.06em}
+.portfolio-app .identity-orbits{display:none}
+.portfolio-app .home-about-art{background:var(--surface-alt)}
+.portfolio-app .identity-monogram>span,.portfolio-app .about-signature>span{display:none}
+.portfolio-app .craft-core{rotate:0deg;box-shadow:none;border-radius:12px}
+.portfolio-app .craft-core svg{rotate:0deg}
+.portfolio-app .craft-diagram{background:none}
+.portfolio-app .craft-console-bottom>span:last-child{display:none}
+.portfolio-app .shell-footer-big-link{font-size:clamp(38px,5vw,76px);font-weight:450;letter-spacing:-.045em;line-height:1.15}
+.portfolio-app .shell-footer-accent{display:block;color:var(--ink);font-family:Georgia,serif;font-style:italic;font-weight:400}
+.portfolio-app .shell-footer-arrow{width:76px;height:76px}
+.portfolio-app .shell-footer-arrow svg{width:38px;height:38px}
+.portfolio-app .shell-footer-eyebrow .shell-status-dot{display:none}
+.portfolio-app .shell-footer-eyebrow{font-size:12px;text-transform:none;letter-spacing:0}
+.portfolio-app .shell-footer-identity>span{letter-spacing:0;text-transform:none}
+@media(max-width:1000px){.portfolio-app .home-page .hero h1{font-size:clamp(48px,6.5vw,75px)}.portfolio-app .showcase-observatory{aspect-ratio:1.2}}
+@media(max-width:760px){.portfolio-app .home-page .hero-composition{min-height:0}.portfolio-app .home-page .hero h1{font-size:clamp(46px,10.8vw,76px)}.portfolio-app .hero-role{font-size:16px}.portfolio-app .hero-bio{font-size:13px}.portfolio-app .showcase-observatory{aspect-ratio:1.25}.portfolio-app .shell-footer-big-link{font-size:clamp(30px,7vw,48px)}.portfolio-app .shell-footer-arrow{width:48px;height:48px}.portfolio-app .shell-footer-arrow svg{width:26px;height:26px}}
+@media(max-width:380px){.portfolio-app .home-page .hero h1{font-size:42px;letter-spacing:-.045em}.portfolio-app .showcase-observatory{aspect-ratio:1.1}.portfolio-app .showcase-domain{font-size:6px}.portfolio-app .selected-work .section-heading h2{font-size:31px}.portfolio-app .shell-footer-big-link{font-size:28px;gap:10px}.portfolio-app .shell-footer-arrow{width:36px;height:36px}.portfolio-app .showcase-description{font-size:11px}}

@@ -1,0 +1,542 @@
+[
+  {
+    "lang": "en",
+    "route": "/",
+    "word": "PIMX",
+    "caption": "A DIFFERENT WORLD.",
+    "wordWidth": 208.40625,
+    "captionWidth": 105.09375,
+    "viewport": 300
+  },
+  {
+    "lang": "en",
+    "route": "/about",
+    "word": "HUMAN",
+    "caption": "A DIFFERENT WORLD.",
+    "wordWidth": 247.53125,
+    "captionWidth": 105.09375,
+    "viewport": 300
+  },
+  {
+    "lang": "en",
+    "route": "/project",
+    "word": "WORLDS",
+    "caption": "A DIFFERENT WORLD.",
+    "wordWidth": 235,
+    "captionWidth": 105.09375,
+    "viewport": 300
+  },
+  {
+    "lang": "en",
+    "route": "/playground",
+    "word": "KNOWLEDGE",
+    "caption": "A DIFFERENT WORLD.",
+    "wordWidth": 227.3125,
+    "captionWidth": 105.09375,
+    "viewport": 300
+  },
+  {
+    "lang": "en",
+    "route": "/resume",
+    "word": "THE STORY",
+    "caption": "A DIFFERENT WORLD.",
+    "wordWidth": 215.65625,
+    "captionWidth": 105.09375,
+    "viewport": 300
+  },
+  {
+    "lang": "en",
+    "route": "/contact",
+    "word": "CONNECT",
+    "caption": "A DIFFERENT WORLD.",
+    "wordWidth": 221.375,
+    "captionWidth": 105.09375,
+    "viewport": 300
+  },
+  {
+    "lang": "fa",
+    "route": "/",
+    "word": "PIMX",
+    "caption": "دنیایی متفاوت.",
+    "wordWidth": 208.40625,
+    "captionWidth": 43.5625,
+    "viewport": 300
+  },
+  {
+    "lang": "fa",
+    "route": "/about",
+    "word": "انسان",
+    "caption": "دنیایی متفاوت.",
+    "wordWidth": 196.609375,
+    "captionWidth": 43.5625,
+    "viewport": 300
+  },
+  {
+    "lang": "fa",
+    "route": "/project",
+    "word": "جهان ها",
+    "caption": "دنیایی متفاوت.",
+    "wordWidth": 172.328125,
+    "captionWidth": 43.5625,
+    "viewport": 300
+  },
+  {
+    "lang": "fa",
+    "route": "/playground",
+    "word": "دانش",
+    "caption": "دنیایی متفاوت.",
+    "wordWidth": 218.125,
+    "captionWidth": 43.5625,
+    "viewport": 300
+  },
+  {
+    "lang": "fa",
+    "route": "/resume",
+    "word": "داستان",
+    "caption": "دنیایی متفاوت.",
+    "wordWidth": 193.375,
+    "captionWidth": 43.5625,
+    "viewport": 300
+  },
+  {
+    "lang": "fa",
+    "route": "/contact",
+    "word": "اتصال",
+    "caption": "دنیایی متفاوت.",
+    "wordWidth": 193.890625,
+    "captionWidth": 43.5625,
+    "viewport": 300
+  },
+  {
+    "lang": "ar",
+    "route": "/",
+    "word": "PIMX",
+    "caption": "عالم مختلف.",
+    "wordWidth": 208.40625,
+    "captionWidth": 37.96875,
+    "viewport": 300
+  },
+  {
+    "lang": "ar",
+    "route": "/about",
+    "word": "إنسان",
+    "caption": "عالم مختلف.",
+    "wordWidth": 196.609375,
+    "captionWidth": 37.96875,
+    "viewport": 300
+  },
+  {
+    "lang": "ar",
+    "route": "/project",
+    "word": "عوالم",
+    "caption": "عالم مختلف.",
+    "wordWidth": 174.5,
+    "captionWidth": 37.96875,
+    "viewport": 300
+  },
+  {
+    "lang": "ar",
+    "route": "/playground",
+    "word": "المعرفة",
+    "caption": "عالم مختلف.",
+    "wordWidth": 170.78125,
+    "captionWidth": 37.96875,
+    "viewport": 300
+  },
+  {
+    "lang": "ar",
+    "route": "/resume",
+    "word": "القصة",
+    "caption": "عالم مختلف.",
+    "wordWidth": 183.234375,
+    "captionWidth": 37.96875,
+    "viewport": 300
+  },
+  {
+    "lang": "ar",
+    "route": "/contact",
+    "word": "اتصال",
+    "caption": "عالم مختلف.",
+    "wordWidth": 193.890625,
+    "captionWidth": 37.96875,
+    "viewport": 300
+  },
+  {
+    "lang": "de",
+    "route": "/",
+    "word": "PIMX",
+    "caption": "EINE ANDERE WELT.",
+    "wordWidth": 208.40625,
+    "captionWidth": 99.265625,
+    "viewport": 300
+  },
+  {
+    "lang": "de",
+    "route": "/about",
+    "word": "MENSCH",
+    "caption": "EINE ANDERE WELT.",
+    "wordWidth": 235.296875,
+    "captionWidth": 99.265625,
+    "viewport": 300
+  },
+  {
+    "lang": "de",
+    "route": "/project",
+    "word": "WELTEN",
+    "caption": "EINE ANDERE WELT.",
+    "wordWidth": 216.171875,
+    "captionWidth": 99.265625,
+    "viewport": 300
+  },
+  {
+    "lang": "de",
+    "route": "/playground",
+    "word": "WISSEN",
+    "caption": "EINE ANDERE WELT.",
+    "wordWidth": 208.015625,
+    "captionWidth": 99.265625,
+    "viewport": 300
+  },
+  {
+    "lang": "de",
+    "route": "/resume",
+    "word": "DIE GESCHICHTE",
+    "caption": "EINE ANDERE WELT.",
+    "wordWidth": 213.0625,
+    "captionWidth": 99.265625,
+    "viewport": 300
+  },
+  {
+    "lang": "de",
+    "route": "/contact",
+    "word": "VERBINDEN",
+    "caption": "EINE ANDERE WELT.",
+    "wordWidth": 204.046875,
+    "captionWidth": 99.265625,
+    "viewport": 300
+  },
+  {
+    "lang": "fr",
+    "route": "/",
+    "word": "PIMX",
+    "caption": "UN MONDE DIFFÉRENT.",
+    "wordWidth": 208.40625,
+    "captionWidth": 110.9375,
+    "viewport": 300
+  },
+  {
+    "lang": "fr",
+    "route": "/about",
+    "word": "HUMAIN",
+    "caption": "UN MONDE DIFFÉRENT.",
+    "wordWidth": 218.796875,
+    "captionWidth": 110.9375,
+    "viewport": 300
+  },
+  {
+    "lang": "fr",
+    "route": "/project",
+    "word": "MONDES",
+    "caption": "UN MONDE DIFFÉRENT.",
+    "wordWidth": 237.8125,
+    "captionWidth": 110.9375,
+    "viewport": 300
+  },
+  {
+    "lang": "fr",
+    "route": "/playground",
+    "word": "CONNAISSANCE",
+    "caption": "UN MONDE DIFFÉRENT.",
+    "wordWidth": 210.71875,
+    "captionWidth": 110.9375,
+    "viewport": 300
+  },
+  {
+    "lang": "fr",
+    "route": "/resume",
+    "word": "L'HISTOIRE",
+    "caption": "UN MONDE DIFFÉRENT.",
+    "wordWidth": 196.53125,
+    "captionWidth": 110.9375,
+    "viewport": 300
+  },
+  {
+    "lang": "fr",
+    "route": "/contact",
+    "word": "CONNEXION",
+    "caption": "UN MONDE DIFFÉRENT.",
+    "wordWidth": 210.875,
+    "captionWidth": 110.9375,
+    "viewport": 300
+  },
+  {
+    "lang": "it",
+    "route": "/",
+    "word": "PIMX",
+    "caption": "UN MONDO DIVERSO.",
+    "wordWidth": 208.40625,
+    "captionWidth": 99.265625,
+    "viewport": 300
+  },
+  {
+    "lang": "it",
+    "route": "/about",
+    "word": "UMANO",
+    "caption": "UN MONDO DIVERSO.",
+    "wordWidth": 248.84375,
+    "captionWidth": 99.265625,
+    "viewport": 300
+  },
+  {
+    "lang": "it",
+    "route": "/project",
+    "word": "MONDI",
+    "caption": "UN MONDO DIVERSO.",
+    "wordWidth": 219.28125,
+    "captionWidth": 99.265625,
+    "viewport": 300
+  },
+  {
+    "lang": "it",
+    "route": "/playground",
+    "word": "CONOSCENZA",
+    "caption": "UN MONDO DIVERSO.",
+    "wordWidth": 222.265625,
+    "captionWidth": 99.265625,
+    "viewport": 300
+  },
+  {
+    "lang": "it",
+    "route": "/resume",
+    "word": "LA STORIA",
+    "caption": "UN MONDO DIVERSO.",
+    "wordWidth": 199.875,
+    "captionWidth": 99.265625,
+    "viewport": 300
+  },
+  {
+    "lang": "it",
+    "route": "/contact",
+    "word": "CONNETTI",
+    "caption": "UN MONDO DIVERSO.",
+    "wordWidth": 201.171875,
+    "captionWidth": 99.265625,
+    "viewport": 300
+  },
+  {
+    "lang": "zh",
+    "route": "/",
+    "word": "PIMX",
+    "caption": "一个不同的世界。",
+    "wordWidth": 104.203125,
+    "captionWidth": 75.53125,
+    "viewport": 300
+  },
+  {
+    "lang": "zh",
+    "route": "/about",
+    "word": "人类",
+    "caption": "一个不同的世界。",
+    "wordWidth": 181.890625,
+    "captionWidth": 75.53125,
+    "viewport": 300
+  },
+  {
+    "lang": "zh",
+    "route": "/project",
+    "word": "世界",
+    "caption": "一个不同的世界。",
+    "wordWidth": 181.890625,
+    "captionWidth": 75.53125,
+    "viewport": 300
+  },
+  {
+    "lang": "zh",
+    "route": "/playground",
+    "word": "知识",
+    "caption": "一个不同的世界。",
+    "wordWidth": 181.890625,
+    "captionWidth": 75.53125,
+    "viewport": 300
+  },
+  {
+    "lang": "zh",
+    "route": "/resume",
+    "word": "故事",
+    "caption": "一个不同的世界。",
+    "wordWidth": 181.890625,
+    "captionWidth": 75.53125,
+    "viewport": 300
+  },
+  {
+    "lang": "zh",
+    "route": "/contact",
+    "word": "连接",
+    "caption": "一个不同的世界。",
+    "wordWidth": 181.890625,
+    "captionWidth": 75.53125,
+    "viewport": 300
+  },
+  {
+    "lang": "ru",
+    "route": "/",
+    "word": "PIMX",
+    "caption": "ДРУГОЙ МИР.",
+    "wordWidth": 208.40625,
+    "captionWidth": 64.234375,
+    "viewport": 300
+  },
+  {
+    "lang": "ru",
+    "route": "/about",
+    "word": "ЧЕЛОВЕК",
+    "caption": "ДРУГОЙ МИР.",
+    "wordWidth": 238.09375,
+    "captionWidth": 64.234375,
+    "viewport": 300
+  },
+  {
+    "lang": "ru",
+    "route": "/project",
+    "word": "МИРЫ",
+    "caption": "ДРУГОЙ МИР.",
+    "wordWidth": 277.09375,
+    "captionWidth": 64.234375,
+    "viewport": 300
+  },
+  {
+    "lang": "ru",
+    "route": "/playground",
+    "word": "ЗНАНИЯ",
+    "caption": "ДРУГОЙ МИР.",
+    "wordWidth": 244.859375,
+    "captionWidth": 64.234375,
+    "viewport": 300
+  },
+  {
+    "lang": "ru",
+    "route": "/resume",
+    "word": "ИСТОРИЯ",
+    "caption": "ДРУГОЙ МИР.",
+    "wordWidth": 249.578125,
+    "captionWidth": 64.234375,
+    "viewport": 300
+  },
+  {
+    "lang": "ru",
+    "route": "/contact",
+    "word": "ПОДКЛЮЧИТЬ",
+    "caption": "ДРУГОЙ МИР.",
+    "wordWidth": 248.46875,
+    "captionWidth": 64.234375,
+    "viewport": 300
+  },
+  {
+    "lang": "el",
+    "route": "/",
+    "word": "PIMX",
+    "caption": "ΕΝΑΣ ΔΙΑΦΟΡΕΤΙΚΟΣ ΚΟΣΜΟΣ.",
+    "wordWidth": 208.40625,
+    "captionWidth": 145.96875,
+    "viewport": 300
+  },
+  {
+    "lang": "el",
+    "route": "/about",
+    "word": "ΑΝΘΡΩΠΟΣ",
+    "caption": "ΕΝΑΣ ΔΙΑΦΟΡΕΤΙΚΟΣ ΚΟΣΜΟΣ.",
+    "wordWidth": 252.34375,
+    "captionWidth": 145.96875,
+    "viewport": 300
+  },
+  {
+    "lang": "el",
+    "route": "/project",
+    "word": "ΚΟΣΜΟΙ",
+    "caption": "ΕΝΑΣ ΔΙΑΦΟΡΕΤΙΚΟΣ ΚΟΣΜΟΣ.",
+    "wordWidth": 229.6875,
+    "captionWidth": 145.96875,
+    "viewport": 300
+  },
+  {
+    "lang": "el",
+    "route": "/playground",
+    "word": "ΓΝΩΣΗ",
+    "caption": "ΕΝΑΣ ΔΙΑΦΟΡΕΤΙΚΟΣ ΚΟΣΜΟΣ.",
+    "wordWidth": 236.921875,
+    "captionWidth": 145.96875,
+    "viewport": 300
+  },
+  {
+    "lang": "el",
+    "route": "/resume",
+    "word": "Η ΙΣΤΟΡΙΑ",
+    "caption": "ΕΝΑΣ ΔΙΑΦΟΡΕΤΙΚΟΣ ΚΟΣΜΟΣ.",
+    "wordWidth": 194.75,
+    "captionWidth": 145.96875,
+    "viewport": 300
+  },
+  {
+    "lang": "el",
+    "route": "/contact",
+    "word": "ΣΥΝΔΕΣΗ",
+    "caption": "ΕΝΑΣ ΔΙΑΦΟΡΕΤΙΚΟΣ ΚΟΣΜΟΣ.",
+    "wordWidth": 235.640625,
+    "captionWidth": 145.96875,
+    "viewport": 300
+  },
+  {
+    "lang": "la",
+    "route": "/",
+    "word": "PIMX",
+    "caption": "ALTER MUNDUS.",
+    "wordWidth": 208.40625,
+    "captionWidth": 75.90625,
+    "viewport": 300
+  },
+  {
+    "lang": "la",
+    "route": "/about",
+    "word": "HOMO",
+    "caption": "ALTER MUNDUS.",
+    "wordWidth": 255.046875,
+    "captionWidth": 75.90625,
+    "viewport": 300
+  },
+  {
+    "lang": "la",
+    "route": "/project",
+    "word": "MUNDI",
+    "caption": "ALTER MUNDUS.",
+    "wordWidth": 218.96875,
+    "captionWidth": 75.90625,
+    "viewport": 300
+  },
+  {
+    "lang": "la",
+    "route": "/playground",
+    "word": "SCIENTIA",
+    "caption": "ALTER MUNDUS.",
+    "wordWidth": 180.234375,
+    "captionWidth": 75.90625,
+    "viewport": 300
+  },
+  {
+    "lang": "la",
+    "route": "/resume",
+    "word": "FABULA",
+    "caption": "ALTER MUNDUS.",
+    "wordWidth": 231.859375,
+    "captionWidth": 75.90625,
+    "viewport": 300
+  },
+  {
+    "lang": "la",
+    "route": "/contact",
+    "word": "CONIUNGE",
+    "caption": "ALTER MUNDUS.",
+    "wordWidth": 208.625,
+    "captionWidth": 75.90625,
+    "viewport": 300
+  }
+]

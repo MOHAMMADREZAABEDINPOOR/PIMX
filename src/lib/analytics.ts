@@ -51,7 +51,7 @@ export function getEstimatedLocation(): string {
   if (rand < 0.45) return 'Mashhad, Iran';
   if (rand < 0.55) return 'Tabriz, Iran';
   if (rand < 0.60) return 'Shiraz, Iran';
-  
+
   // International
   const index = Math.floor(rand * LOCATIONS.length);
   return LOCATIONS[index];
@@ -60,11 +60,11 @@ export function getEstimatedLocation(): string {
 // Track an action (visit, test, or dns-test)
 export function trackActivity(action: 'visit' | 'test' | 'dns-test') {
   if (typeof window === 'undefined') return;
-  
+
   try {
     const rawData = localStorage.getItem(STORAGE_KEY);
     const events: TrackedEvent[] = rawData ? JSON.parse(rawData) : [];
-    
+
     // Check if we tracked a visit recently in this session to prevent spamming
     if (action === 'visit') {
       const sessionVisitKey = 'pimx_session_visit_tracked';
@@ -73,20 +73,20 @@ export function trackActivity(action: 'visit' | 'test' | 'dns-test') {
       }
       sessionStorage.setItem(sessionVisitKey, 'true');
     }
-    
+
     const newEvent: TrackedEvent = {
       timestamp: Date.now(),
       deviceType: getDeviceType(),
       location: getEstimatedLocation(),
       action
     };
-    
+
     events.push(newEvent);
     // Prune events if they exceed 5000 to keep performance fast
     if (events.length > 5000) {
       events.shift();
     }
-    
+
     localStorage.setItem(STORAGE_KEY, JSON.stringify(events));
   } catch (err) {
     console.warn('Analytics tracking error:', err);
@@ -174,23 +174,23 @@ export function getAnalytics(rangeKey: string = '1hour'): MetricSummary {
   const now = Date.now();
   const startTime = now - range.ms;
   const intervalDur = range.ms / range.intervalsCount;
-  
+
   // 1. Get real events occurring in the window
   const realEvents = getLocalEvents().filter(e => e.timestamp >= startTime && e.timestamp <= now);
-  
+
   // 2. Classify device types & locations based on the combination of real and rich simulated events
   const deviceCounts: { [key: string]: number } = { Desktop: 0, Mobile: 0, Tablet: 0 };
   const locationCounts: { [key: string]: number } = {};
-  
+
   // Seed initial device ratios
   deviceCounts.Desktop = realEvents.filter(e => e.deviceType === 'Desktop').length;
   deviceCounts.Mobile = realEvents.filter(e => e.deviceType === 'Mobile').length;
   deviceCounts.Tablet = realEvents.filter(e => e.deviceType === 'Tablet').length;
-  
+
   realEvents.forEach(e => {
     locationCounts[e.location] = (locationCounts[e.location] || 0) + 1;
   });
-  
+
   // Determine if we need to scale up simulated values based on duration to look extremely realistic
   // Longer durations (like years) should have thousands of visits, while shorter ones (like min) are smaller.
   let scaleFactor = 1;
@@ -213,17 +213,17 @@ export function getAnalytics(rangeKey: string = '1hour'): MetricSummary {
     // Minutes
     scaleFactor = 0.5; // very minimal
   }
-  
+
   // Ensure we have at least some basic mock counts to populate devices & locations beautifully if real events are small
   const simulatedTotalVisits = Math.max(2, Math.floor(15 * scaleFactor));
   const simulatedDesktop = Math.floor(simulatedTotalVisits * 0.75);
   const simulatedMobile = Math.floor(simulatedTotalVisits * 0.20);
   const simulatedTablet = Math.max(0, simulatedTotalVisits - simulatedDesktop - simulatedMobile);
-  
+
   deviceCounts.Desktop += simulatedDesktop;
   deviceCounts.Mobile += simulatedMobile;
   deviceCounts.Tablet += simulatedTablet;
-  
+
   // Seed locations realistically based on Persian & International ratio
   const activeLocations = [
     { loc: 'Tehran, Iran', weight: 0.35 },
@@ -235,46 +235,46 @@ export function getAnalytics(rangeKey: string = '1hour'): MetricSummary {
     { loc: 'London, UK', weight: 0.05 },
     { loc: 'Unknown', weight: 0.08 }
   ];
-  
+
   activeLocations.forEach(al => {
     const locCount = Math.floor(simulatedTotalVisits * al.weight);
     locationCounts[al.loc] = (locationCounts[al.loc] || 0) + locCount;
   });
-  
+
   // Generate high-fidelity analytical points for intervals
   const points: MetricDataPoint[] = [];
-  
+
   let totalVisits = 0;
   let totalTests = 0;
   let totalDnsTested = 0;
-  
+
   let maxV = 0, minV = 99999999;
   let maxT = 0, minT = 99999999;
   let maxDns = 0, minDns = 99999999;
-  
+
   for (let i = 0; i < range.intervalsCount; i++) {
     const intervalStart = startTime + i * intervalDur;
     const intervalEnd = intervalStart + intervalDur;
-    
+
     // Count real occurrences
     const vReal = realEvents.filter(e => e.action === 'visit' && e.timestamp >= intervalStart && e.timestamp < intervalEnd).length;
     const tReal = realEvents.filter(e => e.action === 'test' && e.timestamp >= intervalStart && e.timestamp < intervalEnd).length;
     const dnsReal = realEvents.filter(e => e.action === 'dns-test' && e.timestamp >= intervalStart && e.timestamp < intervalEnd).length;
-    
+
     // Create highly stable, beautiful pseudo-random fluctuations
     // Growth factor represents the steady traffic gain of this site over decades
     const scaleModifier = Math.max(1, Math.floor(scaleFactor));
     const normalizedTimeScale = (intervalStart - (now - 20 * 365 * 24 * 60 * 60 * 1000)) / (20 * 365 * 24 * 60 * 60 * 1000);
     const growthTrend = 1.0 + normalizedTimeScale * 2.5; // traffic grows 3.5x over 20 years
-    
+
     // Core math formulas simulating peak traffic, diurnal variation patterns, standard noise
     const diurnalHarmonic = 0.4 * Math.sin((intervalStart / (12 * 60 * 60 * 1000)) * Math.PI) + 0.6; // daily pattern
     const noise = getStablePseudoRandom(intervalStart, 1.2);
-    
+
     let vSim = 0;
     let tSim = 0;
     let dnsSim = 0;
-    
+
     if (scaleFactor > 0) {
       // Calculate realistic counts matching exact trend screenshots
       vSim = Math.floor((10 + noise * 18) * scaleModifier * diurnalHarmonic * growthTrend);
@@ -288,28 +288,28 @@ export function getAnalytics(rangeKey: string = '1hour'): MetricSummary {
       tSim = getStablePseudoRandom(intervalStart + 50, 100) < 10 ? 1 : 0;
       dnsSim = getStablePseudoRandom(intervalStart + 120, 100) < 5 ? 1 : 0;
     }
-    
+
     const vTotal = vReal + vSim;
     const tTotal = tReal + tSim;
     const dnsTotal = dnsReal + dnsSim;
-    
+
     totalVisits += vTotal;
     totalTests += tTotal;
     totalDnsTested += dnsTotal;
-    
+
     if (vTotal > maxV) maxV = vTotal;
     if (vTotal < minV) minV = vTotal;
-    
+
     if (tTotal > maxT) maxT = tTotal;
     if (tTotal < minT) minT = tTotal;
-    
+
     if (dnsTotal > maxDns) maxDns = dnsTotal;
     if (dnsTotal < minDns) minDns = dnsTotal;
-    
+
     // Let's build labels according to different interval scale categories
     let label = '';
     const date = new Date(intervalStart);
-    
+
     if (range.ms <= 10 * 60 * 1000) {
       // display seconds
       label = `${date.getMinutes().toString().padStart(2, '0')}:${date.getSeconds().toString().padStart(2, '0')}`;
@@ -326,7 +326,7 @@ export function getAnalytics(rangeKey: string = '1hour'): MetricSummary {
       // display year & month
       label = `${date.getFullYear()}/${(date.getMonth() + 1).toString().padStart(2, '0')}`;
     }
-    
+
     points.push({
       label,
       visits: vTotal,
@@ -334,11 +334,11 @@ export function getAnalytics(rangeKey: string = '1hour'): MetricSummary {
       dnsTested: dnsTotal
     });
   }
-  
+
   if (minV === 99999999) minV = 0;
   if (minT === 99999999) minT = 0;
   if (minDns === 99999999) minDns = 0;
-  
+
   // Format device shares sorted by percentage desc
   const totalDeviceSum = Object.values(deviceCounts).reduce((a, b) => a + b, 0) || 1;
   const deviceShare = Object.keys(deviceCounts).map(device => {
@@ -349,7 +349,7 @@ export function getAnalytics(rangeKey: string = '1hour'): MetricSummary {
       percentage: parseFloat(((count / totalDeviceSum) * 100).toFixed(1))
     };
   }).sort((a, b) => b.percentage - a.percentage);
-  
+
   // Format locations sorted by count desc
   const totalLocationSum = Object.values(locationCounts).reduce((a, b) => a + b, 0) || 1;
   const locations = Object.keys(locationCounts).map(loc => {
@@ -360,7 +360,7 @@ export function getAnalytics(rangeKey: string = '1hour'): MetricSummary {
       percentage: parseFloat(((count / totalLocationSum) * 100).toFixed(1))
     };
   }).sort((a, b) => b.count - a.count);
-  
+
   return {
     visits: totalVisits,
     tests: totalTests,

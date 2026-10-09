@@ -1152,7 +1152,7 @@ export const cvCertificates: CVCertificate[] = [
       la: "Programma academicum de designatione datorum, scraping interretis (BeautifulSoup), analysis XML/JSON et visually demonstrandi scientias."
     },
     grade: "93.21% / 100",
-    pdfFile: "Programming for Everybody(GettingStartedwithPython).pdf"
+    pdfFile: "Programming forEverybody(GettingStartedwithPython).pdf"
   },
   {
     id: "rice-python",

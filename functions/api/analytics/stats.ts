@@ -1,3 +1,6 @@
+import type { KVNamespace, PagesFunction } from '@cloudflare/workers-types';
+declare const Response: typeof import('@cloudflare/workers-types').Response;
+
 // Cloudflare Pages Function: GET /api/analytics/stats
 // Returns aggregated real analytics data from KV for the admin dashboard.
 
