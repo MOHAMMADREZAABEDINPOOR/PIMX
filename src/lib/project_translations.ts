@@ -1,3 +1,4 @@
+import { getRedesignedProjectCopy } from './redesigned_projects';
 import { githubProjects } from './github_projects';
 import { getIndependentProjects } from './independent_projects';
 import { previousPortfolioProjects } from './legacy_project_translations';
@@ -54,6 +55,7 @@ export function getTranslatedProjects(lang: string): TranslatedProjectItem[] {
   return [...catalog, ...independent, ...previousWork.map(project => refineLegacyProject(project, lang))]
     .filter(project => project.id !== 'github-pimx')
     .map(project => ({ ...project, previewImage: projectScreenshots[project.id], title:translateSiteText(lang as LanguageType,project.title), badge:translateSiteText(lang as LanguageType,project.badge), description:translateSiteText(lang as LanguageType,project.description), features:translateSiteText(lang as LanguageType,project.features), sourceNote:translateSiteText(lang as LanguageType,project.sourceNote) }))
+    .map(project => ({ ...project, ...getRedesignedProjectCopy(project.id, lang) }))
     .sort((a, b) => Number(hasProjectScreenshot(b.id)) - Number(hasProjectScreenshot(a.id)));
 }
 

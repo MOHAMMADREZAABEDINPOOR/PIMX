@@ -65,8 +65,8 @@ export const githubProjects: GithubProject[] = [
     "title": "File conversion workbench",
     "titleEn": "File conversion workbench",
     "titleFa": "تبدیل فایل در مرورگر",
-    "description": "A browser conversion workbench for images, PDFs, documents, audio and structured data. Separate converter functions handle each supported transformation.",
-    "descriptionFa": "مجموعه‌ابزار تبدیل فایل در مرورگر برای تصویر، PDF، سند، صوت و داده‌های ساختاریافته؛ با پردازش سمت کاربر برای فرمت‌های پشتیبانی‌شده.",
+    "description": "Convert images, PDFs, documents, audio, video and structured data locally. Upload first to see compatible outputs, save finished conversions in a browser library, and install the app with downloaded tools available offline.",
+    "descriptionFa": "تصویر، PDF، سند، صدا، ویدئو و داده‌های ساختاریافته را روی دستگاه خودت تبدیل کن. ابتدا فایل را انتخاب کن تا خروجی‌های سازگار نمایش داده شوند؛ نتیجه‌ها را در کتابخانهٔ مرورگر نگه دار و برنامه را با ابزارهای دانلودشده آفلاین استفاده کن.",
     "githubUrl": "https://github.com/MOHAMMADREZAABEDINPOOR/PIMX_MORPH",
     "accent": "rose",
     "category": "featured",
@@ -74,10 +74,12 @@ export const githubProjects: GithubProject[] = [
     "language": "TypeScript",
     "technologies": [
       "React",
-      "PDF",
-      "Web Audio",
-      "Express",
-      "Vite"
+      "TypeScript",
+      "Vite",
+      "Three.js",
+      "FFmpeg WASM",
+      "PDF.js",
+      "PWA"
     ],
     "topics": [
       "bilingual",
@@ -91,24 +93,24 @@ export const githubProjects: GithubProject[] = [
       "vite",
       "web-app"
     ],
-    "updatedAt": "2026-10-07T16:29:44Z",
+    "updatedAt": "2026-10-15T18:33:23Z",
     "isFork": false,
     "isArchived": false,
     "stars": 0,
     "origin": "github",
     "link": "https://pimxmorph.pages.dev",
     "liveStatus": "verified",
-    "verifiedAt": "2026-10-08T11:56:21.358Z",
+    "verifiedAt": "2026-10-17",
     "readmeUrl": "https://github.com/MOHAMMADREZAABEDINPOOR/PIMX_MORPH/blob/main/README.md",
     "features": [
-      "Separate converters for supported image and document formats",
-      "Audio and structured-data conversion tools",
-      "Browser-based workbench for choosing inputs and outputs"
+      "Upload-first workflow with compatible output formats",
+      "Local image/HEIC, PDF, DOCX, media and JSON/CSV tools",
+      "Persistent output library, installable PWA and downloadable offline media engine"
     ],
     "featuresFa": [
-      "مبدل‌های مجزا برای فرمت‌های تصویر و سند پشتیبانی‌شده",
-      "ابزارهای تبدیل صوت و دادهٔ ساختاریافته",
-      "فضای کار مرورگر برای انتخاب ورودی و خروجی"
+      "انتخاب فایل پیش از نمایش فرمت‌های خروجی سازگار",
+      "ابزارهای محلی تصویر و HEIC، PDF، DOCX، رسانه و JSON/CSV",
+      "کتابخانهٔ ماندگار خروجی‌ها، PWA نصب‌شدنی و موتور رسانهٔ قابل دانلود برای آفلاین"
     ],
     "linkKind": "website",
     "activitySource": "http"
@@ -172,8 +174,8 @@ export const githubProjects: GithubProject[] = [
     "title": "Peer-to-peer file transfer",
     "titleEn": "Peer-to-peer file transfer",
     "titleFa": "انتقال مستقیم فایل",
-    "description": "A browser file-transfer workspace built around WebRTC data channels, a Node.js WebSocket signaling service and AES-GCM encryption of transferred chunks.",
-    "descriptionFa": "ابزار انتقال فایل با WebRTC و سرور سیگنالینگ WebSocket در Node.js؛ تقسیم فایل به قطعه‌ها و رمزنگاری AES-GCM در مسیر انتقال.",
+    "description": "Send files, folders and text between browsers through encrypted WebRTC connections. Invite devices by QR, approve recipients, manage transfer queues and verify file integrity; signaling runs on Node.js or Cloudflare Durable Objects.",
+    "descriptionFa": "فایل، پوشه و متن را با اتصال رمزنگاری‌شدهٔ WebRTC بین مرورگرها بفرست. با QR دستگاه دعوت کن، گیرنده را تأیید کن، صف انتقال را مدیریت کن و صحت فایل را بررسی کن؛ سیگنالینگ روی Node.js یا Cloudflare Durable Objects اجرا می‌شود.",
     "githubUrl": "https://github.com/MOHAMMADREZAABEDINPOOR/PIMX_NODE",
     "accent": "indigo",
     "category": "featured",
@@ -181,11 +183,12 @@ export const githubProjects: GithubProject[] = [
     "language": "TypeScript",
     "technologies": [
       "React",
+      "TypeScript",
+      "Three.js",
       "WebRTC",
+      "Web Crypto",
       "WebSocket",
-      "AES-GCM",
-      "Express",
-      "Vite"
+      "Cloudflare Durable Objects"
     ],
     "topics": [
       "bilingual",
@@ -199,24 +202,24 @@ export const githubProjects: GithubProject[] = [
       "vite",
       "web-app"
     ],
-    "updatedAt": "2026-10-07T16:27:43Z",
+    "updatedAt": "2026-10-15T17:43:47Z",
     "isFork": false,
     "isArchived": false,
     "stars": 0,
     "origin": "github",
     "link": "https://pimxnode.pages.dev",
     "liveStatus": "verified",
-    "verifiedAt": "2026-10-08T11:56:21.206Z",
+    "verifiedAt": "2026-10-17",
     "readmeUrl": "https://github.com/MOHAMMADREZAABEDINPOOR/PIMX_NODE/blob/main/README.md",
     "features": [
-      "WebRTC peer connections with WebSocket signaling",
-      "Chunked file transfer with AES-GCM encryption",
-      "Browser interface backed by Node.js services"
+      "QR rooms, recipient approval and multi-recipient file/folder/text sharing",
+      "Queue controls, reconnect/resume and file integrity verification",
+      "Live 3D connection state, diagnostics, local history and installable PWA"
     ],
     "featuresFa": [
-      "اتصال همتا با WebRTC و سیگنالینگ WebSocket",
-      "انتقال قطعه‌ای فایل با رمزنگاری AES-GCM",
-      "رابط مرورگر در کنار سرویس‌های Node.js"
+      "اتاق با QR، تأیید گیرنده و اشتراک فایل، پوشه و متن با چند گیرنده",
+      "کنترل صف، اتصال و ادامهٔ مجدد و بررسی صحت فایل",
+      "وضعیت اتصال سه‌بعدی زنده، عیب‌یابی، تاریخچهٔ محلی و PWA نصب‌شدنی"
     ],
     "linkKind": "website",
     "activitySource": "http"
@@ -227,17 +230,20 @@ export const githubProjects: GithubProject[] = [
     "title": "Image-to-character creative studio",
     "titleEn": "Image-to-character creative studio",
     "titleFa": "استودیوی هنر متنی",
-    "description": "A browser image-to-character art studio with preset styles, a character picker, canvas processing, previews and conversion history.",
-    "descriptionFa": "استودیوی تبدیل تصویر به کاراکتر با سبک‌های مختلف، انتخاب نمادها، بوم، پیش‌نمایش و تاریخچهٔ خروجی‌ها.",
+    "description": "Turn photos into ASCII portraits, word mosaics or emoji art with 300 styles and previews on your own image. Edit with brushes, add motion and export PNG, text, GIF or video; projects and portable backups stay in your browser.",
+    "descriptionFa": "عکس‌ها را با ۳۰۰ سبک و پیش‌نمایش روی تصویر خودت به پرترهٔ ASCII، موزاییک کلمه یا هنر ایموجی تبدیل کن. با قلم‌مو ویرایش کن، حرکت اضافه کن و خروجی PNG، متن، GIF یا ویدئو بگیر؛ پروژه‌ها و پشتیبان قابل انتقال در مرورگرت می‌مانند.",
     "githubUrl": "https://github.com/MOHAMMADREZAABEDINPOOR/PIMX_MOJI",
     "accent": "cyan",
     "category": "featured",
     "badge": "LIVE WEB APP",
     "language": "TypeScript",
     "technologies": [
-      "Express",
       "React",
-      "Vite"
+      "TypeScript",
+      "Vite",
+      "Canvas",
+      "IndexedDB",
+      "Motion"
     ],
     "topics": [
       "bilingual",
@@ -251,24 +257,24 @@ export const githubProjects: GithubProject[] = [
       "vite",
       "web-app"
     ],
-    "updatedAt": "2026-10-07T16:27:50Z",
+    "updatedAt": "2026-10-15T17:59:53Z",
     "isFork": false,
     "isArchived": false,
     "stars": 0,
     "origin": "github",
     "link": "https://pimxmoji.pages.dev",
     "liveStatus": "verified",
-    "verifiedAt": "2026-10-08T11:56:22.352Z",
+    "verifiedAt": "2026-10-17",
     "readmeUrl": "https://github.com/MOHAMMADREZAABEDINPOOR/PIMX_MOJI/blob/main/README.md",
     "features": [
-      "Image-to-character conversion with selectable styles",
-      "Canvas preview and character picker",
-      "Output history and creative text layouts"
+      "300 styles with hover, keyboard and touch previews on your photo",
+      "Brushes, undo/redo, custom styles and 18 motion effects",
+      "PNG/text/GIF/video exports; IndexedDB library and portable backup/restore"
     ],
     "featuresFa": [
-      "تبدیل تصویر به کاراکتر با سبک‌های قابل انتخاب",
-      "پیش‌نمایش بوم و انتخاب کاراکتر",
-      "تاریخچهٔ خروجی‌ها و چیدمان‌های هنر متنی"
+      "۳۰۰ سبک با پیش‌نمایش روی عکس خودت با ماوس، کیبورد و لمس",
+      "قلم‌مو، واگرد و بازانجام، سبک دلخواه و ۱۸ جلوهٔ حرکتی",
+      "خروجی PNG، متن، GIF و ویدئو؛ کتابخانهٔ IndexedDB و پشتیبان و بازیابی قابل انتقال"
     ],
     "linkKind": "website",
     "activitySource": "http"
@@ -437,17 +443,20 @@ export const githubProjects: GithubProject[] = [
     "title": "Browser encryption for text and files",
     "titleEn": "Browser encryption for text and files",
     "titleFa": "ابزار رمزنگاری در مرورگر",
-    "description": "A multilingual text/file encryption interface using browser Web Crypto, AES-256-GCM and password-derived keys, with local records and optional visitor telemetry.",
-    "descriptionFa": "رمزنگاری متن و فایل با Web Crypto، AES-256-GCM و کلید مشتق‌شده از گذرواژه؛ رابط چندزبانه با سوابق محلی و تله‌متری اختیاری.",
+    "description": "Encrypt messages, files and folders locally with AES-256-GCM. Organize encrypted packages in a password-protected vault, create passwords or passphrases, and keep encrypted backups; local tools work offline after caching.",
+    "descriptionFa": "پیام، فایل و پوشه را روی دستگاه خودت با AES-256-GCM رمزگذاری کن. بسته‌های رمزگذاری‌شده را در صندوق دارای گذرواژه مرتب کن، رمز یا عبارت عبور بساز و پشتیبان رمزگذاری‌شده نگه دار؛ ابزارهای محلی پس از ذخیرهٔ برنامه آفلاین کار می‌کنند.",
     "githubUrl": "https://github.com/MOHAMMADREZAABEDINPOOR/PIMX_WIDE",
     "accent": "indigo",
     "category": "featured",
     "badge": "LIVE WEB APP",
     "language": "TypeScript",
     "technologies": [
+      "React",
+      "TypeScript",
+      "Vite",
       "Web Crypto",
-      "AES-GCM",
-      "React"
+      "IndexedDB",
+      "Cloudflare Pages"
     ],
     "topics": [
       "bilingual",
@@ -460,24 +469,24 @@ export const githubProjects: GithubProject[] = [
       "typescript",
       "vite"
     ],
-    "updatedAt": "2026-10-07T16:28:00Z",
+    "updatedAt": "2026-10-14T17:46:43Z",
     "isFork": false,
     "isArchived": false,
     "stars": 0,
     "origin": "github",
     "link": "https://pimxwide.pages.dev",
     "liveStatus": "verified",
-    "verifiedAt": "2026-10-08T11:56:22.510Z",
+    "verifiedAt": "2026-10-17",
     "readmeUrl": "https://github.com/MOHAMMADREZAABEDINPOOR/PIMX_WIDE/blob/main/README.md",
     "features": [
-      "AES-256-GCM through the browser Web Crypto API",
-      "Password-derived keys for text and file workflows",
-      "Multilingual interface with local records"
+      "AES-256-GCM packages for text, files and folders; legacy package support",
+      "Encrypted local vault with tags, favorites, backups and automatic locking",
+      "Cryptographic passwords/passphrases, eight languages and offline local tools"
     ],
     "featuresFa": [
-      "AES-256-GCM با Web Crypto در مرورگر",
-      "کلید مشتق‌شده از گذرواژه برای متن و فایل",
-      "رابط چندزبانه با سوابق محلی"
+      "بسته‌های AES-256-GCM برای متن، فایل و پوشه و پشتیبانی از بسته‌های قدیمی",
+      "صندوق محلی رمزگذاری‌شده با برچسب، علاقه‌مندی، پشتیبان و قفل خودکار",
+      "رمز و عبارت عبور با تصادفی‌بودن رمزنگاری، هشت زبان و ابزارهای محلی آفلاین"
     ],
     "linkKind": "website",
     "activitySource": "http",
@@ -574,8 +583,8 @@ export const githubProjects: GithubProject[] = [
     "title": "Browser-based DNS comparison",
     "titleEn": "Browser-based DNS comparison",
     "titleFa": "مقایسهٔ پاسخ DNS",
-    "description": "A bilingual DNS comparison interface with curated resolver sources, browser-based timing tests, result cards and an optional analytics backend.",
-    "descriptionFa": "ابزار دوزبانه برای مقایسهٔ پاسخ سرویس‌های DNS منتخب از طریق درخواست‌های مرورگر؛ همراه با توضیحات و تحلیل اختیاری استفاده.",
+    "description": "Compare DNS resolvers on your own connection with real DNS-over-HTTPS queries, a live 3D network, saved comparisons and device setup guides. Keep network-specific history, import custom resolvers and export results.",
+    "descriptionFa": "سرویس‌های DNS را روی اینترنت خودت با درخواست واقعی DNS-over-HTTPS مقایسه کن؛ با شبکهٔ سه‌بعدی زنده، مقایسه‌های ذخیره‌شده و راهنمای تنظیم دستگاه. تاریخچهٔ هر شبکه را نگه دار، DNS دلخواه اضافه کن و از نتایج خروجی بگیر.",
     "githubUrl": "https://github.com/MOHAMMADREZAABEDINPOOR/PIMX_PASS_DNS",
     "accent": "emerald",
     "category": "featured",
@@ -583,7 +592,11 @@ export const githubProjects: GithubProject[] = [
     "language": "TypeScript",
     "technologies": [
       "React",
-      "Framer Motion"
+      "TypeScript",
+      "Vite",
+      "Three.js",
+      "DNS-over-HTTPS",
+      "Cloudflare Workers"
     ],
     "topics": [
       "bilingual",
@@ -596,24 +609,24 @@ export const githubProjects: GithubProject[] = [
       "vite",
       "web-app"
     ],
-    "updatedAt": "2026-10-07T16:28:05Z",
+    "updatedAt": "2026-10-16T10:55:53Z",
     "isFork": false,
     "isArchived": false,
     "stars": 0,
     "origin": "github",
     "link": "https://pimxpassdns.pages.dev",
     "liveStatus": "verified",
-    "verifiedAt": "2026-10-08T11:56:22.533Z",
+    "verifiedAt": "2026-10-17",
     "readmeUrl": "https://github.com/MOHAMMADREZAABEDINPOOR/PIMX_PASS_DNS/blob/main/README.md",
     "features": [
-      "Curated resolvers and browser request timings",
-      "Persian and English interface",
-      "Optional usage analytics"
+      "Real DoH measurements, resolver comparisons and a live 3D network",
+      "Local history, favorites, custom imports and JSON/CSV/TXT/PNG/QR exports",
+      "Separate Home, Test and Guide pages; Persian/English, themes and offline PWA"
     ],
     "featuresFa": [
-      "سرویس‌های DNS منتخب و زمان‌سنجی درخواست‌های مرورگر",
-      "رابط فارسی و انگلیسی",
-      "تحلیل اختیاری استفاده"
+      "اندازه‌گیری واقعی DoH، مقایسهٔ DNSها و شبکهٔ سه‌بعدی زنده",
+      "تاریخچهٔ محلی، علاقه‌مندی‌ها، ورود DNS دلخواه و خروجی JSON/CSV/TXT/PNG/QR",
+      "صفحه‌های خانه، آزمایش و راهنما؛ فارسی و انگلیسی، دو پوسته و PWA آفلاین"
     ],
     "linkKind": "website",
     "activitySource": "http"

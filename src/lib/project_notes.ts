@@ -1,3 +1,4 @@
+import { getRedesignedProjectCopy } from './redesigned_projects';
 import type { LanguageType } from './translations';
 
 const ids = ['github-pimx-agent','github-pimx-morph','pimx-veil','pimx-node','pimx-moji','github-pimxsats','github-pimx-swap'];
@@ -95,6 +96,8 @@ const notes: Record<LanguageType, string[]> = {
 };
 
 export function getProjectNote(lang: LanguageType, id: string, fallback: string) {
+  const current = getRedesignedProjectCopy(id, lang);
+  if (current) return current.description;
   const index = ids.indexOf(id);
   return index < 0 ? fallback : notes[lang][index];
 }

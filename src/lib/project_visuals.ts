@@ -39,3 +39,10 @@ projectScreenshots['github-pimx-swap'] = '/project-previews/github-pimx-swap.png
 export function getProjectScreenshot(id: string, theme: 'light' | 'dark', fallback?: string) {
   return themedProjectScreenshots[id]?.[theme] || projectScreenshots[id] || fallback;
 }
+
+// Refresh cached captures after the October redesigns.
+for (const id of ['github-pimx-morph', 'pimx-node', 'pimx-moji', 'pimx-wide', 'pimx-pass']) {
+  projectScreenshots[id] += '?v=redesign-20261017';
+  themedProjectScreenshots[id].light += '?v=redesign-20261017';
+  themedProjectScreenshots[id].dark += '?v=redesign-20261017';
+}

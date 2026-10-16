@@ -25,6 +25,18 @@ The homepage shows six selected projects. The project directory contains the wid
 
 [Preview](#preview) · [Features](#features) · [Run locally](#run-locally) · [Deploy](#deploy) · [Customize](#customize) · [Checks](#checks)
 
+
+## Recent project redesigns
+
+| Project | Current experience |
+| --- | --- |
+| [PIMX PASS DNS](https://pimxpassdns.pages.dev/) | Compare DNS resolvers on your own connection with real DNS-over-HTTPS queries, a live 3D network, saved comparisons and device setup guides. Keep network-specific history, import custom resolvers and export results. |
+| [PIMX MOJI](https://pimxmoji.pages.dev/) | Turn photos into ASCII portraits, word mosaics or emoji art with 300 styles and previews on your own image. Edit with brushes, add motion and export PNG, text, GIF or video; projects and portable backups stay in your browser. |
+| [PIMX MORPH](https://pimxmorph.pages.dev/) | Convert images, PDFs, documents, audio, video and structured data locally. Upload first to see compatible outputs, save finished conversions in a browser library, and install the app with downloaded tools available offline. |
+| [PIMX NODE](https://pimxnode.pages.dev/) | Send files, folders and text between browsers through encrypted WebRTC connections. Invite devices by QR, approve recipients, manage transfer queues and verify file integrity; signaling runs on Node.js or Cloudflare Durable Objects. |
+| [PIMX WIDE](https://pimxwide.pages.dev/) | Encrypt messages, files and folders locally with AES-256-GCM. Organize encrypted packages in a password-protected vault, create passwords or passphrases, and keep encrypted backups; local tools work offline after caching. |
+
+
 ## 🎨 A project exhibition with its own identity
 
 The portfolio brings real product captures, dedicated Three.js sculptures, source attribution and a multilingual personal story into one place. The original README animation is rendered from a browser, floating project cards, a globe and a CV; its static alternative is available [here](assets/readme/hero.png).
@@ -87,8 +99,8 @@ Examples include [PIMX Agent](https://pimxagent.pages.dev/), [PIMX Morph](https:
 Use **Node.js 22.12 or newer** and npm. The lockfile is committed.
 
 ```bash
-git clone https://github.com/MOHAMMADREZAABEDINPOOR/pimxportfolio.git
-cd pimxportfolio
+git clone https://github.com/MOHAMMADREZAABEDINPOOR/PIMX.git
+cd PIMX
 npm ci
 npm run dev
 ```
@@ -155,6 +167,7 @@ The local Express server does not emulate Cloudflare Pages Functions. The local 
 | [`src/lib/human_copy.ts`](src/lib/human_copy.ts) | Personal introduction and footer copy in ten languages |
 | [`src/lib/portfolio_home_copy.ts`](src/lib/portfolio_home_copy.ts) | Remaining homepage labels and service copy |
 | [`src/lib/project_notes.ts`](src/lib/project_notes.ts) | Plain-language descriptions of selected tools |
+| [`src/lib/redesigned_projects.ts`](src/lib/redesigned_projects.ts) | Current descriptions and features for DNS, MOJI, MORPH, NODE and WIDE in all ten languages |
 | [`src/lib/project_translations.ts`](src/lib/project_translations.ts) | Combined project catalogue and translated records |
 | [`src/lib/site_locales/`](src/lib/site_locales/) | Locally bundled interface translations |
 | [`src/lib/site_text_review.ts`](src/lib/site_text_review.ts) | Reviewed wording and product-name overrides |

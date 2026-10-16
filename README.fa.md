@@ -24,6 +24,18 @@
 **سایت: [pimx.pages.dev](https://pimx.pages.dev/)**
 <!-- pimx-live-site:end -->
 
+
+## بازطراحی‌های اخیر پروژه‌ها
+
+| Project | امکانات فعلی |
+| --- | --- |
+| [PIMX PASS DNS](https://pimxpassdns.pages.dev/) | سرویس‌های DNS را روی اینترنت خودت با درخواست واقعی DNS-over-HTTPS مقایسه کن؛ با شبکهٔ سه‌بعدی زنده، مقایسه‌های ذخیره‌شده و راهنمای تنظیم دستگاه. تاریخچهٔ هر شبکه را نگه دار، DNS دلخواه اضافه کن و از نتایج خروجی بگیر. |
+| [PIMX MOJI](https://pimxmoji.pages.dev/) | عکس‌ها را با ۳۰۰ سبک و پیش‌نمایش روی تصویر خودت به پرترهٔ ASCII، موزاییک کلمه یا هنر ایموجی تبدیل کن. با قلم‌مو ویرایش کن، حرکت اضافه کن و خروجی PNG، متن، GIF یا ویدئو بگیر؛ پروژه‌ها و پشتیبان قابل انتقال در مرورگرت می‌مانند. |
+| [PIMX MORPH](https://pimxmorph.pages.dev/) | تصویر، PDF، سند، صدا، ویدئو و داده‌های ساختاریافته را روی دستگاه خودت تبدیل کن. ابتدا فایل را انتخاب کن تا خروجی‌های سازگار نمایش داده شوند؛ نتیجه‌ها را در کتابخانهٔ مرورگر نگه دار و برنامه را با ابزارهای دانلودشده آفلاین استفاده کن. |
+| [PIMX NODE](https://pimxnode.pages.dev/) | فایل، پوشه و متن را با اتصال رمزنگاری‌شدهٔ WebRTC بین مرورگرها بفرست. با QR دستگاه دعوت کن، گیرنده را تأیید کن، صف انتقال را مدیریت کن و صحت فایل را بررسی کن؛ سیگنالینگ روی Node.js یا Cloudflare Durable Objects اجرا می‌شود. |
+| [PIMX WIDE](https://pimxwide.pages.dev/) | پیام، فایل و پوشه را روی دستگاه خودت با AES-256-GCM رمزگذاری کن. بسته‌های رمزگذاری‌شده را در صندوق دارای گذرواژه مرتب کن، رمز یا عبارت عبور بساز و پشتیبان رمزگذاری‌شده نگه دار؛ ابزارهای محلی پس از ذخیرهٔ برنامه آفلاین کار می‌کنند. |
+
+
 ## 🎨 نمایشگاهی با هویت مستقل
 
 این پورتفولیو تصویر واقعی محصولات، مجسمه‌های اختصاصی Three.js، لینک سورس و داستان شخصی چندزبانه را کنار هم می‌آورد. انیمیشن اختصاصی README از یک مرورگر، کارت‌های شناور پروژه، کرهٔ زمین و رزومه ساخته شده است؛ [نسخهٔ ثابت](assets/readme/hero.png) هم در دسترس است.
@@ -86,8 +98,8 @@
 <div dir="ltr">
 
 ```bash
-git clone https://github.com/MOHAMMADREZAABEDINPOOR/pimxportfolio.git
-cd pimxportfolio
+git clone https://github.com/MOHAMMADREZAABEDINPOOR/PIMX.git
+cd PIMX
 npm ci
 npm run dev
 ```
@@ -142,6 +154,7 @@ npm start
 | [human_copy.ts](src/lib/human_copy.ts) | معرفی شخصی و متن فوتر در ده زبان |
 | [portfolio_home_copy.ts](src/lib/portfolio_home_copy.ts) | سایر عنوان‌ها و توضیحات صفحهٔ اصلی |
 | [project_notes.ts](src/lib/project_notes.ts) | توضیحات کوتاه کاربرد پروژه‌های منتخب |
+| [`src/lib/redesigned_projects.ts`](src/lib/redesigned_projects.ts) | ??????? ? ??????? ???? DNS? MOJI? MORPH? NODE ? WIDE ?? ?? ?? ???? |
 | [project_translations.ts](src/lib/project_translations.ts) | فهرست ترکیبی پروژه‌ها و ترجمهٔ رکوردها |
 | [site_locales](src/lib/site_locales/) | ترجمه‌های محلی رابط سایت |
 | [site_text_review.ts](src/lib/site_text_review.ts) | عبارت‌های بازبینی‌شده و نام محصولات |
