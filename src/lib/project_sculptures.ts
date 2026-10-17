@@ -148,6 +148,27 @@ class Studio {
 
 type Builder = (s: Studio) => void;
 const builders: Record<string, Builder> = {
+  'github-pimx-voice': s => {
+    const player = s.panel(2.5, 1.5, 0, .12, -.15, s.a, s.root, 0);
+    s.box(2.24, .055, .07, 0, -.69, .02, WHITE);
+    const playhead = s.orb(.065, -.95, -.69, .1, s.b);
+    const bars: THREE.Mesh[] = [];
+    for (let i = 0; i < 15; i++) bars.push(s.box(.075, .5, .12, -.92 + i * .132, .29, .08, i % 3 ? s.a : s.b));
+    const first = s.label('VIDEO', 0, -.17, .15, .17, WHITE);
+    const second = s.label('EN / FA', 0, -.44, .15, .14, s.b);
+    const speaker = s.group(-1.55, .06, .25);
+    s.box(.23, .42, .28, 0, 0, 0, s.b, speaker);
+    const cone = s.cylinder(.22, .1, .25, .22, 0, 0, s.a, speaker); cone.rotation.z = Math.PI / 2;
+    const waves = [0, 1].map(i => { const ring = s.ring(.23 + i * .13, .5 + i * .12, 0, 0, s.b, speaker, .018); ring.rotation.y = Math.PI / 2; return ring; });
+    s.label('DUBBING', 0, 1.13, .05, .2, s.a);
+    s.label('CAPTIONS', 0, -1.03, .12, .16, s.b);
+    s.ticks.push((t, h) => {
+      bars.forEach((bar, i) => { bar.scale.y = .19 + Math.abs(Math.sin(t * 2.7 + i * .6)) * .61 + h * .12; });
+      playhead.position.x = -.95 + ((t * .16) % 1) * 1.9;
+      waves.forEach((wave, i) => wave.scale.setScalar(1 + .1 * Math.sin(t * 2 - i)));
+      player.rotation.y = h * .06; first.position.z = .15; second.position.z = .15;
+    });
+  },
   'soheil-portal': s => {
     // A personal link destination becomes a portrait pavilion with a cascading link ribbon.
     const portrait = s.group(-.63, .39, -.12);

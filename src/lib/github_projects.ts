@@ -1,11 +1,13 @@
 // Public repository metadata verified on 2026-10-08.
 // Refresh from GitHub + Cloudflare audit; no credentials or private repository contents.
 import type { TranslatedProjectItem } from './project_translations';
+import { voiceProject } from './voice_project';
 import { recentGithubProjects } from './recent_projects';
 
 export type GithubProject = TranslatedProjectItem & { titleFa: string; descriptionFa: string; featuresFa?: string[] };
 export const githubCatalogVerifiedAt = "2026-10-08T11:56:24.345Z";
 export const githubProjects: GithubProject[] = [
+  voiceProject,
   ...recentGithubProjects,
   {
     "id": "github-pimx-agent",

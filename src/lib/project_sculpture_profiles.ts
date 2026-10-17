@@ -10,6 +10,7 @@ export interface ProjectSculptureProfile {
 const art = (title: string, signature: string, accent: string, secondary: string, backdrop: string): ProjectSculptureProfile => ({ title, signature, accent, secondary, backdrop });
 
 export const projectSculptureProfiles: Record<string, ProjectSculptureProfile> = {
+  'github-pimx-voice': art('VOICE', 'Tab audio / translated speech / two subtitle tracks', '#63d8d6', '#ffd28c', '#102b30'),
   'github-pimx-support': art('SUPPORT', 'A little heart / support for the next idea', '#a5c096', '#ffb583', '#183329'),
   'github-pimx-agent-bot': art('AGENT BOT', 'Telegram conversations / connected models', '#8da2ff', '#85e2da', '#171f35'),
   'github-pimx-agent': art('AGENT', 'Neural core / orbiting tools', '#8da2ff', '#f79eff', '#17132c'),

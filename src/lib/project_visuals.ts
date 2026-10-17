@@ -46,3 +46,5 @@ for (const id of ['github-pimx-morph', 'pimx-node', 'pimx-moji', 'pimx-wide', 'p
   themedProjectScreenshots[id].light += '?v=redesign-20261017';
   themedProjectScreenshots[id].dark += '?v=redesign-20261017';
 }
+
+projectScreenshots['github-pimx-voice'] = '/project-previews/github-pimx-voice.png';
