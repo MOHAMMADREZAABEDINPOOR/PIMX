@@ -37,3 +37,8 @@
 
 .product-study[data-active=true] .study-dimensional-stage{will-change:transform}.product-study:not(.sculpture-interactive) .study-browser-window{animation:none}.product-study:not(.sculpture-interactive) .study-floating-spec{backdrop-filter:none}
 @media(max-width:540px){.sculpture-interactive.has-product-preview .study-floating-spec{bottom:112px;min-width:0;max-width:45%;padding:8px}.sculpture-interactive.has-product-preview .study-floating-spec strong{font-size:18px}.sculpture-interactive.has-product-preview .study-floating-spec>div{gap:4px}}
+
+/* Keep the extension popup captures readable at their native proportions. */
+.product-study[data-sculpture-id="github-pimx-voice"] .study-browser-window{top:9%;left:13%;width:74%}
+.product-study[data-sculpture-id="github-pimx-voice"] .study-browser-window img{aspect-ratio:920/660;object-fit:contain}
+.product-study[data-sculpture-id="github-pimx-voice"] .study-floating-spec{display:none}
